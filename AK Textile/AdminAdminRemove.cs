@@ -21,5 +21,10 @@ namespace AK_Textile
         {
             //This is the remove button
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

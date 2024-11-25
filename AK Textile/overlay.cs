@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace AK_Textile
 {
-    public partial class AdminAdminAdd : Form
+    public partial class overlay : Form
     {
-        public AdminAdminAdd()
+        public overlay()
         {
             InitializeComponent();
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            //This is an Add Button
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }
