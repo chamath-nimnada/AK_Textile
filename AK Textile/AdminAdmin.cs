@@ -50,5 +50,10 @@ namespace AK_Textile
         {
             mainForm.LoadForm(new LoginForm(mainForm));
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
