@@ -55,5 +55,49 @@ namespace AK_Textile
         {
 
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            // Create and configure the overlay form
+            Form overlay = new Form
+            {
+                BackColor = Color.Black,
+                Opacity = 0.5, // 50% transparent
+                FormBorderStyle = FormBorderStyle.None,
+                StartPosition = FormStartPosition.Manual,
+                ShowInTaskbar = false,
+                Bounds = this.Bounds, // Match the size and position of the MainForm
+                Owner = this // Set the MainForm as the owner
+            };
+
+            // Show the overlay form
+            overlay.Show();
+
+            // Create and show the subform as a dialog
+            using (AdminAdminRemove adminAdminRemove = new AdminAdminRemove())
+            {
+                adminAdminRemove.ShowDialog();
+            }
+
+            // Close the overlay form after the subform is closed
+            overlay.Close();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            AdminAdminUpdate adminadminupdate = new AdminAdminUpdate();
+            adminadminupdate.ShowDialog();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            AdminAdminAdd adminadminadd = new AdminAdminAdd();
+            adminadminadd.ShowDialog();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            input.Text = string.Empty; //Clear the text box
+        }
     }
 }
