@@ -12,9 +12,16 @@ namespace AK_Textile
 {
     public partial class InventoryGRN : Form
     {
-        public InventoryGRN()
+        private MainForm mainForm;
+        public InventoryGRN(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
+        }
+
+        private void InventoryGRN_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

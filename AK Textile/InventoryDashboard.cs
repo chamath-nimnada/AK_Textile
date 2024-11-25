@@ -12,12 +12,19 @@ namespace AK_Textile
 {
     public partial class InventoryDashboard : Form
     {
-        public InventoryDashboard()
+        private MainForm mainForm;
+        public InventoryDashboard(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
         }
 
         private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void InventoryDashboard_Load(object sender, EventArgs e)
         {
 
         }
