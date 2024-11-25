@@ -12,9 +12,11 @@ namespace AK_Textile
 {
     public partial class InventoryRaw : Form
     {
-        public InventoryRaw()
+        private MainForm mainForm;
+        public InventoryRaw(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
         }
 
         private void chart1_Click(object sender, EventArgs e)
@@ -23,6 +25,11 @@ namespace AK_Textile
         }
 
         private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void InventoryRaw_Load(object sender, EventArgs e)
         {
 
         }
