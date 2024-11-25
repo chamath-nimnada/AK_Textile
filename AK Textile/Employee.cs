@@ -12,12 +12,19 @@ namespace AK_Textile
 {
     public partial class Employee : Form
     {
-        public Employee()
+        private MainForm mainForm;
+        public Employee(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Employee_Load(object sender, EventArgs e)
         {
 
         }

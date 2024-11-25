@@ -12,9 +12,16 @@ namespace AK_Textile
 {
     public partial class EmpManagerSalary : Form
     {
-        public EmpManagerSalary()
+        private MainForm mainForm;
+        public EmpManagerSalary(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
+        }
+
+        private void EmpManagerSalary_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
