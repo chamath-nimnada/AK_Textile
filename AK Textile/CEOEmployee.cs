@@ -12,9 +12,16 @@ namespace AK_Textile
 {
     public partial class CEOEmployee : Form
     {
-        public CEOEmployee()
+        private MainForm mainForm; //Step 01
+        public CEOEmployee(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
+        }
+
+        private void CEOEmployee_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

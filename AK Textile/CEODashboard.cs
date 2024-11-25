@@ -12,9 +12,16 @@ namespace AK_Textile
 {
     public partial class CEODashboard : Form
     {
-        public CEODashboard()
+        private MainForm mainForm; //Step 01
+        public CEODashboard(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
+        }
+
+        private void CEODashboard_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
