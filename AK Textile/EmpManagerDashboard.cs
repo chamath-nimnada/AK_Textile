@@ -12,9 +12,11 @@ namespace AK_Textile
 {
     public partial class EmpManagerDashboard : Form
     {
-        public EmpManagerDashboard()
+        private MainForm mainForm;
+        public EmpManagerDashboard(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
         }
     }
 }

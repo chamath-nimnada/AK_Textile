@@ -12,9 +12,16 @@ namespace AK_Textile
 {
     public partial class EmpManagerReport : Form
     {
-        public EmpManagerReport()
+        private MainForm mainForm;
+        public EmpManagerReport(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
+        }
+
+        private void EmpManagerReport_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

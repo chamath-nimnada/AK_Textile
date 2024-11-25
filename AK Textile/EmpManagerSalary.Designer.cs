@@ -325,6 +325,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "EmpManagerSalary";
             this.Text = "Form2";
+            this.Load += new System.EventHandler(this.EmpManagerSalary_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
