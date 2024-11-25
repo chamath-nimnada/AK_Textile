@@ -23,5 +23,40 @@ namespace AK_Textile
         {
 
         }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new LoginForm(mainForm));
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new SupplierPayment(mainForm));
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new SupplierOrder(mainForm));
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new SupplierInvoice(mainForm));
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new SupplierReport(mainForm));
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new LoginForm(mainForm));
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            mainForm.LoadForm(new LoginForm(mainForm));
+        }
     }
 }
