@@ -12,9 +12,16 @@ namespace AK_Textile
 {
     public partial class SupplierInvoice : Form
     {
-        public SupplierInvoice()
+        private MainForm mainForm;
+        public SupplierInvoice(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
+        }
+
+        private void SupplierInvoice_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
