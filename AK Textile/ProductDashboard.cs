@@ -12,9 +12,16 @@ namespace AK_Textile
 {
     public partial class ProductDashboard : Form
     {
-        public ProductDashboard()
+        private MainForm mainForm;
+        public ProductDashboard(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
+        }
+
+        private void ProductDashboard_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

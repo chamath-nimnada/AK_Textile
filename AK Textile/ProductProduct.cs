@@ -12,9 +12,16 @@ namespace AK_Textile
 {
     public partial class ProductionProduct : Form
     {
-        public ProductionProduct()
+        private MainForm mainForm;
+        public ProductionProduct(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
+        }
+
+        private void ProductionProduct_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

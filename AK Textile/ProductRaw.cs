@@ -12,9 +12,16 @@ namespace AK_Textile
 {
     public partial class ProductRaw : Form
     {
-        public ProductRaw()
+        private MainForm mainForm;
+        public ProductRaw(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
+        }
+
+        private void ProductRaw_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
