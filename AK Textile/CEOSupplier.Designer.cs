@@ -310,6 +310,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CEOSupplier";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.CEOSupplier_Load);
             this.panel3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);

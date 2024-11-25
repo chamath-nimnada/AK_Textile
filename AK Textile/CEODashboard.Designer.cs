@@ -352,6 +352,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CEODashboard";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.CEODashboard_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);

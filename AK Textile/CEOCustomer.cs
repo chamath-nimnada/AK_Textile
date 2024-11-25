@@ -11,10 +11,18 @@ using System.Windows.Forms;
 namespace AK_Textile
 {
     public partial class CEOCustomer : Form
+
     {
-        public CEOCustomer()
+        private MainForm mainForm; //Step 01
+        public CEOCustomer(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
+        }
+
+        private void CEOCustomer_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
