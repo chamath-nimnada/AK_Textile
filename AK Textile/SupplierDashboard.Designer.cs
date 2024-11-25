@@ -39,20 +39,20 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.label15 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -181,6 +181,17 @@
             this.panel3.Size = new System.Drawing.Size(614, 185);
             this.panel3.TabIndex = 23;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.label15.Location = new System.Drawing.Point(27, 68);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(255, 24);
+            this.label15.TabIndex = 5;
+            this.label15.Text = "View the  Supplier Payments.";
+            // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
@@ -237,17 +248,6 @@
             this.panel5.Size = new System.Drawing.Size(614, 185);
             this.panel5.TabIndex = 25;
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label15.Location = new System.Drawing.Point(27, 68);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(255, 24);
-            this.label15.TabIndex = 5;
-            this.label15.Text = "View the  Supplier Payments.";
-            // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
@@ -280,6 +280,17 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(614, 185);
             this.panel7.TabIndex = 24;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.label10.Location = new System.Drawing.Point(27, 74);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(373, 48);
+            this.label10.TabIndex = 6;
+            this.label10.Text = "View Supplier Purchase Order Reports and\r\nGoods Received Notes (GRN).";
             // 
             // button6
             // 
@@ -325,17 +336,6 @@
             this.label8.TabIndex = 3;
             this.label8.Text = "View Supplier Invoices Add, Remove and Update";
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label10.Location = new System.Drawing.Point(27, 74);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(373, 48);
-            this.label10.TabIndex = 6;
-            this.label10.Text = "View Supplier Purchase Order Reports and\r\nGoods Received Notes (GRN).";
-            // 
             // SupplierDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -352,6 +352,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SupplierDashboard";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.SupplierDashboard_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
