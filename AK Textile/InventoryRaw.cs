@@ -33,5 +33,28 @@ namespace AK_Textile
         {
 
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            MaterialId.Text=string.Empty;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            InventoryRawAdd inventoryrawadd = new InventoryRawAdd();
+            inventoryrawadd.ShowDialog();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            InventoryRawRemove inventoryrawremove = new InventoryRawRemove();
+            inventoryrawremove.ShowDialog();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            InventoryRawUpdate inventoryrawupdate = new InventoryRawUpdate();
+            inventoryrawupdate.ShowDialog();
+        }
     }
 }

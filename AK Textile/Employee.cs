@@ -28,5 +28,28 @@ namespace AK_Textile
         {
 
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            EmployeeLeaveUpdate employeeleavesupdate = new EmployeeLeaveUpdate();
+            employeeleavesupdate.ShowDialog();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            EmployeeLeaveAdd employeeleaveadd = new EmployeeLeaveAdd();
+            employeeleaveadd.ShowDialog();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+           EmployeeLeaveRemove employeeleaveremove = new EmployeeLeaveRemove();
+            employeeleaveremove.ShowDialog();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            salaryId.Text = string.Empty;
+        }
     }
 }

@@ -68,5 +68,23 @@ namespace AK_Textile
         {
             mainForm.LoadForm(new EmpManagerReport(mainForm));
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+           EmpManagerLeaveAdd empmanagerleaveadd = new EmpManagerLeaveAdd();
+            empmanagerleaveadd.ShowDialog();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            EmpManagerLeaveUpdate empmanagerleaveupdate = new EmpManagerLeaveUpdate();
+            empmanagerleaveupdate.ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            EmpManagerLeaveRemove empmanagerleaveremove = new EmpManagerLeaveRemove();
+            empmanagerleaveremove.ShowDialog();
+        }
     }
 }
