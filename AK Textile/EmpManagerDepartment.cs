@@ -58,5 +58,28 @@ namespace AK_Textile
         {
             mainForm.LoadForm(new EmpManagerReport(mainForm));
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            DepId.Text = string.Empty;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            EmpManagerDepartmentAdd empmanagerdepartmentadd = new EmpManagerDepartmentAdd();
+            empmanagerdepartmentadd.ShowDialog();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            EmpManagerDepartmentUpdate empmanagerdepartmentupdate = new EmpManagerDepartmentUpdate();
+            empmanagerdepartmentupdate.ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            EmpManagerDepartmentRemove empmanagerdepartmentremove = new EmpManagerDepartmentRemove();
+            empmanagerdepartmentremove.ShowDialog();
+        }
     }
 }

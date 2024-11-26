@@ -16,5 +16,15 @@ namespace AK_Textile
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            LeaveID.Text = string.Empty;
+        }
     }
 }

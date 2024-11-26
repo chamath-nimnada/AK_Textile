@@ -58,5 +58,22 @@ namespace AK_Textile
         {
             mainForm.LoadForm(new EmpManagerReport(mainForm));
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            EmpManagerSalaryAdd empmanagersalaryadd = new EmpManagerSalaryAdd();
+            empmanagersalaryadd.ShowDialog();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            EmpManagerSalaryUpdate empmanagersalaryupdate = new EmpManagerSalaryUpdate();
+            empmanagersalaryupdate.ShowDialog();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            EmpId.Text=string.Empty;
+        }
     }
 }

@@ -23,5 +23,10 @@ namespace AK_Textile
         {
 
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            SupplierId.Text=string.Empty;
+        }
     }
 }
