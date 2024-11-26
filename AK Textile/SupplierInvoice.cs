@@ -63,5 +63,22 @@ namespace AK_Textile
         {
             mainForm.LoadForm(new SupplierDashboard(mainForm));
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            supidtxt.Text = string.Empty;
+        }
+
+        private void addbtn_Click(object sender, EventArgs e)
+        {
+            SupplierInvoiceAdd supplierinvoiceadd = new SupplierInvoiceAdd();
+            supplierinvoiceadd.ShowDialog();
+        }
+
+        private void updatebtn_Click(object sender, EventArgs e)
+        {
+            SupplierInvoiceUpdate supplierinvoiceupdate = new SupplierInvoiceUpdate();
+            supplierinvoiceupdate.ShowDialog();
+        }
     }
 }
