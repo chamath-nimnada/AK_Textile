@@ -63,5 +63,28 @@ namespace AK_Textile
         {
             mainForm.LoadForm(new ProductReport(mainForm));
         }
+
+        private void clearbtn_Click(object sender, EventArgs e)
+        {
+            prodscheduletxtbox.Text = string.Empty;
+        }
+
+        private void addbtn_Click(object sender, EventArgs e)
+        {
+            ProductScheduleAdd productsheduleadd = new ProductScheduleAdd();
+            productsheduleadd.ShowDialog();
+        }
+
+        private void updatebtn_Click(object sender, EventArgs e)
+        {
+            ProductScheduleUpdate productscheduleupdate = new ProductScheduleUpdate();
+            productscheduleupdate.ShowDialog();
+        }
+
+        private void removebtn_Click(object sender, EventArgs e)
+        {
+            ProductScheduleRemove productscheduleremove = new ProductScheduleRemove();
+            productscheduleremove.ShowDialog();
+        }
     }
 }

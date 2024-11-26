@@ -68,5 +68,10 @@ namespace AK_Textile
             mainForm.LoadForm(new ProductReport(mainForm));
 
         }
+
+        private void clearbtn_Click(object sender, EventArgs e)
+        {
+            rawmatidtxtbox.Text = string.Empty;
+        }
     }
 }
