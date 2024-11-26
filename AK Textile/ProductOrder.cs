@@ -63,5 +63,10 @@ namespace AK_Textile
         {
             
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            orderIDtextbox.Text = string.Empty; //Clear the text box
+        }
     }
 }

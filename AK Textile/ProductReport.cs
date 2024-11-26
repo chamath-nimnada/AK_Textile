@@ -63,5 +63,11 @@ namespace AK_Textile
         {
             mainForm.LoadForm(new ProductOrder(mainForm));
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            reporttypecmbbox.Text = "";         // Clear any displayed text
+            durationcmbbox.Text = "";
+        }
     }
 }
