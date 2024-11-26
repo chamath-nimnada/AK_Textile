@@ -58,5 +58,28 @@ namespace AK_Textile
         {
             mainForm.LoadForm(new LoginForm(mainForm));
         }
+
+        private void clearbtn_Click(object sender, EventArgs e)
+        {
+            supidtxt.Text = string.Empty;
+        }
+
+        private void addbtn_Click(object sender, EventArgs e)
+        {
+            SupplierSupplierAdd suppliersupplieradd = new SupplierSupplierAdd();
+            suppliersupplieradd.ShowDialog();
+        }
+
+        private void updatebtn_Click(object sender, EventArgs e)
+        {
+            SupplierSupplierUpdate supplierupdate = new SupplierSupplierUpdate();
+            supplierupdate.ShowDialog();
+        }
+
+        private void removebtn_Click(object sender, EventArgs e)
+        {
+            SupplierSupllierRemove supplierremovev = new SupplierSupllierRemove();
+            supplierremovev.ShowDialog();
+        }
     }
 }
