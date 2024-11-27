@@ -69,7 +69,7 @@ namespace AK_Textile
                     case "employee manager":
                         mainForm.LoadForm(new EmpManagerDashboard(mainForm));
                         break;
-                    case "production manage r":
+                    case "production manager":
                         mainForm.LoadForm(new ProductDashboard(mainForm));
                         break;
                     case "admin":
