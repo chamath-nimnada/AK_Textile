@@ -58,46 +58,109 @@ namespace AK_Textile
 
         private void button9_Click(object sender, EventArgs e)
         {
-            // Create and configure the overlay form
-            Form overlay = new Form
+            //Dark the back main window and open sub window
+            Form formBackground = new Form();
+            try
             {
-                BackColor = Color.Black,
-                Opacity = 0.5, // 50% transparent
-                FormBorderStyle = FormBorderStyle.None,
-                StartPosition = FormStartPosition.Manual,
-                ShowInTaskbar = false,
-                Bounds = this.Bounds, // Match the size and position of the MainForm
-                Owner = this // Set the MainForm as the owner
-            };
+                using (AdminAdminRemove adminadminremove = new AdminAdminRemove())
+                {
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = true;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
 
-            // Show the overlay form
-            overlay.Show();
+                    adminadminremove.Owner = formBackground;
+                    adminadminremove.ShowDialog();
 
-            // Create and show the subform as a dialog
-            using (AdminAdminRemove adminAdminRemove = new AdminAdminRemove())
-            {
-                adminAdminRemove.ShowDialog();
+                    formBackground.Dispose();
+                }
             }
-
-            // Close the overlay form after the subform is closed
-            overlay.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally 
+            { 
+                formBackground.Dispose(); 
+            }
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            AdminAdminUpdate adminadminupdate = new AdminAdminUpdate();
-            adminadminupdate.ShowDialog();
+            //Dark the back main window and open sub window
+            Form formBackground = new Form();
+            try
+            {
+                using (AdminEmployeeRemove adminEmployeeRemove = new AdminEmployeeRemove())
+                {
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = true;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+
+                    adminEmployeeRemove.Owner = formBackground;
+                    adminEmployeeRemove.ShowDialog();
+
+                    formBackground.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
+            }
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            AdminAdminAdd adminadminadd = new AdminAdminAdd();
-            adminadminadd.ShowDialog();
+            //Dark the back main window and open sub window
+            Form formBackground = new Form();
+            try
+            {
+                using (AdminEmployeeAdd adminEmployeeAdd = new AdminEmployeeAdd())
+                {
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = true;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+
+                    adminEmployeeAdd.Owner = formBackground;
+                    adminEmployeeAdd.ShowDialog();
+
+                    formBackground.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
+            }
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void button2_Click_1(object sender, EventArgs e)
         {
-            input.Text = string.Empty; //Clear the text box
+            input.Text = string.Empty; // Clear the text in the textbox
         }
     }
 }
