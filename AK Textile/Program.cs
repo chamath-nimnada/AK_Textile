@@ -16,7 +16,7 @@ namespace AK_Textile
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AdminEmployeeAdd());
+            Application.Run(new EmpManagerDepartmentRemove());
         }
     }
 }
