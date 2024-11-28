@@ -23,24 +23,27 @@ namespace AK_Textile
         private void AdminEmployeeAdd_Load(object sender, EventArgs e)
         {
             //To auto Increment
-           /* con.Open();
+            //To auto increment the department ID
+            con.Open();
             SqlCommand cmd1 = new SqlCommand("SELECT MAX(EmpID) FROM Employee", con);
             SqlDataReader dr1 = cmd1.ExecuteReader();
-            dr1.Read();
+
+            if (dr1.Read())
             {
-                if (dr1.GetValue(0).ToString() == "")
+                if (dr1[0] == DBNull.Value)
                 {
-                    this.empIDtxtbox.Text = "1";
+                    this.empIDtxtbox.Text = "Emp001";
                 }
                 else
                 {
-                    this.empIDtxtbox.Text = (Convert.ToInt32(dr1.GetValue(0).ToString()) + 1).ToString();
+                    string maxID = dr1[0].ToString();
+                    int numericPart = int.Parse(maxID.Substring(3));
+                    string newID = "Emp" + (numericPart + 1).ToString("D3"); //D3 is used to convert a string into 3 digits
+                    this.empIDtxtbox.Text = newID;
                 }
-                dr1.Close();
-                con.Close();
-           */
-           
-
+            }
+            dr1.Close();
+            con.Close();
             try
             {
                 //To load department names automatically into the department combo box
@@ -131,7 +134,7 @@ namespace AK_Textile
             }
             else if (this.usernametxt.Text == "")
             {
-                this.errorProvider1.SetError(this.usernametxt, "username cannotr be empty");
+                this.errorProvider1.SetError(this.usernametxt, "username cannot be empty");
                 return;
             }
             else if (this.passwordtxt.Text == "")
