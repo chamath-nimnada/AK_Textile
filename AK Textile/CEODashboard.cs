@@ -27,6 +27,7 @@ namespace AK_Textile
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             mainForm.LoadForm(new LoginForm(mainForm));
+            //hiiiiiiiiiiiiiiiiii
         }
 
         private void button1_Click(object sender, EventArgs e)
