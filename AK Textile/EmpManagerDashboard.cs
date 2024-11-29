@@ -7,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static AK_Textile.LoginForm;
 
 namespace AK_Textile
 {
     public partial class EmpManagerDashboard : Form
     {
         private MainForm mainForm;
+
         public EmpManagerDashboard(MainForm mainForm)
         {
             InitializeComponent();
@@ -47,6 +49,11 @@ namespace AK_Textile
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             mainForm.LoadForm(new LoginForm(mainForm));
+        }
+
+        private void EmpManagerDashboard_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }
