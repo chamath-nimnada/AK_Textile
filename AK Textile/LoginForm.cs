@@ -17,10 +17,19 @@ namespace AK_Textile
 
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;Initial Catalog=Textlies;Integrated Security=True;");
 
+        public int EmpID { get; private set; }
+
         public LoginForm(MainForm mainForm)
         {
             InitializeComponent();
             this.mainForm = mainForm;
+        }
+
+        public static class LoggedInUser
+        {
+            public static string UserId { get; set; }      // To store the User ID
+            public static string Username { get; set; } // To store the Username
+            public static string Position { get; set; } // To store the Position
         }
 
         public LoginForm()
@@ -40,6 +49,15 @@ namespace AK_Textile
             }
         }
 
+        private void btnLogin_Click(object sender, EventArgs e, string EmpID)
+        {
+            
+        }
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             // Open the connection
@@ -47,7 +65,7 @@ namespace AK_Textile
 
             // Define the SQL query to check username and password, and retrieve the position
             SqlCommand com1 = new SqlCommand(
-                "SELECT EmpPosition FROM Employee WHERE EmpUsername=@uname AND EmpPswrd=@pswrd",
+                "SELECT EmpID, EmpUsername, EmpPosition FROM Employee WHERE EmpUsername=@uname AND EmpPswrd=@pswrd",
                 con
             );
 
@@ -60,11 +78,13 @@ namespace AK_Textile
 
             if (dr.Read()) // Check if any record matches the credentials
             {
-                // Retrieve the position from the result
-                string position = dr["EmpPosition"].ToString();
+                // Store the logged-in user's details in global variables
+                LoggedInUser.UserId = dr["EmpId"].ToString();
+                LoggedInUser.Username = dr["EmpUsername"].ToString();
+                LoggedInUser.Position = dr["EmpPosition"].ToString();
 
                 // Navigate to the appropriate dashboard based on the position
-                switch (position)
+                switch (LoggedInUser.Position)
                 {
                     case "employee manager":
                         mainForm.LoadForm(new EmpManagerDashboard(mainForm));
@@ -107,7 +127,6 @@ namespace AK_Textile
 
             // Close the connection
             con.Close();
-
         }
     }
 }
