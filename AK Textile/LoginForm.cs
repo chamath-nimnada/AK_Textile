@@ -15,7 +15,7 @@ namespace AK_Textile
     {
         private MainForm mainForm;
 
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;Initial Catalog=Textlies;Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AK-Textlies;Integrated Security=True;");
 
         public int EmpID { get; private set; }
 
