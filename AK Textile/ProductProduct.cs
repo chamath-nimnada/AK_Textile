@@ -71,20 +71,103 @@ namespace AK_Textile
 
         private void updatebtn_Click(object sender, EventArgs e)
         {
-            ProductProductUpdate productproductupdate = new ProductProductUpdate();
-            productproductupdate.ShowDialog();
+            //Dark the back main window and open sub window
+            Form formBackground = new Form();
+            try
+            {
+                using (ProductProductionUpdate productProductionUpdate = new ProductProductionUpdate())
+                {
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = true;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+
+                    productProductionUpdate.Owner = formBackground;
+                    productProductionUpdate.ShowDialog();
+
+                    formBackground.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
+            }
         }
 
         private void addbtn_Click(object sender, EventArgs e)
         {
-            ProductProductAdd productproductadd = new ProductProductAdd();
-            productproductadd.ShowDialog();
+            //Dark the back main window and open sub window
+            Form formBackground = new Form();
+            try
+            {
+                using (ProductProductionAdd productProductionAdd = new ProductProductionAdd())
+                {
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = true;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+
+                    productProductionAdd.Owner = formBackground;
+                    productProductionAdd.ShowDialog();
+
+                    formBackground.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
+            }
         }
 
         private void removebtn_Click(object sender, EventArgs e)
-        {
-            ProductProductRemove productproductremove = new ProductProductRemove();
-            productproductremove.ShowDialog();
+        { //Dark the back main window and open sub window
+            Form formBackground = new Form();
+            try
+            {
+                using (ProductProductionRemove productProductionRemove = new ProductProductionRemove())
+                {
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = true;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+
+                    productProductionRemove.Owner = formBackground;
+                    productProductionRemove.ShowDialog();
+
+                    formBackground.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
+            }
         }
     }
 }
