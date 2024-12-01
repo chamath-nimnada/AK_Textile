@@ -97,7 +97,7 @@ namespace AK_Textile
                     da.Fill(dt);
 
                     depcmb.DataSource = dt;
-                    depcmb.DisplayMember = "DepartmentName";
+                    depcmb.DisplayMember = "DepName";
                 }
                 catch (Exception ex)
                 {
