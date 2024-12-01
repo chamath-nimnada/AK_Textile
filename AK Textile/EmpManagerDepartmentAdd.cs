@@ -73,10 +73,10 @@ namespace AK_Textile
                 return;
             }
             con.Open();
-            SqlCommand cmd2 = new SqlCommand("INSERT INTO Department(DepID, DepName, DepLocation VALUES (@depid, @dname, @dloc)",con);
+            SqlCommand cmd2 = new SqlCommand("INSERT INTO Department(DepID, DepName, DepLocation) VALUES (@depid, @dname, @dloc)",con);
             cmd2.Parameters.AddWithValue("@depid", depIDtxt.Text);
             cmd2.Parameters.AddWithValue("@dname", depnametxt.Text);
-            cmd2.Parameters.AddWithValue("@dloc", deploctxt.Text);
+            cmd2.Parameters.AddWithValue("@dloc", deploctxt.Text); 
 
             try
             {

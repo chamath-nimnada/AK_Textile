@@ -33,7 +33,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dloc = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.depname = new System.Windows.Forms.TextBox();
+            this.depnametxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.updatebtn = new System.Windows.Forms.Button();
             this.cancelbtn = new System.Windows.Forms.Button();
@@ -64,13 +64,14 @@
             this.depcmb.Name = "depcmb";
             this.depcmb.Size = new System.Drawing.Size(360, 28);
             this.depcmb.TabIndex = 0;
+            this.depcmb.SelectedIndexChanged += new System.EventHandler(this.depcmb_SelectedIndexChanged);
             // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
             this.groupBox2.Controls.Add(this.dloc);
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.depname);
+            this.groupBox2.Controls.Add(this.depnametxt);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(9, 99);
@@ -103,15 +104,15 @@
             this.label10.TabIndex = 19;
             this.label10.Text = "Location";
             // 
-            // depname
+            // depnametxt
             // 
-            this.depname.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.depname.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.depname.Location = new System.Drawing.Point(201, 31);
-            this.depname.Margin = new System.Windows.Forms.Padding(2);
-            this.depname.Name = "depname";
-            this.depname.Size = new System.Drawing.Size(198, 27);
-            this.depname.TabIndex = 4;
+            this.depnametxt.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.depnametxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.depnametxt.Location = new System.Drawing.Point(201, 31);
+            this.depnametxt.Margin = new System.Windows.Forms.Padding(2);
+            this.depnametxt.Name = "depnametxt";
+            this.depnametxt.Size = new System.Drawing.Size(198, 27);
+            this.depnametxt.TabIndex = 4;
             // 
             // label2
             // 
@@ -198,7 +199,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox dloc;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox depname;
+        private System.Windows.Forms.TextBox depnametxt;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button updatebtn;
         private System.Windows.Forms.Button cancelbtn;
