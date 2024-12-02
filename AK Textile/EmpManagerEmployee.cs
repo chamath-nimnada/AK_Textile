@@ -93,12 +93,12 @@ namespace AK_Textile
             EmployeeId.Text=string.Empty;
         }
 
-        /*method to search button to filter data accordingto the entered
+        /*method to search button to filter data according to the entered
           name or ID */
         private void SearchEmployee(string searchValue)
         {
             con.Open();
-            SqlCommand cmd2 = new SqlCommand("SELECT * FROM Employee WHERE EmpID LIKE @searchval OR EmpNAme LIKE @searchval", con);
+            SqlCommand cmd2 = new SqlCommand("SELECT * FROM Employee WHERE EmpID LIKE @searchval OR EmpName LIKE @searchval", con);
             cmd2.Parameters.AddWithValue("@searchval", "%" + searchValue + "%");
 
             SqlDataAdapter da = new SqlDataAdapter(cmd2);

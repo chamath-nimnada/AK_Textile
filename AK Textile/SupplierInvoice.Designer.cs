@@ -47,7 +47,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button6 = new System.Windows.Forms.Button();
+            this.clearbtn = new System.Windows.Forms.Button();
             this.searchbtn = new System.Windows.Forms.Button();
             this.supidtxt = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
@@ -302,7 +302,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
-            this.groupBox1.Controls.Add(this.button6);
+            this.groupBox1.Controls.Add(this.clearbtn);
             this.groupBox1.Controls.Add(this.searchbtn);
             this.groupBox1.Controls.Add(this.supidtxt);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -315,20 +315,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Enter the Supplier ID or Name";
             // 
-            // button6
+            // clearbtn
             // 
-            this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
-            this.button6.Location = new System.Drawing.Point(628, 32);
-            this.button6.Margin = new System.Windows.Forms.Padding(2);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(96, 30);
-            this.button6.TabIndex = 10;
-            this.button6.Text = "Clear";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.clearbtn.BackColor = System.Drawing.Color.White;
+            this.clearbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.clearbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
+            this.clearbtn.Location = new System.Drawing.Point(628, 32);
+            this.clearbtn.Margin = new System.Windows.Forms.Padding(2);
+            this.clearbtn.Name = "clearbtn";
+            this.clearbtn.Size = new System.Drawing.Size(96, 30);
+            this.clearbtn.TabIndex = 10;
+            this.clearbtn.Text = "Clear";
+            this.clearbtn.UseVisualStyleBackColor = false;
+            this.clearbtn.Click += new System.EventHandler(this.button6_Click);
             // 
             // searchbtn
             // 
@@ -343,6 +343,7 @@
             this.searchbtn.TabIndex = 5;
             this.searchbtn.Text = "Search";
             this.searchbtn.UseVisualStyleBackColor = false;
+            this.searchbtn.Click += new System.EventHandler(this.searchbtn_Click);
             // 
             // supidtxt
             // 
@@ -411,7 +412,7 @@
         private System.Windows.Forms.Button addbtn;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button clearbtn;
         private System.Windows.Forms.Button searchbtn;
         private System.Windows.Forms.TextBox supidtxt;
         private System.Windows.Forms.DataGridView dataGridView1;
