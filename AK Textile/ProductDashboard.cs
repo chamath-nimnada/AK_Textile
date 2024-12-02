@@ -21,7 +21,7 @@ namespace AK_Textile
 
         private void ProductDashboard_Load(object sender, EventArgs e)
         {
-
+            LoginForm.LoggedInUser.Position = "Product Manager";
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

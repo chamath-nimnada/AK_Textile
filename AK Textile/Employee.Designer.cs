@@ -63,20 +63,20 @@
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(19, 21);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Location = new System.Drawing.Point(25, 26);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(941, 54);
+            this.panel1.Size = new System.Drawing.Size(1255, 66);
             this.panel1.TabIndex = 18;
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackgroundImage = global::AK_Textile.Properties.Resources.logout_4034229;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(893, 5);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Location = new System.Drawing.Point(1191, 6);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(38, 41);
+            this.pictureBox2.Size = new System.Drawing.Size(51, 50);
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
             // 
@@ -85,10 +85,9 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(62, 14);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(83, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 24);
+            this.label1.Size = new System.Drawing.Size(130, 29);
             this.label1.TabIndex = 1;
             this.label1.Text = "Employee";
             // 
@@ -96,10 +95,10 @@
             // 
             this.pictureBox1.BackgroundImage = global::AK_Textile.Properties.Resources.Man_Icon;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(13, 5);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Location = new System.Drawing.Point(17, 6);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 41);
+            this.pictureBox1.Size = new System.Drawing.Size(51, 50);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -107,11 +106,11 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(848, 138);
+            this.dataGridView1.Size = new System.Drawing.Size(1131, 170);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -120,10 +119,10 @@
             this.button9.BackColor = System.Drawing.Color.IndianRed;
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.Color.White;
-            this.button9.Location = new System.Drawing.Point(39, 187);
-            this.button9.Margin = new System.Windows.Forms.Padding(2);
+            this.button9.Location = new System.Drawing.Point(52, 230);
+            this.button9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(146, 38);
+            this.button9.Size = new System.Drawing.Size(195, 47);
             this.button9.TabIndex = 15;
             this.button9.Text = "Remove";
             this.button9.UseVisualStyleBackColor = false;
@@ -134,10 +133,10 @@
             this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(584, 187);
-            this.button8.Margin = new System.Windows.Forms.Padding(2);
+            this.button8.Location = new System.Drawing.Point(779, 230);
+            this.button8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(146, 38);
+            this.button8.Size = new System.Drawing.Size(195, 47);
             this.button8.TabIndex = 14;
             this.button8.Text = "Update";
             this.button8.UseVisualStyleBackColor = false;
@@ -148,10 +147,10 @@
             this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(740, 187);
-            this.button7.Margin = new System.Windows.Forms.Padding(2);
+            this.button7.Location = new System.Drawing.Point(987, 230);
+            this.button7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(146, 38);
+            this.button7.Size = new System.Drawing.Size(195, 47);
             this.button7.TabIndex = 13;
             this.button7.Text = "Add";
             this.button7.UseVisualStyleBackColor = false;
@@ -160,10 +159,10 @@
             // panel5
             // 
             this.panel5.Controls.Add(this.dataGridView1);
-            this.panel5.Location = new System.Drawing.Point(39, 37);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2);
+            this.panel5.Location = new System.Drawing.Point(52, 46);
+            this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(848, 138);
+            this.panel5.Size = new System.Drawing.Size(1131, 170);
             this.panel5.TabIndex = 0;
             // 
             // groupBox3
@@ -174,11 +173,11 @@
             this.groupBox3.Controls.Add(this.button7);
             this.groupBox3.Controls.Add(this.panel5);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(11, 246);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox3.Location = new System.Drawing.Point(15, 303);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox3.Size = new System.Drawing.Size(920, 237);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox3.Size = new System.Drawing.Size(1227, 292);
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Applied Leaves";
@@ -189,10 +188,10 @@
             this.panel3.Controls.Add(this.groupBox2);
             this.panel3.Controls.Add(this.groupBox1);
             this.panel3.Controls.Add(this.groupBox3);
-            this.panel3.Location = new System.Drawing.Point(19, 106);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Location = new System.Drawing.Point(25, 130);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(941, 486);
+            this.panel3.Size = new System.Drawing.Size(1255, 598);
             this.panel3.TabIndex = 22;
             // 
             // groupBox2
@@ -202,11 +201,11 @@
             this.groupBox2.Controls.Add(this.searchbtn);
             this.groupBox2.Controls.Add(this.salaryId);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(11, 20);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Location = new System.Drawing.Point(15, 25);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(298, 211);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Size = new System.Drawing.Size(397, 260);
             this.groupBox2.TabIndex = 17;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Enter the Salary ID";
@@ -216,10 +215,10 @@
             this.clearbtn.BackColor = System.Drawing.Color.White;
             this.clearbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
-            this.clearbtn.Location = new System.Drawing.Point(39, 146);
-            this.clearbtn.Margin = new System.Windows.Forms.Padding(2);
+            this.clearbtn.Location = new System.Drawing.Point(52, 180);
+            this.clearbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.clearbtn.Name = "clearbtn";
-            this.clearbtn.Size = new System.Drawing.Size(242, 30);
+            this.clearbtn.Size = new System.Drawing.Size(323, 37);
             this.clearbtn.TabIndex = 10;
             this.clearbtn.Text = "Clear";
             this.clearbtn.UseVisualStyleBackColor = false;
@@ -230,10 +229,10 @@
             this.searchbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.searchbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchbtn.ForeColor = System.Drawing.Color.White;
-            this.searchbtn.Location = new System.Drawing.Point(39, 90);
-            this.searchbtn.Margin = new System.Windows.Forms.Padding(2);
+            this.searchbtn.Location = new System.Drawing.Point(52, 111);
+            this.searchbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.searchbtn.Name = "searchbtn";
-            this.searchbtn.Size = new System.Drawing.Size(242, 51);
+            this.searchbtn.Size = new System.Drawing.Size(323, 63);
             this.searchbtn.TabIndex = 5;
             this.searchbtn.Text = "Search";
             this.searchbtn.UseVisualStyleBackColor = false;
@@ -242,10 +241,10 @@
             // 
             this.salaryId.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.salaryId.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.salaryId.Location = new System.Drawing.Point(39, 46);
-            this.salaryId.Margin = new System.Windows.Forms.Padding(2);
+            this.salaryId.Location = new System.Drawing.Point(52, 57);
+            this.salaryId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.salaryId.Name = "salaryId";
-            this.salaryId.Size = new System.Drawing.Size(243, 27);
+            this.salaryId.Size = new System.Drawing.Size(323, 32);
             this.salaryId.TabIndex = 0;
             // 
             // groupBox1
@@ -253,11 +252,11 @@
             this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.dataGridView2);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(314, 20);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Location = new System.Drawing.Point(435, 25);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(605, 211);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(807, 260);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Salary";
@@ -265,24 +264,24 @@
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(39, 29);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridView2.Location = new System.Drawing.Point(52, 36);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(550, 166);
+            this.dataGridView2.Size = new System.Drawing.Size(733, 204);
             this.dataGridView2.TabIndex = 1;
             // 
             // Employee
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(224)))), ((int)(((byte)(229)))));
-            this.ClientSize = new System.Drawing.Size(981, 601);
+            this.ClientSize = new System.Drawing.Size(1308, 740);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Employee";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Employee_Load);
