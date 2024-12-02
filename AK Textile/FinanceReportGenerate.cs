@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AK_Textile
 {
-    public partial class FinanceSupplierPaymentUpdate : Form
+    public partial class FinanceReportGenerate : Form
     {
-        public FinanceSupplierPaymentUpdate()
+        public FinanceReportGenerate()
         {
             InitializeComponent();
         }
