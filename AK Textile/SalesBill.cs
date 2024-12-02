@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AK_Textile
 {
-    public partial class SalesInvoice : Form
+    public partial class SalesBill : Form
     {
-        public SalesInvoice()
+        public SalesBill()
         {
             InitializeComponent();
         }

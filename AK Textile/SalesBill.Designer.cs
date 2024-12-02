@@ -1,6 +1,6 @@
 ﻿namespace AK_Textile
 {
-    partial class SalesSchedule
+    partial class SalesBill
     {
         /// <summary>
         /// Required designer variable.
@@ -32,22 +32,22 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // linkLabel1
@@ -57,7 +57,7 @@
             this.linkLabel1.Location = new System.Drawing.Point(25, 702);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(54, 18);
-            this.linkLabel1.TabIndex = 61;
+            this.linkLabel1.TabIndex = 132;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Logout";
             // 
@@ -67,7 +67,7 @@
             this.panel3.Location = new System.Drawing.Point(250, 125);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1033, 595);
-            this.panel3.TabIndex = 60;
+            this.panel3.TabIndex = 131;
             // 
             // button1
             // 
@@ -77,7 +77,7 @@
             this.button1.Location = new System.Drawing.Point(28, 125);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(195, 52);
-            this.button1.TabIndex = 56;
+            this.button1.TabIndex = 128;
             this.button1.Text = "Order";
             this.button1.UseVisualStyleBackColor = false;
             // 
@@ -88,17 +88,7 @@
             this.panel2.Location = new System.Drawing.Point(28, 21);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(75, 66);
-            this.panel2.TabIndex = 55;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackgroundImage = global::AK_Textile.Properties.Resources.home_9449216;
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox3.Location = new System.Drawing.Point(12, 8);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox3.TabIndex = 3;
-            this.pictureBox3.TabStop = false;
+            this.panel2.TabIndex = 127;
             // 
             // label1
             // 
@@ -111,16 +101,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Sales Manager";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::AK_Textile.Properties.Resources.Man_Icon;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(18, 8);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.White;
@@ -129,7 +109,7 @@
             this.button3.Location = new System.Drawing.Point(28, 262);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(195, 52);
-            this.button3.TabIndex = 58;
+            this.button3.TabIndex = 130;
             this.button3.Text = "Payment";
             this.button3.UseVisualStyleBackColor = false;
             // 
@@ -142,39 +122,17 @@
             this.panel1.Location = new System.Drawing.Point(129, 21);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1154, 66);
-            this.panel1.TabIndex = 54;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImage = global::AK_Textile.Properties.Resources.logout_4034229;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(1091, 8);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
-            this.button2.Location = new System.Drawing.Point(28, 192);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(195, 52);
-            this.button2.TabIndex = 57;
-            this.button2.Text = "Sales";
-            this.button2.UseVisualStyleBackColor = false;
+            this.panel1.TabIndex = 126;
             // 
             // button5
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
+            this.button5.BackColor = System.Drawing.Color.White;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.button5.Location = new System.Drawing.Point(28, 399);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(195, 52);
-            this.button5.TabIndex = 124;
+            this.button5.TabIndex = 135;
             this.button5.Text = "Schedule";
             this.button5.UseVisualStyleBackColor = false;
             // 
@@ -186,19 +144,19 @@
             this.button6.Location = new System.Drawing.Point(28, 329);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(195, 52);
-            this.button6.TabIndex = 123;
+            this.button6.TabIndex = 134;
             this.button6.Text = "Customer";
             this.button6.UseVisualStyleBackColor = false;
             // 
             // button7
             // 
-            this.button7.BackColor = System.Drawing.Color.White;
+            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
+            this.button7.ForeColor = System.Drawing.Color.White;
             this.button7.Location = new System.Drawing.Point(28, 468);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(195, 52);
-            this.button7.TabIndex = 125;
+            this.button7.TabIndex = 136;
             this.button7.Text = "Billing";
             this.button7.UseVisualStyleBackColor = false;
             // 
@@ -210,42 +168,85 @@
             this.button10.Location = new System.Drawing.Point(28, 538);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(195, 52);
-            this.button10.TabIndex = 122;
+            this.button10.TabIndex = 133;
             this.button10.Text = "Report";
             this.button10.UseVisualStyleBackColor = false;
             // 
-            // SalesSchedule
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
+            this.button2.Location = new System.Drawing.Point(28, 192);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(195, 52);
+            this.button2.TabIndex = 129;
+            this.button2.Text = "Sales";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackgroundImage = global::AK_Textile.Properties.Resources.home_9449216;
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox3.Location = new System.Drawing.Point(12, 8);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox3.TabIndex = 3;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = global::AK_Textile.Properties.Resources.logout_4034229;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox2.Location = new System.Drawing.Point(1091, 8);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox2.TabIndex = 2;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::AK_Textile.Properties.Resources.Man_Icon;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(18, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // SalesBill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(224)))), ((int)(((byte)(229)))));
             this.ClientSize = new System.Drawing.Size(1308, 740);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button10);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.button10);
             this.Controls.Add(this.button2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "SalesSchedule";
+            this.Name = "SalesBill";
             this.Text = "Form1";
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
+
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button1;
@@ -256,10 +257,10 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button2;
     }
 }
