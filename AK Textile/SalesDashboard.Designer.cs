@@ -491,6 +491,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SalesDashboard";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.SalesDashboard_Load);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel1.ResumeLayout(false);

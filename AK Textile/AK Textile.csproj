@@ -210,18 +210,6 @@
     <Compile Include="FinanceSupplierPyamentAdd.Designer.cs">
       <DependentUpon>FinanceSupplierPyamentAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="FinanceSupplierPaymentUpdate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FinanceSupplierPaymentUpdate.Designer.cs">
-      <DependentUpon>FinanceSupplierPaymentUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FinanceSupplierPaymentRemove.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FinanceSupplierPaymentRemove.Designer.cs">
-      <DependentUpon>FinanceSupplierPaymentRemove.cs</DependentUpon>
-    </Compile>
     <Compile Include="EmpManagerDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -305,6 +293,18 @@
     </Compile>
     <Compile Include="EmpManagerDepartmentUpdate.Designer.cs">
       <DependentUpon>EmpManagerDepartmentUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceCustomerPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinanceCustomerPayment.Designer.cs">
+      <DependentUpon>FinanceCustomerPayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceReportGenerate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinanceReportGenerate.Designer.cs">
+      <DependentUpon>FinanceReportGenerate.cs</DependentUpon>
     </Compile>
     <Compile Include="overlay.cs">
       <SubType>Form</SubType>
@@ -731,12 +731,6 @@
     <EmbeddedResource Include="FinanceSupplierPyamentAdd.resx">
       <DependentUpon>FinanceSupplierPyamentAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FinanceSupplierPaymentUpdate.resx">
-      <DependentUpon>FinanceSupplierPaymentUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FinanceSupplierPaymentRemove.resx">
-      <DependentUpon>FinanceSupplierPaymentRemove.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="EmpManagerDashboard.resx">
       <DependentUpon>EmpManagerDashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -775,6 +769,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EmpManagerDepartmentUpdate.resx">
       <DependentUpon>EmpManagerDepartmentUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinanceCustomerPayment.resx">
+      <DependentUpon>FinanceCustomerPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinanceReportGenerate.resx">
+      <DependentUpon>FinanceReportGenerate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="overlay.resx">
       <DependentUpon>overlay.cs</DependentUpon>

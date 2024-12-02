@@ -12,9 +12,17 @@ namespace AK_Textile
 {
     public partial class FinanceDashboard : Form
     {
-        public FinanceDashboard()
+        private MainForm mainForm;
+
+        public FinanceDashboard(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
+        }
+
+        private void FinanceDashboard_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
