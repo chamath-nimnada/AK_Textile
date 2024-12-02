@@ -131,7 +131,7 @@
             this.button9.Text = "Remove";
             this.button9.UseVisualStyleBackColor = false;
             // 
-            // ProductionProductRemove
+            // ProductProductRemove
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -141,8 +141,9 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button9);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "ProductionProductRemove";
+            this.Name = "ProductProductRemove";
             this.Text = "Remove Product";
+            this.TopMost = true;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);

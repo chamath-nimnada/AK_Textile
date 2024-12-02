@@ -175,7 +175,7 @@
             this.button2.Text = "Clear";
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // ProductionProductAdd
+            // ProductProductAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -185,8 +185,9 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "ProductionProductAdd";
+            this.Name = "ProductProductAdd";
             this.Text = "Add Product";
+            this.TopMost = true;
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
