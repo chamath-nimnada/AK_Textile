@@ -341,6 +341,7 @@
             this.searchbtn.TabIndex = 5;
             this.searchbtn.Text = "Search";
             this.searchbtn.UseVisualStyleBackColor = false;
+            this.searchbtn.Click += new System.EventHandler(this.searchbtn_Click);
             // 
             // supidtxt
             // 
