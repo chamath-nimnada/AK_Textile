@@ -24,7 +24,26 @@ namespace AK_Textile
 
         private void SupplierSupllierRemove_Load(object sender, EventArgs e)
         {
+            con.Open();
+            SqlCommand cmd1 = new SqlCommand("SELECT * FROM Supplier", con);
+            SqlDataAdapter da = new SqlDataAdapter(cmd1);
+            DataTable dt = new DataTable();
 
+            try
+            {
+                da.Fill(dt);
+
+                // Bind the data to the DataGridView
+                dataGridView1.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)
@@ -75,18 +94,17 @@ namespace AK_Textile
             cmd.Parameters.AddWithValue("@supid", supID);
 
             int r1 = cmd.ExecuteNonQuery();
-            con.Close();
-
             if (r1 > 0)
             {
                 MessageBox.Show("Supplier removed successfully.");
-                /*Refresh the grid
-                searchbtn_Click(sender, e);*/
+                //Refresh the grid
+                searchbtn_Click(sender, e);
             }
             else
             {
                 MessageBox.Show("Failed to remove the supplier. Please try again.");
             }
+            con.Close();
         }
         //Supplier remove button eke case ekk have.
     }

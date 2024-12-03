@@ -24,7 +24,7 @@ namespace AK_Textile
 
         private void SupplierSupplierAdd_Load(object sender, EventArgs e)
         {
-            //To auto increment the department ID
+            //To auto increment the Supplier ID
             con.Open();
             SqlCommand cmd1 = new SqlCommand("SELECT MAX(SupID) FROM Supplier", con);
             SqlDataReader dr1 = cmd1.ExecuteReader();
@@ -100,7 +100,7 @@ namespace AK_Textile
 
         }
         //defects
-        //after addding the supplier ID should automatically increase
+        //after adding the supplier ID should automatically increase
         //after cancelling the data grid view should be updated instantly
         //update form defects is also there
         //remove form defects
