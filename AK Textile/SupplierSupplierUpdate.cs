@@ -60,29 +60,30 @@ namespace AK_Textile
                 ad.Fill(dt);
                 dataGridView1.DataSource = dt;
             }
-           /* con.Open();
-            SqlCommand cmd1 = new SqlCommand("SELECT SupName, SupEmail,  FROM Department WHERE DepName = @Dname", con);
-            cmd2.Parameters.AddWithValue("@Dname", depname);
+            /*con.Open();
+             SqlCommand cmd1 = new SqlCommand("SELECT SupName, SupEmail,  FROM Department WHERE DepName = @Dname", con);
+             cmd2.Parameters.AddWithValue("@Dname", depname);
 
-            try
-            {
-                SqlDataReader dr2 = cmd2.ExecuteReader();
+             try
+             {
+                 SqlDataReader dr2 = cmd2.ExecuteReader();
 
-                if (dr2.Read())
-                {
-                    // Populate the text boxes with the fetched data
-                    depnametxt.Text = dr2["Depname"].ToString();
-                    dloc.Text = dr2["DepLocation"].ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                con.Close();
-            }*/
+                 if (dr2.Read())
+                 {
+                     // Populate the text boxes with the fetched data
+                     depnametxt.Text = dr2["Depname"].ToString();
+                     dloc.Text = dr2["DepLocation"].ToString();
+                 }
+             }
+             catch (Exception ex)
+             {
+                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+             }
+             finally
+             {
+                 con.Close();
+             }
+         }*/
         }
     }
 }
