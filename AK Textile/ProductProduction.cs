@@ -66,7 +66,7 @@ namespace AK_Textile
 
         private void clearbtn_Click(object sender, EventArgs e)
         {
-            productidtxtbox.Text = string.Empty;
+            clearbtn.Text = string.Empty; // Clear the text in the textbox
         }
 
         private void addbtn_Click(object sender, EventArgs e)

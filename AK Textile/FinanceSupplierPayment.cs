@@ -64,5 +64,10 @@ namespace AK_Textile
         {
             SupplierId.Text=string.Empty;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

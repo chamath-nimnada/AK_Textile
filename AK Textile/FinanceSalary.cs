@@ -63,5 +63,10 @@ namespace AK_Textile
         {
             EmployeeId.Text=string.Empty;
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

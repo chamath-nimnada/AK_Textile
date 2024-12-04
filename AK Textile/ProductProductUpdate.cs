@@ -16,5 +16,17 @@ namespace AK_Textile
         {
             InitializeComponent();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = string.Empty; // Clear the text in the textbox
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            textBox2.Text = string.Empty;
+            textBox3.Text = string.Empty;
+            textBox4.Text = string.Empty;
+        }
     }
 }
