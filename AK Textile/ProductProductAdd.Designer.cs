@@ -60,7 +60,8 @@
             this.groupBox2.Size = new System.Drawing.Size(822, 321);
             this.groupBox2.TabIndex = 36;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Add Admin Details";
+            this.groupBox2.Text = "Add Product Details";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // textBox1
             // 
@@ -174,6 +175,7 @@
             this.button2.TabIndex = 37;
             this.button2.Text = "Clear";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // ProductProductAdd
             // 
