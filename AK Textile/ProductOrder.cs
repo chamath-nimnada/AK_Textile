@@ -61,7 +61,7 @@ namespace AK_Textile
 
         private void button4_Click(object sender, EventArgs e)
         {
-            
+            mainForm.LoadForm(new ProductionProduct(mainForm));
         }
 
         private void button10_Click(object sender, EventArgs e)
