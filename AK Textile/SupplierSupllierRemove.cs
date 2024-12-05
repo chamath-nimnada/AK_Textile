@@ -24,6 +24,7 @@ namespace AK_Textile
 
         private void SupplierSupllierRemove_Load(object sender, EventArgs e)
         {
+            //to display all the supplier data into the data grid view
             con.Open();
             SqlCommand cmd1 = new SqlCommand("SELECT * FROM Supplier", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd1);
@@ -59,7 +60,7 @@ namespace AK_Textile
 
         private void searchbtn_Click(object sender, EventArgs e)
         {
-            // declaring a variable for thee textbox
+            // declaring a variable for the textbox
             string search = snametxt.Text.Trim();
 
             if (string.IsNullOrEmpty(search))
