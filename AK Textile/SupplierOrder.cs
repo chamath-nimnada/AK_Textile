@@ -15,7 +15,7 @@ namespace AK_Textile
     {
         private MainForm mainForm;
 
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;Initial Catalog=Textlies;Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies;Integrated Security=True");
         public SupplierOrder(MainForm mainForm)
         {
             InitializeComponent();
@@ -24,6 +24,7 @@ namespace AK_Textile
 
         private void SupplierOrder_Load(object sender, EventArgs e)
         {
+            //to load data into the data grid view of the form
             con.Open();
             SqlCommand cmd1 = new SqlCommand("SELECT * FROM PurchaseOrder", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd1);
@@ -100,6 +101,7 @@ namespace AK_Textile
         //method
         private void SearchPurchaseOrder(string searchValue)
         {
+            // to search data using the purchase order ID
             con.Open();
             SqlCommand cmd2 = new SqlCommand("SELECT * FROM PurchaseOrder WHERE POrderID LIKE @searchval", con);
             cmd2.Parameters.AddWithValue("@searchval", "%" + searchValue + "%");
