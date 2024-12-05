@@ -12,9 +12,51 @@ namespace AK_Textile
 {
     public partial class SalesBill : Form
     {
-        public SalesBill()
+        private MainForm mainForm;
+        public SalesBill(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new SalesDashboard(mainForm));
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new LoginForm(mainForm));
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new SalesOrder(mainForm));    
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new SalesSales(mainForm));
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new SalesPayment(mainForm));
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new SalesCustomer(mainForm));
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new SalesSchedule(mainForm));
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new SalesReport(mainForm));
         }
     }
 }
