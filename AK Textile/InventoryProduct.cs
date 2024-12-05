@@ -28,5 +28,45 @@ namespace AK_Textile
         {
             ProductId.Text=string.Empty;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new InventoryRaw(mainForm));
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new LoginForm(mainForm));
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new InventoryDashboard(mainForm));
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            mainForm.LoadForm(new LoginForm(mainForm));
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new InventorySupplier(mainForm));
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new InventoryInventory(mainForm));
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new InventoryGRN(mainForm));
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new InventoryReport(mainForm));
+        }
     }
 }

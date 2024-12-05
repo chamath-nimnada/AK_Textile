@@ -14,9 +14,7 @@ namespace AK_Textile
     public partial class EmpManagerDepartmentAdd : Form
     {
         //database connection string
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
-                                                Initial Catalog=Textlies;
-                                                Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;Initial Catalog=Textlies;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
         public EmpManagerDepartmentAdd()
         {
             InitializeComponent();
@@ -75,6 +73,7 @@ namespace AK_Textile
             con.Open();
             SqlCommand cmd2 = new SqlCommand("INSERT INTO Department(DepID, DepName, DepLocation) VALUES (@depid, @dname, @dloc)",con);
             cmd2.Parameters.AddWithValue("@depid", depIDtxt.Text);
+            //cmd2.Parameters.AddWithValue("@empmanid", LoginForm.LoggedInUser.UserId); , EmpManID   @empmanid
             cmd2.Parameters.AddWithValue("@dname", depnametxt.Text);
             cmd2.Parameters.AddWithValue("@dloc", deploctxt.Text); 
 

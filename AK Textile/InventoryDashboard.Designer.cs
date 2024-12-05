@@ -127,6 +127,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Click Here";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label6
             // 
@@ -173,6 +174,7 @@
             this.button3.TabIndex = 5;
             this.button3.Text = "Click Here";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -214,9 +216,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(25, 19);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(124, 36);
+            this.label4.Size = new System.Drawing.Size(141, 36);
             this.label4.TabIndex = 1;
-            this.label4.Text = "Supliers";
+            this.label4.Text = "Suppliers";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // panel3
@@ -242,6 +244,7 @@
             this.button5.TabIndex = 7;
             this.button5.Text = "Click Here";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -300,6 +303,7 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "Click Here";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label11
             // 

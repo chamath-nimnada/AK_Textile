@@ -56,5 +56,45 @@ namespace AK_Textile
             InventoryRawUpdate inventoryrawupdate = new InventoryRawUpdate();
             inventoryrawupdate.ShowDialog();
         }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new InventoryDashboard(mainForm));
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new LoginForm(mainForm));
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            mainForm.LoadForm(new LoginForm(mainForm));
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new InventoryProduct(mainForm));
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new InventorySupplier(mainForm));
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new InventoryInventory(mainForm));
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new InventoryGRN(mainForm));
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new InventoryReport(mainForm));
+        }
     }
 }

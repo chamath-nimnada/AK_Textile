@@ -110,6 +110,7 @@
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.White;
+            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.button6.Location = new System.Drawing.Point(727, 86);
@@ -122,6 +123,7 @@
             // button10
             // 
             this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
+            this.button10.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button10.ForeColor = System.Drawing.Color.White;
             this.button10.Location = new System.Drawing.Point(727, 26);
@@ -186,11 +188,13 @@
             // 
             this.pictureBox2.BackgroundImage = global::AK_Textile.Properties.Resources.logout_4034229;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Location = new System.Drawing.Point(1090, 10);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(50, 50);
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // label1
             // 
@@ -216,6 +220,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel1.Location = new System.Drawing.Point(22, 709);
             this.linkLabel1.Name = "linkLabel1";
@@ -223,10 +228,12 @@
             this.linkLabel1.TabIndex = 54;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Logout";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.White;
+            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.button4.Location = new System.Drawing.Point(25, 409);
@@ -235,10 +242,12 @@
             this.button4.TabIndex = 53;
             this.button4.Text = "GRN";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.button1.Location = new System.Drawing.Point(25, 269);
@@ -247,10 +256,12 @@
             this.button1.TabIndex = 50;
             this.button1.Text = "Supliers";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button8
             // 
             this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
+            this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.Color.White;
             this.button8.Location = new System.Drawing.Point(25, 480);
@@ -263,6 +274,7 @@
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.White;
+            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.button5.Location = new System.Drawing.Point(25, 340);
@@ -271,6 +283,7 @@
             this.button5.TabIndex = 55;
             this.button5.Text = "Inventory";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // panel2
             // 
@@ -285,15 +298,18 @@
             // 
             this.pictureBox3.BackgroundImage = global::AK_Textile.Properties.Resources.home_9449216;
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox3.Location = new System.Drawing.Point(11, 10);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(50, 50);
             this.pictureBox3.TabIndex = 3;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.White;
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.button3.Location = new System.Drawing.Point(25, 201);
@@ -302,10 +318,12 @@
             this.button3.TabIndex = 52;
             this.button3.Text = "Raw Materials";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.button2.Location = new System.Drawing.Point(25, 132);
@@ -314,6 +332,7 @@
             this.button2.TabIndex = 51;
             this.button2.Text = "Products";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // InventoryReport
             // 

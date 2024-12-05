@@ -28,5 +28,25 @@ namespace AK_Textile
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new InventoryProduct(mainForm));
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new InventoryRaw(mainForm));
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new InventorySupplier(mainForm));
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new InventoryGRN(mainForm));
+        }
     }
 }

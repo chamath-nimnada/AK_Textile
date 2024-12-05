@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using static AK_Textile.LoginForm;
 
 namespace AK_Textile
 {
@@ -15,9 +16,7 @@ namespace AK_Textile
     {
 
         //database connection string
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
-                                                Initial Catalog=Textlies;
-                                                Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;Initial Catalog=Textlies;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
         public SupplierOrderAdd()
         {
             InitializeComponent();
@@ -63,9 +62,9 @@ namespace AK_Textile
         private void addbtn_Click(object sender, EventArgs e)
         {
             con.Open();
-            SqlCommand cmd2 = new SqlCommand("INSERT INTO PurchaseOrder(POrderID, PItemName, PitemQty, PitemDesc) VALUES(@poid, @iname, @iqty, @idesc)", con);
+            SqlCommand cmd2 = new SqlCommand("INSERT INTO PurchaseOrder(POrderID, SupManID, PItemName, PitemQty, PitemDesc) VALUES(@poid, @smid, @iname, @iqty, @idesc)", con);
             cmd2.Parameters.AddWithValue("@poid", Porderid.Text);
-            //space to add supplier manager ID SupManID  @smid
+            cmd2.Parameters.AddWithValue("@smid", LoggedInUser.UserId);
             cmd2.Parameters.AddWithValue("@iname", itemname.Text);
             cmd2.Parameters.AddWithValue("@iqty", qty.Text);
             cmd2.Parameters.AddWithValue("@idesc", desc.Text);

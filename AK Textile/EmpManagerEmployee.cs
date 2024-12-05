@@ -15,9 +15,7 @@ namespace AK_Textile
     {
         private MainForm mainForm;
 
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
-                                                Initial Catalog=Textlies;
-                                                Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;Initial Catalog=Textlies;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
         public EmpManagerEmployee(MainForm mainForm)
         {
             InitializeComponent();
