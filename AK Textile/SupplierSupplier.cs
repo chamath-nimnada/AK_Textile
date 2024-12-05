@@ -26,8 +26,10 @@ namespace AK_Textile
 
         private void SupplierSupplier_Load(object sender, EventArgs e)
         {
+            // to load supplier data in to the datagrid view
             con.Open();
-            SqlCommand cmd1 = new SqlCommand("SELECT * FROM Supplier", con);
+            SqlCommand cmd1 = new SqlCommand("SELECT Supplier.SupID, Supplier.SupName, Supplier.SupAddress, Supplier.SupEmail, SupplierContact.SupContact " +
+            "FROM Supplier LEFTJOIN SupplierContact ON Supplier.SupID = SupplierContact.SupID;", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd1);
             DataTable dt = new DataTable();
 
@@ -106,8 +108,9 @@ namespace AK_Textile
             supplierremovev.ShowDialog();
         }
         //method
-        private void SearchSupplierr(string searchValue)
+        private void SearchSupplier(string searchValue)
         {
+            //to view the searched data into the data grod view
             con.Open();
             SqlCommand cmd2 = new SqlCommand("SELECT * FROM Supplier WHERE SupID LIKE @searchval OR SupName LIKE @searchval", con);
             cmd2.Parameters.AddWithValue("@searchval", "%" + searchValue + "%");
@@ -145,7 +148,8 @@ namespace AK_Textile
                 return;
             }
             //Calling the method to search supplier invoice
-            SearchSupplierr(searchValue);
+            SearchSupplier(searchValue);
         }
     }
 }
+//

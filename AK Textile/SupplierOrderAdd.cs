@@ -16,7 +16,7 @@ namespace AK_Textile
     {
 
         //database connection string
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;Initial Catalog=Textlies;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies;Integrated Security=True");
         public SupplierOrderAdd()
         {
             InitializeComponent();
@@ -34,7 +34,7 @@ namespace AK_Textile
             this.desc.Clear();
         }
         //methi to auto increment of the IDs
-        public void autoincrement()
+        private void autoincrement()
         {
             //To auto increment the Purchase order ID
             con.Open();
@@ -61,6 +61,22 @@ namespace AK_Textile
 
         private void addbtn_Click(object sender, EventArgs e)
         {
+            //Validations
+            if (this.itemname.Text == "")
+            {
+                this.errorProvider1.SetError(this.itemname, "Item  name cannot be empty");
+                return;
+            }
+            else if (this.qty.Text == "")
+            {
+                this.errorProvider1.SetError(this.qty, "Quantity cannot be empty");
+                return;
+            }
+            else if (this.desc.Text == "")
+            {
+                this.errorProvider1.SetError(this.desc, "Description cannot be empty");
+                return;
+            }
             con.Open();
             SqlCommand cmd2 = new SqlCommand("INSERT INTO PurchaseOrder(POrderID, SupManID, PItemName, PitemQty, PitemDesc) VALUES(@poid, @smid, @iname, @iqty, @idesc)", con);
             cmd2.Parameters.AddWithValue("@poid", Porderid.Text);

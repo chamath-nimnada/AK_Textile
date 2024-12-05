@@ -22,9 +22,10 @@ namespace AK_Textile
             InitializeComponent();
         }
 
-        private void SupplierSupplierAdd_Load(object sender, EventArgs e)
+
+        //To auto increment the Supplier ID
+        private void autoincrement()
         {
-            //To auto increment the Supplier ID
             con.Open();
             SqlCommand cmd1 = new SqlCommand("SELECT MAX(SupID) FROM Supplier", con);
             SqlDataReader dr1 = cmd1.ExecuteReader();
@@ -42,9 +43,15 @@ namespace AK_Textile
                     string newID = "SUP" + (numericPart + 1).ToString("D3"); // Increment and format as "SUPXXX"
                     this.supid.Text = newID;
                 }
+                dr1.Close();
+                con.Close();
             }
-            dr1.Close();
-            con.Close();
+        }
+
+private void SupplierSupplierAdd_Load(object sender, EventArgs e)
+        {
+            //calling the auto increment method
+            autoincrement();
         }
         
         private void clearbtn_Click(object sender, EventArgs e)
@@ -66,6 +73,7 @@ namespace AK_Textile
             SqlCommand cmd2 = new SqlCommand("INSERT INTO Supplier(SupID, SupName, SupAddress, SupEmail) VALUES (@supid, @sname, @saddress, @smail)", con);
             SqlCommand cmd3 = new SqlCommand("INSERT INTO SupplierContact(SupID, SupContact) VALUES (@supid, @supcontact)", con);
             cmd2.Parameters.AddWithValue("@supid", supid.Text);
+            //cmd2.Parameters.AddWithValue("@supmid", LoggedInUser.UserId  SupManID0,  @supmid,);
             cmd2.Parameters.AddWithValue("@sname", supname.Text);
             cmd2.Parameters.AddWithValue("@saddress", supaddress.Text);
             cmd2.Parameters.AddWithValue("@smail", supmail.Text);
@@ -98,6 +106,8 @@ namespace AK_Textile
             this.supnumber.Clear();
             this.supaddress.Clear();
 
+            //calling the auto increment method
+            autoincrement();
         }
         //defects
         //after adding the supplier ID should automatically increase

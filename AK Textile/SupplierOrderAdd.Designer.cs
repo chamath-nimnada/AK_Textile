@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Porderid = new System.Windows.Forms.TextBox();
             this.desc = new System.Windows.Forms.TextBox();
@@ -40,7 +41,9 @@
             this.addbtn = new System.Windows.Forms.Button();
             this.cancelbtn = new System.Windows.Forms.Button();
             this.clearbtn = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -56,9 +59,9 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(9, 10);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(616, 261);
             this.groupBox2.TabIndex = 32;
             this.groupBox2.TabStop = false;
@@ -69,7 +72,7 @@
             this.Porderid.BackColor = System.Drawing.Color.CornflowerBlue;
             this.Porderid.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Porderid.Location = new System.Drawing.Point(141, 46);
-            this.Porderid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Porderid.Margin = new System.Windows.Forms.Padding(2);
             this.Porderid.Name = "Porderid";
             this.Porderid.ReadOnly = true;
             this.Porderid.Size = new System.Drawing.Size(272, 27);
@@ -80,7 +83,7 @@
             this.desc.BackColor = System.Drawing.SystemColors.MenuBar;
             this.desc.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.desc.Location = new System.Drawing.Point(141, 169);
-            this.desc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.desc.Margin = new System.Windows.Forms.Padding(2);
             this.desc.Multiline = true;
             this.desc.Name = "desc";
             this.desc.Size = new System.Drawing.Size(454, 77);
@@ -102,7 +105,7 @@
             this.qty.BackColor = System.Drawing.SystemColors.MenuBar;
             this.qty.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.qty.Location = new System.Drawing.Point(141, 128);
-            this.qty.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.qty.Margin = new System.Windows.Forms.Padding(2);
             this.qty.Name = "qty";
             this.qty.Size = new System.Drawing.Size(454, 27);
             this.qty.TabIndex = 5;
@@ -112,7 +115,7 @@
             this.itemname.BackColor = System.Drawing.SystemColors.MenuBar;
             this.itemname.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemname.Location = new System.Drawing.Point(141, 86);
-            this.itemname.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.itemname.Margin = new System.Windows.Forms.Padding(2);
             this.itemname.Name = "itemname";
             this.itemname.Size = new System.Drawing.Size(454, 27);
             this.itemname.TabIndex = 4;
@@ -157,7 +160,7 @@
             this.addbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addbtn.ForeColor = System.Drawing.Color.White;
             this.addbtn.Location = new System.Drawing.Point(479, 289);
-            this.addbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addbtn.Margin = new System.Windows.Forms.Padding(2);
             this.addbtn.Name = "addbtn";
             this.addbtn.Size = new System.Drawing.Size(146, 38);
             this.addbtn.TabIndex = 30;
@@ -172,7 +175,7 @@
             this.cancelbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.cancelbtn.Location = new System.Drawing.Point(330, 289);
-            this.cancelbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cancelbtn.Margin = new System.Windows.Forms.Padding(2);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(133, 38);
             this.cancelbtn.TabIndex = 31;
@@ -187,13 +190,17 @@
             this.clearbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.clearbtn.Location = new System.Drawing.Point(9, 288);
-            this.clearbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clearbtn.Margin = new System.Windows.Forms.Padding(2);
             this.clearbtn.Name = "clearbtn";
             this.clearbtn.Size = new System.Drawing.Size(133, 38);
             this.clearbtn.TabIndex = 33;
             this.clearbtn.Text = "Clear";
             this.clearbtn.UseVisualStyleBackColor = false;
             this.clearbtn.Click += new System.EventHandler(this.clearbtn_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // SupplierOrderAdd
             // 
@@ -206,12 +213,13 @@
             this.Controls.Add(this.clearbtn);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SupplierOrderAdd";
             this.Text = "Add Order";
             this.Load += new System.EventHandler(this.SupplierOrderAdd_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -230,5 +238,6 @@
         private System.Windows.Forms.Button cancelbtn;
         private System.Windows.Forms.Button clearbtn;
         private System.Windows.Forms.TextBox Porderid;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
