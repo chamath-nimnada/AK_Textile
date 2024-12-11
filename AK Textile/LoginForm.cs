@@ -14,7 +14,7 @@ namespace AK_Textile
     public partial class LoginForm : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;Initial Catalog=AK-Textiles-PVT(LTD);Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=Textiles;Integrated Security=True;");
         public LoginForm(MainForm mainForm)
         {
             InitializeComponent();
@@ -80,7 +80,7 @@ namespace AK_Textile
                 switch (LoggedInUser.Position)
                 {
                     case "employee manager":
-                        //mainForm.LoadForm(new EmpManagerDashboard(mainForm));
+                        mainForm.LoadForm(new EmpManagerDashboard(mainForm));
                         break;
                     case "production manager":
                         //mainForm.LoadForm(new ProductDashboard(mainForm));
