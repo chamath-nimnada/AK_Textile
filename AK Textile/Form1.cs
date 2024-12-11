@@ -10,18 +10,11 @@ using System.Windows.Forms;
 
 namespace AK_Textile
 {
-    public partial class InventorySupplier : Form
+    public partial class Form1 : Form
     {
-        private MainForm mainForm;
-        public InventorySupplier(MainForm mainForm)
+        public Form1()
         {
             InitializeComponent();
-            this.mainForm = mainForm;
-        }
-
-        private void InventorySupplier_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
