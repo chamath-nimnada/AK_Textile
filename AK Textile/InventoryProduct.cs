@@ -154,5 +154,10 @@ namespace AK_Textile
 
             LoadAllProducts();
         }
+
+        private void InventoryProduct_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

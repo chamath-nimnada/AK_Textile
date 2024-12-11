@@ -231,7 +231,7 @@
             this.groupBox1.Size = new System.Drawing.Size(1004, 104);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Enter the Product ID";
+            this.groupBox1.Text = "Enter the Product ID or Name";
             // 
             // button6
             // 
@@ -316,6 +316,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "InventoryProduct";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.InventoryProduct_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
