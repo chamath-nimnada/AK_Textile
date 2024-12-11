@@ -12,9 +12,64 @@ namespace AK_Textile
 {
     public partial class SupplierSupplier : Form
     {
-        public SupplierSupplier()
+        private MainForm mainForm;
+        public SupplierSupplier(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.textBox1.Clear();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new LoginForm(mainForm));
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new SupplierDashboard(mainForm));
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new SupplierPayment(mainForm));
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new SupplierOrder(mainForm));
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new SupplierInvoice(mainForm));
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new SupplierReport(mainForm));
+        }
+
+        private void addbtn_Click(object sender, EventArgs e)
+        {
+            SupplierSupplierAdd suppliersupplieradd = new SupplierSupplierAdd();
+            suppliersupplieradd.ShowDialog();
+        }
+
+        private void updatebtn_Click(object sender, EventArgs e)
+        {
+            SupplierSupplierUpdate supupdate = new SupplierSupplierUpdate();
+            supupdate.ShowDialog();
+        }
+
+        private void rmvbtn_Click(object sender, EventArgs e)
+        {
+            SupplierSupllierRemove supremove = new SupplierSupllierRemove();
+            supremove.ShowDialog();
         }
     }
 }
