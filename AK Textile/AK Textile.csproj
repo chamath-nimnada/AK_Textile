@@ -101,23 +101,17 @@
     <Compile Include="AdminAdmin.Designer.cs">
       <DependentUpon>AdminAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminEmployee.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AdminEmployee.Designer.cs">
-      <DependentUpon>AdminEmployee.cs</DependentUpon>
-    </Compile>
     <Compile Include="AdminAdminAdd.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AdminAdminAdd.Designer.cs">
       <DependentUpon>AdminAdminAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminEmployeeAdd.cs">
+    <Compile Include="EmployeeManagerEmpAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminEmployeeAdd.Designer.cs">
-      <DependentUpon>AdminEmployeeAdd.cs</DependentUpon>
+    <Compile Include="EmployeeManagerEmpAdd.Designer.cs">
+      <DependentUpon>EmployeeManagerEmpAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminAdminRemove.cs">
       <SubType>Form</SubType>
@@ -125,11 +119,11 @@
     <Compile Include="AdminAdminRemove.Designer.cs">
       <DependentUpon>AdminAdminRemove.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminEmployeeRemove.cs">
+    <Compile Include="EmployeeManagerRemoveEmp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminEmployeeRemove.Designer.cs">
-      <DependentUpon>AdminEmployeeRemove.cs</DependentUpon>
+    <Compile Include="EmployeeManagerRemoveEmp.Designer.cs">
+      <DependentUpon>EmployeeManagerRemoveEmp.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminAdminUpdate.cs">
       <SubType>Form</SubType>
@@ -137,11 +131,11 @@
     <Compile Include="AdminAdminUpdate.Designer.cs">
       <DependentUpon>AdminAdminUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminEmployeeUpdate.cs">
+    <Compile Include="EmployeeManagerUpdateEmp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminEmployeeUpdate.Designer.cs">
-      <DependentUpon>AdminEmployeeUpdate.cs</DependentUpon>
+    <Compile Include="EmployeeManagerUpdateEmp.Designer.cs">
+      <DependentUpon>EmployeeManagerUpdateEmp.cs</DependentUpon>
     </Compile>
     <Compile Include="Employee.cs">
       <SubType>Form</SubType>
@@ -245,11 +239,11 @@
     <Compile Include="EmpManagerLeave.Designer.cs">
       <DependentUpon>EmpManagerLeave.cs</DependentUpon>
     </Compile>
-    <Compile Include="EmpManagerDepartment.cs">
+    <Compile Include="AdminDepartment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmpManagerDepartment.Designer.cs">
-      <DependentUpon>EmpManagerDepartment.cs</DependentUpon>
+    <Compile Include="AdminDepartment.Designer.cs">
+      <DependentUpon>AdminDepartment.cs</DependentUpon>
     </Compile>
     <Compile Include="EmpManagerReport.cs">
       <SubType>Form</SubType>
@@ -287,23 +281,23 @@
     <Compile Include="EmpManagerLeaveUpdate.Designer.cs">
       <DependentUpon>EmpManagerLeaveUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="EmpManagerDepartmentAdd.cs">
+    <Compile Include="AdminDepartmentAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmpManagerDepartmentAdd.Designer.cs">
-      <DependentUpon>EmpManagerDepartmentAdd.cs</DependentUpon>
+    <Compile Include="AdminDepartmentAdd.Designer.cs">
+      <DependentUpon>AdminDepartmentAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="EmpManagerDepartmentRemove.cs">
+    <Compile Include="AdminDepartmentRemove.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmpManagerDepartmentRemove.Designer.cs">
-      <DependentUpon>EmpManagerDepartmentRemove.cs</DependentUpon>
+    <Compile Include="AdminDepartmentRemove.Designer.cs">
+      <DependentUpon>AdminDepartmentRemove.cs</DependentUpon>
     </Compile>
-    <Compile Include="EmpManagerDepartmentUpdate.cs">
+    <Compile Include="AdminDepartmentUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmpManagerDepartmentUpdate.Designer.cs">
-      <DependentUpon>EmpManagerDepartmentUpdate.cs</DependentUpon>
+    <Compile Include="AdminDepartmentUpdate.Designer.cs">
+      <DependentUpon>AdminDepartmentUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="SalesOrderUpdate.cs">
       <SubType>Form</SubType>
@@ -652,14 +646,14 @@
     <EmbeddedResource Include="AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminEmployeeAdd.resx">
-      <DependentUpon>AdminEmployeeAdd.cs</DependentUpon>
+    <EmbeddedResource Include="EmployeeManagerEmpAdd.resx">
+      <DependentUpon>EmployeeManagerEmpAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminEmployeeRemove.resx">
-      <DependentUpon>AdminEmployeeRemove.cs</DependentUpon>
+    <EmbeddedResource Include="EmployeeManagerRemoveEmp.resx">
+      <DependentUpon>EmployeeManagerRemoveEmp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminEmployeeUpdate.resx">
-      <DependentUpon>AdminEmployeeUpdate.cs</DependentUpon>
+    <EmbeddedResource Include="EmployeeManagerUpdateEmp.resx">
+      <DependentUpon>EmployeeManagerUpdateEmp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CEODashboard.resx">
       <DependentUpon>CEODashboard.cs</DependentUpon>
@@ -681,9 +675,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminAdmin.resx">
       <DependentUpon>AdminAdmin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AdminEmployee.resx">
-      <DependentUpon>AdminEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminAdminAdd.resx">
       <DependentUpon>AdminAdminAdd.cs</DependentUpon>
@@ -742,8 +733,8 @@
     <EmbeddedResource Include="EmpManagerLeave.resx">
       <DependentUpon>EmpManagerLeave.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmpManagerDepartment.resx">
-      <DependentUpon>EmpManagerDepartment.cs</DependentUpon>
+    <EmbeddedResource Include="AdminDepartment.resx">
+      <DependentUpon>AdminDepartment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmpManagerReport.resx">
       <DependentUpon>EmpManagerReport.cs</DependentUpon>
@@ -760,14 +751,14 @@
     <EmbeddedResource Include="EmpManagerLeaveUpdate.resx">
       <DependentUpon>EmpManagerLeaveUpdate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmpManagerDepartmentAdd.resx">
-      <DependentUpon>EmpManagerDepartmentAdd.cs</DependentUpon>
+    <EmbeddedResource Include="AdminDepartmentAdd.resx">
+      <DependentUpon>AdminDepartmentAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmpManagerDepartmentRemove.resx">
-      <DependentUpon>EmpManagerDepartmentRemove.cs</DependentUpon>
+    <EmbeddedResource Include="AdminDepartmentRemove.resx">
+      <DependentUpon>AdminDepartmentRemove.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmpManagerDepartmentUpdate.resx">
-      <DependentUpon>EmpManagerDepartmentUpdate.cs</DependentUpon>
+    <EmbeddedResource Include="AdminDepartmentUpdate.resx">
+      <DependentUpon>AdminDepartmentUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SalesOrderUpdate.resx">
       <DependentUpon>SalesOrderUpdate.cs</DependentUpon>
