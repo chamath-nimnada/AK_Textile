@@ -163,6 +163,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "EmpManagerDepartmentAdd";
             this.Text = "Add Department";
+            this.TopMost = true;
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);

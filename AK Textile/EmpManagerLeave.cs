@@ -26,5 +26,104 @@ namespace AK_Textile
         {
 
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Form formBackground = new Form();
+            try
+            {
+                using (EmpManagerLeaveAdd empManagerLeaveAdd = new EmpManagerLeaveAdd())
+                {
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = true;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+
+                    empManagerLeaveAdd.Owner = formBackground;
+                    empManagerLeaveAdd.ShowDialog();
+
+                    formBackground.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Form formBackground = new Form();
+            try
+            {
+                using (EmpManagerLeaveUpdate empManagerLeaveUpdate = new EmpManagerLeaveUpdate())
+                {
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = true;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+
+                    empManagerLeaveUpdate.Owner = formBackground;
+                    empManagerLeaveUpdate.ShowDialog();
+
+                    formBackground.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Form formBackground = new Form();
+            try
+            {
+                using (EmpManagerLeaveRemove empManagerLeaveRemove = new EmpManagerLeaveRemove())
+                {
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = true;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+
+                    empManagerLeaveRemove.Owner = formBackground;
+                    empManagerLeaveRemove.ShowDialog();
+
+                    formBackground.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
+            }
+        }
     }
 }

@@ -164,6 +164,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "EmpManagerDepartmentUpdate";
             this.Text = "Update Department";
+            this.TopMost = true;
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

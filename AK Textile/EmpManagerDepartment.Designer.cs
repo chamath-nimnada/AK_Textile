@@ -107,6 +107,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1154, 66);
             this.panel1.TabIndex = 79;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pictureBox2
             // 
@@ -231,6 +232,7 @@
             this.button5.TabIndex = 15;
             this.button5.Text = "Remove";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button8
             // 
@@ -243,6 +245,7 @@
             this.button8.TabIndex = 14;
             this.button8.Text = "Update";
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button7
             // 
@@ -255,6 +258,7 @@
             this.button7.TabIndex = 13;
             this.button7.Text = "Add";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // panel5
             // 
@@ -299,6 +303,7 @@
             this.button6.TabIndex = 10;
             this.button6.Text = "Clear";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button10
             // 
