@@ -12,12 +12,19 @@ namespace AK_Textile
 {
     public partial class EmpManagerEmployee : Form
     {
-        public EmpManagerEmployee()
+        private MainForm mainForm;
+        public EmpManagerEmployee(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
         }
 
         private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EmpManagerEmployee_Load(object sender, EventArgs e)
         {
 
         }

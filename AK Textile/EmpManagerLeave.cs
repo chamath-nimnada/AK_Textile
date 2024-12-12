@@ -12,9 +12,11 @@ namespace AK_Textile
 {
     public partial class EmpManagerLeave : Form
     {
-        public EmpManagerLeave()
+        private MainForm mainForm;
+        public EmpManagerLeave(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
@@ -28,6 +30,11 @@ namespace AK_Textile
         }
 
         private void button9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EmpManagerLeave_Load(object sender, EventArgs e)
         {
 
         }
