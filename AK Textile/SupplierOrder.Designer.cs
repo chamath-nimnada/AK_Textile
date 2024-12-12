@@ -326,6 +326,7 @@
             this.searchbtn.TabIndex = 5;
             this.searchbtn.Text = "Search";
             this.searchbtn.UseVisualStyleBackColor = false;
+            this.searchbtn.Click += new System.EventHandler(this.searchbtn_Click);
             // 
             // textBox1
             // 
@@ -355,6 +356,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SupplierOrder";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.SupplierOrder_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel1.ResumeLayout(false);
