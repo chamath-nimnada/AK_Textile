@@ -14,7 +14,10 @@ namespace AK_Textile
     public partial class LoginForm : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;Initial Catalog=AK-Textiles-PVT(LTD);Integrated Security=True;");
+        //database connection
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
+                                                 Initial Catalog=Textlies;
+                                                 Integrated Security=True");
         public LoginForm(MainForm mainForm)
         {
             InitializeComponent();
