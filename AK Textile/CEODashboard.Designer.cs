@@ -85,6 +85,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Click Here";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label6
             // 
@@ -149,6 +150,7 @@
             this.pictureBox2.Size = new System.Drawing.Size(50, 50);
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox1
             // 
@@ -182,6 +184,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "Click Here";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label3
             // 
@@ -226,6 +229,7 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "Click Here";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label5
             // 
@@ -281,6 +285,7 @@
             this.button4.TabIndex = 2;
             this.button4.Text = "Click Here";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label9
             // 
@@ -314,6 +319,7 @@
             this.button6.TabIndex = 2;
             this.button6.Text = "Click Here";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // label12
             // 
@@ -352,6 +358,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CEODashboard";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.CEODashboard_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);

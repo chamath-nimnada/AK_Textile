@@ -12,9 +12,22 @@ namespace AK_Textile
 {
     public partial class CEOEmployee : Form
     {
-        public CEOEmployee()
+        private MainForm mainForm;
+        public CEOEmployee(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
+        }
+
+        private void CEOEmployee_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            // Clear the TextBox
+            textBox1.Text = string.Empty;
         }
     }
 }
