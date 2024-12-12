@@ -28,5 +28,10 @@ namespace AK_Textile
         {
 
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
