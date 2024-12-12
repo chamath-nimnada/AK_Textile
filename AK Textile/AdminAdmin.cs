@@ -28,7 +28,7 @@ namespace AK_Textile
         {
             //Step 04
             //Load Employee Form in Main Panal
-            mainForm.LoadForm(new AdminEmployee(mainForm));
+            mainForm.LoadForm(new EmployeeManagerEmployee(mainForm));
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
