@@ -12,9 +12,11 @@ namespace AK_Textile
 {
     public partial class EmpManagerDepartment : Form
     {
-        public EmpManagerDepartment()
+        private MainForm mainForm; //Step 01
+        public EmpManagerDepartment(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
         }
 
         private void button1_Click(object sender, EventArgs e)
