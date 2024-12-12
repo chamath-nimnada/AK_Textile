@@ -98,7 +98,7 @@ namespace AK_Textile
                         mainForm.LoadForm(new InventoryDashboard(mainForm));
                         break;
                     case "sales manager":
-                        //mainForm.LoadForm(new SalesDashboard(mainForm));
+                        mainForm.LoadForm(new SalesDashboard(mainForm));
                         break;
                     case "employee":
                         //mainForm.LoadForm(new Employee(mainForm));

@@ -39,6 +39,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SalesReport";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.SalesReport_Load);
             this.ResumeLayout(false);
 
         }
