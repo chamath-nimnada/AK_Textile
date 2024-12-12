@@ -99,6 +99,7 @@
             this.button5.TabIndex = 2;
             this.button5.Text = "Click Here";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label11
             // 
@@ -141,6 +142,7 @@
             this.pictureBox2.Size = new System.Drawing.Size(50, 50);
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // label1
             // 
@@ -197,6 +199,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Click Here";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label3
             // 
@@ -241,6 +244,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "Click Here";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label5
             // 
@@ -286,6 +290,7 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "Click Here";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label7
             // 
@@ -330,6 +335,7 @@
             this.button4.TabIndex = 2;
             this.button4.Text = "Click Here";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label9
             // 
@@ -374,6 +380,7 @@
             this.button6.TabIndex = 2;
             this.button6.Text = "Click Here";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // label14
             // 
@@ -418,6 +425,7 @@
             this.button7.TabIndex = 2;
             this.button7.Text = "Click Here";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // label16
             // 
@@ -462,6 +470,7 @@
             this.button8.TabIndex = 2;
             this.button8.Text = "Click Here";
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // label18
             // 

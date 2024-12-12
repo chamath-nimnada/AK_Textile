@@ -12,9 +12,16 @@ namespace AK_Textile
 {
     public partial class SalesCustomer : Form
     {
-        public SalesCustomer()
+        private MainForm mainForm;
+        public SalesCustomer(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
+        }
+
+        private void SalesCustomer_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
