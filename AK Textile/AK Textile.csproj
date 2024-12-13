@@ -329,12 +329,6 @@
     <Compile Include="SReport.Designer.cs">
       <DependentUpon>SReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="SupplierInvoiceUpdate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SupplierInvoiceUpdate.Designer.cs">
-      <DependentUpon>SupplierInvoiceUpdate.cs</DependentUpon>
-    </Compile>
     <Compile Include="InventoryInventoryUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -479,12 +473,6 @@
     <Compile Include="SupplierSupplierUpdate.Designer.cs">
       <DependentUpon>SupplierSupplierUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="SupplierInvoiceAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SupplierInvoiceAdd.Designer.cs">
-      <DependentUpon>SupplierInvoiceAdd.cs</DependentUpon>
-    </Compile>
     <Compile Include="SupplierOrderAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -502,12 +490,6 @@
     </Compile>
     <Compile Include="SupplierReport.Designer.cs">
       <DependentUpon>SupplierReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SupplierInvoice.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SupplierInvoice.Designer.cs">
-      <DependentUpon>SupplierInvoice.cs</DependentUpon>
     </Compile>
     <Compile Include="SupplierOrder.cs">
       <SubType>Form</SubType>
@@ -781,9 +763,6 @@
     <EmbeddedResource Include="SReport.resx">
       <DependentUpon>SReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SupplierInvoiceUpdate.resx">
-      <DependentUpon>SupplierInvoiceUpdate.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="InventoryInventoryUpdate.resx">
       <DependentUpon>InventoryInventoryUpdate.cs</DependentUpon>
     </EmbeddedResource>
@@ -856,9 +835,6 @@
     <EmbeddedResource Include="SupplierSupplierUpdate.resx">
       <DependentUpon>SupplierSupplierUpdate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SupplierInvoiceAdd.resx">
-      <DependentUpon>SupplierInvoiceAdd.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="SupplierOrderAdd.resx">
       <DependentUpon>SupplierOrderAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -867,9 +843,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SupplierReport.resx">
       <DependentUpon>SupplierReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SupplierInvoice.resx">
-      <DependentUpon>SupplierInvoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SupplierOrder.resx">
       <DependentUpon>SupplierOrder.cs</DependentUpon>
