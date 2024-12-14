@@ -24,6 +24,37 @@ namespace AK_Textile
             this.mainForm = mainForm;
         }
 
+        private void LoadAllData()
+        {
+            {
+                try
+                {
+                    // Open the connection
+                    con.Open();
+
+                    // Create the SQL command
+                    using (SqlCommand cmd = new SqlCommand("SELECT * FROM Department", con))
+                    {
+                        // Execute the query and load the results into a DataTable
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+
+                        // Bind the DataTable to the DataGridView
+                        dataGridView1.DataSource = dt;
+
+                        // Adjust columns to fit the grid width
+                        dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred while loading data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                con.Close();
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             mainForm.LoadForm(new AdminAdmin(mainForm));
@@ -116,6 +147,8 @@ namespace AK_Textile
         private void clearbtn_Click(object sender, EventArgs e)
         {
             textBox1.Clear();
+            LoadAllData();
+
         }
 
         private void searchbtn_Click(object sender, EventArgs e)
