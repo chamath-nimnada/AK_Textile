@@ -11,44 +11,106 @@ using System.Windows.Forms;
 
 namespace AK_Textile
 {
-    public partial class InventoryRaw : Form
+    public partial class InventoryCategory : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;Initial Catalog=AK-Textiles-PVT(LTD);Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;Initial Catalog=AK-Textiles;Integrated Security=True;");
         
-        public InventoryRaw(MainForm mainForm)
+        public InventoryCategory(MainForm mainForm)
         {
             InitializeComponent();
             this.mainForm = mainForm;
-            LoadAllRaw();
+            LoadAllCategory();
         }
 
-        private void LoadAllRaw() 
+        private void LoadAllCategory()
         {
-            string query = "SELECT * FROM RawMaterials";
-
-            try
+            // SQL query to fetch all data from the Product table
+            string query = "SELECT * FROM InventoryCategory";
             {
-                con.Open();
-
-                using (SqlCommand cmd = new SqlCommand(query, con))
+                try
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable);
+                    // Open the connection
+                    con.Open();
 
-                    dataGridView1.DataSource = dataTable;
+                    // Create the SQL command
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        // Execute the query and load the results into a DataTable
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
 
-                    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        // Bind the DataTable to the DataGridView
+                        dataGridView1.DataSource = dataTable;
+
+                        // Adjust columns to fit the grid width
+                        dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    }
                 }
-            }
-            catch 
-            {
-                MessageBox.Show("An error occurred while loading data", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred while loading data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 con.Close();
+            }
+        }
+
+        private void LoadSearchCategory()
+        {
+            // Get the value entered in the textbox
+            string searchValue = textBox1.Text.Trim();
+
+            // Check if the textbox is empty
+            if (string.IsNullOrEmpty(searchValue))
+            {
+                MessageBox.Show("Please enter a Inventory Category ID or Name to search.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // SQL query to fetch data based on PID or Pname
+            string query = @"SELECT * FROM InventoryCategory
+                             WHERE InvCatID = @SearchValue OR InvCategory LIKE '%' + @SearchValue + '%'";
+
+            {
+                try
+                {
+                    // Open the connection
+                    con.Open();
+
+                    // Create the SQL command
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        // Add parameter to prevent SQL injection
+                        cmd.Parameters.AddWithValue("@SearchValue", searchValue);
+
+                        // Execute the query and load the results into a DataTable
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        // Check if any rows are returned
+                        if (dataTable.Rows.Count > 0)
+                        {
+                            // Bind the DataTable to the DataGridView
+                            dataGridView1.DataSource = dataTable;
+
+                            // Adjust columns to fit the grid width
+                            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        }
+                        else
+                        {
+                            MessageBox.Show("No matching records found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            dataGridView1.DataSource = null; // Clear DataGridView if no data found
+                            con.Close();
+                            LoadAllCategory();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred while fetching data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -59,48 +121,7 @@ namespace AK_Textile
 
         private void button5_Click(object sender, EventArgs e)
         {
-            string searchValue = textBox1.Text;
-
-            if (string.IsNullOrEmpty(searchValue))
-            {
-                MessageBox.Show("Please enter a Raw ID or Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                string query = "SELECT * FROM RawMaterials WHERE MatID = @searchValue OR MatName = @searchValue";
-
-                try
-                {
-                    con.Open();
-
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    {
-                        cmd.Parameters.AddWithValue("@searchValue", searchValue);
-
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-
-                        if (dataTable.Rows.Count > 0)
-                        {
-                            dataGridView1.DataSource = dataTable;
-                            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                        }
-                        else
-                        {
-                            MessageBox.Show("No matching records found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            dataGridView1.DataSource = null;
-                            con.Close();
-                            LoadAllRaw();
-                        }
-                    }
-                }
-
-                catch (Exception x)
-                {
-                    MessageBox.Show("An error occurred while fetching data: " + x.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            
         }
 
         private void InventoryRaw_Load(object sender, EventArgs e)
@@ -145,10 +166,7 @@ namespace AK_Textile
 
         private void button6_Click(object sender, EventArgs e)
         {
-            // Clear the TextBox
-            textBox1.Text = string.Empty;
 
-            LoadAllRaw();
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -251,6 +269,18 @@ namespace AK_Textile
             {
                 formBackground.Dispose();
             }
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            LoadSearchCategory();
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            textBox1.Text = string.Empty;
+
+            LoadAllCategory();
         }
     }
 }

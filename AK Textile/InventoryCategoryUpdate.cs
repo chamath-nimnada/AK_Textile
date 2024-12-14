@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AK_Textile
 {
-    public partial class InventoryInventoryRemove : Form
+    public partial class InventoryCategoryUpdate : Form
     {
-        public InventoryInventoryRemove()
+        public InventoryCategoryUpdate()
         {
             InitializeComponent();
         }

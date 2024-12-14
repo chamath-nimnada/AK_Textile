@@ -1,6 +1,6 @@
 ﻿namespace AK_Textile
 {
-    partial class InventoryInventoryRemove
+    partial class InventoryCategoryRemove
     {
         /// <summary>
         /// Required designer variable.

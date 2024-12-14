@@ -61,7 +61,7 @@ namespace AK_Textile
             Form formBackground = new Form();
             try
             {
-                using (InventoryInventoryAdd inventoryInventoryAdd = new InventoryInventoryAdd())
+                using (InventoryCategoryAdd inventoryInventoryAdd = new InventoryCategoryAdd())
                 {
                     formBackground.StartPosition = FormStartPosition.Manual;
                     formBackground.FormBorderStyle = FormBorderStyle.None;
@@ -177,7 +177,7 @@ namespace AK_Textile
 
         private void button3_Click(object sender, EventArgs e)
         {
-            mainForm.LoadForm(new InventoryRaw(mainForm));
+            mainForm.LoadForm(new InventoryCategory(mainForm));
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -201,7 +201,7 @@ namespace AK_Textile
             Form formBackground = new Form();
             try
             {
-                using (InventoryInventoryRemove inventoryInventoryRemove = new InventoryInventoryRemove())
+                using (InventoryCategoryRemove inventoryInventoryRemove = new InventoryCategoryRemove())
                 {
                     formBackground.StartPosition = FormStartPosition.Manual;
                     formBackground.FormBorderStyle = FormBorderStyle.None;
@@ -235,7 +235,7 @@ namespace AK_Textile
             Form formBackground = new Form();
             try
             {
-                using (InventoryInventoryUpdate inventoryInventoryUpdate = new InventoryInventoryUpdate())
+                using (InventoryCategoryUpdate inventoryInventoryUpdate = new InventoryCategoryUpdate())
                 {
                     formBackground.StartPosition = FormStartPosition.Manual;
                     formBackground.FormBorderStyle = FormBorderStyle.None;

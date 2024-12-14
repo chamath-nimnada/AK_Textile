@@ -14,7 +14,7 @@ namespace AK_Textile
     public partial class InventoryProduct : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;Initial Catalog=AK-Textiles-PVT(LTD);Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;Initial Catalog=AK-Textiles;Integrated Security=True;");
         public InventoryProduct(MainForm mainForm)
         {
             InitializeComponent();
@@ -54,42 +54,8 @@ namespace AK_Textile
                 con.Close();
             }
         }
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-            mainForm.LoadForm(new InventoryDashboard(mainForm));
-        }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            mainForm.LoadForm(new LoginForm(mainForm));
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            mainForm.LoadForm(new InventoryRaw(mainForm));
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            mainForm.LoadForm(new InventorySupplier(mainForm));
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            mainForm.LoadForm(new InventoryInventory(mainForm));
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            mainForm.LoadForm(new InventoryGRN(mainForm));
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            mainForm.LoadForm(new InventoryReport(mainForm));
-        }
-
-        private void button5_Click(object sender, EventArgs e)
+        private void LoadSearchProduct() 
         {
             // Get the value entered in the textbox
             string searchValue = txtSearch.Text.Trim();
@@ -145,6 +111,46 @@ namespace AK_Textile
                     MessageBox.Show("An error occurred while fetching data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new InventoryDashboard(mainForm));
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new LoginForm(mainForm));
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new InventoryCategory(mainForm));
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new InventorySupplier(mainForm));
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new InventoryInventory(mainForm));
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new InventoryGRN(mainForm));
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new InventoryReport(mainForm));
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            LoadSearchProduct();
         }
 
         private void button6_Click(object sender, EventArgs e)
