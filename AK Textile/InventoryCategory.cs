@@ -23,7 +23,7 @@ namespace AK_Textile
             LoadAllCategory();
         }
 
-        private void LoadAllCategory()
+        public void LoadAllCategory()
         {
             // SQL query to fetch all data from the Product table
             string query = "SELECT * FROM InventoryCategory";
@@ -239,36 +239,8 @@ namespace AK_Textile
 
         private void button7_Click(object sender, EventArgs e)
         {
-            //Dark the back main window and open sub window
-            Form formBackground = new Form();
-            try
-            {
-                using (InventoryRawAdd inventoryRawAdd = new InventoryRawAdd())
-                {
-                    formBackground.StartPosition = FormStartPosition.Manual;
-                    formBackground.FormBorderStyle = FormBorderStyle.None;
-                    formBackground.Opacity = .50d;
-                    formBackground.BackColor = Color.Black;
-                    formBackground.WindowState = FormWindowState.Maximized;
-                    formBackground.TopMost = true;
-                    formBackground.Location = this.Location;
-                    formBackground.ShowInTaskbar = false;
-                    formBackground.Show();
-
-                    inventoryRawAdd.Owner = formBackground;
-                    inventoryRawAdd.ShowDialog();
-
-                    formBackground.Dispose();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                formBackground.Dispose();
-            }
+            InventoryCategoryAdd inventoryCategoryForm = new InventoryCategoryAdd();
+            inventoryCategoryForm.Show();
         }
 
         private void button6_Click_1(object sender, EventArgs e)
