@@ -15,10 +15,9 @@ namespace AK_Textile
     public partial class LoginForm : Form
     {
         private MainForm mainForm;
-        //database connection
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
-                                                Initial Catalog=Textlies;
-                                                Integrated Security=True");
+
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=""AK textiles"";Integrated Security=True;");
+
         public LoginForm(MainForm mainForm)
         {
             InitializeComponent();
@@ -106,6 +105,9 @@ namespace AK_Textile
                         break;
                     case "employee":
                         //mainForm.LoadForm(new Employee(mainForm));
+                        break;
+                    case "CEO":
+                        mainForm.LoadForm(new CEODashboard(mainForm));
                         break;
                     default:
                         MessageBox.Show("Unknown position. Contact the administrator.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
