@@ -55,7 +55,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(19, 24);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(943, 54);
             this.panel1.TabIndex = 13;
@@ -65,7 +65,7 @@
             this.pictureBox2.BackgroundImage = global::AK_Textile.Properties.Resources.logout_4034229;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox2.Location = new System.Drawing.Point(891, 6);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(38, 41);
             this.pictureBox2.TabIndex = 2;
@@ -88,7 +88,7 @@
             this.pictureBox1.BackgroundImage = global::AK_Textile.Properties.Resources.Man_Icon;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Location = new System.Drawing.Point(14, 6);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(38, 41);
             this.pictureBox1.TabIndex = 0;
@@ -113,7 +113,7 @@
             this.panel4.Controls.Add(this.button2);
             this.panel4.Controls.Add(this.label3);
             this.panel4.Location = new System.Drawing.Point(501, 110);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(460, 211);
             this.panel4.TabIndex = 8;
@@ -126,9 +126,10 @@
             this.label4.Location = new System.Drawing.Point(21, 56);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(356, 18);
+            this.label4.Size = new System.Drawing.Size(400, 18);
             this.label4.TabIndex = 4;
-            this.label4.Text = "View employee and add, delete, update admin details.";
+            this.label4.Text = "View department and add, delete, update department details.";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // button2
             // 
@@ -136,12 +137,13 @@
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(224)))), ((int)(((byte)(229)))));
             this.button2.Location = new System.Drawing.Point(298, 166);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(148, 35);
             this.button2.TabIndex = 3;
             this.button2.Text = "Click Here";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label3
             // 
@@ -150,9 +152,9 @@
             this.label3.Location = new System.Drawing.Point(20, 19);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(122, 29);
+            this.label3.Size = new System.Drawing.Size(138, 29);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Employee";
+            this.label3.Text = "Department";
             // 
             // panel2
             // 
@@ -161,7 +163,7 @@
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Location = new System.Drawing.Point(19, 110);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(460, 211);
             this.panel2.TabIndex = 6;
@@ -172,12 +174,13 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(224)))), ((int)(((byte)(229)))));
             this.button1.Location = new System.Drawing.Point(298, 166);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(148, 35);
             this.button1.TabIndex = 2;
             this.button1.Text = "Click Here";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label6
             // 
@@ -213,7 +216,7 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AdminDashboard";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.AdminDashboard_Load);

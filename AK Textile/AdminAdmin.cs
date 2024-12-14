@@ -28,7 +28,7 @@ namespace AK_Textile
         {
             //Step 04
             //Load Employee Form in Main Panal
-            mainForm.LoadForm(new AdminEmployee(mainForm));
+            mainForm.LoadForm(new EmpManagerDepartment(mainForm));
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -49,6 +49,24 @@ namespace AK_Textile
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             mainForm.LoadForm(new LoginForm(mainForm));
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            AdminAdminAdd adadd = new AdminAdminAdd();
+            adadd.ShowDialog();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            AdminAdminUpdate adupdate = new AdminAdminUpdate();
+            adupdate.ShowDialog();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            AdminAdminRemove adremove = new AdminAdminRemove();
+            adremove.ShowDialog();
         }
     }
 }

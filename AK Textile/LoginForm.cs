@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,7 +15,9 @@ namespace AK_Textile
     public partial class LoginForm : Form
     {
         private MainForm mainForm;
+
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;Initial Catalog=AK-Textiles;Integrated Security=True;");
+        
         public LoginForm(MainForm mainForm)
         {
             InitializeComponent();
@@ -83,22 +86,22 @@ namespace AK_Textile
                         //mainForm.LoadForm(new EmpManagerDashboard(mainForm));
                         break;
                     case "production manager":
-                        //mainForm.LoadForm(new ProductDashboard(mainForm));
+                        mainForm.LoadForm(new ProductDashboard(mainForm));
                         break;
                     case "admin":
-                        //mainForm.LoadForm(new AdminDashboard(mainForm));
+                        mainForm.LoadForm(new AdminDashboard(mainForm));
                         break;
                     case "finance manager":
                         //mainForm.LoadForm(new FinanceDashboard(mainForm));
                         break;
                     case "supplier manager":
-                        //mainForm.LoadForm(new SupplierDashboard(mainForm));
+                        mainForm.LoadForm(new SupplierDashboard(mainForm));
                         break;
                     case "inventory manager":
                         mainForm.LoadForm(new InventoryDashboard(mainForm));
                         break;
                     case "sales manager":
-                        //mainForm.LoadForm(new SalesDashboard(mainForm));
+                        mainForm.LoadForm(new SalesDashboard(mainForm));
                         break;
                     case "employee":
                         //mainForm.LoadForm(new Employee(mainForm));

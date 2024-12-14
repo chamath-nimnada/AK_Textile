@@ -381,6 +381,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SalesSales";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.SalesSales_Load);
             this.panel3.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.panel5.ResumeLayout(false);

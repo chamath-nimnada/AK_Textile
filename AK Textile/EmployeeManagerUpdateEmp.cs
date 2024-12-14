@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AK_Textile
 {
-    public partial class EmpManagerDepartmentRemove : Form
+    public partial class EmployeeManagerUpdateEmp : Form
     {
-        public EmpManagerDepartmentRemove()
+        public EmployeeManagerUpdateEmp()
         {
             InitializeComponent();
         }

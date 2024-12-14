@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace AK_Textile
 {
-    public partial class AdminEmployeeRemove : Form
+    public partial class EmployeeManagerEmpAdd : Form
     {
-        public AdminEmployeeRemove()
+        public EmployeeManagerEmpAdd()
         {
             InitializeComponent();
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

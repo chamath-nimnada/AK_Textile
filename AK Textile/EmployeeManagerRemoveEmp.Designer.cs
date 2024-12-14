@@ -1,6 +1,6 @@
 ﻿namespace AK_Textile
 {
-    partial class AdminEmployeeRemove
+    partial class EmployeeManagerRemoveEmp
     {
         /// <summary>
         /// Required designer variable.
