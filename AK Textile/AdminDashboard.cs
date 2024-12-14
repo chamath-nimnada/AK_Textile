@@ -31,7 +31,7 @@ namespace AK_Textile
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            mainForm.LoadForm(new EmpManagerDepartment(mainForm));
         }
 
         private void button1_Click(object sender, EventArgs e)

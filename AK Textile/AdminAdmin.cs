@@ -50,5 +50,23 @@ namespace AK_Textile
         {
             mainForm.LoadForm(new LoginForm(mainForm));
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            AdminAdminAdd adadd = new AdminAdminAdd();
+            adadd.ShowDialog();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            AdminAdminUpdate adupdate = new AdminAdminUpdate();
+            adupdate.ShowDialog();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            AdminAdminRemove adremove = new AdminAdminRemove();
+            adremove.ShowDialog();
+        }
     }
 }
