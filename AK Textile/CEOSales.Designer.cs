@@ -75,6 +75,7 @@
             this.button2.TabIndex = 43;
             this.button2.Text = "Customer Payment";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // pictureBox2
             // 
@@ -85,6 +86,7 @@
             this.pictureBox2.Size = new System.Drawing.Size(50, 50);
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // label1
             // 
@@ -108,6 +110,7 @@
             this.button3.TabIndex = 44;
             this.button3.Text = "Supliers";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // linkLabel1
             // 
@@ -150,6 +153,7 @@
             this.pictureBox3.Size = new System.Drawing.Size(50, 50);
             this.pictureBox3.TabIndex = 3;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // panel2
             // 
@@ -171,6 +175,7 @@
             this.button1.TabIndex = 42;
             this.button1.Text = "Products";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button9
             // 
@@ -183,6 +188,7 @@
             this.button9.TabIndex = 49;
             this.button9.Text = "Employee";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button4
             // 

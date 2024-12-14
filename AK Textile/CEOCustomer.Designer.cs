@@ -79,6 +79,7 @@
             this.pictureBox3.Size = new System.Drawing.Size(50, 50);
             this.pictureBox3.TabIndex = 3;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // button9
             // 
@@ -91,6 +92,7 @@
             this.button9.TabIndex = 29;
             this.button9.Text = "Employee";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // pictureBox2
             // 
@@ -225,6 +227,7 @@
             this.button4.TabIndex = 25;
             this.button4.Text = "Sales";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button1
             // 
@@ -237,6 +240,7 @@
             this.button1.TabIndex = 22;
             this.button1.Text = "Products";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
@@ -258,6 +262,7 @@
             this.button3.TabIndex = 24;
             this.button3.Text = "Supliers";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // panel1
             // 

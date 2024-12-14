@@ -14,7 +14,7 @@ namespace AK_Textile
     public partial class CEOSupplier : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=Textiles;Integrated Security=True;")
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=""AK textiles"";Integrated Security=True;");
         public CEOSupplier(MainForm mainForm)
         {
             InitializeComponent();
@@ -122,6 +122,36 @@ namespace AK_Textile
                     MessageBox.Show("An error occurred while fetching data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new CEOProduct(mainForm));
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new CEOCustomer(mainForm));
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new CEOSales(mainForm));
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new CEOEmployee(mainForm));
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new LoginForm(mainForm));
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new CEODashboard(mainForm));
         }
     }
 }

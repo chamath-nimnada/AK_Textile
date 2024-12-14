@@ -14,7 +14,7 @@ namespace AK_Textile
     public partial class CEOSales : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=Textiles;Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=""AK textiles"";Integrated Security=True;");
         public CEOSales(MainForm mainForm)
         {
             InitializeComponent();
@@ -23,7 +23,7 @@ namespace AK_Textile
         }
         private void LoadAllSales()
         {  // SQL query to fetch all data from the Product table
-            string query = "SELECT * FROM Customer";
+            string query = "SELECT * FROM SalesReturn";
             {
                 try
                 {
@@ -121,6 +121,36 @@ namespace AK_Textile
                     MessageBox.Show("An error occurred while fetching data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new CEOProduct(mainForm));
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new CEOCustomer(mainForm));
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new CEOSupplier(mainForm));
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new CEOEmployee(mainForm));
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new CEODashboard(mainForm));
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new LoginForm(mainForm));
         }
     }
 }
