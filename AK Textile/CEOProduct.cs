@@ -81,7 +81,7 @@ namespace AK_Textile
             }
 
             // SQL query to fetch data based on PID or Pname
-            string query = @"SELECT * FROM Product
+            string query = @"SELECT * FROM CustomerPayment
                              WHERE ID = @SearchValue OR PName LIKE '%' + @SearchValue + '%'";
 
             {
