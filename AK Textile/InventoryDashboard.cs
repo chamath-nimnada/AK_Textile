@@ -41,7 +41,7 @@ namespace AK_Textile
 
         private void button2_Click(object sender, EventArgs e)
         {
-            mainForm.LoadForm(new InventoryCategoty(mainForm));
+            mainForm.LoadForm(new InventoryRaw(mainForm));
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -67,11 +67,6 @@ namespace AK_Textile
         private void button6_Click(object sender, EventArgs e)
         {
             mainForm.LoadForm(new InventoryReport(mainForm));
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
