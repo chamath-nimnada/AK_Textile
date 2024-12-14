@@ -299,12 +299,6 @@
     <Compile Include="AdminDepartmentUpdate.Designer.cs">
       <DependentUpon>AdminDepartmentUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryCategoty.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InventoryCategoty.Designer.cs">
-      <DependentUpon>InventoryCategoty.cs</DependentUpon>
-    </Compile>
     <Compile Include="SalesOrderUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -581,6 +575,24 @@
     <Compile Include="ProductDashboard.Designer.cs">
       <DependentUpon>ProductDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryRawAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryRawAdd.Designer.cs">
+      <DependentUpon>InventoryRawAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryRawUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryRawUpdate.Designer.cs">
+      <DependentUpon>InventoryRawUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryRawRemove.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryRawRemove.Designer.cs">
+      <DependentUpon>InventoryRawRemove.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventoryGRN.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -592,6 +604,12 @@
     </Compile>
     <Compile Include="InventorySupplier.Designer.cs">
       <DependentUpon>InventorySupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryRaw.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryRaw.Designer.cs">
+      <DependentUpon>InventoryRaw.cs</DependentUpon>
     </Compile>
     <Compile Include="InventoryProduct.cs">
       <SubType>Form</SubType>
@@ -742,9 +760,6 @@
     <EmbeddedResource Include="AdminDepartmentUpdate.resx">
       <DependentUpon>AdminDepartmentUpdate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryCategoty.resx">
-      <DependentUpon>InventoryCategoty.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="SalesOrderUpdate.resx">
       <DependentUpon>SalesOrderUpdate.cs</DependentUpon>
     </EmbeddedResource>
@@ -877,8 +892,20 @@
     <EmbeddedResource Include="ProductDashboard.resx">
       <DependentUpon>ProductDashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InventoryRawAdd.resx">
+      <DependentUpon>InventoryRawAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryRawUpdate.resx">
+      <DependentUpon>InventoryRawUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryRawRemove.resx">
+      <DependentUpon>InventoryRawRemove.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InventoryGRN.resx">
       <DependentUpon>InventoryGRN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryRaw.resx">
+      <DependentUpon>InventoryRaw.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryDashboard.resx">
       <DependentUpon>InventoryDashboard.cs</DependentUpon>
