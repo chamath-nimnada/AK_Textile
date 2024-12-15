@@ -47,9 +47,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -57,9 +54,10 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -270,10 +268,8 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.button2);
-            this.panel4.Controls.Add(this.label11);
-            this.panel4.Controls.Add(this.label10);
             this.panel4.Controls.Add(this.label7);
+            this.panel4.Controls.Add(this.button2);
             this.panel4.Controls.Add(this.label3);
             this.panel4.Location = new System.Drawing.Point(668, 122);
             this.panel4.Name = "panel4";
@@ -294,48 +290,15 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label11.Location = new System.Drawing.Point(28, 122);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(167, 24);
-            this.label11.TabIndex = 4;
-            this.label11.Text = "raw matetldl levels.";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label10.Location = new System.Drawing.Point(28, 95);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(421, 24);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "removing entries, and receive notifications for low";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label7.Location = new System.Drawing.Point(28, 69);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(485, 24);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Manage raw materials by viewing, adding, updating, and ";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(26, 23);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(203, 36);
+            this.label3.Size = new System.Drawing.Size(266, 36);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Raw Materials";
+            this.label3.Text = "Inventory Category";
             // 
             // label13
             // 
@@ -405,6 +368,17 @@
             this.panel7.Size = new System.Drawing.Size(614, 172);
             this.panel7.TabIndex = 8;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.label14.Location = new System.Drawing.Point(28, 67);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(228, 48);
+            this.label14.TabIndex = 8;
+            this.label14.Text = "View All Manager Reports\r\n(Weekly, Monthly, Yearly).";
+            // 
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
@@ -429,16 +403,16 @@
             this.label17.TabIndex = 2;
             this.label17.Text = "Reports";
             // 
-            // label14
+            // label7
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label14.Location = new System.Drawing.Point(28, 67);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(228, 48);
-            this.label14.TabIndex = 8;
-            this.label14.Text = "View All Manager Reports\r\n(Weekly, Monthly, Yearly).";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.label7.Location = new System.Drawing.Point(28, 69);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(536, 24);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "View the Inventories and Add, Delete, Update Inventory Details.";
             // 
             // InventoryDashboard
             // 
@@ -496,9 +470,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
@@ -513,5 +484,6 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label7;
     }
 }

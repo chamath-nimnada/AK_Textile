@@ -329,23 +329,23 @@
     <Compile Include="SupplierInvoiceUpdate.Designer.cs">
       <DependentUpon>SupplierInvoiceUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryInventoryUpdate.cs">
+    <Compile Include="InventoryCategoryUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryInventoryUpdate.Designer.cs">
-      <DependentUpon>InventoryInventoryUpdate.cs</DependentUpon>
+    <Compile Include="InventoryCategoryUpdate.Designer.cs">
+      <DependentUpon>InventoryCategoryUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryInventoryRemove.cs">
+    <Compile Include="InventoryCategoryRemove.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryInventoryRemove.Designer.cs">
-      <DependentUpon>InventoryInventoryRemove.cs</DependentUpon>
+    <Compile Include="InventoryCategoryRemove.Designer.cs">
+      <DependentUpon>InventoryCategoryRemove.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryInventoryAdd.cs">
+    <Compile Include="InventoryCategoryAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryInventoryAdd.Designer.cs">
-      <DependentUpon>InventoryInventoryAdd.cs</DependentUpon>
+    <Compile Include="InventoryCategoryAdd.Designer.cs">
+      <DependentUpon>InventoryCategoryAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="InventoryReport.cs">
       <SubType>Form</SubType>
@@ -605,11 +605,11 @@
     <Compile Include="InventorySupplier.Designer.cs">
       <DependentUpon>InventorySupplier.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryRaw.cs">
+    <Compile Include="InventoryCategory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryRaw.Designer.cs">
-      <DependentUpon>InventoryRaw.cs</DependentUpon>
+    <Compile Include="InventoryCategory.Designer.cs">
+      <DependentUpon>InventoryCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="InventoryProduct.cs">
       <SubType>Form</SubType>
@@ -775,14 +775,14 @@
     <EmbeddedResource Include="SupplierInvoiceUpdate.resx">
       <DependentUpon>SupplierInvoiceUpdate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryInventoryUpdate.resx">
-      <DependentUpon>InventoryInventoryUpdate.cs</DependentUpon>
+    <EmbeddedResource Include="InventoryCategoryUpdate.resx">
+      <DependentUpon>InventoryCategoryUpdate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryInventoryRemove.resx">
-      <DependentUpon>InventoryInventoryRemove.cs</DependentUpon>
+    <EmbeddedResource Include="InventoryCategoryRemove.resx">
+      <DependentUpon>InventoryCategoryRemove.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryInventoryAdd.resx">
-      <DependentUpon>InventoryInventoryAdd.cs</DependentUpon>
+    <EmbeddedResource Include="InventoryCategoryAdd.resx">
+      <DependentUpon>InventoryCategoryAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryInventory.resx">
       <DependentUpon>InventoryInventory.cs</DependentUpon>
@@ -904,8 +904,8 @@
     <EmbeddedResource Include="InventoryGRN.resx">
       <DependentUpon>InventoryGRN.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryRaw.resx">
-      <DependentUpon>InventoryRaw.cs</DependentUpon>
+    <EmbeddedResource Include="InventoryCategory.resx">
+      <DependentUpon>InventoryCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryDashboard.resx">
       <DependentUpon>InventoryDashboard.cs</DependentUpon>
