@@ -14,11 +14,14 @@ namespace AK_Textile
 {
     public partial class InventoryCategoryAdd : Form
     {
+        private InventoryCategory inventoryCategoryForm; // Reference to Inventory Category
+
         SqlConnection con = new SqlConnection("Data Source=DESKTOP-93ORV8S;Initial Catalog=AK-Textiles;Integrated Security=True;");
-        public InventoryCategoryAdd()
+        public InventoryCategoryAdd(InventoryCategory inventoryCategoryForm)
         {
             InitializeComponent();
             AutoGenerateID();
+            this.inventoryCategoryForm = inventoryCategoryForm;
         }
 
         private void AutoGenerateID()
@@ -68,6 +71,9 @@ namespace AK_Textile
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // Call the public method from InventoryCategory
+            inventoryCategoryForm.RefreshDataGrid();
+
             this.Close();
             //LoadAllCategory();
         }

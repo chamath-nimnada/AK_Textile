@@ -15,7 +15,8 @@ namespace AK_Textile
     {
         private MainForm mainForm;
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;Initial Catalog=AK-Textiles;Integrated Security=True;");
-        
+        Form formBackground = null; // Declare outside to access in 'finally'
+
         public InventoryCategory(MainForm mainForm)
         {
             InitializeComponent();
@@ -23,7 +24,13 @@ namespace AK_Textile
             LoadAllCategory();
         }
 
-        public void LoadAllCategory()
+        // Public method to refresh data grid
+        public void RefreshDataGrid()
+        {
+            LoadAllCategory();
+        }
+
+        private void LoadAllCategory()
         {
             // SQL query to fetch all data from the Product table
             string query = "SELECT * FROM InventoryCategory";
@@ -97,6 +104,7 @@ namespace AK_Textile
 
                             // Adjust columns to fit the grid width
                             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                            con.Close();
                         }
                         else
                         {
@@ -111,8 +119,44 @@ namespace AK_Textile
                 {
                     MessageBox.Show("An error occurred while fetching data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                con.Close();
             }
         }
+
+        private void OpenSubForm(Form subForm)
+        {
+            Form formBackground = new Form(); // Initialize background form
+
+            try
+            {
+                formBackground.StartPosition = FormStartPosition.Manual;
+                formBackground.FormBorderStyle = FormBorderStyle.None;
+                formBackground.Opacity = .50d;
+                formBackground.BackColor = Color.Black;
+                formBackground.WindowState = FormWindowState.Maximized;
+                formBackground.TopMost = true;
+                formBackground.Location = this.Location;
+                formBackground.ShowInTaskbar = false;
+                formBackground.Show();
+
+                // Set the background form as the owner of the subform
+                subForm.Owner = formBackground;
+
+                // Show the subform as a dialog
+                subForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                // Dispose both forms
+                formBackground.Dispose();
+                subForm.Dispose();
+            }
+        }
+
 
         private void chart1_Click(object sender, EventArgs e)
         {
@@ -171,76 +215,20 @@ namespace AK_Textile
 
         private void button9_Click(object sender, EventArgs e)
         {
-            //Dark the back main window and open sub window
-            Form formBackground = new Form();
-            try
-            {
-                using (InventoryRawRemove inventoryRawRemove = new InventoryRawRemove())
-                {
-                    formBackground.StartPosition = FormStartPosition.Manual;
-                    formBackground.FormBorderStyle = FormBorderStyle.None;
-                    formBackground.Opacity = .50d;
-                    formBackground.BackColor = Color.Black;
-                    formBackground.WindowState = FormWindowState.Maximized;
-                    formBackground.TopMost = true;
-                    formBackground.Location = this.Location;
-                    formBackground.ShowInTaskbar = false;
-                    formBackground.Show();
-
-                    inventoryRawRemove.Owner = formBackground;
-                    inventoryRawRemove.ShowDialog();
-
-                    formBackground.Dispose();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                formBackground.Dispose();
-            }
+            // Create an instance of the form and pass it to the method
+            OpenSubForm(new InventoryCategoryRemove(this));
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            //Dark the back main window and open sub window
-            Form formBackground = new Form();
-            try
-            {
-                using (InventoryRawUpdate inventoryRawUpdate = new InventoryRawUpdate())
-                {
-                    formBackground.StartPosition = FormStartPosition.Manual;
-                    formBackground.FormBorderStyle = FormBorderStyle.None;
-                    formBackground.Opacity = .50d;
-                    formBackground.BackColor = Color.Black;
-                    formBackground.WindowState = FormWindowState.Maximized;
-                    formBackground.TopMost = true;
-                    formBackground.Location = this.Location;
-                    formBackground.ShowInTaskbar = false;
-                    formBackground.Show();
-
-                    inventoryRawUpdate.Owner = formBackground;
-                    inventoryRawUpdate.ShowDialog();
-
-                    formBackground.Dispose();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                formBackground.Dispose();
-            }
+            // Create an instance of the form and pass it to the method
+            OpenSubForm(new InventoryCategoryUpdate(this));
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            InventoryCategoryAdd inventoryCategoryForm = new InventoryCategoryAdd();
-            inventoryCategoryForm.Show();
+            // Create an instance of the form and pass it to the method
+            OpenSubForm(new InventoryCategoryAdd(this));
         }
 
         private void button6_Click_1(object sender, EventArgs e)

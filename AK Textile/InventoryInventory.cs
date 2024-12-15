@@ -58,7 +58,7 @@ namespace AK_Textile
         private void button9_Click(object sender, EventArgs e)
         {
             //Dark the back main window and open sub window
-            Form formBackground = new Form();
+            /*Form formBackground = new Form();
             try
             {
                 using (InventoryCategoryAdd inventoryInventoryAdd = new InventoryCategoryAdd())
@@ -86,7 +86,7 @@ namespace AK_Textile
             finally
             {
                 formBackground.Dispose();
-            }
+            }*/
         }
 
         private void InventoryInventory_Load(object sender, EventArgs e)
@@ -197,70 +197,12 @@ namespace AK_Textile
 
         private void button6_Click(object sender, EventArgs e)
         {
-            //Dark the back main window and open sub window
-            Form formBackground = new Form();
-            try
-            {
-                using (InventoryCategoryRemove inventoryInventoryRemove = new InventoryCategoryRemove())
-                {
-                    formBackground.StartPosition = FormStartPosition.Manual;
-                    formBackground.FormBorderStyle = FormBorderStyle.None;
-                    formBackground.Opacity = .50d;
-                    formBackground.BackColor = Color.Black;
-                    formBackground.WindowState = FormWindowState.Maximized;
-                    formBackground.TopMost = true;
-                    formBackground.Location = this.Location;
-                    formBackground.ShowInTaskbar = false;
-                    formBackground.Show();
-
-                    inventoryInventoryRemove.Owner = formBackground;
-                    inventoryInventoryRemove.ShowDialog();
-
-                    formBackground.Dispose();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                formBackground.Dispose();
-            }
+            
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            //Dark the back main window and open sub window
-            Form formBackground = new Form();
-            try
-            {
-                using (InventoryCategoryUpdate inventoryInventoryUpdate = new InventoryCategoryUpdate())
-                {
-                    formBackground.StartPosition = FormStartPosition.Manual;
-                    formBackground.FormBorderStyle = FormBorderStyle.None;
-                    formBackground.Opacity = .50d;
-                    formBackground.BackColor = Color.Black;
-                    formBackground.WindowState = FormWindowState.Maximized;
-                    formBackground.TopMost = true;
-                    formBackground.Location = this.Location;
-                    formBackground.ShowInTaskbar = false;
-                    formBackground.Show();
-
-                    inventoryInventoryUpdate.Owner = formBackground;
-                    inventoryInventoryUpdate.ShowDialog();
-
-                    formBackground.Dispose();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                formBackground.Dispose();
-            }
+            
         }
     }
 }
