@@ -1,4 +1,4 @@
-﻿using CrystalDecisions.CrystalReports.ViewerObjectModel;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,8 +15,9 @@ namespace AK_Textile
     public partial class LoginForm : Form
     {
         private MainForm mainForm;
-        //database connection
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-1AMUUF3;Initial Catalog=""new database"";Integrated Security=True;");
+
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;Initial Catalog=AK-Textiles;Integrated Security=True;");
+
         public LoginForm(MainForm mainForm)
         {
             InitializeComponent();
@@ -52,18 +53,18 @@ namespace AK_Textile
 
             // Define the SQL query to check username and password, and retrieve the position
             SqlCommand com1 = new SqlCommand(
-                @"SELECT 
-                    E.EmpID, 
-                    E.EmpUsername, 
-                    P.PName 
-                  FROM 
-                    Employee E
-                  INNER JOIN 
-                    Position P ON E.PositionID = P.PositionID
-                  WHERE 
-                    E.EmpUsername = @uname AND E.EmpPswrd = @pswrd",
-                con
-            );
+           @"SELECT 
+                E.EmpID, 
+                E.EmpUsername, 
+                P.PName 
+              FROM 
+                Employee E
+              INNER JOIN 
+                Position P ON E.PositionID = P.PositionID
+              WHERE 
+                E.EmpUsername = @uname AND E.EmpPswrd = @pswrd",
+           con
+        );
 
             // Add parameters to prevent SQL injection
             com1.Parameters.AddWithValue("@uname", this.txtUsername.Text.Trim());
@@ -85,16 +86,16 @@ namespace AK_Textile
                         //mainForm.LoadForm(new EmpManagerDashboard(mainForm));
                         break;
                     case "production manager":
-                        //mainForm.LoadForm(new ProductDashboard(mainForm));
+                        mainForm.LoadForm(new ProductDashboard(mainForm));
                         break;
                     case "admin":
-                        //mainForm.LoadForm(new AdminDashboard(mainForm));
+                        mainForm.LoadForm(new AdminDashboard(mainForm));
                         break;
                     case "finance manager":
-                        mainForm.LoadForm(new FinanceDashboard(mainForm));
+                        //mainForm.LoadForm(new FinanceDashboard(mainForm));
                         break;
                     case "supplier manager":
-                        //mainForm.LoadForm(new SupplierDashboard(mainForm));
+                        mainForm.LoadForm(new SupplierDashboard(mainForm));
                         break;
                     case "inventory manager":
                         mainForm.LoadForm(new InventoryDashboard(mainForm));
@@ -104,6 +105,9 @@ namespace AK_Textile
                         break;
                     case "employee":
                         //mainForm.LoadForm(new Employee(mainForm));
+                        break;
+                    case "CEO":
+                        mainForm.LoadForm(new CEODashboard(mainForm));
                         break;
                     default:
                         MessageBox.Show("Unknown position. Contact the administrator.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -122,11 +126,6 @@ namespace AK_Textile
 
             // Close the connection
             con.Close();
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

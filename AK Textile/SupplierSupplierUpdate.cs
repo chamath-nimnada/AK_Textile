@@ -39,36 +39,6 @@ namespace AK_Textile
             this.contaccttxt.Clear();
             this.addresstxt.Clear();
         }
-        //method to load supplier data to the data grid view
-        private void SearchSupplier(string searchValue)
-        {
-            //to view the searched data into the data grod view
-            con.Open();
-            SqlCommand cmd2 = new SqlCommand("SELECT * FROM Supplier WHERE SupID LIKE @searchval OR SupName LIKE @searchval", con);
-            cmd2.Parameters.AddWithValue("@searchval", "%" + searchValue + "%");
-            SqlDataAdapter da1 = new SqlDataAdapter(cmd2);
-            DataTable dt1 = new DataTable();
-
-            try
-            {
-                //To get the  searched data
-                da1.Fill(dt1);
-                dataGridView1.DataSource = dt1;
-
-                if (dt1.Rows.Count == 0)
-                {
-                    MessageBox.Show("No Matching item Found", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                con.Close();
-            }
-        }
 
         //method to load data to the textboxes
         private void LoadSupplierData(string supdata)
@@ -115,6 +85,55 @@ namespace AK_Textile
             else
             {
                 MessageBox.Show("Please enter a Supplier ID or Name to search.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        //method to update data in the textboxes
+        private void UpdateSupplier(string supid)
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand("UPDATE Supplier SET SupName = @name, SupEmail = @email, SupContact = @contact, SupAddress = @address WHERE SupID = @supid", con);
+
+            cmd.Parameters.AddWithValue("@supid", supid);
+            cmd.Parameters.AddWithValue("@name", nametxt.Text.Trim());
+            cmd.Parameters.AddWithValue("@email", emailtxt.Text.Trim());
+            cmd.Parameters.AddWithValue("@contact", contaccttxt.Text.Trim());
+            cmd.Parameters.AddWithValue("@address", addresstxt.Text.Trim());
+
+            try
+            {
+                int r = cmd.ExecuteNonQuery();
+
+                if (r > 0)
+                {
+                    MessageBox.Show("Supplier details updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Failed to update supplier details. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        private void updatebtn_Click(object sender, EventArgs e)
+        {
+            string supplierId = textBox1.Text.Trim();
+            if (!string.IsNullOrEmpty(supplierId))
+            {
+                // calling the method to update
+                UpdateSupplier(supplierId);
+            }
+            else
+            {
+                MessageBox.Show("Please enter a supplier ID to update !", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

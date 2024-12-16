@@ -11,21 +11,29 @@ using System.Windows.Forms;
 
 namespace AK_Textile
 {
-    public partial class InventoryProduct : Form
+    public partial class InventoryCategory : Form
     {
         private MainForm mainForm;
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;Initial Catalog=AK-Textiles;Integrated Security=True;");
-        public InventoryProduct(MainForm mainForm)
+        Form formBackground = null; // Declare outside to access in 'finally'
+
+        public InventoryCategory(MainForm mainForm)
         {
             InitializeComponent();
             this.mainForm = mainForm;
-            LoadAllProducts();
+            LoadAllCategory();
         }
 
-        private void LoadAllProducts()
+        // Public method to refresh data grid
+        public void RefreshDataGrid()
+        {
+            LoadAllCategory();
+        }
+
+        private void LoadAllCategory()
         {
             // SQL query to fetch all data from the Product table
-            string query = "SELECT * FROM Product";
+            string query = "SELECT * FROM InventoryCategory";
             {
                 try
                 {
@@ -55,21 +63,21 @@ namespace AK_Textile
             }
         }
 
-        private void LoadSearchProduct() 
+        private void LoadSearchCategory()
         {
             // Get the value entered in the textbox
-            string searchValue = txtSearch.Text.Trim();
+            string searchValue = textBox1.Text.Trim();
 
             // Check if the textbox is empty
             if (string.IsNullOrEmpty(searchValue))
             {
-                MessageBox.Show("Please enter a Product ID or Name to search.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter a Inventory Category ID or Name to search.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             // SQL query to fetch data based on PID or Pname
-            string query = @"SELECT * FROM Product
-                             WHERE PID = @SearchValue OR Pname LIKE '%' + @SearchValue + '%'";
+            string query = @"SELECT * FROM InventoryCategory
+                             WHERE InvCatID = @SearchValue OR InvCategory LIKE '%' + @SearchValue + '%'";
 
             {
                 try
@@ -96,13 +104,14 @@ namespace AK_Textile
 
                             // Adjust columns to fit the grid width
                             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                            con.Close();
                         }
                         else
                         {
                             MessageBox.Show("No matching records found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             dataGridView1.DataSource = null; // Clear DataGridView if no data found
                             con.Close();
-                            LoadAllProducts();
+                            LoadAllCategory();
                         }
                     }
                 }
@@ -110,7 +119,58 @@ namespace AK_Textile
                 {
                     MessageBox.Show("An error occurred while fetching data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                con.Close();
             }
+        }
+
+        private void OpenSubForm(Form subForm)
+        {
+            Form formBackground = new Form(); // Initialize background form
+
+            try
+            {
+                formBackground.StartPosition = FormStartPosition.Manual;
+                formBackground.FormBorderStyle = FormBorderStyle.None;
+                formBackground.Opacity = .50d;
+                formBackground.BackColor = Color.Black;
+                formBackground.WindowState = FormWindowState.Maximized;
+                formBackground.TopMost = true;
+                formBackground.Location = this.Location;
+                formBackground.ShowInTaskbar = false;
+                formBackground.Show();
+
+                // Set the background form as the owner of the subform
+                subForm.Owner = formBackground;
+
+                // Show the subform as a dialog
+                subForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                // Dispose both forms
+                formBackground.Dispose();
+                subForm.Dispose();
+            }
+        }
+
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void InventoryRaw_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -125,7 +185,7 @@ namespace AK_Textile
 
         private void button2_Click(object sender, EventArgs e)
         {
-            mainForm.LoadForm(new InventoryCategory(mainForm));
+            mainForm.LoadForm(new InventoryProduct(mainForm));
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -133,37 +193,54 @@ namespace AK_Textile
             mainForm.LoadForm(new InventorySupplier(mainForm));
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button11_Click(object sender, EventArgs e)
         {
             mainForm.LoadForm(new InventoryInventory(mainForm));
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void button10_Click(object sender, EventArgs e)
         {
             mainForm.LoadForm(new InventoryGRN(mainForm));
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
             mainForm.LoadForm(new InventoryReport(mainForm));
         }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-            LoadSearchProduct();
-        }
-
         private void button6_Click(object sender, EventArgs e)
         {
-            // Clear the TextBox
-            txtSearch.Text = string.Empty;
 
-            LoadAllProducts();
         }
 
-        private void InventoryProduct_Load(object sender, EventArgs e)
+        private void button9_Click(object sender, EventArgs e)
         {
+            // Create an instance of the form and pass it to the method
+            OpenSubForm(new InventoryCategoryRemove(this));
+        }
 
+        private void button8_Click(object sender, EventArgs e)
+        {
+            // Create an instance of the form and pass it to the method
+            OpenSubForm(new InventoryCategoryUpdate(this));
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            // Create an instance of the form and pass it to the method
+            OpenSubForm(new InventoryCategoryAdd(this));
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            LoadSearchCategory();
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            textBox1.Text = string.Empty;
+
+            LoadAllCategory();
         }
     }
 }

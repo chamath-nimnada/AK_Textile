@@ -196,7 +196,7 @@ namespace AK_Textile
 
         private void button3_Click(object sender, EventArgs e)
         {
-            mainForm.LoadForm(new InventoryRaw(mainForm));
+            mainForm.LoadForm(new InventoryCategory(mainForm));
         }
 
         private void button4_Click(object sender, EventArgs e)

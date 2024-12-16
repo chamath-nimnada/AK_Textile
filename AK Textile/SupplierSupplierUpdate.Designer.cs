@@ -32,8 +32,6 @@
             this.button6 = new System.Windows.Forms.Button();
             this.searchbtn = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.contaccttxt = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -47,8 +45,6 @@
             this.updatebtn = new System.Windows.Forms.Button();
             this.cancelbtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,13 +56,13 @@
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(9, 11);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(616, 84);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Enter the Supplier ID ";
+            this.groupBox1.Text = "Enter the Supplier ID or Name";
             // 
             // button6
             // 
@@ -74,7 +70,7 @@
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.button6.Location = new System.Drawing.Point(498, 32);
-            this.button6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(96, 30);
             this.button6.TabIndex = 10;
@@ -88,7 +84,7 @@
             this.searchbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchbtn.ForeColor = System.Drawing.Color.White;
             this.searchbtn.Location = new System.Drawing.Point(366, 32);
-            this.searchbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.searchbtn.Margin = new System.Windows.Forms.Padding(2);
             this.searchbtn.Name = "searchbtn";
             this.searchbtn.Size = new System.Drawing.Size(119, 30);
             this.searchbtn.TabIndex = 5;
@@ -101,35 +97,10 @@
             this.textBox1.BackColor = System.Drawing.SystemColors.HighlightText;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(40, 34);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(287, 27);
             this.textBox1.TabIndex = 0;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox3.Controls.Add(this.dataGridView1);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(9, 101);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox3.Size = new System.Drawing.Size(616, 108);
-            this.groupBox3.TabIndex = 46;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Selected Supplier";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(40, 29);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(554, 63);
-            this.dataGridView1.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -143,21 +114,21 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(9, 214);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Location = new System.Drawing.Point(9, 108);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(616, 213);
             this.groupBox2.TabIndex = 47;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "New Details";
+            this.groupBox2.Text = "Selected Details";
             // 
             // contaccttxt
             // 
             this.contaccttxt.BackColor = System.Drawing.SystemColors.MenuBar;
             this.contaccttxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contaccttxt.Location = new System.Drawing.Point(141, 125);
-            this.contaccttxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.contaccttxt.Margin = new System.Windows.Forms.Padding(2);
             this.contaccttxt.Name = "contaccttxt";
             this.contaccttxt.Size = new System.Drawing.Size(454, 27);
             this.contaccttxt.TabIndex = 18;
@@ -178,7 +149,7 @@
             this.addresstxt.BackColor = System.Drawing.SystemColors.MenuBar;
             this.addresstxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addresstxt.Location = new System.Drawing.Point(141, 166);
-            this.addresstxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addresstxt.Margin = new System.Windows.Forms.Padding(2);
             this.addresstxt.Name = "addresstxt";
             this.addresstxt.Size = new System.Drawing.Size(454, 27);
             this.addresstxt.TabIndex = 9;
@@ -199,7 +170,7 @@
             this.emailtxt.BackColor = System.Drawing.SystemColors.MenuBar;
             this.emailtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.emailtxt.Location = new System.Drawing.Point(141, 82);
-            this.emailtxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.emailtxt.Margin = new System.Windows.Forms.Padding(2);
             this.emailtxt.Name = "emailtxt";
             this.emailtxt.Size = new System.Drawing.Size(454, 27);
             this.emailtxt.TabIndex = 5;
@@ -209,7 +180,7 @@
             this.nametxt.BackColor = System.Drawing.SystemColors.MenuBar;
             this.nametxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nametxt.Location = new System.Drawing.Point(141, 41);
-            this.nametxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nametxt.Margin = new System.Windows.Forms.Padding(2);
             this.nametxt.Name = "nametxt";
             this.nametxt.Size = new System.Drawing.Size(454, 27);
             this.nametxt.TabIndex = 4;
@@ -241,8 +212,8 @@
             this.clearbtn.BackColor = System.Drawing.Color.White;
             this.clearbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
-            this.clearbtn.Location = new System.Drawing.Point(9, 435);
-            this.clearbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clearbtn.Location = new System.Drawing.Point(9, 336);
+            this.clearbtn.Margin = new System.Windows.Forms.Padding(2);
             this.clearbtn.Name = "clearbtn";
             this.clearbtn.Size = new System.Drawing.Size(133, 38);
             this.clearbtn.TabIndex = 50;
@@ -255,21 +226,22 @@
             this.updatebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.updatebtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updatebtn.ForeColor = System.Drawing.Color.White;
-            this.updatebtn.Location = new System.Drawing.Point(479, 436);
-            this.updatebtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.updatebtn.Location = new System.Drawing.Point(479, 337);
+            this.updatebtn.Margin = new System.Windows.Forms.Padding(2);
             this.updatebtn.Name = "updatebtn";
             this.updatebtn.Size = new System.Drawing.Size(146, 38);
             this.updatebtn.TabIndex = 48;
             this.updatebtn.Text = "Update";
             this.updatebtn.UseVisualStyleBackColor = false;
+            this.updatebtn.Click += new System.EventHandler(this.updatebtn_Click);
             // 
             // cancelbtn
             // 
             this.cancelbtn.BackColor = System.Drawing.Color.White;
             this.cancelbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
-            this.cancelbtn.Location = new System.Drawing.Point(330, 436);
-            this.cancelbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cancelbtn.Location = new System.Drawing.Point(330, 337);
+            this.cancelbtn.Margin = new System.Windows.Forms.Padding(2);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(133, 38);
             this.cancelbtn.TabIndex = 49;
@@ -281,21 +253,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 483);
+            this.ClientSize = new System.Drawing.Size(634, 385);
             this.Controls.Add(this.clearbtn);
             this.Controls.Add(this.updatebtn);
             this.Controls.Add(this.cancelbtn);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SupplierSupplierUpdate";
             this.Text = "Update Supplier Details";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -308,8 +277,6 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button searchbtn;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox contaccttxt;
         private System.Windows.Forms.Label label10;
