@@ -203,18 +203,6 @@
     <Compile Include="FinanceSupplierPyamentAdd.Designer.cs">
       <DependentUpon>FinanceSupplierPyamentAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="FinanceSupplierPaymentUpdate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FinanceSupplierPaymentUpdate.Designer.cs">
-      <DependentUpon>FinanceSupplierPaymentUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FinanceSupplierPaymentRemove.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FinanceSupplierPaymentRemove.Designer.cs">
-      <DependentUpon>FinanceSupplierPaymentRemove.cs</DependentUpon>
-    </Compile>
     <Compile Include="EmpManagerDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -714,12 +702,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FinanceSupplierPyamentAdd.resx">
       <DependentUpon>FinanceSupplierPyamentAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FinanceSupplierPaymentUpdate.resx">
-      <DependentUpon>FinanceSupplierPaymentUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FinanceSupplierPaymentRemove.resx">
-      <DependentUpon>FinanceSupplierPaymentRemove.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmpManagerDashboard.resx">
       <DependentUpon>EmpManagerDashboard.cs</DependentUpon>
