@@ -18,15 +18,19 @@ namespace AK_Textile
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
                                                 Initial Catalog=Textlies;
                                                 Integrated Security=True");
+
+        Form formBackground = null; // Declare outside to access in 'finally'
+
         public AdminAdmin(MainForm mainForm/*Step 02*/)
         {
             InitializeComponent();
             this.mainForm = mainForm; //Step 03
+            LoadAdmins();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -58,8 +62,7 @@ namespace AK_Textile
 
         private void button7_Click(object sender, EventArgs e)
         {
-            AdminAdminAdd adadd = new AdminAdminAdd();
-            adadd.ShowDialog();
+          
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -73,7 +76,6 @@ namespace AK_Textile
             AdminAdminRemove adremove = new AdminAdminRemove();
             adremove.ShowDialog();
         }
-
         public void LoadAdmins()
         {
                 try
@@ -99,6 +101,13 @@ namespace AK_Textile
                 }
                 con.Close();
         }
+
+        // Public method to refresh data grid
+        public void RefreshDataGrid()
+        {
+            LoadAdmins();
+        }
+
         private void button6_Click(object sender, EventArgs e)
         {
             textBox1.Clear();
@@ -134,7 +143,39 @@ namespace AK_Textile
             {
                 con.Close();
             }
+        }
+        private void OpenSubForm(Form subForm)
+        {
+            Form formBackground = new Form(); // Initialize background form
 
+            try
+            {
+                formBackground.StartPosition = FormStartPosition.Manual;
+                formBackground.FormBorderStyle = FormBorderStyle.None;
+                formBackground.Opacity = .50d;
+                formBackground.BackColor = Color.Black;
+                formBackground.WindowState = FormWindowState.Maximized;
+                formBackground.TopMost = true;
+                formBackground.Location = this.Location;
+                formBackground.ShowInTaskbar = false;
+                formBackground.Show();
+
+                // Set the background form as the owner of the subform
+                subForm.Owner = formBackground;
+
+                // Show the subform as a dialog
+                subForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                // Dispose both forms
+                formBackground.Dispose();
+                subForm.Dispose();
+            }
         }
     }
 }
