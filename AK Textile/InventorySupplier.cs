@@ -14,7 +14,7 @@ namespace AK_Textile
     public partial class InventorySupplier : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;Initial Catalog=AK-Textiles-PVT(LTD);Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;Initial Catalog=AK-Textiles;Integrated Security=True;");
         public InventorySupplier(MainForm mainForm)
         {
             InitializeComponent();
@@ -54,12 +54,8 @@ namespace AK_Textile
                 con.Close();
             }
         }
-        private void InventorySupplier_Load(object sender, EventArgs e)
-        {
 
-        }
-
-        private void button5_Click(object sender, EventArgs e)
+        private void SearchSupplier() 
         {
             // Get the value entered in the textbox
             string searchValue = textBox1.Text.Trim();
@@ -99,10 +95,11 @@ namespace AK_Textile
 
                             // Adjust columns to fit the grid width
                             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                            con.Close();
                         }
                         else
                         {
-                            MessageBox.Show("No matching records found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("No matching supplier found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             dataGridView1.DataSource = null; // Clear DataGridView if no data found
                             con.Close();
                             LoadAllSuppliers();
@@ -112,10 +109,25 @@ namespace AK_Textile
                 catch (Exception ex)
                 {
                     MessageBox.Show("An error occurred while fetching data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    con.Close();
                 }
+            }
+        }
 
-                //Purchase Orders
-                string query2 = @"
+        private void LoadPurchaseOrders() 
+        {
+            // Get the value entered in the textbox
+            string searchValue = textBox1.Text.Trim();
+
+            // Check if the textbox is empty
+            if (string.IsNullOrEmpty(searchValue))
+            {
+                //MessageBox.Show("Please enter a Supplier ID or Name to search.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            //Purchase Orders
+            string query2 = @"
                                 SELECT 
                                     po.SPOrderID, 
                                     po.POrderID, 
@@ -126,47 +138,58 @@ namespace AK_Textile
                                     Supplier s ON po.SupID = s.SupID
                                 WHERE 
                                     s.SupID = @SearchValue OR s.SupName LIKE '%' + @SearchValue + '%'";
+            {
+                try
                 {
-                    try
+                    // Open the connection
+                    con.Open();
+
+                    // Create the SQL command
+                    using (SqlCommand cmd = new SqlCommand(query2, con))
                     {
-                        // Open the connection
-                        con.Open();
+                        // Add parameter to prevent SQL injection
+                        cmd.Parameters.AddWithValue("@SearchValue", searchValue);
 
-                        // Create the SQL command
-                        using (SqlCommand cmd = new SqlCommand(query2, con))
+                        // Execute the query and load the results into a DataTable
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        // Check if any rows are returned
+                        if (dataTable.Rows.Count > 0)
                         {
-                            // Add parameter to prevent SQL injection
-                            cmd.Parameters.AddWithValue("@SearchValue", searchValue);
+                            // Bind the DataTable to the DataGridView
+                            dataGridView2.DataSource = dataTable;
 
-                            // Execute the query and load the results into a DataTable
-                            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                            DataTable dataTable = new DataTable();
-                            adapter.Fill(dataTable);
-
-                            // Check if any rows are returned
-                            if (dataTable.Rows.Count > 0)
-                            {
-                                // Bind the DataTable to the DataGridView
-                                dataGridView1.DataSource = dataTable;
-
-                                // Adjust columns to fit the grid width
-                                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                            }
-                            else
-                            {
-                                MessageBox.Show("No matching records found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                dataGridView1.DataSource = null; // Clear DataGridView if no data found
-                                con.Close();
-                                LoadAllSuppliers();
-                            }
+                            // Adjust columns to fit the grid width
+                            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                            con.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No purchased order found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            dataGridView2.DataSource = null; // Clear DataGridView if no data found
+                            con.Close();
+                            LoadAllSuppliers();
                         }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("An error occurred while fetching data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred while fetching data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    con.Close();
                 }
             }
+        }
+        private void InventorySupplier_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            SearchSupplier();
+            LoadPurchaseOrders();
         }
 
         private void button6_Click(object sender, EventArgs e)

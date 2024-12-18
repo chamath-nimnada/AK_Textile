@@ -7,19 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace AK_Textile
 {
     public partial class AdminAdmin : Form
     {
         private MainForm mainForm; //Step 01
-
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
                                                 Initial Catalog=Textlies;
                                                 Integrated Security=True");
-
-        Form formBackground = null; // Declare outside to access in 'finally'
 
         public AdminAdmin(MainForm mainForm/*Step 02*/)
         {
@@ -47,7 +43,7 @@ namespace AK_Textile
 
         private void AdminAdmin_Load(object sender, EventArgs e)
         {
-            LoadAdmins();
+
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -76,6 +72,7 @@ namespace AK_Textile
             AdminAdminRemove adremove = new AdminAdminRemove();
             adremove.ShowDialog();
         }
+        
         public void LoadAdmins()
         {
                 try
@@ -177,5 +174,6 @@ namespace AK_Textile
                 subForm.Dispose();
             }
         }
-    }
-}
+      }
+   }
+       
