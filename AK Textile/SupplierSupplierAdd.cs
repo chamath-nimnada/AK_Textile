@@ -13,11 +13,12 @@ namespace AK_Textile
 {
     public partial class SupplierSupplierAdd : Form
     {
+        private SupplierSupplier supplierform; // Reference to Inventory Category
         //database connection
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
                                                  Initial Catalog=Textlies;
                                                  Integrated Security=True");
-        public SupplierSupplierAdd()
+        public SupplierSupplierAdd(SupplierSupplier supplierform)
         {
             InitializeComponent();
         }
