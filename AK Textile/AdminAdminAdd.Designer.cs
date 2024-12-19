@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.positionIDtxt = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.contacttxt = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -49,8 +51,6 @@
             this.addbtn = new System.Windows.Forms.Button();
             this.cancelbtn = new System.Windows.Forms.Button();
             this.clearbtn = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.positionIDtxt = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,20 +78,43 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(9, 10);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(616, 413);
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Add Admin Details";
+            // 
+            // positionIDtxt
+            // 
+            this.positionIDtxt.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.positionIDtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.positionIDtxt.Location = new System.Drawing.Point(151, 253);
+            this.positionIDtxt.Margin = new System.Windows.Forms.Padding(2);
+            this.positionIDtxt.Name = "positionIDtxt";
+            this.positionIDtxt.ReadOnly = true;
+            this.positionIDtxt.Size = new System.Drawing.Size(190, 27);
+            this.positionIDtxt.TabIndex = 22;
+            this.positionIDtxt.Text = "P001";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(68)))), ((int)(((byte)(114)))));
+            this.label9.Location = new System.Drawing.Point(36, 253);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(96, 22);
+            this.label9.TabIndex = 21;
+            this.label9.Text = "Position ID";
             // 
             // contacttxt
             // 
             this.contacttxt.BackColor = System.Drawing.SystemColors.MenuBar;
             this.contacttxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contacttxt.Location = new System.Drawing.Point(151, 211);
-            this.contacttxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.contacttxt.Margin = new System.Windows.Forms.Padding(2);
             this.contacttxt.Name = "contacttxt";
             this.contacttxt.Size = new System.Drawing.Size(190, 27);
             this.contacttxt.TabIndex = 20;
@@ -148,7 +171,7 @@
             this.address3txt.BackColor = System.Drawing.SystemColors.MenuBar;
             this.address3txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.address3txt.Location = new System.Drawing.Point(150, 374);
-            this.address3txt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.address3txt.Margin = new System.Windows.Forms.Padding(2);
             this.address3txt.Name = "address3txt";
             this.address3txt.Size = new System.Drawing.Size(190, 27);
             this.address3txt.TabIndex = 11;
@@ -158,7 +181,7 @@
             this.address2txt.BackColor = System.Drawing.SystemColors.MenuBar;
             this.address2txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.address2txt.Location = new System.Drawing.Point(150, 335);
-            this.address2txt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.address2txt.Margin = new System.Windows.Forms.Padding(2);
             this.address2txt.Name = "address2txt";
             this.address2txt.Size = new System.Drawing.Size(190, 27);
             this.address2txt.TabIndex = 10;
@@ -168,7 +191,7 @@
             this.address1txt.BackColor = System.Drawing.SystemColors.MenuBar;
             this.address1txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.address1txt.Location = new System.Drawing.Point(151, 297);
-            this.address1txt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.address1txt.Margin = new System.Windows.Forms.Padding(2);
             this.address1txt.Name = "address1txt";
             this.address1txt.Size = new System.Drawing.Size(190, 27);
             this.address1txt.TabIndex = 9;
@@ -189,7 +212,7 @@
             this.pswrdtxt.BackColor = System.Drawing.SystemColors.MenuBar;
             this.pswrdtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pswrdtxt.Location = new System.Drawing.Point(151, 168);
-            this.pswrdtxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pswrdtxt.Margin = new System.Windows.Forms.Padding(2);
             this.pswrdtxt.Name = "pswrdtxt";
             this.pswrdtxt.Size = new System.Drawing.Size(454, 27);
             this.pswrdtxt.TabIndex = 7;
@@ -210,7 +233,7 @@
             this.usernametxt.BackColor = System.Drawing.SystemColors.MenuBar;
             this.usernametxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.usernametxt.Location = new System.Drawing.Point(151, 130);
-            this.usernametxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.usernametxt.Margin = new System.Windows.Forms.Padding(2);
             this.usernametxt.Name = "usernametxt";
             this.usernametxt.Size = new System.Drawing.Size(454, 27);
             this.usernametxt.TabIndex = 5;
@@ -220,7 +243,7 @@
             this.nametxt.BackColor = System.Drawing.SystemColors.MenuBar;
             this.nametxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nametxt.Location = new System.Drawing.Point(151, 86);
-            this.nametxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nametxt.Margin = new System.Windows.Forms.Padding(2);
             this.nametxt.Name = "nametxt";
             this.nametxt.Size = new System.Drawing.Size(454, 27);
             this.nametxt.TabIndex = 4;
@@ -230,7 +253,7 @@
             this.empid.BackColor = System.Drawing.Color.CornflowerBlue;
             this.empid.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.empid.Location = new System.Drawing.Point(151, 45);
-            this.empid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.empid.Margin = new System.Windows.Forms.Padding(2);
             this.empid.Name = "empid";
             this.empid.ReadOnly = true;
             this.empid.Size = new System.Drawing.Size(190, 27);
@@ -275,7 +298,7 @@
             this.addbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addbtn.ForeColor = System.Drawing.Color.White;
             this.addbtn.Location = new System.Drawing.Point(479, 428);
-            this.addbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addbtn.Margin = new System.Windows.Forms.Padding(2);
             this.addbtn.Name = "addbtn";
             this.addbtn.Size = new System.Drawing.Size(146, 38);
             this.addbtn.TabIndex = 26;
@@ -289,7 +312,7 @@
             this.cancelbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.cancelbtn.Location = new System.Drawing.Point(330, 428);
-            this.cancelbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cancelbtn.Margin = new System.Windows.Forms.Padding(2);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(133, 38);
             this.cancelbtn.TabIndex = 27;
@@ -303,33 +326,13 @@
             this.clearbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.clearbtn.Location = new System.Drawing.Point(9, 427);
-            this.clearbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clearbtn.Margin = new System.Windows.Forms.Padding(2);
             this.clearbtn.Name = "clearbtn";
             this.clearbtn.Size = new System.Drawing.Size(133, 38);
             this.clearbtn.TabIndex = 29;
             this.clearbtn.Text = "Clear";
             this.clearbtn.UseVisualStyleBackColor = false;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(68)))), ((int)(((byte)(114)))));
-            this.label9.Location = new System.Drawing.Point(36, 253);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(96, 22);
-            this.label9.TabIndex = 21;
-            this.label9.Text = "Position ID";
-            // 
-            // positionIDtxt
-            // 
-            this.positionIDtxt.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.positionIDtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.positionIDtxt.Location = new System.Drawing.Point(151, 253);
-            this.positionIDtxt.Margin = new System.Windows.Forms.Padding(2);
-            this.positionIDtxt.Name = "positionIDtxt";
-            this.positionIDtxt.Size = new System.Drawing.Size(190, 27);
-            this.positionIDtxt.TabIndex = 22;
+            this.clearbtn.Click += new System.EventHandler(this.clearbtn_Click);
             // 
             // AdminAdminAdd
             // 
@@ -341,7 +344,7 @@
             this.Controls.Add(this.cancelbtn);
             this.Controls.Add(this.clearbtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AdminAdminAdd";
             this.Text = "Add New Admin";
             this.groupBox2.ResumeLayout(false);

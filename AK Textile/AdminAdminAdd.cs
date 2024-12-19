@@ -7,11 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace AK_Textile
 {
     public partial class AdminAdminAdd : Form
     {
+
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
+                                                Initial Catalog=Textlies;
+                                                Integrated Security=True");
         public AdminAdminAdd()
         {
             InitializeComponent();
@@ -24,7 +29,12 @@ namespace AK_Textile
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //This is a cancel button
+            this.Close();
+        }
+
+        private void clearbtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
