@@ -242,5 +242,20 @@ namespace AK_Textile
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new EmpManagerSalary(mainForm));
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new EmpManagerLeave(mainForm));
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new EmpManagerReport(mainForm));
+        }
     }
 }

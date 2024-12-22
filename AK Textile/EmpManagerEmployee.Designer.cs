@@ -84,6 +84,7 @@
             this.button3.TabIndex = 73;
             this.button3.Text = "Leave";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // panel1
             // 
@@ -167,6 +168,7 @@
             this.button9.TabIndex = 77;
             this.button9.Text = "Report";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button2
             // 
@@ -180,6 +182,7 @@
             this.button2.TabIndex = 78;
             this.button2.Text = "Salary";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel4
             // 
