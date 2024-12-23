@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,8 +15,12 @@ namespace AK_Textile
     public partial class LoginForm : Form
     {
         private MainForm mainForm;
+
         //database connection
-        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=Textiles;Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
+                                                 Initial Catalog=Textlies;
+                                                 Integrated Security=True");
+
         public LoginForm(MainForm mainForm)
         {
             InitializeComponent();
@@ -84,16 +89,16 @@ namespace AK_Textile
                         mainForm.LoadForm(new EmpManagerDashboard(mainForm));
                         break;
                     case "production manager":
-                        //mainForm.LoadForm(new ProductDashboard(mainForm));
+                        mainForm.LoadForm(new ProductDashboard(mainForm));
                         break;
                     case "admin":
-                        //mainForm.LoadForm(new AdminDashboard(mainForm));
+                        mainForm.LoadForm(new AdminDashboard(mainForm));
                         break;
                     case "finance manager":
                         //mainForm.LoadForm(new FinanceDashboard(mainForm));
                         break;
                     case "supplier manager":
-                        //mainForm.LoadForm(new SupplierDashboard(mainForm));
+                        mainForm.LoadForm(new SupplierDashboard(mainForm));
                         break;
                     case "inventory manager":
                         mainForm.LoadForm(new InventoryDashboard(mainForm));
@@ -103,6 +108,9 @@ namespace AK_Textile
                         break;
                     case "employee":
                         //mainForm.LoadForm(new Employee(mainForm));
+                        break;
+                    case "CEO":
+                        mainForm.LoadForm(new CEODashboard(mainForm));
                         break;
                     default:
                         MessageBox.Show("Unknown position. Contact the administrator.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);

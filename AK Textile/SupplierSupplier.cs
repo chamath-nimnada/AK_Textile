@@ -19,6 +19,7 @@ namespace AK_Textile
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
                                                  Initial Catalog=Textlies;
                                                  Integrated Security=True");
+        Form formBackground = null; // Declare outside to access in 'finally'
         public SupplierSupplier(MainForm mainForm)
         {
             InitializeComponent();
@@ -62,23 +63,23 @@ namespace AK_Textile
 
         private void addbtn_Click(object sender, EventArgs e)
         {
-            SupplierSupplierAdd suppliersupplieradd = new SupplierSupplierAdd();
-            suppliersupplieradd.ShowDialog();
+            // Create an instance of the form and pass it to the method
+            OpenSubForm(new SupplierSupplierAdd(this));
         }
 
         private void updatebtn_Click(object sender, EventArgs e)
         {
-            SupplierSupplierUpdate supupdate = new SupplierSupplierUpdate();
-            supupdate.ShowDialog();
+            // Create an instance of the form and pass it to the method
+            OpenSubForm(new SupplierSupplierUpdate(this));
         }
 
         private void rmvbtn_Click(object sender, EventArgs e)
         {
-            SupplierSupllierRemove supremove = new SupplierSupllierRemove();
-            supremove.ShowDialog();
+            // Create an instance of the form and pass it to the method
+            OpenSubForm(new SupplierSupllierRemove(this));
         }
 
-        private void SupplierSupplier_Load(object sender, EventArgs e)
+        private void LoadSupplier()
         {
             // to load supplier data in to the datagrid view
             con.Open();
@@ -92,6 +93,10 @@ namespace AK_Textile
 
                 // Bind the data to the DataGridView
                 dataGridView1.DataSource = dt;
+
+                // Adjust columns to fit the grid width
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
             }
             catch (Exception ex)
             {
@@ -101,6 +106,10 @@ namespace AK_Textile
             {
                 con.Close();
             }
+        }
+        private void SupplierSupplier_Load(object sender, EventArgs e)
+        {
+            LoadSupplier();
         }
 
             private void SearchSupplier(string searchValue)
@@ -114,22 +123,26 @@ namespace AK_Textile
 
                 try
                 {
-                    //To get the  searched data
-                    da1.Fill(dt1);
+                if (dt1.Rows.Count > 0)
+                {
+                    // Bind the DataTable to the DataGridView
                     dataGridView1.DataSource = dt1;
 
-                    if (dt1.Rows.Count == 0)
-                    {
-                        MessageBox.Show("No Matching item Found", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    // Adjust columns to fit the grid width
+                    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    con.Close();
                 }
+                else
+                {
+                    MessageBox.Show("No matching records found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dataGridView1.DataSource = null; // Clear DataGridView if no data found
+                    con.Close();
+                    LoadSupplier();
+                }
+            }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    con.Close();
                 }
             }
 
@@ -144,6 +157,39 @@ namespace AK_Textile
             }
             //Calling the method to search supplier invoice
             SearchSupplier(searchValue);
+        }
+        private void OpenSubForm(Form subForm)
+        {
+            Form formBackground = new Form(); // Initialize background form
+
+            try
+            {
+                formBackground.StartPosition = FormStartPosition.Manual;
+                formBackground.FormBorderStyle = FormBorderStyle.None;
+                formBackground.Opacity = .50d;
+                formBackground.BackColor = Color.Black;
+                formBackground.WindowState = FormWindowState.Maximized;
+                formBackground.TopMost = true;
+                formBackground.Location = this.Location;
+                formBackground.ShowInTaskbar = false;
+                formBackground.Show();
+
+                // Set the background form as the owner of the subform
+                subForm.Owner = formBackground;
+
+                // Show the subform as a dialog
+                subForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                // Dispose both forms
+                formBackground.Dispose();
+                subForm.Dispose();
+            }
         }
     }
 }

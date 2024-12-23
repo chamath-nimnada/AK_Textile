@@ -14,7 +14,7 @@ namespace AK_Textile
     public partial class InventoryInventory : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=Textiles;Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;Initial Catalog=AK-Textiles;Integrated Security=True;");
         public InventoryInventory(MainForm mainForm)
         {
             InitializeComponent();
@@ -25,7 +25,7 @@ namespace AK_Textile
         private void LoadAllInventory() 
         {
             // SQL query to fetch all data from the Product table
-            string query = "SELECT * FROM Inventory";
+            string query = "SELECT * FROM InventoryDataFile";
             {
                 try
                 {
@@ -45,6 +45,7 @@ namespace AK_Textile
 
                         // Adjust columns to fit the grid width
                         dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        con.Close();
                     }
                 }
                 catch (Exception ex)
@@ -55,46 +56,7 @@ namespace AK_Textile
             }
         }
 
-        private void button9_Click(object sender, EventArgs e)
-        {
-            //Dark the back main window and open sub window
-            Form formBackground = new Form();
-            try
-            {
-                using (InventoryInventoryAdd inventoryInventoryAdd = new InventoryInventoryAdd())
-                {
-                    formBackground.StartPosition = FormStartPosition.Manual;
-                    formBackground.FormBorderStyle = FormBorderStyle.None;
-                    formBackground.Opacity = .50d;
-                    formBackground.BackColor = Color.Black;
-                    formBackground.WindowState = FormWindowState.Maximized;
-                    formBackground.TopMost = true;
-                    formBackground.Location = this.Location;
-                    formBackground.ShowInTaskbar = false;
-                    formBackground.Show();
-
-                    inventoryInventoryAdd.Owner = formBackground;
-                    inventoryInventoryAdd.ShowDialog();
-
-                    formBackground.Dispose();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                formBackground.Dispose();
-            }
-        }
-
-        private void InventoryInventory_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button11_Click(object sender, EventArgs e)
+        private void SearchInventoryItem() 
         {
             // Get the value entered in the textbox
             string searchValue = textBox1.Text.Trim();
@@ -107,8 +69,8 @@ namespace AK_Textile
             }
 
             // SQL query to fetch data based on PID or Pname
-            string query = @"SELECT * FROM Inventory
-                             WHERE InvID = @SearchValue OR InvCategory LIKE '%' + @SearchValue + '%'";
+            string query = @"SELECT * FROM InventoryCategory
+                             WHERE InvCatID = @SearchValue OR InvCategory LIKE '%' + @SearchValue + '%'";
 
             {
                 try
@@ -135,6 +97,7 @@ namespace AK_Textile
 
                             // Adjust columns to fit the grid width
                             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                            con.Close();
                         }
                         else
                         {
@@ -149,7 +112,23 @@ namespace AK_Textile
                 {
                     MessageBox.Show("An error occurred while fetching data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                con.Close();
             }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void InventoryInventory_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            SearchInventoryItem();
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -177,7 +156,7 @@ namespace AK_Textile
 
         private void button3_Click(object sender, EventArgs e)
         {
-            mainForm.LoadForm(new InventoryRaw(mainForm));
+            mainForm.LoadForm(new InventoryCategory(mainForm));
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -197,70 +176,12 @@ namespace AK_Textile
 
         private void button6_Click(object sender, EventArgs e)
         {
-            //Dark the back main window and open sub window
-            Form formBackground = new Form();
-            try
-            {
-                using (InventoryInventoryRemove inventoryInventoryRemove = new InventoryInventoryRemove())
-                {
-                    formBackground.StartPosition = FormStartPosition.Manual;
-                    formBackground.FormBorderStyle = FormBorderStyle.None;
-                    formBackground.Opacity = .50d;
-                    formBackground.BackColor = Color.Black;
-                    formBackground.WindowState = FormWindowState.Maximized;
-                    formBackground.TopMost = true;
-                    formBackground.Location = this.Location;
-                    formBackground.ShowInTaskbar = false;
-                    formBackground.Show();
-
-                    inventoryInventoryRemove.Owner = formBackground;
-                    inventoryInventoryRemove.ShowDialog();
-
-                    formBackground.Dispose();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                formBackground.Dispose();
-            }
+            
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            //Dark the back main window and open sub window
-            Form formBackground = new Form();
-            try
-            {
-                using (InventoryInventoryUpdate inventoryInventoryUpdate = new InventoryInventoryUpdate())
-                {
-                    formBackground.StartPosition = FormStartPosition.Manual;
-                    formBackground.FormBorderStyle = FormBorderStyle.None;
-                    formBackground.Opacity = .50d;
-                    formBackground.BackColor = Color.Black;
-                    formBackground.WindowState = FormWindowState.Maximized;
-                    formBackground.TopMost = true;
-                    formBackground.Location = this.Location;
-                    formBackground.ShowInTaskbar = false;
-                    formBackground.Show();
-
-                    inventoryInventoryUpdate.Owner = formBackground;
-                    inventoryInventoryUpdate.ShowDialog();
-
-                    formBackground.Dispose();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                formBackground.Dispose();
-            }
+            
         }
     }
 }

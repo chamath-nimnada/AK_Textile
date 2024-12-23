@@ -12,9 +12,41 @@ namespace AK_Textile
 {
     public partial class FinanceReport : Form
     {
-        public FinanceReport()
+        private MainForm mainForm;
+        public FinanceReport(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new FinanceSale(mainForm));
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            mainForm .LoadForm (new FinanceSalary(mainForm));
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new FinanceOrder(mainForm));
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new FinanceSupplierPayment(mainForm));
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            mainForm .LoadForm (new FinanceDashboard(mainForm));
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            mainForm .LoadForm (new LoginForm (mainForm));
         }
     }
 }

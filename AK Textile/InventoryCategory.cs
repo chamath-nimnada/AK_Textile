@@ -11,21 +11,29 @@ using System.Windows.Forms;
 
 namespace AK_Textile
 {
-    public partial class InventorySupplier : Form
+    public partial class InventoryCategory : Form
     {
         private MainForm mainForm;
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;Initial Catalog=AK-Textiles;Integrated Security=True;");
-        public InventorySupplier(MainForm mainForm)
+        Form formBackground = null; // Declare outside to access in 'finally'
+
+        public InventoryCategory(MainForm mainForm)
         {
             InitializeComponent();
             this.mainForm = mainForm;
-            LoadAllSuppliers();
+            LoadAllCategory();
         }
 
-        private void LoadAllSuppliers()
+        // Public method to refresh data grid
+        public void RefreshDataGrid()
         {
-            // SQL query to fetch all data from the Supplier table
-            string query = "SELECT * FROM Supplier";
+            LoadAllCategory();
+        }
+
+        private void LoadAllCategory()
+        {
+            // SQL query to fetch all data from the Product table
+            string query = "SELECT * FROM InventoryCategory";
             {
                 try
                 {
@@ -55,7 +63,7 @@ namespace AK_Textile
             }
         }
 
-        private void SearchSupplier() 
+        private void LoadSearchCategory()
         {
             // Get the value entered in the textbox
             string searchValue = textBox1.Text.Trim();
@@ -63,12 +71,13 @@ namespace AK_Textile
             // Check if the textbox is empty
             if (string.IsNullOrEmpty(searchValue))
             {
-                MessageBox.Show("Please enter a Supplier ID or Name to search.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter a Inventory Category ID or Name to search.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            string query1 = @"SELECT * FROM Supplier
-                             WHERE SupID = @SearchValue OR SupName LIKE '%' + @SearchValue + '%'";
+            // SQL query to fetch data based on PID or Pname
+            string query = @"SELECT * FROM InventoryCategory
+                             WHERE InvCatID = @SearchValue OR InvCategory LIKE '%' + @SearchValue + '%'";
 
             {
                 try
@@ -77,7 +86,7 @@ namespace AK_Textile
                     con.Open();
 
                     // Create the SQL command
-                    using (SqlCommand cmd = new SqlCommand(query1, con))
+                    using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         // Add parameter to prevent SQL injection
                         cmd.Parameters.AddWithValue("@SearchValue", searchValue);
@@ -99,107 +108,69 @@ namespace AK_Textile
                         }
                         else
                         {
-                            MessageBox.Show("No matching supplier found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("No matching records found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             dataGridView1.DataSource = null; // Clear DataGridView if no data found
                             con.Close();
-                            LoadAllSuppliers();
+                            LoadAllCategory();
                         }
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("An error occurred while fetching data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    con.Close();
                 }
+                con.Close();
             }
         }
 
-        private void LoadPurchaseOrders() 
+        private void OpenSubForm(Form subForm)
         {
-            // Get the value entered in the textbox
-            string searchValue = textBox1.Text.Trim();
+            Form formBackground = new Form(); // Initialize background form
 
-            // Check if the textbox is empty
-            if (string.IsNullOrEmpty(searchValue))
+            try
             {
-                //MessageBox.Show("Please enter a Supplier ID or Name to search.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                formBackground.StartPosition = FormStartPosition.Manual;
+                formBackground.FormBorderStyle = FormBorderStyle.None;
+                formBackground.Opacity = .50d;
+                formBackground.BackColor = Color.Black;
+                formBackground.WindowState = FormWindowState.Maximized;
+                formBackground.TopMost = true;
+                formBackground.Location = this.Location;
+                formBackground.ShowInTaskbar = false;
+                formBackground.Show();
+
+                // Set the background form as the owner of the subform
+                subForm.Owner = formBackground;
+
+                // Show the subform as a dialog
+                subForm.ShowDialog();
             }
-
-            //Purchase Orders
-            string query2 = @"
-                                SELECT 
-                                    po.SPOrderID, 
-                                    po.POrderID, 
-                                    po.IssuedDate 
-                                FROM 
-                                    SupplierPurchaseOrder po
-                                INNER JOIN 
-                                    Supplier s ON po.SupID = s.SupID
-                                WHERE 
-                                    s.SupID = @SearchValue OR s.SupName LIKE '%' + @SearchValue + '%'";
+            catch (Exception ex)
             {
-                try
-                {
-                    // Open the connection
-                    con.Open();
-
-                    // Create the SQL command
-                    using (SqlCommand cmd = new SqlCommand(query2, con))
-                    {
-                        // Add parameter to prevent SQL injection
-                        cmd.Parameters.AddWithValue("@SearchValue", searchValue);
-
-                        // Execute the query and load the results into a DataTable
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-
-                        // Check if any rows are returned
-                        if (dataTable.Rows.Count > 0)
-                        {
-                            // Bind the DataTable to the DataGridView
-                            dataGridView2.DataSource = dataTable;
-
-                            // Adjust columns to fit the grid width
-                            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                            con.Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("No purchased order found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            dataGridView2.DataSource = null; // Clear DataGridView if no data found
-                            con.Close();
-                            LoadAllSuppliers();
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("An error occurred while fetching data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    con.Close();
-                }
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                // Dispose both forms
+                formBackground.Dispose();
+                subForm.Dispose();
             }
         }
-        private void InventorySupplier_Load(object sender, EventArgs e)
+
+
+        private void chart1_Click(object sender, EventArgs e)
         {
 
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            SearchSupplier();
-            LoadPurchaseOrders();
+            
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void InventoryRaw_Load(object sender, EventArgs e)
         {
-            // Clear the TextBox
-            textBox1.Text = string.Empty;
-            // Clear the DataGridView
-            dataGridView2.DataSource = null;
 
-            LoadAllSuppliers();
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -219,22 +190,57 @@ namespace AK_Textile
 
         private void button3_Click(object sender, EventArgs e)
         {
-            mainForm.LoadForm(new InventoryCategory(mainForm));
+            mainForm.LoadForm(new InventorySupplier(mainForm));
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button11_Click(object sender, EventArgs e)
         {
             mainForm.LoadForm(new InventoryInventory(mainForm));
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void button10_Click(object sender, EventArgs e)
         {
             mainForm.LoadForm(new InventoryGRN(mainForm));
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
             mainForm.LoadForm(new InventoryReport(mainForm));
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            // Create an instance of the form and pass it to the method
+            OpenSubForm(new InventoryCategoryRemove(this));
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            // Create an instance of the form and pass it to the method
+            OpenSubForm(new InventoryCategoryUpdate(this));
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            // Create an instance of the form and pass it to the method
+            OpenSubForm(new InventoryCategoryAdd(this));
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            LoadSearchCategory();
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            textBox1.Text = string.Empty;
+
+            LoadAllCategory();
         }
     }
 }
