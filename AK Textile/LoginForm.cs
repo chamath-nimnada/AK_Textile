@@ -86,7 +86,7 @@ namespace AK_Textile
                 switch (LoggedInUser.Position)
                 {
                     case "employee manager":
-                        //mainForm.LoadForm(new EmpManagerDashboard(mainForm));
+                        mainForm.LoadForm(new EmpManagerDashboard(mainForm));
                         break;
                     case "production manager":
                         mainForm.LoadForm(new ProductDashboard(mainForm));
