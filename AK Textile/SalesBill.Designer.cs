@@ -1,6 +1,6 @@
 ﻿namespace AK_Textile
 {
-    partial class SalesSchedule
+    partial class SalesBill
     {
         /// <summary>
         /// Required designer variable.
@@ -53,13 +53,13 @@
             // 
             // button12
             // 
-            this.button12.BackColor = System.Drawing.Color.White;
+            this.button12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
+            this.button12.ForeColor = System.Drawing.Color.White;
             this.button12.Location = new System.Drawing.Point(28, 537);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(195, 52);
-            this.button12.TabIndex = 76;
+            this.button12.TabIndex = 88;
             this.button12.Text = "Bill";
             this.button12.UseVisualStyleBackColor = false;
             // 
@@ -71,7 +71,7 @@
             this.button8.Location = new System.Drawing.Point(28, 401);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(195, 52);
-            this.button8.TabIndex = 74;
+            this.button8.TabIndex = 86;
             this.button8.Text = "Customer";
             this.button8.UseVisualStyleBackColor = false;
             // 
@@ -82,7 +82,7 @@
             this.linkLabel1.Location = new System.Drawing.Point(25, 702);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(54, 18);
-            this.linkLabel1.TabIndex = 73;
+            this.linkLabel1.TabIndex = 85;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Logout";
             // 
@@ -92,17 +92,17 @@
             this.panel3.Location = new System.Drawing.Point(250, 125);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1033, 595);
-            this.panel3.TabIndex = 72;
+            this.panel3.TabIndex = 84;
             // 
             // button9
             // 
-            this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
+            this.button9.BackColor = System.Drawing.Color.White;
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.ForeColor = System.Drawing.Color.White;
+            this.button9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.button9.Location = new System.Drawing.Point(28, 469);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(195, 52);
-            this.button9.TabIndex = 75;
+            this.button9.TabIndex = 87;
             this.button9.Text = "Schedule";
             this.button9.UseVisualStyleBackColor = false;
             // 
@@ -114,7 +114,7 @@
             this.button4.Location = new System.Drawing.Point(28, 332);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(195, 52);
-            this.button4.TabIndex = 71;
+            this.button4.TabIndex = 83;
             this.button4.Text = "Invoice";
             this.button4.UseVisualStyleBackColor = false;
             // 
@@ -126,7 +126,7 @@
             this.button1.Location = new System.Drawing.Point(28, 125);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(195, 52);
-            this.button1.TabIndex = 68;
+            this.button1.TabIndex = 80;
             this.button1.Text = "Order";
             this.button1.UseVisualStyleBackColor = false;
             // 
@@ -137,7 +137,7 @@
             this.panel2.Location = new System.Drawing.Point(28, 21);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(75, 66);
-            this.panel2.TabIndex = 67;
+            this.panel2.TabIndex = 79;
             // 
             // pictureBox3
             // 
@@ -178,7 +178,7 @@
             this.button3.Location = new System.Drawing.Point(28, 262);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(195, 52);
-            this.button3.TabIndex = 70;
+            this.button3.TabIndex = 82;
             this.button3.Text = "Payment";
             this.button3.UseVisualStyleBackColor = false;
             // 
@@ -191,7 +191,7 @@
             this.panel1.Location = new System.Drawing.Point(129, 21);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1154, 66);
-            this.panel1.TabIndex = 66;
+            this.panel1.TabIndex = 78;
             // 
             // pictureBox2
             // 
@@ -211,7 +211,7 @@
             this.button13.Location = new System.Drawing.Point(28, 607);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(195, 52);
-            this.button13.TabIndex = 77;
+            this.button13.TabIndex = 89;
             this.button13.Text = "Reports";
             this.button13.UseVisualStyleBackColor = false;
             // 
@@ -223,11 +223,11 @@
             this.button2.Location = new System.Drawing.Point(28, 192);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(195, 52);
-            this.button2.TabIndex = 69;
+            this.button2.TabIndex = 81;
             this.button2.Text = "Sales";
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // SalesSchedule
+            // SalesBill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -246,9 +246,8 @@
             this.Controls.Add(this.button13);
             this.Controls.Add(this.button2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "SalesSchedule";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.SalesSchedule_Load);
+            this.Name = "SalesBill";
+            this.Text = "Form2";
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -287,6 +287,12 @@
     <Compile Include="AdminDepartmentUpdate.Designer.cs">
       <DependentUpon>AdminDepartmentUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="SalesBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesBill.Designer.cs">
+      <DependentUpon>SalesBill.cs</DependentUpon>
+    </Compile>
     <Compile Include="SalesOrderUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -741,6 +747,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminDepartmentUpdate.resx">
       <DependentUpon>AdminDepartmentUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesBill.resx">
+      <DependentUpon>SalesBill.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SalesOrderUpdate.resx">
       <DependentUpon>SalesOrderUpdate.cs</DependentUpon>
