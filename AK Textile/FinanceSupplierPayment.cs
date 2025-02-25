@@ -14,7 +14,9 @@ namespace AK_Textile
     public partial class FinanceSupplierPayment : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-1AMUUF3;Initial Catalog=""new database"";Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
+                                                Initial Catalog=Textlies;
+                                                Integrated Security=True");
         public FinanceSupplierPayment(MainForm mainForm)
         {
             InitializeComponent();
@@ -192,6 +194,11 @@ namespace AK_Textile
             {
                 formBackground.Dispose();
             }
+        }
+
+        private void FinanceSupplierPayment_Load(object sender, EventArgs e)
+        {
+            LoadAllSupplier();
         }
     }
 }
