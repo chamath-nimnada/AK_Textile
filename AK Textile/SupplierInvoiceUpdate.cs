@@ -12,9 +12,16 @@ namespace AK_Textile
 {
     public partial class SupplierInvoiceUpdate : Form
     {
+        private SupplierInvoice supplierInvoice;
+
         public SupplierInvoiceUpdate()
         {
             InitializeComponent();
+        }
+
+        public SupplierInvoiceUpdate(SupplierInvoice supplierInvoice)
+        {
+            this.supplierInvoice = supplierInvoice;
         }
     }
 }

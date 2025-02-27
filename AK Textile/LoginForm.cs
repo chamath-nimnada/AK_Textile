@@ -17,9 +17,9 @@ namespace AK_Textile
         private MainForm mainForm;
 
         //database connection
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
-                                                 Initial Catalog=Textlies;
-                                                 Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;
+                                                    Initial Catalog=AKTextilesDB;
+                                                    Integrated Security=True;");
 
         public LoginForm(MainForm mainForm)
         {
@@ -35,6 +35,40 @@ namespace AK_Textile
         public LoginForm()
         {
             InitializeComponent();
+        }
+
+        private void OpenSubForm(Form subForm)
+        {
+            Form formBackground = new Form(); // Initialize background form
+
+            try
+            {
+                formBackground.StartPosition = FormStartPosition.Manual;
+                formBackground.FormBorderStyle = FormBorderStyle.None;
+                formBackground.Opacity = .50d;
+                formBackground.BackColor = Color.Black;
+                formBackground.WindowState = FormWindowState.Maximized;
+                formBackground.TopMost = true;
+                formBackground.Location = this.Location;
+                formBackground.ShowInTaskbar = false;
+                formBackground.Show();
+
+                // Set the background form as the owner of the subform
+                subForm.Owner = formBackground;
+
+                // Show the subform as a dialog
+                subForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                // Dispose both forms
+                formBackground.Dispose();
+                subForm.Dispose();
+            }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -57,15 +91,15 @@ namespace AK_Textile
             // Define the SQL query to check username and password, and retrieve the position
             SqlCommand com1 = new SqlCommand(
            @"SELECT 
-                E.EmpID, 
-                E.EmpUsername, 
-                P.PName 
-              FROM 
-                Employee E
-              INNER JOIN 
-                Position P ON E.PositionID = P.PositionID
-              WHERE 
-                E.EmpUsername = @uname AND E.EmpPswrd = @pswrd",
+                    E.EmpID, 
+                    E.EmpUsername, 
+                    P.PName 
+                  FROM 
+                    Employee E
+                  INNER JOIN 
+                    Position P ON E.PositionID = P.PositionID
+                  WHERE 
+                    E.EmpUsername = @uname AND E.EmpPswrd = @pswrd",
            con
         );
 
@@ -129,6 +163,18 @@ namespace AK_Textile
 
             // Close the connection
             con.Close();
+        }
+
+        // Existing code...
+
+        private void btnForgetPassword_Click(object sender, EventArgs e)
+        {
+            OpenSubForm(new ForgotPassword(this));
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
