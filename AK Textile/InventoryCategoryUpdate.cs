@@ -139,5 +139,10 @@ namespace AK_Textile
 
             this.Close();
         }
+
+        private void InventoryCategoryUpdate_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

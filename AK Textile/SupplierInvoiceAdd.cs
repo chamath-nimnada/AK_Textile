@@ -70,12 +70,15 @@ namespace AK_Textile
         private void AddSupplierInvoice()
         {
             con.Open();
-            SqlCommand cmd2 = new SqlCommand("INSERT INTO Supplier(SupID, SupName, SupAddress, SupEmail, SupContact) VALUES (@supid, @sname, @saddress, @smail, @scontact)", con);
-            cmd2.Parameters.AddWithValue("@supid", supidtxt.Text);
-            cmd2.Parameters.AddWithValue("@sname", nametxt.Text);
-            cmd2.Parameters.AddWithValue("@saddress", addresstxt.Text);
-            cmd2.Parameters.AddWithValue("@smail", emailtxt.Text);
-            cmd2.Parameters.AddWithValue("@supcontact", contacttxt.Text);
+            SqlCommand cmd2 = new SqlCommand("INSERT INTO Supplier(SInvoiceID, SupID, SIDate, SIQty, SITotalAmount, SIUnitPrice) VALUES (@supid, @sname, @saddress, @smail, @scontact)", con);
+            //cmd2.Parameters.AddWithValue("@supinvid", supidtxt.Text);
+            //cmd2.Parameters.AddWithValue("@supdate", supidtxt.Text);
+            //cmd2.Parameters.AddWithValue("@supqty", nametxt.Text);
+            //cmd2.Parameters.AddWithValue("@suptotal", addresstxt.Text);
+            //cmd2.Parameters.AddWithValue("@smail", emailtxt.Text);
+            //cmd2.Parameters.AddWithValue("@supcontact", contacttxt.Text);
+
+            //check with form
 
 
             try
