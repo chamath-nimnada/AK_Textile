@@ -148,6 +148,10 @@
             // 
             this.comboBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "Weekly",
+            "Monthly",
+            "Yearly"});
             this.comboBox2.Location = new System.Drawing.Point(44, 41);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(271, 34);

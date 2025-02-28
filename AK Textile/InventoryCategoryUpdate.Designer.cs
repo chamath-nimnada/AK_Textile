@@ -33,12 +33,12 @@
             this.button5 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -109,6 +109,25 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Update Details";
             // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(311, 107);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(363, 32);
+            this.textBox2.TabIndex = 14;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(68)))), ((int)(((byte)(114)))));
+            this.label1.Location = new System.Drawing.Point(48, 110);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(215, 26);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "New Category Name";
+            // 
             // textBox3
             // 
             this.textBox3.BackColor = System.Drawing.Color.DodgerBlue;
@@ -157,25 +176,6 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(311, 107);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(363, 32);
-            this.textBox2.TabIndex = 14;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(68)))), ((int)(((byte)(114)))));
-            this.label1.Location = new System.Drawing.Point(48, 110);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(215, 26);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "New Category Name";
-            // 
             // InventoryCategoryUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -189,6 +189,7 @@
             this.Name = "InventoryCategoryUpdate";
             this.Text = "Update Item Details";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.InventoryCategoryUpdate_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

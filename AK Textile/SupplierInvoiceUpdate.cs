@@ -18,6 +18,7 @@ namespace AK_Textile
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
                                                  Initial Catalog=Textlies;
                                                  Integrated Security=True");
+                                                 
         public SupplierInvoiceUpdate(SupplierInvoice supinvoiceform)
         {
             InitializeComponent();
@@ -172,6 +173,11 @@ namespace AK_Textile
         private void addbtn_Click(object sender, EventArgs e)
         {
             invoiceUpdate();
+        }
+
+        public SupplierInvoiceUpdate(SupplierInvoice supplierInvoice)
+        {
+            this.supplierInvoice = supplierInvoice;
         }
     }
 }
