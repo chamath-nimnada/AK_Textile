@@ -45,7 +45,7 @@ namespace AK_Textile
         private void LoadSupplierData(string supdata)
         {
             con.Open();
-            SqlCommand cmd3 = new SqlCommand("SELECT SupplierID, SupplierName, Email, ContactNo, Address FROM Suppliers WHERE SupplierID = @searchval OR SupplierName LIKE @searchval", con);
+            SqlCommand cmd3 = new SqlCommand("SELECT SupID, SupName, SupEmail, SupContact, SupAddress FROM Supplier WHERE SupID = @searchval OR SupplierName LIKE @searchval", con);
             cmd3.Parameters.AddWithValue("@searchval", "%" + supdata + "%");
 
                 try

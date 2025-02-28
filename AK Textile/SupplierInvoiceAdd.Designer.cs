@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.totaltxt = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.supidtxt = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.amounttxt = new System.Windows.Forms.TextBox();
@@ -42,14 +46,14 @@
             this.addbtn = new System.Windows.Forms.Button();
             this.cancelbtn = new System.Windows.Forms.Button();
             this.clearbtn = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.supidtxt = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.Controls.Add(this.totaltxt);
+            this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.supidtxt);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.dateTimePicker1);
@@ -63,19 +67,62 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(9, 10);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Location = new System.Drawing.Point(11, 7);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox2.Size = new System.Drawing.Size(494, 284);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Size = new System.Drawing.Size(527, 302);
             this.groupBox2.TabIndex = 36;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Add Invoice Details";
             // 
+            // totaltxt
+            // 
+            this.totaltxt.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.totaltxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totaltxt.Location = new System.Drawing.Point(168, 258);
+            this.totaltxt.Margin = new System.Windows.Forms.Padding(2);
+            this.totaltxt.Name = "totaltxt";
+            this.totaltxt.Size = new System.Drawing.Size(341, 27);
+            this.totaltxt.TabIndex = 17;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(68)))), ((int)(((byte)(114)))));
+            this.label7.Location = new System.Drawing.Point(36, 261);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(117, 22);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Total Amount";
+            // 
+            // supidtxt
+            // 
+            this.supidtxt.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.supidtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.supidtxt.Location = new System.Drawing.Point(168, 106);
+            this.supidtxt.Margin = new System.Windows.Forms.Padding(2);
+            this.supidtxt.Name = "supidtxt";
+            this.supidtxt.Size = new System.Drawing.Size(190, 27);
+            this.supidtxt.TabIndex = 15;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(68)))), ((int)(((byte)(114)))));
+            this.label6.Location = new System.Drawing.Point(36, 109);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(98, 22);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Supplier ID";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(141, 240);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker1.Location = new System.Drawing.Point(168, 70);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(341, 27);
             this.dateTimePicker1.TabIndex = 13;
@@ -84,7 +131,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(68)))), ((int)(((byte)(114)))));
-            this.label4.Location = new System.Drawing.Point(36, 244);
+            this.label4.Location = new System.Drawing.Point(36, 75);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 22);
@@ -95,17 +142,18 @@
             // 
             this.amounttxt.BackColor = System.Drawing.SystemColors.MenuBar;
             this.amounttxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.amounttxt.Location = new System.Drawing.Point(141, 199);
-            this.amounttxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.amounttxt.Location = new System.Drawing.Point(168, 182);
+            this.amounttxt.Margin = new System.Windows.Forms.Padding(2);
             this.amounttxt.Name = "amounttxt";
             this.amounttxt.Size = new System.Drawing.Size(341, 27);
             this.amounttxt.TabIndex = 11;
+            this.amounttxt.TextChanged += new System.EventHandler(this.amounttxt_TextChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(68)))), ((int)(((byte)(114)))));
-            this.label5.Location = new System.Drawing.Point(36, 202);
+            this.label5.Location = new System.Drawing.Point(36, 187);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(71, 22);
@@ -116,8 +164,8 @@
             // 
             this.invidtxt.BackColor = System.Drawing.Color.CornflowerBlue;
             this.invidtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.invidtxt.Location = new System.Drawing.Point(141, 46);
-            this.invidtxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.invidtxt.Location = new System.Drawing.Point(168, 31);
+            this.invidtxt.Margin = new System.Windows.Forms.Padding(2);
             this.invidtxt.Name = "invidtxt";
             this.invidtxt.ReadOnly = true;
             this.invidtxt.Size = new System.Drawing.Size(190, 27);
@@ -127,18 +175,19 @@
             // 
             this.qtytxt.BackColor = System.Drawing.SystemColors.MenuBar;
             this.qtytxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.qtytxt.Location = new System.Drawing.Point(141, 163);
-            this.qtytxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.qtytxt.Location = new System.Drawing.Point(168, 220);
+            this.qtytxt.Margin = new System.Windows.Forms.Padding(2);
             this.qtytxt.Name = "qtytxt";
             this.qtytxt.Size = new System.Drawing.Size(341, 27);
             this.qtytxt.TabIndex = 5;
+            this.qtytxt.TextChanged += new System.EventHandler(this.qtytxt_TextChanged);
             // 
             // itemtxt
             // 
             this.itemtxt.BackColor = System.Drawing.SystemColors.MenuBar;
             this.itemtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemtxt.Location = new System.Drawing.Point(141, 121);
-            this.itemtxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.itemtxt.Location = new System.Drawing.Point(168, 142);
+            this.itemtxt.Margin = new System.Windows.Forms.Padding(2);
             this.itemtxt.Name = "itemtxt";
             this.itemtxt.Size = new System.Drawing.Size(341, 27);
             this.itemtxt.TabIndex = 4;
@@ -147,7 +196,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(68)))), ((int)(((byte)(114)))));
-            this.label3.Location = new System.Drawing.Point(36, 165);
+            this.label3.Location = new System.Drawing.Point(36, 225);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 22);
@@ -158,7 +207,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(68)))), ((int)(((byte)(114)))));
-            this.label2.Location = new System.Drawing.Point(36, 124);
+            this.label2.Location = new System.Drawing.Point(36, 145);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 22);
@@ -169,7 +218,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(68)))), ((int)(((byte)(114)))));
-            this.label1.Location = new System.Drawing.Point(36, 48);
+            this.label1.Location = new System.Drawing.Point(36, 31);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 22);
@@ -181,21 +230,22 @@
             this.addbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.addbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addbtn.ForeColor = System.Drawing.Color.White;
-            this.addbtn.Location = new System.Drawing.Point(371, 298);
-            this.addbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addbtn.Location = new System.Drawing.Point(407, 322);
+            this.addbtn.Margin = new System.Windows.Forms.Padding(2);
             this.addbtn.Name = "addbtn";
             this.addbtn.Size = new System.Drawing.Size(131, 38);
             this.addbtn.TabIndex = 34;
             this.addbtn.Text = "Add";
             this.addbtn.UseVisualStyleBackColor = false;
+            this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
             // 
             // cancelbtn
             // 
             this.cancelbtn.BackColor = System.Drawing.Color.White;
             this.cancelbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
-            this.cancelbtn.Location = new System.Drawing.Point(263, 298);
-            this.cancelbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cancelbtn.Location = new System.Drawing.Point(299, 322);
+            this.cancelbtn.Margin = new System.Windows.Forms.Padding(2);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(104, 38);
             this.cancelbtn.TabIndex = 35;
@@ -208,47 +258,26 @@
             this.clearbtn.BackColor = System.Drawing.Color.White;
             this.clearbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
-            this.clearbtn.Location = new System.Drawing.Point(9, 298);
-            this.clearbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clearbtn.Location = new System.Drawing.Point(11, 322);
+            this.clearbtn.Margin = new System.Windows.Forms.Padding(2);
             this.clearbtn.Name = "clearbtn";
             this.clearbtn.Size = new System.Drawing.Size(118, 38);
             this.clearbtn.TabIndex = 37;
             this.clearbtn.Text = "Clear";
             this.clearbtn.UseVisualStyleBackColor = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(68)))), ((int)(((byte)(114)))));
-            this.label6.Location = new System.Drawing.Point(36, 88);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(98, 22);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Supplier ID";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // supidtxt
-            // 
-            this.supidtxt.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.supidtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.supidtxt.Location = new System.Drawing.Point(141, 85);
-            this.supidtxt.Margin = new System.Windows.Forms.Padding(2);
-            this.supidtxt.Name = "supidtxt";
-            this.supidtxt.Size = new System.Drawing.Size(190, 27);
-            this.supidtxt.TabIndex = 15;
+            this.clearbtn.Click += new System.EventHandler(this.clearbtn_Click);
             // 
             // SupplierInvoiceAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(511, 346);
+            this.ClientSize = new System.Drawing.Size(553, 366);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.addbtn);
             this.Controls.Add(this.cancelbtn);
             this.Controls.Add(this.clearbtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SupplierInvoiceAdd";
             this.Text = "Add Invoice";
             this.Load += new System.EventHandler(this.SupplierInvoiceAdd_Load);
@@ -276,5 +305,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox supidtxt;
+        private System.Windows.Forms.TextBox totaltxt;
+        private System.Windows.Forms.Label label7;
     }
 }

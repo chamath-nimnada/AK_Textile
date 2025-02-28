@@ -56,7 +56,6 @@ namespace AK_Textile
 
         private void button7_Click(object sender, EventArgs e)
         {
-            // Create an instance of the form and pass it to the method
             OpenSubForm(new SupplierInvoiceAdd(this));
         }
 

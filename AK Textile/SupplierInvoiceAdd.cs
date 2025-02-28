@@ -54,6 +54,7 @@ namespace AK_Textile
                 con.Close();
             }
         }
+
         private void SupplierInvoiceAdd_Load(object sender, EventArgs e)
         {
             autoincrement();
@@ -61,38 +62,51 @@ namespace AK_Textile
 
         private void cancelbtn_Click(object sender, EventArgs e)
         {
-            // Call the public method from InventoryCategory
-            //SupplierInvoice.RefreshDataGrid();
-            //not working
             this.Close();
+        }
+
+        private void Clear()
+        {
+            this.supidtxt.Clear();
+            dateTimePicker1.Value = DateTime.Today;
+            this.itemtxt.Clear();
+            this.qtytxt.Clear();
+            this.amounttxt.Clear();
+            //to focus the cursor back to the main field
+            supidtxt.Focus();
         }
 
         private void AddSupplierInvoice()
         {
-            con.Open();
-            SqlCommand cmd2 = new SqlCommand("INSERT INTO Supplier(SupID, SupName, SupAddress, SupEmail, SupContact) VALUES (@supid, @sname, @saddress, @smail, @scontact)", con);
-            cmd2.Parameters.AddWithValue("@supid", supidtxt.Text);
-            cmd2.Parameters.AddWithValue("@sname", nametxt.Text);
-            cmd2.Parameters.AddWithValue("@saddress", addresstxt.Text);
-            cmd2.Parameters.AddWithValue("@smail", emailtxt.Text);
-            cmd2.Parameters.AddWithValue("@supcontact", contacttxt.Text);
-
-
             try
             {
-                int r1 = cmd2.ExecuteNonQuery();
-                if (r1 > 0)
-                {
-                    MessageBox.Show("Supplier details added successfully !");
-                }
-                else
-                {
-                    MessageBox.Show("Error adding Supplier !");
-                }
+                // Get values from textboxes
+                string invoiceID = invidtxt.Text.Trim();
+                DateTime date = dateTimePicker1.Value;
+                string supplierID = supidtxt.Text.Trim();
+                string item = itemtxt.Text.Trim();
+                int quantity = int.Parse(qtytxt.Text.Trim());
+                decimal amount = decimal.Parse(amounttxt.Text.Trim());
+
+                // Calculate Total Amount
+                decimal totalAmount = quantity * amount;
+
+                con.Open();
+                SqlCommand cmd2 = new SqlCommand("INSERT INTO SupplierInvoice(SInvoiceID, SupID, SIDate, SIItem, SIQty, SITotalAmount, SIUnitPRice)" +
+                    " VALUES (@siid, @sid, @sdate, @sitem, @sqty, @stotal, @suprice)", con);
+                cmd2.Parameters.AddWithValue("@siid", invoiceID);
+                cmd2.Parameters.AddWithValue("@sid", supplierID);
+                cmd2.Parameters.AddWithValue("@sdate", date);
+                cmd2.Parameters.AddWithValue("@sitem", item);
+                cmd2.Parameters.AddWithValue("@sqty", quantity);
+                cmd2.Parameters.AddWithValue("@stotal", amount);
+
+                cmd2.ExecuteNonQuery();
+                MessageBox.Show("Invoice added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error" + ex.Message);
+                MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -100,11 +114,35 @@ namespace AK_Textile
             }
         }
 
-        private void Clear()
+        //method to calculate total
+        private void CalculateTotal()
         {
-            this.supidtxt.Clear();
-            this.itemtxt.Clear();
+            if (int.TryParse(qtytxt.Text.Trim(), out int quantity) && decimal.TryParse(amounttxt.Text.Trim(), out decimal amount))
+            {
+                totaltxt.Text = (quantity * amount).ToString("F2");
+            }
         }
-        //there are some questions talk with  chamath about that
+
+        private void clearbtn_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }
+
+        private void amounttxt_TextChanged(object sender, EventArgs e)
+        {
+            CalculateTotal();
+        }
+
+        private void qtytxt_TextChanged(object sender, EventArgs e)
+        {
+            CalculateTotal();
+        }
+
+        private void addbtn_Click(object sender, EventArgs e)
+        {
+            AddSupplierInvoice();
+        }
     }
 }
+
+
