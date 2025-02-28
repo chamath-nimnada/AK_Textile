@@ -14,7 +14,9 @@ namespace AK_Textile
     public partial class InventoryInventory : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;Initial Catalog=AK-Textiles;Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;
+                                        Initial Catalog=AKTextilesDB;
+                                        Integrated Security=True;");
         public InventoryInventory(MainForm mainForm)
         {
             InitializeComponent();
@@ -25,7 +27,7 @@ namespace AK_Textile
         private void LoadAllInventory() 
         {
             // SQL query to fetch all data from the Product table
-            string query = "SELECT * FROM InventoryDataFile";
+            string query = "SELECT * FROM Inventory";
             {
                 try
                 {
@@ -116,9 +118,43 @@ namespace AK_Textile
             }
         }
 
+        private void OpenSubForm(Form subForm)
+        {
+            Form formBackground = new Form(); // Initialize background form
+
+            try
+            {
+                formBackground.StartPosition = FormStartPosition.Manual;
+                formBackground.FormBorderStyle = FormBorderStyle.None;
+                formBackground.Opacity = .50d;
+                formBackground.BackColor = Color.Black;
+                formBackground.WindowState = FormWindowState.Maximized;
+                formBackground.TopMost = true;
+                formBackground.Location = this.Location;
+                formBackground.ShowInTaskbar = false;
+                formBackground.Show();
+
+                // Set the background form as the owner of the subform
+                subForm.Owner = formBackground;
+
+                // Show the subform as a dialog
+                subForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                // Dispose both forms
+                formBackground.Dispose();
+                subForm.Dispose();
+            }
+        }
+
         private void button9_Click(object sender, EventArgs e)
         {
-            
+            OpenSubForm(new InventoryInventoryAdd(this));
         }
 
         private void InventoryInventory_Load(object sender, EventArgs e)

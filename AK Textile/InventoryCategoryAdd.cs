@@ -16,7 +16,9 @@ namespace AK_Textile
     {
         private InventoryCategory inventoryCategoryForm; // Reference to Inventory Category
 
-        SqlConnection con = new SqlConnection("Data Source=DESKTOP-93ORV8S;Initial Catalog=AK-Textiles;Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;
+                                        Initial Catalog=AKTextilesDB;
+                                        Integrated Security=True;");
         public InventoryCategoryAdd(InventoryCategory inventoryCategoryForm)
         {
             InitializeComponent();

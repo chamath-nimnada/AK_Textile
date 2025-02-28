@@ -14,7 +14,9 @@ namespace AK_Textile
     public partial class InventoryProduct : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;Initial Catalog=AK-Textiles;Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;
+                                        Initial Catalog=AKTextilesDB;
+                                        Integrated Security=True;");
         public InventoryProduct(MainForm mainForm)
         {
             InitializeComponent();
