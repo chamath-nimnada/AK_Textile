@@ -182,5 +182,10 @@ namespace AK_Textile
         {
             mainForm.LoadForm(new EmpManagerDashboard(mainForm));
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
     }
 }

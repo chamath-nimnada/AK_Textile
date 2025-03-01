@@ -92,6 +92,7 @@
             this.button1.TabIndex = 27;
             this.button1.Text = "Cancel";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button9
             // 
@@ -104,6 +105,7 @@
             this.button9.TabIndex = 28;
             this.button9.Text = "Remove";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // EmpManagerLeaveRemove
             // 

@@ -66,6 +66,7 @@
             this.button6.TabIndex = 10;
             this.button6.Text = "Clear";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
             // 
@@ -78,6 +79,7 @@
             this.button5.TabIndex = 5;
             this.button5.Text = "Search";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // textBox1
             // 
@@ -99,6 +101,7 @@
             this.button1.TabIndex = 19;
             this.button1.Text = "Cancel";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button9
             // 
@@ -111,6 +114,7 @@
             this.button9.TabIndex = 20;
             this.button9.Text = "Remove";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // groupBox2
             // 
@@ -134,7 +138,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(738, 101);
             this.dataGridView1.TabIndex = 0;
             // 
-            // Form1
+            // EmployeeLeaveRemove
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -144,7 +148,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button9);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Form1";
+            this.Name = "EmployeeLeaveRemove";
             this.Text = "Remove the Leave";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

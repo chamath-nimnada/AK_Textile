@@ -132,5 +132,24 @@ namespace AK_Textile
                 formBackground.Dispose();
             }
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            private void btnSearch_Click(object sender, EventArgs e)
+            {
+                string salaryId = txtSalaryId.Text;
+
+                if (!string.IsNullOrEmpty(salaryId))
+                {
+                    // Example: Replace this with actual search logic (e.g., database query)
+                    rtbResult.Text = $"Searching for Salary ID: {salaryId}\nResult: [Sample Data]";
+                }
+                else
+                {
+                    rtbResult.Text = "Please enter a Salary ID.";
+                }
+            }
+
+        }
     }
 }
