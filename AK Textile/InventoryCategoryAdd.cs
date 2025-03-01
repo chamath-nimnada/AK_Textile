@@ -46,8 +46,8 @@ namespace AK_Textile
                     this.catID.Text = newID;
                 }
                 dr1.Close();
-                con.Close();
             }
+            con.Close();
         }
         private void AddCategory()
         {

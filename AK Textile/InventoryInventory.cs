@@ -57,6 +57,10 @@ namespace AK_Textile
                 con.Close();
             }
         }
+        public void RefreshDataGrid()
+        {
+            LoadAllInventory();
+        }
 
         private void SearchInventoryItem() 
         {

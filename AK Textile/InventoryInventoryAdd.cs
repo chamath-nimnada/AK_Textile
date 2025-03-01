@@ -28,24 +28,40 @@ namespace AK_Textile
         }
         private void AutoGenerateID()
         {
-            con.Open();
-            SqlCommand cmd1 = new SqlCommand("SELECT MAX(InvID) FROM Inventory", con);
-            SqlDataReader dr1 = cmd1.ExecuteReader();
-
-            if (dr1.Read())
+            try
             {
-                if (dr1[0] == DBNull.Value)
+                con.Open();
+                SqlCommand cmd1 = new SqlCommand("SELECT MAX(InvID) FROM Inventory", con);
+                SqlDataReader dr1 = cmd1.ExecuteReader();
+
+                if (dr1.Read())
                 {
-                    this.invID.Text = "INV001";
-                }
-                else
-                {
-                    string maxID = dr1[0].ToString();
-                    int numericPart = int.Parse(maxID.Substring(3)); // Extract "001" and convert to integer
-                    string newID = "INV" + (numericPart + 1).ToString("D3"); // Increment and format as "SUPXXX"
-                    this.invID.Text = newID;
+                    if (dr1[0] == DBNull.Value)
+                    {
+                        this.invID.Text = "INV001";
+                    }
+                    else
+                    {
+                        string maxID = dr1[0].ToString();
+                        if (maxID.StartsWith("INV") && int.TryParse(maxID.Substring(3), out int numericPart))
+                        {
+                            string newID = "INV" + (numericPart + 1).ToString("D3"); // Increment and format as "INVXXX"
+                            this.invID.Text = newID;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid ID format in database.");
+                        }
+                    }
                 }
                 dr1.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error generating ID: " + ex.Message);
+            }
+            finally
+            {
                 con.Close();
             }
         }
@@ -83,16 +99,16 @@ namespace AK_Textile
         private void button8_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(invID.Text) ||
-        string.IsNullOrWhiteSpace(itemName.Text) ||
-        string.IsNullOrWhiteSpace(itemQty.Text) ||
-        invCategory.SelectedIndex == -1 ||
-        stkLevel.SelectedIndex == -1)
+                string.IsNullOrWhiteSpace(itemName.Text) ||
+                string.IsNullOrWhiteSpace(itemQty.Text) ||
+                invCategory.SelectedIndex == -1 ||
+                stkLevel.SelectedIndex == -1)
             {
                 MessageBox.Show("Please fill all fields.");
                 return;
             }
 
-            int categoryID = Convert.ToInt32(invCategory.SelectedValue);
+            string categoryID = invCategory.SelectedValue.ToString();
             string stockLevel = stkLevel.SelectedItem.ToString();
 
             // Validate itemQty before conversion
@@ -104,33 +120,43 @@ namespace AK_Textile
 
             try
             {
+                string query = "INSERT INTO Inventory (InvCatID, InvID, InvItemName, InvQty, DateAdded, InvStockLevel) " +
+                               "VALUES (@InvCatID, @InvID, @InvItemName, @InvQty, @DateAdded, @InvStockLevel)";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
                 {
-                    string query = "INSERT INTO Inventory (InvCatID, InvID, InvItemName, InvQty, DateAdded, InvStockLevel) " +
-                                   "VALUES (@InvCatID, @InvID, @InvItemName, @InvQty, @DateAdded, @InvStockLevel)";
+                    cmd.Parameters.AddWithValue("@InvCatID", categoryID);
+                    cmd.Parameters.AddWithValue("@InvID", invID.Text);
+                    cmd.Parameters.AddWithValue("@InvItemName", itemName.Text);
+                    cmd.Parameters.AddWithValue("@InvQty", quantity); // Now it's a valid integer
+                    cmd.Parameters.AddWithValue("@DateAdded", dateTimePicker.Value);
+                    cmd.Parameters.AddWithValue("@InvStockLevel", stockLevel);
 
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    {
-                        cmd.Parameters.AddWithValue("@InvCatID", categoryID);
-                        cmd.Parameters.AddWithValue("@InvID", invID.Text);
-                        cmd.Parameters.AddWithValue("@InvItemName", itemName.Text);
-                        cmd.Parameters.AddWithValue("@InvQty", quantity); // Now it's a valid integer
-                        cmd.Parameters.AddWithValue("@DateAdded", dateTimePicker.Value);
-                        cmd.Parameters.AddWithValue("@InvStockLevel", stockLevel);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Data added successfully.");
 
-                        con.Open();
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Data added successfully.");
-                    }
+                    AutoGenerateID();
+                    itemName.Clear();
+                    itemQty.Clear();
+                    dateTimePicker.Value = DateTime.Now;
+                    invCategory.SelectedIndex = -1;
+                    stkLevel.SelectedIndex = -1;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
+            finally
+            {
+                con.Close();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            inventoryInventoryForm.RefreshDataGrid();
             this.Close();
         }
 
