@@ -57,17 +57,17 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 14);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(822, 104);
+            this.groupBox1.Size = new System.Drawing.Size(661, 104);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Enter the Material ID or Name";
+            this.groupBox1.Text = "Enter the Inventory ID or Item Name";
             // 
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.White;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
-            this.button6.Location = new System.Drawing.Point(664, 40);
+            this.button6.Location = new System.Drawing.Point(522, 40);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(128, 37);
             this.button6.TabIndex = 10;
@@ -79,7 +79,7 @@
             this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(499, 40);
+            this.button5.Location = new System.Drawing.Point(357, 40);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(159, 37);
             this.button5.TabIndex = 5;
@@ -92,7 +92,7 @@
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(53, 42);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(381, 32);
+            this.textBox1.Size = new System.Drawing.Size(293, 32);
             this.textBox1.TabIndex = 0;
             // 
             // button1
@@ -100,7 +100,7 @@
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
-            this.button1.Location = new System.Drawing.Point(440, 479);
+            this.button1.Location = new System.Drawing.Point(279, 479);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(177, 47);
             this.button1.TabIndex = 19;
@@ -112,7 +112,7 @@
             this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(639, 479);
+            this.button8.Location = new System.Drawing.Point(478, 479);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(195, 47);
             this.button8.TabIndex = 15;
@@ -133,7 +133,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 133);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(822, 321);
+            this.groupBox2.Size = new System.Drawing.Size(661, 321);
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Update Details";
@@ -145,7 +145,7 @@
             this.textBox5.Location = new System.Drawing.Point(190, 205);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(604, 94);
+            this.textBox5.Size = new System.Drawing.Size(460, 94);
             this.textBox5.TabIndex = 28;
             // 
             // textBox4
@@ -154,7 +154,7 @@
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox4.Location = new System.Drawing.Point(188, 157);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(604, 32);
+            this.textBox4.Size = new System.Drawing.Size(460, 32);
             this.textBox4.TabIndex = 5;
             // 
             // label4
@@ -173,7 +173,7 @@
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox3.Location = new System.Drawing.Point(188, 106);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(604, 32);
+            this.textBox3.Size = new System.Drawing.Size(460, 32);
             this.textBox3.TabIndex = 4;
             // 
             // textBox2
@@ -182,7 +182,7 @@
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(188, 56);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(604, 32);
+            this.textBox2.Size = new System.Drawing.Size(460, 32);
             this.textBox2.TabIndex = 3;
             // 
             // label3
@@ -227,19 +227,19 @@
             this.button2.Text = "Clear";
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // InventoryRawUpdate
+            // InventoryInventoryUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(846, 538);
+            this.ClientSize = new System.Drawing.Size(683, 538);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "InventoryRawUpdate";
-            this.Text = "Update Raw Materials";
+            this.Name = "InventoryInventoryUpdate";
+            this.Text = "Update Item Data";
             this.TopMost = true;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

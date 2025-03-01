@@ -135,6 +135,7 @@ namespace AK_Textile
                     con.Open();
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Data added successfully.");
+                    con.Close();
 
                     AutoGenerateID();
                     itemName.Clear();

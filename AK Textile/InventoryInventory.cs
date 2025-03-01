@@ -75,8 +75,11 @@ namespace AK_Textile
             }
 
             // SQL query to fetch data based on PID or Pname
-            string query = @"SELECT * FROM InventoryCategory
-                             WHERE InvCatID = @SearchValue OR InvCategory LIKE '%' + @SearchValue + '%'";
+            string query = @"SELECT Inventory.*
+                                FROM Inventory
+                                JOIN InventoryCategory ON Inventory.InvCatID = InventoryCategory.InvCatID
+                                WHERE Inventory.InvID = @SearchValue 
+                                   OR InventoryCategory.InvCategory LIKE '%' + @SearchValue + '%'";
 
             {
                 try
@@ -216,12 +219,12 @@ namespace AK_Textile
 
         private void button6_Click(object sender, EventArgs e)
         {
-            
+            OpenSubForm(new InventoryInventoryRemove(this));
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            
+            //OpenSubForm(new InventoryInventoryUpdate(this));
         }
     }
 }

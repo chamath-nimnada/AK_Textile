@@ -164,6 +164,7 @@
             this.Name = "InventoryCategoryRemove";
             this.Text = "Remove Item";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.InventoryCategoryRemove_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);

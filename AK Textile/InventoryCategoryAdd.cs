@@ -28,42 +28,66 @@ namespace AK_Textile
 
         private void AutoGenerateID()
         {
-            con.Open();
-            SqlCommand cmd1 = new SqlCommand("SELECT MAX(InvCatID) FROM InventoryCategory", con);
-            SqlDataReader dr1 = cmd1.ExecuteReader();
-
-            if (dr1.Read())
+            try
             {
-                if (dr1[0] == DBNull.Value)
+                con.Open();
+                SqlCommand cmd1 = new SqlCommand("SELECT MAX(InvCatID) FROM InventoryCategory", con);
+                SqlDataReader dr1 = cmd1.ExecuteReader();
+                if (dr1.Read())
                 {
-                    this.catID.Text = "INC001";
+                    if (dr1[0] == DBNull.Value)
+                    {
+                        this.catID.Text = "INC001";
+                    }
+                    else
+                    {
+                        string maxID = dr1[0].ToString();
+                        int numericPart = int.Parse(maxID.Substring(3)); // Extract "001" and convert to integer
+                        string newID = "INC" + (numericPart + 1).ToString("D3"); // Increment and format as "SUPXXX"
+                        this.catID.Text = newID;
+                    }
+                    dr1.Close();
                 }
-                else
-                {
-                    string maxID = dr1[0].ToString();
-                    int numericPart = int.Parse(maxID.Substring(3)); // Extract "001" and convert to integer
-                    string newID = "INC" + (numericPart + 1).ToString("D3"); // Increment and format as "SUPXXX"
-                    this.catID.Text = newID;
-                }
-                dr1.Close();
             }
-            con.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
         }
         private void AddCategory()
         {
             string catID = this.catID.Text;
             string categoryName = textBox3.Text;
 
-            con.Open();
-            SqlCommand cmd = new SqlCommand("INSERT INTO InventoryCategory (InvCatID, InvCategory) VALUES (@catID, @categoryName)", con);
-            cmd.Parameters.AddWithValue("@catID", catID);
-            cmd.Parameters.AddWithValue("@categoryName", categoryName);
-            cmd.ExecuteNonQuery();
-            con.Close();
-
-            MessageBox.Show("Category added successfully!");
-            textBox3.Text = string.Empty;
-            AutoGenerateID();
+            try
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("INSERT INTO InventoryCategory (InvCatID, InvCategory) VALUES (@catID, @categoryName)", con);
+                cmd.Parameters.AddWithValue("@catID", catID);
+                cmd.Parameters.AddWithValue("@categoryName", categoryName);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Category added successfully!");
+                textBox3.Text = string.Empty;
+                AutoGenerateID();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
         }
 
         private void button8_Click(object sender, EventArgs e)

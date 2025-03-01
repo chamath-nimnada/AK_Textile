@@ -127,5 +127,10 @@ namespace AK_Textile
 
             this.Close();
         }
+
+        private void InventoryCategoryRemove_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
