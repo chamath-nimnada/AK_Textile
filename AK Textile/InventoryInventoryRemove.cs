@@ -11,17 +11,33 @@ using System.Windows.Forms;
 
 namespace AK_Textile
 {
-    public partial class InventoryCategoryRemove : Form
+    public partial class InventoryInventoryRemove : Form
     {
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;
                                         Initial Catalog=AKTextilesDB;
                                         Integrated Security=True;");
 
-        private InventoryCategory inventoryCategoryForm; // Reference to Inventory Category
-        public InventoryCategoryRemove(InventoryCategory inventoryCategoryForm)
+        private InventoryInventory inventoryInventoryForm;
+        public InventoryInventoryRemove(InventoryInventory inventoryInventoryForm)
         {
             InitializeComponent();
-            this.inventoryCategoryForm = inventoryCategoryForm;
+            this.inventoryInventoryForm = inventoryInventoryForm;
+        }
+
+        private void clearAll()
+        {
+            // Clear the text box
+            txtSearch.Text = string.Empty;
+
+            // Clear the data grid view
+            dataGridView1.DataSource = null;
+            dataGridView1.Rows.Clear();
+            dataGridView1.Columns.Clear();
+        }
+
+        private void InventoryInventoryRemove_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -33,7 +49,7 @@ namespace AK_Textile
                     connection.Open();
 
                     // SQL Query to search data
-                    string query = "SELECT * FROM InventoryCategory WHERE InvCatID LIKE @search OR InvCategory LIKE @search";
+                    string query = "SELECT * FROM Inventory WHERE InvID LIKE @search OR InvItemName LIKE @search";
 
                     using (SqlCommand cmd = new SqlCommand(query, connection))
                     {
@@ -61,7 +77,7 @@ namespace AK_Textile
             if (dataGridView1.SelectedRows.Count > 0) // Check if a row is selected
             {
                 // Get the CategoryID of the selected row (as a string)
-                string selectedCategoryID = dataGridView1.SelectedRows[0].Cells["InvCatID"].Value.ToString();
+                string selectedID = dataGridView1.SelectedRows[0].Cells["InvID"].Value.ToString();
 
                 try
                 {
@@ -70,11 +86,11 @@ namespace AK_Textile
                         connection.Open();
 
                         // SQL Query to delete data
-                        string deleteQuery = "DELETE FROM InventoryCategory WHERE InvCatID = @InvCatID";
+                        string deleteQuery = "DELETE FROM Inventory WHERE InvID = @InvID";
 
                         using (SqlCommand cmd = new SqlCommand(deleteQuery, connection))
                         {
-                            cmd.Parameters.AddWithValue("@InvCatID", selectedCategoryID);
+                            cmd.Parameters.AddWithValue("@InvID", selectedID);
 
                             // Execute the delete command
                             int result = cmd.ExecuteNonQuery();
@@ -87,9 +103,9 @@ namespace AK_Textile
                                 button9.PerformClick();
 
                                 // Call the public method from InventoryCategory
-                                inventoryCategoryForm.RefreshDataGrid();
+                                inventoryInventoryForm.RefreshDataGrid();
+                                clearAll();
 
-                                this.Close();
                             }
                             else
                             {
@@ -106,31 +122,19 @@ namespace AK_Textile
             else
             {
                 MessageBox.Show("Please select a record to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
             }
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            // Clear the text box
-            txtSearch.Text = string.Empty;
-
-            // Clear the data grid view
-            dataGridView1.DataSource = null;
-            dataGridView1.Rows.Clear();
-            dataGridView1.Columns.Clear();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Call the public method from InventoryCategory
-            inventoryCategoryForm.RefreshDataGrid(); 
-
+            inventoryInventoryForm.RefreshDataGrid();
             this.Close();
         }
 
-        private void InventoryCategoryRemove_Load(object sender, EventArgs e)
+        private void button6_Click(object sender, EventArgs e)
         {
-
+            clearAll();
         }
     }
 }
