@@ -16,9 +16,16 @@ namespace AK_Textile
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;
                                         Initial Catalog=AKTextilesDB;
                                         Integrated Security=True;");
+
+
         public InventoryInventoryUpdate()
         {
             InitializeComponent();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

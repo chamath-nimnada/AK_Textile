@@ -31,19 +31,19 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.stkLevel = new System.Windows.Forms.ComboBox();
+            this.invCategory = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.itemQty = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.itemName = new System.Windows.Forms.TextBox();
             this.invID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.itemQty = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.invCategory = new System.Windows.Forms.ComboBox();
-            this.stkLevel = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,6 +95,72 @@
             this.groupBox2.TabIndex = 24;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Add Material Details";
+            // 
+            // dateTimePicker
+            // 
+            this.dateTimePicker.Location = new System.Drawing.Point(188, 258);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(339, 32);
+            this.dateTimePicker.TabIndex = 13;
+            // 
+            // stkLevel
+            // 
+            this.stkLevel.FormattingEnabled = true;
+            this.stkLevel.Items.AddRange(new object[] {
+            "Low",
+            "Normal",
+            "High"});
+            this.stkLevel.Location = new System.Drawing.Point(188, 311);
+            this.stkLevel.Name = "stkLevel";
+            this.stkLevel.Size = new System.Drawing.Size(339, 34);
+            this.stkLevel.TabIndex = 12;
+            // 
+            // invCategory
+            // 
+            this.invCategory.FormattingEnabled = true;
+            this.invCategory.Location = new System.Drawing.Point(188, 109);
+            this.invCategory.Name = "invCategory";
+            this.invCategory.Size = new System.Drawing.Size(339, 34);
+            this.invCategory.TabIndex = 11;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(68)))), ((int)(((byte)(114)))));
+            this.label6.Location = new System.Drawing.Point(48, 314);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(125, 26);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Stock Level";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(68)))), ((int)(((byte)(114)))));
+            this.label5.Location = new System.Drawing.Point(48, 263);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 26);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Date";
+            // 
+            // itemQty
+            // 
+            this.itemQty.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.itemQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemQty.Location = new System.Drawing.Point(188, 207);
+            this.itemQty.Name = "itemQty";
+            this.itemQty.Size = new System.Drawing.Size(339, 32);
+            this.itemQty.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(68)))), ((int)(((byte)(114)))));
+            this.label4.Location = new System.Drawing.Point(48, 210);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(93, 26);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Quantity";
             // 
             // itemName
             // 
@@ -158,72 +224,6 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // itemQty
-            // 
-            this.itemQty.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.itemQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemQty.Location = new System.Drawing.Point(188, 207);
-            this.itemQty.Name = "itemQty";
-            this.itemQty.Size = new System.Drawing.Size(339, 32);
-            this.itemQty.TabIndex = 7;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(68)))), ((int)(((byte)(114)))));
-            this.label4.Location = new System.Drawing.Point(48, 210);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(93, 26);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Quantity";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(68)))), ((int)(((byte)(114)))));
-            this.label5.Location = new System.Drawing.Point(48, 263);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 26);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Date";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(68)))), ((int)(((byte)(114)))));
-            this.label6.Location = new System.Drawing.Point(48, 314);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(125, 26);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Stock Level";
-            // 
-            // invCategory
-            // 
-            this.invCategory.FormattingEnabled = true;
-            this.invCategory.Location = new System.Drawing.Point(188, 109);
-            this.invCategory.Name = "invCategory";
-            this.invCategory.Size = new System.Drawing.Size(339, 34);
-            this.invCategory.TabIndex = 11;
-            // 
-            // stkLevel
-            // 
-            this.stkLevel.FormattingEnabled = true;
-            this.stkLevel.Items.AddRange(new object[] {
-            "Low",
-            "Normal",
-            "High"});
-            this.stkLevel.Location = new System.Drawing.Point(188, 311);
-            this.stkLevel.Name = "stkLevel";
-            this.stkLevel.Size = new System.Drawing.Size(339, 34);
-            this.stkLevel.TabIndex = 12;
-            // 
-            // dateTimePicker
-            // 
-            this.dateTimePicker.Location = new System.Drawing.Point(188, 258);
-            this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(339, 32);
-            this.dateTimePicker.TabIndex = 13;
-            // 
             // InventoryInventoryAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -235,7 +235,7 @@
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "InventoryInventoryAdd";
-            this.Text = "Add Materials";
+            this.Text = "Add Items";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.InventoryInventoryAdd_Load);
             this.groupBox2.ResumeLayout(false);
