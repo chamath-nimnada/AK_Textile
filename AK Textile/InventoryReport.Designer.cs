@@ -32,10 +32,10 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -100,32 +100,6 @@
             this.crystalReportViewer1.Size = new System.Drawing.Size(924, 376);
             this.crystalReportViewer1.TabIndex = 0;
             // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
-            this.button6.Location = new System.Drawing.Point(769, 38);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(206, 38);
-            this.button6.TabIndex = 28;
-            this.button6.Text = "Clear";
-            this.button6.UseVisualStyleBackColor = false;
-            // 
-            // button10
-            // 
-            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
-            this.button10.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.ForeColor = System.Drawing.Color.White;
-            this.button10.Location = new System.Drawing.Point(439, 35);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(324, 44);
-            this.button10.TabIndex = 27;
-            this.button10.Text = "Generate";
-            this.button10.UseVisualStyleBackColor = false;
-            // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
@@ -152,6 +126,32 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(315, 34);
             this.comboBox2.TabIndex = 1;
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.White;
+            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
+            this.button6.Location = new System.Drawing.Point(769, 38);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(206, 38);
+            this.button6.TabIndex = 28;
+            this.button6.Text = "Clear";
+            this.button6.UseVisualStyleBackColor = false;
+            // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
+            this.button10.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.ForeColor = System.Drawing.Color.White;
+            this.button10.Location = new System.Drawing.Point(439, 35);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(324, 44);
+            this.button10.TabIndex = 27;
+            this.button10.Text = "Generate";
+            this.button10.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 
@@ -276,13 +276,13 @@
             // 
             this.button3.BackColor = System.Drawing.Color.White;
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.button3.Location = new System.Drawing.Point(25, 201);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(195, 52);
             this.button3.TabIndex = 52;
-            this.button3.Text = "Raw Materials";
+            this.button3.Text = "Inventory Category";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 

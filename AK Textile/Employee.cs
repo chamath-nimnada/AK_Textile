@@ -135,9 +135,7 @@ namespace AK_Textile
 
         private void button10_Click(object sender, EventArgs e)
         {
-            private void btnSearch_Click(object sender, EventArgs e)
-            {
-                string salaryId = txtSalaryId.Text;
+                /*string salaryId = txtSalaryId.Text;
 
                 if (!string.IsNullOrEmpty(salaryId))
                 {
@@ -147,9 +145,8 @@ namespace AK_Textile
                 else
                 {
                     rtbResult.Text = "Please enter a Salary ID.";
-                }
-            }
-
+                }*/
         }
+
     }
 }

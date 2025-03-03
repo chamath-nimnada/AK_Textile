@@ -31,12 +31,10 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textSearch = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.stkLevel = new System.Windows.Forms.ComboBox();
@@ -49,8 +47,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,14 +55,14 @@
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(224)))), ((int)(((byte)(229)))));
             this.groupBox1.Controls.Add(this.button6);
             this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.textSearch);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 14);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(638, 104);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Enter the Item Name";
+            this.groupBox1.Text = "Enter the Item ID";
             // 
             // button6
             // 
@@ -93,21 +89,21 @@
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // textBox1
+            // textSearch
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(53, 42);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(293, 32);
-            this.textBox1.TabIndex = 0;
+            this.textSearch.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textSearch.Location = new System.Drawing.Point(53, 42);
+            this.textSearch.Name = "textSearch";
+            this.textSearch.Size = new System.Drawing.Size(293, 32);
+            this.textSearch.TabIndex = 0;
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
-            this.button1.Location = new System.Drawing.Point(272, 620);
+            this.button1.Location = new System.Drawing.Point(272, 467);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(177, 47);
             this.button1.TabIndex = 19;
@@ -119,46 +115,25 @@
             this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(455, 620);
+            this.button8.Location = new System.Drawing.Point(455, 467);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(195, 47);
             this.button8.TabIndex = 15;
             this.button8.Text = "Update";
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.White;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
-            this.button2.Location = new System.Drawing.Point(12, 620);
+            this.button2.Location = new System.Drawing.Point(12, 467);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(177, 47);
             this.button2.TabIndex = 26;
             this.button2.Text = "Clear";
             this.button2.UseVisualStyleBackColor = false;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox3.Controls.Add(this.dataGridView1);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(12, 124);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(638, 142);
-            this.groupBox3.TabIndex = 34;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Selected Item";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(53, 36);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(543, 75);
-            this.dataGridView1.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -174,7 +149,7 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 283);
+            this.groupBox2.Location = new System.Drawing.Point(12, 130);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(638, 321);
             this.groupBox2.TabIndex = 18;
@@ -280,8 +255,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(660, 682);
-            this.Controls.Add(this.groupBox3);
+            this.ClientSize = new System.Drawing.Size(660, 525);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button8);
@@ -291,10 +265,9 @@
             this.Name = "InventoryInventoryUpdate";
             this.Text = "Update Item Data";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.InventoryInventoryUpdate_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -306,12 +279,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textSearch;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DateTimePicker dateTimePicker;
         private System.Windows.Forms.ComboBox stkLevel;

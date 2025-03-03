@@ -22,6 +22,7 @@ namespace AK_Textile
             InitializeComponent();
             this.mainForm = mainForm;
             LoadAllSuppliers();
+            LoadAllSupplierOrder(); 
         }
 
         private void LoadAllSuppliers()
@@ -47,6 +48,39 @@ namespace AK_Textile
 
                         // Adjust columns to fit the grid width
                         dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred while loading data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                con.Close();
+            }
+        }
+
+        private void LoadAllSupplierOrder()
+        {
+            // SQL query to fetch all data from the Supplier table
+            string query = "SELECT SPO.* FROM SupplierPurchaseOrder SPO INNER JOIN Supplier S ON SPO.SupID = S.SupID;";
+            {
+                try
+                {
+                    // Open the connection
+                    con.Open();
+
+                    // Create the SQL command
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        // Execute the query and load the results into a DataTable
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        // Bind the DataTable to the DataGridView
+                        dataGridView2.DataSource = dataTable;
+
+                        // Adjust columns to fit the grid width
+                        dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     }
                 }
                 catch (Exception ex)
@@ -129,17 +163,10 @@ namespace AK_Textile
             }
 
             //Purchase Orders
-            string query2 = @"
-                                SELECT 
-                                    po.SPOrderID, 
-                                    po.POrderID, 
-                                    po.IssuedDate 
-                                FROM 
-                                    SupplierPurchaseOrder po
-                                INNER JOIN 
-                                    Supplier s ON po.SupID = s.SupID
-                                WHERE 
-                                    s.SupID = @SearchValue OR s.SupName LIKE '%' + @SearchValue + '%'";
+            string query2 = @"SELECT SPO.*
+                                FROM SupplierPurchaseOrder SPO
+                                INNER JOIN Supplier S ON SPO.SupID = S.SupID
+                                WHERE S.SupID = @SearchValue OR S.SupName LIKE '%' + @SearchValue + '%'";
             {
                 try
                 {

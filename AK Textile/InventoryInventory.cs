@@ -224,7 +224,7 @@ namespace AK_Textile
 
         private void button7_Click(object sender, EventArgs e)
         {
-            //OpenSubForm(new InventoryInventoryUpdate(this));
+            OpenSubForm(new InventoryInventoryUpdate(this));
         }
     }
 }

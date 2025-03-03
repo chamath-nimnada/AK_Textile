@@ -19,9 +19,8 @@ namespace AK_Textile
 
         private void button5_Click(object sender, EventArgs e)
         {
-            private void btnSearch_Click(object sender, EventArgs e)
-            {
-                string leaveId = txtLeaveId.Text; // Assuming txtLeaveId is the TextBox for entering Leave ID.
+
+                /*string leaveId = txtLeaveId.Text; // Assuming txtLeaveId is the TextBox for entering Leave ID.
 
                 if (!string.IsNullOrEmpty(leaveId))
                 {
@@ -32,34 +31,28 @@ namespace AK_Textile
                 {
                     rtbSelectedLeave.Text = "Please enter a valid Leave ID.";
                 }
-            }
+            }*/
 
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            private void btnClear_Click(object sender, EventArgs e)
-            {
-                txtLeaveId.Clear();        // Clear the Leave ID input box.
-                rtbSelectedLeave.Clear();  // Clear the result display area.
-            }
+                /*txtLeaveId.Clear();        // Clear the Leave ID input box.
+                rtbSelectedLeave.Clear();  // Clear the result display area.*/
+        
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            private void btnCancel_Click(object sender, EventArgs e)
-            {
-                this.Close(); // Close the current form or dialog.
-            }
+                /*this.Close(); // Close the current form or dialog.*/
+            
 
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            private void btnRemove_Click(object sender, EventArgs e)
-            {
-                string leaveId = txtLeaveId.Text;
+                /*string leaveId = txtLeaveId.Text;
 
                 if (!string.IsNullOrEmpty(leaveId))
                 {
@@ -73,8 +66,7 @@ namespace AK_Textile
                 else
                 {
                     MessageBox.Show("Please enter a valid Leave ID to remove.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
+                }*/
 
         }
     }
