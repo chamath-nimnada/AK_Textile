@@ -16,5 +16,10 @@ namespace AK_Textile
         {
             InitializeComponent();
         }
+
+        private void InventoryRawRemove_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -48,5 +48,10 @@ namespace AK_Textile
         {
             mainForm.LoadForm(new LoginForm(mainForm));
         }
+
+        private void FinanceDashboard_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

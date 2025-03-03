@@ -16,5 +16,10 @@ namespace AK_Textile
         {
             InitializeComponent();
         }
+
+        private void EmployeeLeaveUpdate_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

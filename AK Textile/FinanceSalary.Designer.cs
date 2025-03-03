@@ -322,6 +322,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FinanceSalary";
             this.Text = "Form4";
+            this.Load += new System.EventHandler(this.FinanceSalary_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

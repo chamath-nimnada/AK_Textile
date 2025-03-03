@@ -16,7 +16,7 @@ namespace AK_Textile
     {
        
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-1AMUUF3;Initial Catalog=Textiles;Integrated Security=True;Encrypt=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-1AMUUF3;Initial Catalog=AKTextilesDB;Integrated Security=True;");
         public FinanceOrder(MainForm mainForm)
         {
             InitializeComponent();

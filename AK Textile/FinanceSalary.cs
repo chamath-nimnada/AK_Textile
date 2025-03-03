@@ -14,7 +14,7 @@ namespace AK_Textile
     public partial class FinanceSalary : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-1AMUUF3;Initial Catalog=Textiles;Integrated Security=True;Encrypt=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-1AMUUF3;Initial Catalog=AKTextilesDB;Integrated Security=True;");
         public FinanceSalary(MainForm mainForm)
         {
             InitializeComponent();
@@ -145,6 +145,11 @@ namespace AK_Textile
                     MessageBox.Show("An error occurred while fetching data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void FinanceSalary_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

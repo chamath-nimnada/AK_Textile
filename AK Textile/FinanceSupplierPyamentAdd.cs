@@ -15,7 +15,7 @@ namespace AK_Textile
     public partial class FinanceSupplierPyamentAdd : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-1AMUUF3;Initial Catalog=""new database"";Integrated Security=True;"); // Update with your actual connection string
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-1AMUUF3;Initial Catalog=AKTextilesDB;Integrated Security=True;"); // Update with your actual connection string
 
         public FinanceSupplierPyamentAdd(MainForm mainForm)
         {
@@ -65,6 +65,8 @@ namespace AK_Textile
         private void button8_Click(object sender, EventArgs e)
         {
             InsertSupplierPayment();
+            
+            
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
@@ -76,15 +78,24 @@ namespace AK_Textile
         {
             AllClear();
         }
+        
 
         private void InsertSupplierPayment()
         {
-            string query = "INSERT INTO SupplierPayment (SupID, SupPDate, SupPMethod, SupPAmount) VALUES (@SupID, @SupPDate, @SupPMethod, @SupPAmount)";
+            if (string.IsNullOrWhiteSpace(SupplierId.Text))
+            {
+                MessageBox.Show("Supplier ID cannot be empty!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            using (SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;Initial Catalog=AK-Textiles-PVT(LTD);"))
+
+            string query = "INSERT INTO SupplierPayment (SupPID, SupID, SupPDate, SupPMethod, SupPAmount) VALUES (@SupPID, @SupID, @SupPDate, @SupPMethod, @SupPAmount)";
+           
+            using (SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-1AMUUF3;Initial Catalog=AKTextilesDB;Integrated Security=True;"))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
+                    command.Parameters.AddWithValue("@SupPID", supid.Text);
                     command.Parameters.AddWithValue("@SupID", SupplierId.Text);
                     command.Parameters.AddWithValue("@SupPDate", dateTimePicker1.Value);
                     command.Parameters.AddWithValue("@SupPMethod", SupplierPMethod.Text);
@@ -97,6 +108,16 @@ namespace AK_Textile
         }
 
         private void SupplierPMethod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FinanceSupplierPyamentAdd_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void supid_TextChanged(object sender, EventArgs e)
         {
 
         }

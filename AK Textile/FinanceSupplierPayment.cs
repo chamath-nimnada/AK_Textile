@@ -14,9 +14,7 @@ namespace AK_Textile
     public partial class FinanceSupplierPayment : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
-                                                Initial Catalog=Textlies;
-                                                Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-1AMUUF3;Initial Catalog=AKTextilesDB;Integrated Security=True;");
         public FinanceSupplierPayment(MainForm mainForm)
         {
             InitializeComponent();
@@ -24,7 +22,7 @@ namespace AK_Textile
         }
        
         
-        private void LoadAllSupplier()
+        public void LoadAllSupplier()
         {
             string query = "SELECT * FROM SupplierPayment";
             {
@@ -199,6 +197,11 @@ namespace AK_Textile
         private void FinanceSupplierPayment_Load(object sender, EventArgs e)
         {
             LoadAllSupplier();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -16,5 +16,10 @@ namespace AK_Textile
         {
             InitializeComponent();
         }
+
+        private void EmployeeManagerEmpAdd_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
