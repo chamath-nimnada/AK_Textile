@@ -17,6 +17,7 @@ namespace AK_Textile
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
                                                 Initial Catalog=Textlies;
                                                 Integrated Security=True");
+
         Form formBackground = null; // Declare outside to access in 'finally'
 
         public SupplierInvoice(MainForm mainForm)
@@ -107,7 +108,7 @@ namespace AK_Textile
 
         private void SupplierInvoice_Load(object sender, EventArgs e)
         {
-           
+            LoadData();
         }
 
         private void SearchSupplierInvoice(string searchValue)
@@ -188,6 +189,11 @@ namespace AK_Textile
                 formBackground.Dispose();
                 subForm.Dispose();
             }
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

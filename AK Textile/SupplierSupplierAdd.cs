@@ -74,9 +74,8 @@ namespace AK_Textile
             cmd2.Parameters.AddWithValue("@supid", supidtxt.Text);
             cmd2.Parameters.AddWithValue("@sname", nametxt.Text);
             cmd2.Parameters.AddWithValue("@saddress", addresstxt.Text);
+            cmd2.Parameters.AddWithValue("@scontact", contacttxt.Text);
             cmd2.Parameters.AddWithValue("@smail", emailtxt.Text);
-            cmd2.Parameters.AddWithValue("@supcontact", contacttxt.Text);
-
 
             try
             {
