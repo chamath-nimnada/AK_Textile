@@ -40,7 +40,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.productionbtn = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -67,7 +66,7 @@
             this.reportbtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.reportbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reportbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
-            this.reportbtn.Location = new System.Drawing.Point(19, 384);
+            this.reportbtn.Location = new System.Drawing.Point(19, 327);
             this.reportbtn.Margin = new System.Windows.Forms.Padding(2);
             this.reportbtn.Name = "reportbtn";
             this.reportbtn.Size = new System.Drawing.Size(146, 42);
@@ -93,7 +92,7 @@
             this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(19, 327);
+            this.button8.Location = new System.Drawing.Point(19, 270);
             this.button8.Margin = new System.Windows.Forms.Padding(2);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(146, 42);
@@ -119,7 +118,7 @@
             this.productbtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.productbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.productbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
-            this.productbtn.Location = new System.Drawing.Point(19, 270);
+            this.productbtn.Location = new System.Drawing.Point(19, 213);
             this.productbtn.Margin = new System.Windows.Forms.Padding(2);
             this.productbtn.Name = "productbtn";
             this.productbtn.Size = new System.Drawing.Size(146, 42);
@@ -172,7 +171,7 @@
             this.rmbtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rmbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rmbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
-            this.rmbtn.Location = new System.Drawing.Point(19, 213);
+            this.rmbtn.Location = new System.Drawing.Point(19, 156);
             this.rmbtn.Margin = new System.Windows.Forms.Padding(2);
             this.rmbtn.Name = "rmbtn";
             this.rmbtn.Size = new System.Drawing.Size(146, 42);
@@ -216,21 +215,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(38, 41);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // productionbtn
-            // 
-            this.productionbtn.BackColor = System.Drawing.Color.White;
-            this.productionbtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.productionbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productionbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
-            this.productionbtn.Location = new System.Drawing.Point(19, 156);
-            this.productionbtn.Margin = new System.Windows.Forms.Padding(2);
-            this.productionbtn.Name = "productionbtn";
-            this.productionbtn.Size = new System.Drawing.Size(146, 42);
-            this.productionbtn.TabIndex = 63;
-            this.productionbtn.Text = "Production";
-            this.productionbtn.UseVisualStyleBackColor = false;
-            this.productionbtn.Click += new System.EventHandler(this.productionbtn_Click);
             // 
             // panel3
             // 
@@ -348,7 +332,6 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.rmbtn);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.productionbtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ProductOrder";
@@ -385,7 +368,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button productionbtn;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Panel panel5;

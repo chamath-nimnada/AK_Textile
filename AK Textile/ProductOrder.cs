@@ -39,7 +39,7 @@ namespace AK_Textile
 
         private void productionbtn_Click(object sender, EventArgs e)
         {
-            mainForm.LoadForm(new ProductProduction(mainForm));
+
         }
 
         private void rmbtn_Click(object sender, EventArgs e)
