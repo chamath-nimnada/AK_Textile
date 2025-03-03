@@ -155,7 +155,7 @@ namespace AK_Textile
             }
         }
 
-        private void clear()
+        private void clearing()
         {
             supidtxt.Clear();
             dateTimePicker1.Value = DateTime.Today;
@@ -165,19 +165,15 @@ namespace AK_Textile
             totamount.Clear();
         }
 
-        private void clear_Click(object sender, EventArgs e)
-        {
-            clear();
-        }
-
         private void addbtn_Click(object sender, EventArgs e)
         {
             invoiceUpdate();
         }
 
-        public SupplierInvoiceUpdate(SupplierInvoice supplierInvoice)
+
+        private void button1_Click(object sender, EventArgs e)
         {
-            this.supplierInvoice = supplierInvoice;
+            clearing();
         }
     }
 }

@@ -61,8 +61,8 @@ namespace AK_Textile
 
         private void addbtn_Click(object sender, EventArgs e)
         {
-            SupplierOrderAdd orderadd = new SupplierOrderAdd();
-            orderadd.ShowDialog();
+            //SupplierOrderAdd orderadd = new SupplierOrderAdd();
+            //orderadd.ShowDialog();
         }
 
         private void updatebtn_Click(object sender, EventArgs e)

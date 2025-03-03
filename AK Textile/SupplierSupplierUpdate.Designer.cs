@@ -263,6 +263,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SupplierSupplierUpdate";
             this.Text = "Update Supplier Details";
+            this.TopMost = true;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
