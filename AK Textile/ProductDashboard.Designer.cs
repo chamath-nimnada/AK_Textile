@@ -44,10 +44,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.productbtn = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.productionbtn = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.logoutbtn = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -61,7 +57,6 @@
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoutbtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -100,7 +95,7 @@
             this.panel7.Controls.Add(this.ordersbtn);
             this.panel7.Controls.Add(this.label12);
             this.panel7.Controls.Add(this.label14);
-            this.panel7.Location = new System.Drawing.Point(19, 420);
+            this.panel7.Location = new System.Drawing.Point(502, 258);
             this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(460, 150);
@@ -162,7 +157,7 @@
             this.panel6.Controls.Add(this.label10);
             this.panel6.Controls.Add(this.reportbtn);
             this.panel6.Controls.Add(this.label11);
-            this.panel6.Location = new System.Drawing.Point(501, 420);
+            this.panel6.Location = new System.Drawing.Point(266, 426);
             this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(460, 150);
@@ -224,7 +219,7 @@
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.productbtn);
             this.panel4.Controls.Add(this.label7);
-            this.panel4.Location = new System.Drawing.Point(501, 258);
+            this.panel4.Location = new System.Drawing.Point(501, 96);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(460, 150);
@@ -267,56 +262,6 @@
             this.label7.Size = new System.Drawing.Size(96, 29);
             this.label7.TabIndex = 0;
             this.label7.Text = "Product";
-            // 
-            // productionbtn
-            // 
-            this.productionbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
-            this.productionbtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.productionbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productionbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(224)))), ((int)(((byte)(229)))));
-            this.productionbtn.Location = new System.Drawing.Point(298, 98);
-            this.productionbtn.Margin = new System.Windows.Forms.Padding(2);
-            this.productionbtn.Name = "productionbtn";
-            this.productionbtn.Size = new System.Drawing.Size(148, 35);
-            this.productionbtn.TabIndex = 2;
-            this.productionbtn.Text = "Click Here";
-            this.productionbtn.UseVisualStyleBackColor = false;
-            this.productionbtn.Click += new System.EventHandler(this.productionbtn_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.productionbtn);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Location = new System.Drawing.Point(501, 96);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(460, 150);
-            this.panel3.TabIndex = 15;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label3.Location = new System.Drawing.Point(20, 55);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(234, 36);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "View Production Details and Add,\r\nUpdate, Delete Production Details.\r\n";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(19, 18);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(129, 29);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Production";
             // 
             // panel1
             // 
@@ -438,7 +383,6 @@
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label13);
@@ -455,8 +399,6 @@
             this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoutbtn)).EndInit();
@@ -485,9 +427,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button productbtn;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button productionbtn;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox logoutbtn;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
@@ -497,7 +436,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
     }
 }
