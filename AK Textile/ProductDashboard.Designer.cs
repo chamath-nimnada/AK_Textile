@@ -391,6 +391,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ProductDashboard";
             this.Text = "Form1";
+            this.TopMost = true;
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel6.ResumeLayout(false);

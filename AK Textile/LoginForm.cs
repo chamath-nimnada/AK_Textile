@@ -131,7 +131,7 @@ namespace AK_Textile
                     case "finance manager":
                         mainForm.LoadForm(new FinanceDashboard(mainForm));
                         break;
-                    case "supplier manager":
+                    case "Supplier manager":
                         mainForm.LoadForm(new SupplierDashboard(mainForm));
                         break;
                     case "inventory manager":

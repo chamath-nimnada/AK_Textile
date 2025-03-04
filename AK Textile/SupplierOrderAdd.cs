@@ -13,14 +13,17 @@ namespace AK_Textile
 {
     public partial class SupplierOrderAdd : Form
     {
-        private SupplierOrder purchaseorder; // Reference to Supplier
+        private SupplierOrder supplierOrderForm;
         //database connection
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
                                                  Initial Catalog=Textlies;
                                                  Integrated Security=True");
-        public SupplierOrderAdd(SupplierOrder purchaseorder)
+        public SupplierOrderAdd(SupplierOrder supplierOrderForm)
         {
             InitializeComponent();
+            AutoGenerateID();
+            this.supplierOrderForm = supplierOrderForm;
+
         }
         private void AutoGenerateID()
         {

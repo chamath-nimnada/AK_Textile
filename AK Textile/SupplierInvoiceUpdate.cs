@@ -110,7 +110,7 @@ namespace AK_Textile
             }
             else
             {
-                MessageBox.Show("Please enter a Supplier ID or Name to search.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter a Invoice ID or Name to search.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -118,7 +118,7 @@ namespace AK_Textile
         //method for the update button
         private void invoiceUpdate()
         {
-            if (string.IsNullOrWhiteSpace(supidtxt.Text) || string.IsNullOrWhiteSpace(itemtxt.Text) || string.IsNullOrWhiteSpace(supidtxt.Text))
+            if (string.IsNullOrWhiteSpace(supidtxt.Text) || string.IsNullOrWhiteSpace(itemtxt.Text))
             {
                 MessageBox.Show("Please fill all fields.");
                 return;

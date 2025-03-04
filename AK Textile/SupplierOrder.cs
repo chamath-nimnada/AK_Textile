@@ -61,14 +61,14 @@ namespace AK_Textile
 
         private void addbtn_Click(object sender, EventArgs e)
         {
-            //SupplierOrderAdd orderadd = new SupplierOrderAdd();
-            //orderadd.ShowDialog();
+            // Create an instance of the form and pass it to the method
+            OpenSubForm(new SupplierOrderAdd(this));
         }
 
         private void updatebtn_Click(object sender, EventArgs e)
         {
-            SupplierOrderUpdate orderupdate = new SupplierOrderUpdate();
-            orderupdate.ShowDialog();
+            // Create an instance of the form and pass it to the method
+            OpenSubForm(new SupplierOrderUpdate(this));
         }
 
         private void SupplierOrder_Load(object sender, EventArgs e)
@@ -137,6 +137,40 @@ namespace AK_Textile
             }
             //Calling the method to search supplier invoice
             SearchPurchaseOrder(searchValue);
+            textBox1.Clear();
+        }
+        private void OpenSubForm(Form subForm)
+        {
+            Form formBackground = new Form(); // Initialize background form
+
+            try
+            {
+                formBackground.StartPosition = FormStartPosition.Manual;
+                formBackground.FormBorderStyle = FormBorderStyle.None;
+                formBackground.Opacity = .50d;
+                formBackground.BackColor = Color.Black;
+                formBackground.WindowState = FormWindowState.Maximized;
+                formBackground.TopMost = true;
+                formBackground.Location = this.Location;
+                formBackground.ShowInTaskbar = false;
+                formBackground.Show();
+
+                // Set the background form as the owner of the subform
+                subForm.Owner = formBackground;
+
+                // Show the subform as a dialog
+                subForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                // Dispose both forms
+                formBackground.Dispose();
+                subForm.Dispose();
+            }
         }
     }
 }

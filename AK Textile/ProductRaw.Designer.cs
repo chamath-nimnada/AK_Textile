@@ -46,7 +46,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.clearbtn = new System.Windows.Forms.Button();
             this.searchbtn = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.searchtxt = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel1.SuspendLayout();
@@ -253,7 +253,7 @@
             this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.clearbtn);
             this.groupBox1.Controls.Add(this.searchbtn);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.searchtxt);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(10, 12);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
@@ -262,7 +262,7 @@
             this.groupBox1.Size = new System.Drawing.Size(754, 84);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Enter the Raw Material ID or Name";
+            this.groupBox1.Text = "Enter Inventory ID or Name";
             // 
             // clearbtn
             // 
@@ -292,16 +292,17 @@
             this.searchbtn.TabIndex = 5;
             this.searchbtn.Text = "Search";
             this.searchbtn.UseVisualStyleBackColor = false;
+            this.searchbtn.Click += new System.EventHandler(this.searchbtn_Click);
             // 
-            // textBox1
+            // searchtxt
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(40, 34);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(413, 27);
-            this.textBox1.TabIndex = 0;
+            this.searchtxt.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.searchtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchtxt.Location = new System.Drawing.Point(40, 34);
+            this.searchtxt.Margin = new System.Windows.Forms.Padding(2);
+            this.searchtxt.Name = "searchtxt";
+            this.searchtxt.Size = new System.Drawing.Size(413, 27);
+            this.searchtxt.TabIndex = 0;
             // 
             // ProductRaw
             // 
@@ -321,6 +322,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ProductRaw";
             this.Text = "s";
+            this.Load += new System.EventHandler(this.ProductRaw_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -357,6 +359,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button clearbtn;
         private System.Windows.Forms.Button searchbtn;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox searchtxt;
     }
 }

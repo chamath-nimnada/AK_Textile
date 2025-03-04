@@ -106,7 +106,7 @@ namespace AK_Textile
         {
             {
                 con.Open();
-                SqlCommand cmd3 = new SqlCommand("DELETE FROM Suppliers WHERE SupID = @supid", con);
+                SqlCommand cmd3 = new SqlCommand("DELETE FROM Supplier WHERE SupID = @supid", con);
                 cmd3.Parameters.AddWithValue("@supid", supplierId);
 
                 try

@@ -29,19 +29,21 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.clear1btn = new System.Windows.Forms.Button();
+            this.searchbtn = new System.Windows.Forms.Button();
+            this.searchtxt = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.qtytxt = new System.Windows.Forms.TextBox();
+            this.pricetxt = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.nametxt = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.invidtxt = new System.Windows.Forms.TextBox();
+            this.updatebtn = new System.Windows.Forms.Button();
+            this.cancelbtn = new System.Windows.Forms.Button();
+            this.clear2btn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -49,168 +51,211 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(224)))), ((int)(((byte)(229)))));
-            this.groupBox1.Controls.Add(this.button6);
-            this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.clear1btn);
+            this.groupBox1.Controls.Add(this.searchbtn);
+            this.groupBox1.Controls.Add(this.searchtxt);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 13);
+            this.groupBox1.Location = new System.Drawing.Point(9, 11);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(822, 104);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Size = new System.Drawing.Size(616, 84);
             this.groupBox1.TabIndex = 33;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Enter the Product ID or Name";
             // 
-            // button6
+            // clear1btn
             // 
-            this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
-            this.button6.Location = new System.Drawing.Point(664, 40);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(128, 37);
-            this.button6.TabIndex = 10;
-            this.button6.Text = "Clear";
-            this.button6.UseVisualStyleBackColor = false;
+            this.clear1btn.BackColor = System.Drawing.Color.White;
+            this.clear1btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clear1btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
+            this.clear1btn.Location = new System.Drawing.Point(498, 32);
+            this.clear1btn.Margin = new System.Windows.Forms.Padding(2);
+            this.clear1btn.Name = "clear1btn";
+            this.clear1btn.Size = new System.Drawing.Size(96, 30);
+            this.clear1btn.TabIndex = 10;
+            this.clear1btn.Text = "Clear";
+            this.clear1btn.UseVisualStyleBackColor = false;
+            this.clear1btn.Click += new System.EventHandler(this.clear1btn_Click);
             // 
-            // button5
+            // searchbtn
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(499, 40);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(159, 37);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "Search";
-            this.button5.UseVisualStyleBackColor = false;
+            this.searchbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
+            this.searchbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchbtn.ForeColor = System.Drawing.Color.White;
+            this.searchbtn.Location = new System.Drawing.Point(374, 32);
+            this.searchbtn.Margin = new System.Windows.Forms.Padding(2);
+            this.searchbtn.Name = "searchbtn";
+            this.searchbtn.Size = new System.Drawing.Size(119, 30);
+            this.searchbtn.TabIndex = 5;
+            this.searchbtn.Text = "Search";
+            this.searchbtn.UseVisualStyleBackColor = false;
+            this.searchbtn.Click += new System.EventHandler(this.searchbtn_Click);
             // 
-            // textBox1
+            // searchtxt
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(53, 42);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(381, 32);
-            this.textBox1.TabIndex = 0;
+            this.searchtxt.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.searchtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchtxt.Location = new System.Drawing.Point(40, 34);
+            this.searchtxt.Margin = new System.Windows.Forms.Padding(2);
+            this.searchtxt.Name = "searchtxt";
+            this.searchtxt.Size = new System.Drawing.Size(287, 27);
+            this.searchtxt.TabIndex = 0;
             // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.qtytxt);
+            this.groupBox2.Controls.Add(this.pricetxt);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.textBox4);
+            this.groupBox2.Controls.Add(this.nametxt);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.textBox3);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.invidtxt);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 132);
+            this.groupBox2.Location = new System.Drawing.Point(9, 107);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(822, 263);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Size = new System.Drawing.Size(616, 214);
             this.groupBox2.TabIndex = 34;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Update Details";
             // 
-            // button8
+            // label1
             // 
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(639, 401);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(195, 47);
-            this.button8.TabIndex = 32;
-            this.button8.Text = "Update";
-            this.button8.UseVisualStyleBackColor = false;
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(68)))), ((int)(((byte)(114)))));
+            this.label1.Location = new System.Drawing.Point(36, 174);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 22);
+            this.label1.TabIndex = 38;
+            this.label1.Text = "quantity";
             // 
-            // button1
+            // qtytxt
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
-            this.button1.Location = new System.Drawing.Point(440, 401);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(177, 47);
-            this.button1.TabIndex = 35;
-            this.button1.Text = "Cancel";
-            this.button1.UseVisualStyleBackColor = false;
+            this.qtytxt.Location = new System.Drawing.Point(160, 171);
+            this.qtytxt.Margin = new System.Windows.Forms.Padding(2);
+            this.qtytxt.Name = "qtytxt";
+            this.qtytxt.Size = new System.Drawing.Size(434, 27);
+            this.qtytxt.TabIndex = 37;
             // 
-            // button2
+            // pricetxt
             // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
-            this.button2.Location = new System.Drawing.Point(12, 401);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(177, 47);
-            this.button2.TabIndex = 36;
-            this.button2.Text = "Clear";
-            this.button2.UseVisualStyleBackColor = false;
+            this.pricetxt.Location = new System.Drawing.Point(160, 126);
+            this.pricetxt.Margin = new System.Windows.Forms.Padding(2);
+            this.pricetxt.Name = "pricetxt";
+            this.pricetxt.Size = new System.Drawing.Size(434, 27);
+            this.pricetxt.TabIndex = 36;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(68)))), ((int)(((byte)(114)))));
-            this.label6.Location = new System.Drawing.Point(48, 208);
+            this.label6.Location = new System.Drawing.Point(36, 129);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 26);
+            this.label6.Size = new System.Drawing.Size(51, 22);
             this.label6.TabIndex = 35;
-            this.label6.Text = "Quality";
+            this.label6.Text = "Price";
             // 
-            // textBox4
+            // nametxt
             // 
-            this.textBox4.Location = new System.Drawing.Point(214, 208);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(578, 32);
-            this.textBox4.TabIndex = 34;
+            this.nametxt.Location = new System.Drawing.Point(160, 80);
+            this.nametxt.Margin = new System.Windows.Forms.Padding(2);
+            this.nametxt.Name = "nametxt";
+            this.nametxt.Size = new System.Drawing.Size(434, 27);
+            this.nametxt.TabIndex = 34;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(68)))), ((int)(((byte)(114)))));
-            this.label4.Location = new System.Drawing.Point(48, 98);
+            this.label4.Location = new System.Drawing.Point(36, 80);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(121, 26);
+            this.label4.Size = new System.Drawing.Size(57, 22);
             this.label4.TabIndex = 33;
-            this.label4.Text = "Description";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(214, 98);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(578, 93);
-            this.textBox3.TabIndex = 32;
+            this.label4.Text = "Name";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(68)))), ((int)(((byte)(114)))));
-            this.label2.Location = new System.Drawing.Point(48, 46);
+            this.label2.Location = new System.Drawing.Point(36, 37);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(152, 26);
+            this.label2.Size = new System.Drawing.Size(105, 22);
             this.label2.TabIndex = 31;
-            this.label2.Text = "Praduct Name";
+            this.label2.Text = "Inventory ID";
             // 
-            // textBox2
+            // invidtxt
             // 
-            this.textBox2.Location = new System.Drawing.Point(214, 46);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(578, 32);
-            this.textBox2.TabIndex = 30;
+            this.invidtxt.Location = new System.Drawing.Point(160, 37);
+            this.invidtxt.Margin = new System.Windows.Forms.Padding(2);
+            this.invidtxt.Name = "invidtxt";
+            this.invidtxt.Size = new System.Drawing.Size(434, 27);
+            this.invidtxt.TabIndex = 30;
+            // 
+            // updatebtn
+            // 
+            this.updatebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
+            this.updatebtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updatebtn.ForeColor = System.Drawing.Color.White;
+            this.updatebtn.Location = new System.Drawing.Point(479, 326);
+            this.updatebtn.Margin = new System.Windows.Forms.Padding(2);
+            this.updatebtn.Name = "updatebtn";
+            this.updatebtn.Size = new System.Drawing.Size(146, 38);
+            this.updatebtn.TabIndex = 32;
+            this.updatebtn.Text = "Update";
+            this.updatebtn.UseVisualStyleBackColor = false;
+            this.updatebtn.Click += new System.EventHandler(this.updatebtn_Click);
+            // 
+            // cancelbtn
+            // 
+            this.cancelbtn.BackColor = System.Drawing.Color.White;
+            this.cancelbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
+            this.cancelbtn.Location = new System.Drawing.Point(330, 326);
+            this.cancelbtn.Margin = new System.Windows.Forms.Padding(2);
+            this.cancelbtn.Name = "cancelbtn";
+            this.cancelbtn.Size = new System.Drawing.Size(133, 38);
+            this.cancelbtn.TabIndex = 35;
+            this.cancelbtn.Text = "Cancel";
+            this.cancelbtn.UseVisualStyleBackColor = false;
+            this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
+            // 
+            // clear2btn
+            // 
+            this.clear2btn.BackColor = System.Drawing.Color.White;
+            this.clear2btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clear2btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
+            this.clear2btn.Location = new System.Drawing.Point(9, 326);
+            this.clear2btn.Margin = new System.Windows.Forms.Padding(2);
+            this.clear2btn.Name = "clear2btn";
+            this.clear2btn.Size = new System.Drawing.Size(133, 38);
+            this.clear2btn.TabIndex = 36;
+            this.clear2btn.Text = "Clear";
+            this.clear2btn.UseVisualStyleBackColor = false;
+            this.clear2btn.Click += new System.EventHandler(this.clear2btn_Click);
             // 
             // ProductProductUpdate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(846, 455);
+            this.ClientSize = new System.Drawing.Size(634, 370);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.updatebtn);
+            this.Controls.Add(this.cancelbtn);
+            this.Controls.Add(this.clear2btn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ProductProductUpdate";
             this.Text = "Update Product";
+            this.TopMost = true;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -222,18 +267,20 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button clear1btn;
+        private System.Windows.Forms.Button searchbtn;
+        private System.Windows.Forms.TextBox searchtxt;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button updatebtn;
+        private System.Windows.Forms.Button cancelbtn;
+        private System.Windows.Forms.Button clear2btn;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox nametxt;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox invidtxt;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox qtytxt;
+        private System.Windows.Forms.TextBox pricetxt;
     }
 }

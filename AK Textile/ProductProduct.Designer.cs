@@ -306,6 +306,7 @@
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Enter the Product ID or Name";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // clearbtn
             // 

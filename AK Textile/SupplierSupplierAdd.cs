@@ -21,6 +21,8 @@ namespace AK_Textile
         public SupplierSupplierAdd(SupplierSupplier supplierform)
         {
             InitializeComponent();
+            autoincrement();
+            this.supplierform = supplierform;
         }
 
         //To auto increment the Supplier ID

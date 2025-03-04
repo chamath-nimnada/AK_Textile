@@ -155,6 +155,7 @@ namespace AK_Textile
             }
             //Calling the method to search supplier invoice
             SearchSupplierInvoice(searchValue);
+            textBox1.Clear();
         }
 
         private void OpenSubForm(Form subForm)
