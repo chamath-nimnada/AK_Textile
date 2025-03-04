@@ -401,12 +401,6 @@
     <Compile Include="SalesOrder.Designer.cs">
       <DependentUpon>SalesOrder.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductProductionUpdate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProductProductionUpdate.Designer.cs">
-      <DependentUpon>ProductProductionUpdate.cs</DependentUpon>
-    </Compile>
     <Compile Include="ProductProductUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -430,18 +424,6 @@
     </Compile>
     <Compile Include="ProductScheduleRemove.Designer.cs">
       <DependentUpon>ProductScheduleRemove.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProductProductionRemove.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProductProductionRemove.Designer.cs">
-      <DependentUpon>ProductProductionRemove.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProductProductionAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProductProductionAdd.Designer.cs">
-      <DependentUpon>ProductProductionAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="ProductProductAdd.cs">
       <SubType>Form</SubType>
@@ -557,12 +539,6 @@
     <Compile Include="ProductRaw.Designer.cs">
       <DependentUpon>ProductRaw.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductProduction.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProductProduction.Designer.cs">
-      <DependentUpon>ProductProduction.cs</DependentUpon>
-    </Compile>
     <Compile Include="ProductSchedule.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -575,15 +551,11 @@
     <Compile Include="ProductDashboard.Designer.cs">
       <DependentUpon>ProductDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryRawAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="InventoryRawAdd.cs" />
     <Compile Include="InventoryRawAdd.Designer.cs">
       <DependentUpon>InventoryRawAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryRawUpdate.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="InventoryRawUpdate.cs" />
     <Compile Include="InventoryRawUpdate.Designer.cs">
       <DependentUpon>InventoryRawUpdate.cs</DependentUpon>
     </Compile>
@@ -799,9 +771,6 @@
     <EmbeddedResource Include="SalesOrder.resx">
       <DependentUpon>SalesOrder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductProductionUpdate.resx">
-      <DependentUpon>ProductProductionUpdate.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ProductProductUpdate.resx">
       <DependentUpon>ProductProductUpdate.cs</DependentUpon>
     </EmbeddedResource>
@@ -811,17 +780,11 @@
     <EmbeddedResource Include="ProductProductRemove.resx">
       <DependentUpon>ProductProductRemove.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductProductionRemove.resx">
-      <DependentUpon>ProductProductionRemove.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ProductScheduleRemove.resx">
       <DependentUpon>ProductScheduleRemove.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductProductAdd.resx">
       <DependentUpon>ProductProductAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProductProductionAdd.resx">
-      <DependentUpon>ProductProductionAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductScheduleAdd.resx">
       <DependentUpon>ProductScheduleAdd.cs</DependentUpon>
@@ -885,9 +848,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProductRaw.resx">
       <DependentUpon>ProductRaw.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProductProduction.resx">
-      <DependentUpon>ProductProduction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductDashboard.resx">
       <DependentUpon>ProductDashboard.cs</DependentUpon>

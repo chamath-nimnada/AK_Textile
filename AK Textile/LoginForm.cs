@@ -17,9 +17,9 @@ namespace AK_Textile
         private MainForm mainForm;
 
         //database connection
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;
-                                                    Initial Catalog=AKTextilesDB;
-                                                    Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
+                                                 Initial Catalog=Textlies;
+                                                 Integrated Security=True");
 
         public LoginForm(MainForm mainForm)
         {
@@ -131,7 +131,7 @@ namespace AK_Textile
                     case "finance manager":
                         mainForm.LoadForm(new FinanceDashboard(mainForm));
                         break;
-                    case "supplier manager":
+                    case "Supplier manager":
                         mainForm.LoadForm(new SupplierDashboard(mainForm));
                         break;
                     case "inventory manager":
@@ -141,7 +141,7 @@ namespace AK_Textile
                         mainForm.LoadForm(new SalesDashboard(mainForm));
                         break;
                     case "employee":
-                        //mainForm.LoadForm(new Employee(mainForm));
+                        mainForm.LoadForm(new Employee(mainForm));
                         break;
                     case "CEO":
                         mainForm.LoadForm(new CEODashboard(mainForm));

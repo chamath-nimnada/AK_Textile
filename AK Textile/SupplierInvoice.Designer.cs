@@ -216,6 +216,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(775, 483);
             this.panel3.TabIndex = 99;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // groupBox3
             // 
@@ -297,7 +298,7 @@
             this.groupBox1.Size = new System.Drawing.Size(754, 84);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Enter the Supplier ID or Name";
+            this.groupBox1.Text = "Enter the Supplier Invoice ID";
             // 
             // clearbtn
             // 

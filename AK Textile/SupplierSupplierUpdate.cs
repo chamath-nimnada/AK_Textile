@@ -21,6 +21,7 @@ namespace AK_Textile
         public SupplierSupplierUpdate(SupplierSupplier supplierform)
         {
             InitializeComponent();
+            this.supplierform = supplierform;
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -45,7 +46,7 @@ namespace AK_Textile
         private void LoadSupplierData(string supdata)
         {
             con.Open();
-            SqlCommand cmd3 = new SqlCommand("SELECT SupID, SupName, SupEmail, SupContact, SupAddress FROM Supplier WHERE SupID = @searchval OR SupplierName LIKE @searchval", con);
+            SqlCommand cmd3 = new SqlCommand("SELECT SupID, SupName, SupEmail, SupContact, SupAddress FROM Supplier WHERE SupID = @searchval OR SupName LIKE @searchval", con);
             cmd3.Parameters.AddWithValue("@searchval", "%" + supdata + "%");
 
                 try
@@ -73,6 +74,10 @@ namespace AK_Textile
                 {
                     MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            finally
+            {
+                con.Close();
+            }
         }
         private void searchbtn_Click(object sender, EventArgs e)
         {
