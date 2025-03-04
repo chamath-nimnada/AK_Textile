@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace AK_Textile
 {
-    public partial class Form2 : Form
+    public partial class InventoryWeeklyReport : Form
     {
-        public Form2()
+        public InventoryWeeklyReport()
         {
             InitializeComponent();
-        }
-
-        private void crystalReportViewer1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

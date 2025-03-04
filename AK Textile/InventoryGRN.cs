@@ -14,8 +14,8 @@ namespace AK_Textile
     public partial class InventoryGRN : Form
     {
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;
-                                        Initial Catalog=AKTextilesDB;
-                                        Integrated Security=True;");
+                                            Initial Catalog=AKTextilesDB;
+                                            Integrated Security=True;");
 
         private MainForm mainForm;
         public InventoryGRN(MainForm mainForm)
@@ -35,34 +35,80 @@ namespace AK_Textile
         {
             try
             {
-                {
-                    con.Open();
-                    string query = "SELECT SupID, SupName FROM Supplier";
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, con);
-                    DataTable supplierTable = new DataTable();
-                    adapter.Fill(supplierTable);
+                con.Open();
+                string query = "SELECT SupID, SupName FROM Supplier";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+                DataTable supplierTable = new DataTable();
+                adapter.Fill(supplierTable);
 
-                    // Set up combobox to display supplier name but use supplier ID as value
-                    comboBoxSupplier.DisplayMember = "SupName";
-                    comboBoxSupplier.ValueMember = "SupID";
-                    comboBoxSupplier.DataSource = supplierTable;
+                // Set up combobox to display supplier name but use supplier ID as value
+                comboBoxSupplier.DisplayMember = "SupName";
+                comboBoxSupplier.ValueMember = "SupID";
+                comboBoxSupplier.DataSource = supplierTable;
 
-                    // Add empty selection as default
-                    comboBoxSupplier.SelectedIndex = -1;
-                }
+                // Add empty selection as default
+                comboBoxSupplier.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
                 //MessageBox.Show("Error loading suppliers: " + ex.Message, "Database Error",
-                    //MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally { con.Close(); }
+            finally
+            {
+                con.Close();
+            }
         }
 
         // Event handler for when supplier selection changes
         private void ComboBoxSupplier_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadInvoices();
+            LoadOrder();
+        }
+
+        // Load orders based on selected supplier
+        private void LoadOrder()
+        {
+            try
+            {
+                // Clear previous items
+                comboBoxOrder.DataSource = null;
+                comboBoxOrder.Items.Clear();
+
+                // If no supplier selected, do nothing
+                if (comboBoxSupplier.SelectedValue == null)
+                    return;
+
+                // Since SupID is varchar, we can use it directly as a string
+                string supplierId = comboBoxSupplier.SelectedValue.ToString();
+
+                con.Open();
+                string query = "SELECT SPOrderID FROM SupplierPurchaseOrder WHERE SupID = @SupID";
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@SupID", supplierId);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable orderTable = new DataTable();
+                adapter.Fill(orderTable);
+
+                comboBoxOrder.DisplayMember = "SPOrderID";
+                comboBoxOrder.ValueMember = "SPOrderID";
+                comboBoxOrder.DataSource = orderTable;
+
+                // Only set SelectedIndex if there are items
+                if (orderTable.Rows.Count > 0)
+                    comboBoxOrder.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Error loading orders: " + ex.Message, "Database Error",
+                //MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
         }
 
         // Load invoices based on selected supplier
@@ -72,7 +118,6 @@ namespace AK_Textile
             {
                 // Clear previous items
                 comboBoxInvoice.DataSource = null;
-                comboBoxInvoice.Items.Clear();
 
                 // If no supplier selected, do nothing
                 if (comboBoxSupplier.SelectedValue == null)
@@ -81,59 +126,61 @@ namespace AK_Textile
                 // Since SupID is varchar, we can use it directly as a string
                 string supplierId = comboBoxSupplier.SelectedValue.ToString();
 
-                {
-                    con.Open();
-                    string query = "SELECT SInvoiceID FROM SupplierInvoice WHERE SupID = @SupID";
-                    SqlCommand command = new SqlCommand(query, con);
-                    command.Parameters.AddWithValue("@SupID", supplierId);
+                con.Open();
+                string query = "SELECT SInvoiceID FROM SupplierInvoice WHERE SupID = @SupID";
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@SupID", supplierId);
 
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    DataTable invoiceTable = new DataTable();
-                    adapter.Fill(invoiceTable);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable invoiceTable = new DataTable();
+                adapter.Fill(invoiceTable);
 
-                    comboBoxInvoice.DisplayMember = "SInvoiceID";
-                    comboBoxInvoice.ValueMember = "SInvoiceID";
-                    comboBoxInvoice.DataSource = invoiceTable;
+                comboBoxInvoice.DisplayMember = "SInvoiceID";
+                comboBoxInvoice.ValueMember = "SInvoiceID";
+                comboBoxInvoice.DataSource = invoiceTable;
 
-                    // Only set SelectedIndex if there are items
-                    if (invoiceTable.Rows.Count > 0)
-                        comboBoxInvoice.SelectedIndex = 0;
-                }
+                // Only set SelectedIndex if there are items
+                if (invoiceTable.Rows.Count > 0)
+                    comboBoxInvoice.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
                 //MessageBox.Show("Error loading invoices: " + ex.Message, "Database Error",
-                    //MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally { con.Close(); }
+            finally
+            {
+                con.Close();
+            }
         }
 
         private void LoadAllGRN()
         {
             // SQL query to fetch all data from the Product table
             string query = "SELECT * FROM GRN";
+            try
             {
-                try
+                // Open the connection
+                con.Open();
+                // Create the SQL command
+                using (SqlCommand cmd = new SqlCommand(query, con))
                 {
-                    // Open the connection
-                    con.Open();
-                    // Create the SQL command
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    {
-                        // Execute the query and load the results into a DataTable
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-                        // Bind the DataTable to the DataGridView
-                        dataGridView1.DataSource = dataTable;
-                        // Adjust columns to fit the grid width
-                        dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    }
+                    // Execute the query and load the results into a DataTable
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    // Bind the DataTable to the DataGridView
+                    dataGridView1.DataSource = dataTable;
+                    // Adjust columns to fit the grid width
+                    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("An error occurred while loading data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("An error occurred while loading data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
                 con.Close();
             }
         }
@@ -142,15 +189,13 @@ namespace AK_Textile
         {
             try
             {
-                {
-                    con.Open();
-                    string query = "SELECT COUNT(*) FROM PurchaseOrder WHERE POrderID = @POrderID";
-                    SqlCommand command = new SqlCommand(query, con);
-                    command.Parameters.AddWithValue("@POrderID", pOrderID);
+                con.Open();
+                string query = "SELECT COUNT(*) FROM PurchaseOrder WHERE POrderID = @POrderID";
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@POrderID", pOrderID);
 
-                    int count = (int)command.ExecuteScalar();
-                    return count > 0;
-                }
+                int count = (int)command.ExecuteScalar();
+                return count > 0;
             }
             catch (Exception ex)
             {
@@ -158,38 +203,45 @@ namespace AK_Textile
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            finally { con.Close(); }
+            finally
+            {
+                con.Close();
+            }
         }
 
         private void SaveGRN()
         {
             try
             {
-                    con.Open();
-                    string query = @"INSERT INTO GRN (SInvoiceID, SupplierID, POrderID, GRNDate, ItemQty) 
-                            VALUES (@SInvoiceID, @SupplierID, @POrderID, @GRNDate, @ItemQty)";
+                con.Open();
+                string query = @"INSERT INTO GRN (GRNID, SInvoiceID, SupplierID, POrderID, GRNDate, ItemQty) 
+                                     VALUES (@GRNID, @SInvoiceID, @SupplierID, @POrderID, @GRNDate, @ItemQty)";
 
-                    SqlCommand command = new SqlCommand(query, con);
-                    command.Parameters.AddWithValue("@SInvoiceID", comboBoxInvoice.SelectedValue.ToString());
-                    command.Parameters.AddWithValue("@SupplierID", comboBoxSupplier.SelectedValue.ToString());
-                    command.Parameters.AddWithValue("@POrderID", textBoxOrder.Text.Trim());
-                    command.Parameters.AddWithValue("@GRNDate", dateTimePicker.Value);
-                    command.Parameters.AddWithValue("@ItemQty", Convert.ToInt32(textBoxQty.Text));
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@GRNID", textGRN.Text); // Add GRNID parameter
+                command.Parameters.AddWithValue("@SInvoiceID", comboBoxInvoice.SelectedValue.ToString());
+                command.Parameters.AddWithValue("@SupplierID", comboBoxSupplier.SelectedValue.ToString());
+                command.Parameters.AddWithValue("@POrderID", comboBoxOrder.SelectedValue.ToString());
+                command.Parameters.AddWithValue("@GRNDate", dateTimePicker.Value);
+                command.Parameters.AddWithValue("@ItemQty", Convert.ToInt32(textBoxQty.Text));
 
-                    command.ExecuteNonQuery();
+                command.ExecuteNonQuery();
 
-                    MessageBox.Show("GRN record added successfully!", "Success",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("GRN record added successfully!", "Success",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Clear form fields for next entry
-                    ClearForm();
+                // Clear form fields for next entry
+                ClearForm();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error saving GRN record: " + ex.Message, "Database Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("Error saving GRN record: " + ex.Message, "Database Error",
+                //MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally { con.Close(); }
+            finally
+            {
+                con.Close();
+            }
         }
 
         private void AutoGenerateID()
@@ -224,7 +276,7 @@ namespace AK_Textile
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error generating ID: " + ex.Message);
+                //MessageBox.Show("Error generating ID: " + ex.Message);
             }
             finally
             {
@@ -232,11 +284,11 @@ namespace AK_Textile
             }
         }
 
-        private void ClearForm() 
+        private void ClearForm()
         {
             comboBoxSupplier.SelectedIndex = -1;
             comboBoxInvoice.DataSource = null;
-            textBoxOrder.Clear();
+            comboBoxOrder.DataSource = null;
             textBoxQty.Clear();
             dateTimePicker.Value = DateTime.Now;
         }
@@ -248,7 +300,7 @@ namespace AK_Textile
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            mainForm.LoadForm(new InventoryDashboard(mainForm));    
+            mainForm.LoadForm(new InventoryDashboard(mainForm));
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -294,7 +346,7 @@ namespace AK_Textile
 
         private void button10_Click(object sender, EventArgs e)
         {
-            ClearForm();    
+            ClearForm();
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -314,9 +366,9 @@ namespace AK_Textile
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(textBoxOrder.Text))
+            if (comboBoxOrder.SelectedValue == null) // Changed from textBoxOrder validation
             {
-                MessageBox.Show("Please enter a Purchase Order ID.", "Validation Error",
+                MessageBox.Show("Please select a Purchase Order.", "Validation Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -324,15 +376,6 @@ namespace AK_Textile
             if (string.IsNullOrWhiteSpace(textBoxQty.Text) || !int.TryParse(textBoxQty.Text, out int qty) || qty <= 0)
             {
                 MessageBox.Show("Please enter a valid quantity.", "Validation Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Validate POrderID
-            string pOrderID = textBoxOrder.Text.Trim();
-            if (!IsPOrderIDValid(pOrderID))
-            {
-                MessageBox.Show("Invalid Purchase Order ID. Please enter a valid ID.", "Validation Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }

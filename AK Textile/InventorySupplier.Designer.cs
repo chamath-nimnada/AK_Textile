@@ -168,7 +168,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(195, 52);
             this.button1.TabIndex = 20;
-            this.button1.Text = "Supliers";
+            this.button1.Text = "Suppliers";
             this.button1.UseVisualStyleBackColor = false;
             // 
             // panel4
@@ -187,9 +187,9 @@
             this.groupBox3.BackColor = System.Drawing.Color.White;
             this.groupBox3.Controls.Add(this.panel3);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(14, 402);
+            this.groupBox3.Location = new System.Drawing.Point(14, 372);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1004, 175);
+            this.groupBox3.Size = new System.Drawing.Size(1004, 205);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Supliers Purchase Orders";
@@ -199,7 +199,7 @@
             this.panel3.Controls.Add(this.dataGridView2);
             this.panel3.Location = new System.Drawing.Point(53, 47);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(912, 110);
+            this.panel3.Size = new System.Drawing.Size(912, 138);
             this.panel3.TabIndex = 0;
             // 
             // dataGridView2
@@ -209,7 +209,7 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(912, 109);
+            this.dataGridView2.Size = new System.Drawing.Size(912, 138);
             this.dataGridView2.TabIndex = 0;
             // 
             // groupBox2
@@ -219,7 +219,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(14, 137);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1004, 259);
+            this.groupBox2.Size = new System.Drawing.Size(1004, 229);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Supliers";
@@ -229,7 +229,7 @@
             this.panel5.Controls.Add(this.dataGridView1);
             this.panel5.Location = new System.Drawing.Point(53, 47);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(912, 192);
+            this.panel5.Size = new System.Drawing.Size(912, 165);
             this.panel5.TabIndex = 0;
             // 
             // dataGridView1
@@ -239,7 +239,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(912, 192);
+            this.dataGridView1.Size = new System.Drawing.Size(912, 165);
             this.dataGridView1.TabIndex = 0;
             // 
             // groupBox1

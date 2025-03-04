@@ -199,7 +199,7 @@ namespace AK_Textile
                             MessageBox.Show("No purchased order found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             dataGridView2.DataSource = null; // Clear DataGridView if no data found
                             con.Close();
-                            LoadAllSuppliers();
+                            //LoadAllSuppliers();
                         }
                     }
                 }
@@ -229,6 +229,7 @@ namespace AK_Textile
             dataGridView2.DataSource = null;
 
             LoadAllSuppliers();
+            LoadAllSupplierOrder(); 
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)

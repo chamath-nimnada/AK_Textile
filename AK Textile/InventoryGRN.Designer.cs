@@ -30,9 +30,9 @@
         {
             this.panel4 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.comboBoxOrder = new System.Windows.Forms.ComboBox();
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
-            this.textBoxOrder = new System.Windows.Forms.TextBox();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.textBoxQty = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -87,9 +87,9 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.Controls.Add(this.comboBoxOrder);
             this.groupBox2.Controls.Add(this.button10);
             this.groupBox2.Controls.Add(this.button9);
-            this.groupBox2.Controls.Add(this.textBoxOrder);
             this.groupBox2.Controls.Add(this.dateTimePicker);
             this.groupBox2.Controls.Add(this.textBoxQty);
             this.groupBox2.Controls.Add(this.label7);
@@ -108,6 +108,15 @@
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Create s GRN";
+            // 
+            // comboBoxOrder
+            // 
+            this.comboBoxOrder.FormattingEnabled = true;
+            this.comboBoxOrder.Location = new System.Drawing.Point(710, 165);
+            this.comboBoxOrder.Name = "comboBoxOrder";
+            this.comboBoxOrder.Size = new System.Drawing.Size(265, 34);
+            this.comboBoxOrder.TabIndex = 34;
+            this.comboBoxOrder.SelectedIndexChanged += new System.EventHandler(this.ComboBoxSupplier_SelectedIndexChanged);
             // 
             // button10
             // 
@@ -135,13 +144,6 @@
             this.button9.Text = "Add";
             this.button9.UseVisualStyleBackColor = false;
             this.button9.Click += new System.EventHandler(this.button9_Click);
-            // 
-            // textBoxOrder
-            // 
-            this.textBoxOrder.Location = new System.Drawing.Point(710, 162);
-            this.textBoxOrder.Name = "textBoxOrder";
-            this.textBoxOrder.Size = new System.Drawing.Size(265, 32);
-            this.textBoxOrder.TabIndex = 18;
             // 
             // dateTimePicker
             // 
@@ -373,7 +375,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(195, 52);
             this.button1.TabIndex = 29;
-            this.button1.Text = "Supliers";
+            this.button1.Text = "Suppliers";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -524,6 +526,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.TextBox textBoxOrder;
+        private System.Windows.Forms.ComboBox comboBoxOrder;
     }
 }

@@ -1,8 +1,10 @@
-﻿using System;
+﻿using CrystalDecisions.CrystalReports.Engine;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +19,18 @@ namespace AK_Textile
         {
             InitializeComponent();
             this.mainForm = mainForm;
+
+            comboBoxReport.Items.Add("Weekly");
+            comboBoxReport.Items.Add("Monthly");
+            comboBoxReport.Items.Add("Yearly");
+        }
+
+        public void LoadForm(Form form)
+        {
+            ReportPanal.Controls.Clear();
+            form.TopLevel = false;
+            ReportPanal.Controls.Add(form);
+            form.Show();
         }
 
         private void InventoryReport_Load(object sender, EventArgs e)
@@ -57,6 +71,11 @@ namespace AK_Textile
         private void button4_Click(object sender, EventArgs e)
         {
             mainForm.LoadForm(new InventoryGRN(mainForm));
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

@@ -107,7 +107,7 @@
     <Compile Include="AdminAdminAdd.Designer.cs">
       <DependentUpon>AdminAdminAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryMonthlyReport.cs">
+    <Compile Include="Reports\InventoryMonthlyReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>InventoryMonthlyReport.rpt</DependentUpon>
@@ -652,7 +652,7 @@
     <EmbeddedResource Include="AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryMonthlyReport.rpt">
+    <EmbeddedResource Include="Reports\InventoryMonthlyReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>InventoryMonthlyReport.cs</LastGenOutput>
     </EmbeddedResource>
