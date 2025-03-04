@@ -107,12 +107,6 @@
     <Compile Include="AdminAdminAdd.Designer.cs">
       <DependentUpon>AdminAdminAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryMonthlyReport.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>InventoryMonthlyReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="EmployeeManagerEmpAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -557,23 +551,19 @@
     <Compile Include="ProductDashboard.Designer.cs">
       <DependentUpon>ProductDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryInventoryAdd.cs">
+    <Compile Include="InventoryRawAdd.cs" />
+    <Compile Include="InventoryRawAdd.Designer.cs">
+      <DependentUpon>InventoryRawAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryRawUpdate.cs" />
+    <Compile Include="InventoryRawUpdate.Designer.cs">
+      <DependentUpon>InventoryRawUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryRawRemove.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryInventoryAdd.Designer.cs">
-      <DependentUpon>InventoryInventoryAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InventoryInventoryUpdate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InventoryInventoryUpdate.Designer.cs">
-      <DependentUpon>InventoryInventoryUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InventoryInventoryRemove.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InventoryInventoryRemove.Designer.cs">
-      <DependentUpon>InventoryInventoryRemove.cs</DependentUpon>
+    <Compile Include="InventoryRawRemove.Designer.cs">
+      <DependentUpon>InventoryRawRemove.cs</DependentUpon>
     </Compile>
     <Compile Include="InventoryGRN.cs">
       <SubType>Form</SubType>
@@ -627,10 +617,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InventoryMonthlyReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>InventoryMonthlyReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeeManagerEmpAdd.resx">
       <DependentUpon>EmployeeManagerEmpAdd.cs</DependentUpon>
@@ -866,14 +852,14 @@
     <EmbeddedResource Include="ProductDashboard.resx">
       <DependentUpon>ProductDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryInventoryAdd.resx">
-      <DependentUpon>InventoryInventoryAdd.cs</DependentUpon>
+    <EmbeddedResource Include="InventoryRawAdd.resx">
+      <DependentUpon>InventoryRawAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryInventoryUpdate.resx">
-      <DependentUpon>InventoryInventoryUpdate.cs</DependentUpon>
+    <EmbeddedResource Include="InventoryRawUpdate.resx">
+      <DependentUpon>InventoryRawUpdate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryInventoryRemove.resx">
-      <DependentUpon>InventoryInventoryRemove.cs</DependentUpon>
+    <EmbeddedResource Include="InventoryRawRemove.resx">
+      <DependentUpon>InventoryRawRemove.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryGRN.resx">
       <DependentUpon>InventoryGRN.cs</DependentUpon>
@@ -933,9 +919,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\home_9449216.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

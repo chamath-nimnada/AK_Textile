@@ -141,7 +141,7 @@ namespace AK_Textile
                         mainForm.LoadForm(new SalesDashboard(mainForm));
                         break;
                     case "employee":
-                        //mainForm.LoadForm(new Employee(mainForm));
+                        mainForm.LoadForm(new Employee(mainForm));
                         break;
                     case "CEO":
                         mainForm.LoadForm(new CEODashboard(mainForm));
