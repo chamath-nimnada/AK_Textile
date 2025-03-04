@@ -14,7 +14,7 @@ namespace AK_Textile
     public partial class CEOCustomer : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=""AK textiles"";Integrated Security=True;;");
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDB;Integrated Security=True");
 
         public CEOCustomer(MainForm mainForm)
         {

@@ -14,7 +14,7 @@ namespace AK_Textile
     public partial class EmpManagerSalary : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=""AK textiles"";Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDB;Integrated Security=True");
         public EmpManagerSalary(MainForm mainForm)
         {
             InitializeComponent();
@@ -118,35 +118,8 @@ namespace AK_Textile
 
         private void button7_Click(object sender, EventArgs e)
         {
-            Form formBackground = new Form();
-            try
-            {
-                using (EmployeeManagerEmpAdd employeeManagerEmpAdd = new EmployeeManagerEmpAdd())
-                {
-                    formBackground.StartPosition = FormStartPosition.Manual;
-                    formBackground.FormBorderStyle = FormBorderStyle.None;
-                    formBackground.Opacity = .50d;
-                    formBackground.BackColor = Color.Black;
-                    formBackground.WindowState = FormWindowState.Maximized;
-                    formBackground.TopMost = true;
-                    formBackground.Location = this.Location;
-                    formBackground.ShowInTaskbar = false;
-                    formBackground.Show();
-
-                    employeeManagerEmpAdd.Owner = formBackground;
-                    employeeManagerEmpAdd.ShowDialog();
-
-                    formBackground.Dispose();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                formBackground.Dispose();
-            }
+            // Create an instance of the form and pass it to the method
+            OpenSubForm(new EmpManagerSalaryAdd(this));
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -188,26 +161,31 @@ namespace AK_Textile
 
         private void button8_Click(object sender, EventArgs e)
         {
-            Form formBackground = new Form();
+            // Create an instance of the form and pass it to the method
+            OpenSubForm(new EmpManagerSalaryUpdate(this));
+        }
+
+        private void OpenSubForm(Form subForm)
+        {
+            Form formBackground = new Form(); // Initialize background form
+
             try
             {
-                using (EmpManagerSalaryUpdate empManagerSalaryUpdate = new EmpManagerSalaryUpdate())
-                {
-                    formBackground.StartPosition = FormStartPosition.Manual;
-                    formBackground.FormBorderStyle = FormBorderStyle.None;
-                    formBackground.Opacity = .50d;
-                    formBackground.BackColor = Color.Black;
-                    formBackground.WindowState = FormWindowState.Maximized;
-                    formBackground.TopMost = true;
-                    formBackground.Location = this.Location;
-                    formBackground.ShowInTaskbar = false;
-                    formBackground.Show();
+                formBackground.StartPosition = FormStartPosition.Manual;
+                formBackground.FormBorderStyle = FormBorderStyle.None;
+                formBackground.Opacity = .50d;
+                formBackground.BackColor = Color.Black;
+                formBackground.WindowState = FormWindowState.Maximized;
+                formBackground.TopMost = true;
+                formBackground.Location = this.Location;
+                formBackground.ShowInTaskbar = false;
+                formBackground.Show();
 
-                    empManagerSalaryUpdate.Owner = formBackground;
-                    empManagerSalaryUpdate.ShowDialog();
+                // Set the background form as the owner of the subform
+                subForm.Owner = formBackground;
 
-                    formBackground.Dispose();
-                }
+                // Show the subform as a dialog
+                subForm.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -215,8 +193,11 @@ namespace AK_Textile
             }
             finally
             {
+                // Dispose both forms
                 formBackground.Dispose();
+                subForm.Dispose();
             }
         }
+
     }
 }

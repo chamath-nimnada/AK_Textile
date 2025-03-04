@@ -14,7 +14,7 @@ namespace AK_Textile
     public partial class EmpManagerEmployee : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=""AK textiles"";Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDB;Integrated Security=True");
         public EmpManagerEmployee(MainForm mainForm)
         {
             InitializeComponent();
@@ -54,6 +54,11 @@ namespace AK_Textile
             }
         }
 
+        public void RefreshDataGrid()
+        {
+            LoadAllEmployee();
+        }
+
         private void groupBox3_Enter(object sender, EventArgs e)
         {
 
@@ -66,101 +71,20 @@ namespace AK_Textile
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Form formBackground = new Form();
-            try
-            {
-                using (EmployeeManagerRemoveEmp employeeManagerRemoveEmp = new EmployeeManagerRemoveEmp())
-                {
-                    formBackground.StartPosition = FormStartPosition.Manual;
-                    formBackground.FormBorderStyle = FormBorderStyle.None;
-                    formBackground.Opacity = .50d;
-                    formBackground.BackColor = Color.Black;
-                    formBackground.WindowState = FormWindowState.Maximized;
-                    formBackground.TopMost = true;
-                    formBackground.Location = this.Location;
-                    formBackground.ShowInTaskbar = false;
-                    formBackground.Show();
-
-                    employeeManagerRemoveEmp.Owner = formBackground;
-                    employeeManagerRemoveEmp.ShowDialog();
-
-                    formBackground.Dispose();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                formBackground.Dispose();
-            }
+            // Create an instance of the form and pass it to the method
+            OpenSubForm(new EmployeeManagerRemoveEmp(this));
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            Form formBackground = new Form();
-            try
-            {
-                using (EmployeeManagerEmpAdd employeeManagerEmpAdd = new EmployeeManagerEmpAdd())
-                {
-                    formBackground.StartPosition = FormStartPosition.Manual;
-                    formBackground.FormBorderStyle = FormBorderStyle.None;
-                    formBackground.Opacity = .50d;
-                    formBackground.BackColor = Color.Black;
-                    formBackground.WindowState = FormWindowState.Maximized;
-                    formBackground.TopMost = true;
-                    formBackground.Location = this.Location;
-                    formBackground.ShowInTaskbar = false;
-                    formBackground.Show();
-
-                    employeeManagerEmpAdd.Owner = formBackground;
-                    employeeManagerEmpAdd.ShowDialog();
-
-                    formBackground.Dispose();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                formBackground.Dispose();
-            }
+            // Create an instance of the form and pass it to the method
+            OpenSubForm(new EmployeeManagerEmpAdd(this));
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Form formBackground = new Form();
-            try
-            {
-                using (EmployeeManagerUpdateEmp employeeManagerUpdateEmp = new EmployeeManagerUpdateEmp())
-                {
-                    formBackground.StartPosition = FormStartPosition.Manual;
-                    formBackground.FormBorderStyle = FormBorderStyle.None;
-                    formBackground.Opacity = .50d;
-                    formBackground.BackColor = Color.Black;
-                    formBackground.WindowState = FormWindowState.Maximized;
-                    formBackground.TopMost = true;
-                    formBackground.Location = this.Location;
-                    formBackground.ShowInTaskbar = false;
-                    formBackground.Show();
-
-                    employeeManagerUpdateEmp.Owner = formBackground;
-                    employeeManagerUpdateEmp.ShowDialog();
-
-                    formBackground.Dispose();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                formBackground.Dispose();
-            }
+            // Create an instance of the form and pass it to the method
+            OpenSubForm(new EmployeeManagerUpdateEmp(this));
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -256,6 +180,40 @@ namespace AK_Textile
         private void button9_Click(object sender, EventArgs e)
         {
             mainForm.LoadForm(new EmpManagerReport(mainForm));
+        }
+
+        private void OpenSubForm(Form subForm)
+        {
+            Form formBackground = new Form(); // Initialize background form
+
+            try
+            {
+                formBackground.StartPosition = FormStartPosition.Manual;
+                formBackground.FormBorderStyle = FormBorderStyle.None;
+                formBackground.Opacity = .50d;
+                formBackground.BackColor = Color.Black;
+                formBackground.WindowState = FormWindowState.Maximized;
+                formBackground.TopMost = true;
+                formBackground.Location = this.Location;
+                formBackground.ShowInTaskbar = false;
+                formBackground.Show();
+
+                // Set the background form as the owner of the subform
+                subForm.Owner = formBackground;
+
+                // Show the subform as a dialog
+                subForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                // Dispose both forms
+                formBackground.Dispose();
+                subForm.Dispose();
+            }
         }
     }
 }

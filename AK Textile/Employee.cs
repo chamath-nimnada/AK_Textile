@@ -155,7 +155,7 @@ namespace AK_Textile
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+        
         }
 
         private void button6_Click(object sender, EventArgs e)

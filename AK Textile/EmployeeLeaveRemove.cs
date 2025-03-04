@@ -51,21 +51,18 @@ namespace AK_Textile
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message, "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             textBox1.Text = string.Empty;
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
             employeeForm.RefreshDataGrid();
-
         }
 
         private void button9_Click_1(object sender, EventArgs e)

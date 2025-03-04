@@ -98,7 +98,6 @@ namespace AK_Textile
             dateTimePicker2.Text = string.Empty;
             comboBox2.Text = string.Empty;
             textBox1.Text = string.Empty;
-
         }
 
 
