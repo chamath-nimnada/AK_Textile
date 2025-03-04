@@ -14,7 +14,7 @@ namespace AK_Textile
     public partial class EmpManagerLeave : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=Textiles;Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDB;Integrated Security=True");
 
 
         public EmpManagerLeave(MainForm mainForm)

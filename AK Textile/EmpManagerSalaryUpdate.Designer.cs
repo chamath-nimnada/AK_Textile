@@ -35,9 +35,9 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +53,7 @@
             this.button8.TabIndex = 45;
             this.button8.Text = "Update";
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button1
             // 
@@ -65,6 +66,7 @@
             this.button1.TabIndex = 47;
             this.button1.Text = "Cancel";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -77,6 +79,7 @@
             this.button2.TabIndex = 48;
             this.button2.Text = "Clear";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // groupBox1
             // 
@@ -123,15 +126,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Salary Details";
             // 
-            // textBox3
-            // 
-            this.textBox3.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(293, 47);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(301, 32);
-            this.textBox3.TabIndex = 17;
-            // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.MenuBar;
@@ -150,6 +144,15 @@
             this.label1.Size = new System.Drawing.Size(184, 26);
             this.label1.TabIndex = 18;
             this.label1.Text = "New Basic Salary";
+            // 
+            // textBox3
+            // 
+            this.textBox3.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Location = new System.Drawing.Point(293, 47);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(301, 32);
+            this.textBox3.TabIndex = 17;
             // 
             // EmpManagerSalaryUpdate
             // 
