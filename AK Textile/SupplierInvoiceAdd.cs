@@ -22,6 +22,7 @@ namespace AK_Textile
         public SupplierInvoiceAdd(SupplierInvoice supinvoiceform)
         {
             InitializeComponent();
+            autoincrement();
             this.supinvoiceform = supinvoiceform;
         }
 
@@ -99,7 +100,8 @@ namespace AK_Textile
                 cmd2.Parameters.AddWithValue("@sdate", date);
                 cmd2.Parameters.AddWithValue("@sitem", item);
                 cmd2.Parameters.AddWithValue("@sqty", quantity);
-                cmd2.Parameters.AddWithValue("@stotal", amount);
+                cmd2.Parameters.AddWithValue("@suprice", amount);
+                cmd2.Parameters.AddWithValue("@stotal", totalAmount);
 
                 cmd2.ExecuteNonQuery();
                 MessageBox.Show("Invoice added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -141,6 +143,8 @@ namespace AK_Textile
         private void addbtn_Click(object sender, EventArgs e)
         {
             AddSupplierInvoice();
+            autoincrement();
+            Clear();
         }
     }
 }

@@ -106,6 +106,7 @@ namespace AK_Textile
             }
             //Calling the method to search supplier invoice
             searchCusOrder(searchValue);
+            searchtxt.Clear();
         }
 
         private void searchCusOrder(string searchValue)

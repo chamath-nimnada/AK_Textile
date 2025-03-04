@@ -13,14 +13,16 @@ namespace AK_Textile
 {
     public partial class SupplierOrderUpdate : Form
     {
-        private SupplierOrder orderupdate; // Reference to Supplier
+        private SupplierOrder supplierOrderForm; // Reference to Supplier
         //database connection
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
                                                  Initial Catalog=Textlies;
                                                  Integrated Security=True");
-        public SupplierOrderUpdate(SupplierOrder orderupdate)
+        public SupplierOrderUpdate(SupplierOrder supplierOrderForm)
         {
             InitializeComponent();
+            this.supplierOrderForm = supplierOrderForm;
+
             // Event for selecting a row in DataGridView
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
 

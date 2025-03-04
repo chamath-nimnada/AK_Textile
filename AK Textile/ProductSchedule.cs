@@ -29,8 +29,8 @@ namespace AK_Textile
 
         private void button7_Click(object sender, EventArgs e)
         {
-            ProductScheduleAdd schadd = new ProductScheduleAdd();
-            schadd.ShowDialog();
+            //Create an instance of the form and pass it to the method
+            OpenSubForm(new ProductScheduleAdd(this));
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -75,14 +75,14 @@ namespace AK_Textile
 
         private void updatebtn_Click(object sender, EventArgs e)
         {
-            ProductScheduleUpdate schupd = new ProductScheduleUpdate();
-            schupd.ShowDialog();
+            //Create an instance of the form and pass it to the method
+            OpenSubForm(new ProductScheduleUpdate(this));
         }
 
         private void removebtn_Click(object sender, EventArgs e)
         {
-            ProductScheduleRemove schrem = new ProductScheduleRemove();
-            schrem.ShowDialog();
+            //Create an instance of the form and pass it to the method
+            OpenSubForm(new ProductScheduleRemove(this));
         }
 
 
@@ -160,6 +160,7 @@ namespace AK_Textile
             }
             //Calling the method to search Production schedule
             schedulesearch(searchValue);
+            textBox1.Clear();
         }
 
         private void OpenSubForm(Form subForm)
@@ -194,6 +195,11 @@ namespace AK_Textile
                 formBackground.Dispose();
                 subForm.Dispose();
             }
+        }
+
+        private void ProductSchedule_Load(object sender, EventArgs e)
+        {
+            LoadSchedule();
         }
     }
 }

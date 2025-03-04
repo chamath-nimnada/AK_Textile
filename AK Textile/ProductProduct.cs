@@ -29,20 +29,20 @@ namespace AK_Textile
 
         private void button7_Click(object sender, EventArgs e)
         {
-            // Create an instance of the form and pass it to the method
-           // OpenSubForm(new ProductProductAdd(this));
+             //Create an instance of the form and pass it to the method
+           OpenSubForm(new ProductProductAdd(this));
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             // Create an instance of the form and pass it to the method
-            //OpenSubForm(new ProductProductUpdate(this));
+            OpenSubForm(new ProductProductUpdate(this));
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             // Create an instance of the form and pass it to the method
-            //OpenSubForm(new ProductProductRemove(this));
+            OpenSubForm(new ProductProductRemove(this));
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -164,6 +164,7 @@ namespace AK_Textile
             }
             //Calling the method to search supplier invoice
             searchProduct(searchValue);
+            searchtxt.Clear();
         }
 
         private void OpenSubForm(Form subForm)
@@ -198,6 +199,11 @@ namespace AK_Textile
                 formBackground.Dispose();
                 subForm.Dispose();
             }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

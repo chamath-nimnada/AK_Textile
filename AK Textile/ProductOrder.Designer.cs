@@ -31,7 +31,6 @@
             this.reportbtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.productbtn = new System.Windows.Forms.Button();
             this.shedulebtn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -99,18 +98,6 @@
             this.button8.TabIndex = 68;
             this.button8.Text = "Order";
             this.button8.UseVisualStyleBackColor = false;
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(16, 570);
-            this.linkLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(45, 15);
-            this.linkLabel1.TabIndex = 67;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Logout";
             // 
             // productbtn
             // 
@@ -326,7 +313,6 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.reportbtn);
             this.Controls.Add(this.button8);
-            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.productbtn);
             this.Controls.Add(this.shedulebtn);
             this.Controls.Add(this.panel2);
@@ -350,7 +336,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -359,7 +344,6 @@
         private System.Windows.Forms.Button reportbtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Button productbtn;
         private System.Windows.Forms.Button shedulebtn;
         private System.Windows.Forms.Panel panel2;
