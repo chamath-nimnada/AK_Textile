@@ -24,8 +24,8 @@ namespace AK_Textile
 
             if (dataGridView1.SelectedRows.Count > 0) // Check if a row is selected
             {
-                // Get the CategoryID of the selected row (as a string)
-                string selectedCategoryID = dataGridView1.SelectedRows[0].Cells["InvCatID"].Value.ToString();
+                // Get the LeaveID of the selected row (as a string)
+                string selectedCategoryID = dataGridView1.SelectedRows[0].Cells["LeaveId"].Value.ToString();
 
                 try
                 {
@@ -34,11 +34,11 @@ namespace AK_Textile
                         connection.Open();
 
                         // SQL Query to delete data
-                        string deleteQuery = "DELETE FROM InventoryCategory WHERE InvCatID = @InvCatID";
+                        string deleteQuery = "DELETE FROM Leave WHERE LeaveId = @LeaveId";
 
                         using (SqlCommand cmd = new SqlCommand(deleteQuery, connection))
                         {
-                            cmd.Parameters.AddWithValue("@InvCatID", selectedCategoryID);
+                            cmd.Parameters.AddWithValue("@LeaveId", selectedCategoryID);
 
                             // Execute the delete command
                             int result = cmd.ExecuteNonQuery();

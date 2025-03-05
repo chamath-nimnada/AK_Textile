@@ -110,7 +110,8 @@
             this.groupBox1.Size = new System.Drawing.Size(638, 83);
             this.groupBox1.TabIndex = 41;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Enter Admin Name or ID";
+            this.groupBox1.Text = "Enter Employee Name or ID";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // button6
             // 
@@ -235,7 +236,7 @@
             this.groupBox2.Size = new System.Drawing.Size(638, 442);
             this.groupBox2.TabIndex = 44;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Change Admin Details";
+            this.groupBox2.Text = "Change Employee Details";
             // 
             // label9
             // 

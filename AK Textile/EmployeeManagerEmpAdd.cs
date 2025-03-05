@@ -23,44 +23,90 @@ namespace AK_Textile
 
         private void button2_Click(object sender, EventArgs e)
         {
-            textBox2.Clear();
-            textBox3.Clear();
-            textBox4.Clear();
-            textBox1.Clear();
-            comboBox1.SelectedIndex = -1;
-            textBox8.Clear();
-            textBox5.Clear();
-            textBox6.Clear();
-            textBox7.Clear();
+            ClearForm();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+        private void ClearForm()
+        {
+            textBox2.Text = string.Empty;
+            textBox3.Text = string.Empty;
+            textBox4.Text = string.Empty;
+            textBox1.Text = string.Empty;
+            comboBox1.SelectedIndex = -1;
+            textBox8.Text = string.Empty;
+            textBox5.Text = string.Empty;
+            textBox6.Text = string.Empty;
+            textBox7.Text = string.Empty;
+        }
 
         private void button8_Click(object sender, EventArgs e)
         {
+            // Get values from input fields
             string employeeID = textBox2.Text;
             string fullName = textBox3.Text;
             string userName = textBox4.Text;
             string password = textBox1.Text;
-            string position = comboBox1.SelectedItem?.ToString();
+            string position = comboBox1.Text;
             string contactNo = textBox8.Text;
             string homeNo = textBox5.Text;
             string streetName = textBox6.Text;
             string city = textBox7.Text;
 
-            if (string.IsNullOrWhiteSpace(employeeID) || string.IsNullOrWhiteSpace(fullName) ||
-                string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(password) ||
-                string.IsNullOrWhiteSpace(position) || string.IsNullOrWhiteSpace(contactNo))
+            // Validate input
+            if (string.IsNullOrWhiteSpace(employeeID) || string.IsNullOrWhiteSpace(fullName))
             {
-                MessageBox.Show("Please fill in all required fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Employee ID and Full Name are required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            MessageBox.Show($"Employee Added Successfully!\n\nEmployee ID: {employeeID}\nFull Name: {fullName}\nPosition: {position}\nContact No: {contactNo}\nAddress: {homeNo}, {streetName}, {city}",
-                "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // Database connection string
+            string connectionString = "YourConnectionStringHere";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Insert query
+                    string query = "INSERT INTO Employees (EmpID, EmpName, EmpUserName, EmpPswrd, PositionID, EmpContact, EmpStreetNo, EmpStreetName, EmpCity) VALUES (@EmpID, @EmpName, @EmpUserName, @EmpPswrd, @PositionID, @EmpContact, @EmpStreetNo, @EmpStreetName, @EmpCity)";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        // Add parameters
+                        command.Parameters.AddWithValue("@EmpID", employeeID);
+                        command.Parameters.AddWithValue("@EmpName", fullName);
+                        command.Parameters.AddWithValue("@EmpUserName", userName);
+                        command.Parameters.AddWithValue("@EmpPswrd", password);
+                        command.Parameters.AddWithValue("@PositionID", position);
+                        command.Parameters.AddWithValue("@EmpContact", contactNo);
+                        command.Parameters.AddWithValue("@EmpStreetNo", homeNo);
+                        command.Parameters.AddWithValue("@EmpStreetName", streetName);
+                        command.Parameters.AddWithValue("@EmpCity", city);
+
+                        // Execute query
+                        command.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Employee added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Clear form
+                ClearForm();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
