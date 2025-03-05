@@ -551,20 +551,6 @@
     <Compile Include="ProductDashboard.Designer.cs">
       <DependentUpon>ProductDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryRawAdd.cs" />
-    <Compile Include="InventoryRawAdd.Designer.cs">
-      <DependentUpon>InventoryRawAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InventoryRawUpdate.cs" />
-    <Compile Include="InventoryRawUpdate.Designer.cs">
-      <DependentUpon>InventoryRawUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InventoryRawRemove.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InventoryRawRemove.Designer.cs">
-      <DependentUpon>InventoryRawRemove.cs</DependentUpon>
-    </Compile>
     <Compile Include="InventoryGRN.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -851,15 +837,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProductDashboard.resx">
       <DependentUpon>ProductDashboard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InventoryRawAdd.resx">
-      <DependentUpon>InventoryRawAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InventoryRawUpdate.resx">
-      <DependentUpon>InventoryRawUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InventoryRawRemove.resx">
-      <DependentUpon>InventoryRawRemove.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryGRN.resx">
       <DependentUpon>InventoryGRN.cs</DependentUpon>

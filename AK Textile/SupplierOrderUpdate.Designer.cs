@@ -271,6 +271,7 @@
             this.Name = "SupplierOrderUpdate";
             this.Text = "Update Order";
             this.TopMost = true;
+         //   this.Load += new System.EventHandler(this.SupplierOrderUpdate_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

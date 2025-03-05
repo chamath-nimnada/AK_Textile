@@ -109,8 +109,8 @@ namespace AK_Textile
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //Call the public method from EmployeeLeave
-            employeeLeaveForm.RefreshDataGrid();
+            //Call the public method from EmployeeForm
+            employeeForm.RefreshDataGrid();
 
             this.Close();
 
@@ -119,6 +119,11 @@ namespace AK_Textile
         private void button2_Click(object sender, EventArgs e)
         {
             AllClear();
+        }
+
+        private void EmployeeLeaveAdd_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
