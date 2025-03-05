@@ -161,7 +161,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(195, 52);
             this.button3.TabIndex = 6;
-            this.button3.Text = "Supliers";
+            this.button3.Text = "Suppliers";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 

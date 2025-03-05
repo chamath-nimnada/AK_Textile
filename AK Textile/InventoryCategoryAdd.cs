@@ -75,18 +75,12 @@ namespace AK_Textile
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Category added successfully!");
                 textBox3.Text = string.Empty;
+                con.Close();
                 AutoGenerateID();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
-            }
-            finally
-            {
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
             }
         }
 

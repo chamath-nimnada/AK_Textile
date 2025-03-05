@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -106,6 +106,42 @@
     </Compile>
     <Compile Include="AdminAdminAdd.Designer.cs">
       <DependentUpon>AdminAdminAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryYearlyReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryYearlyReport.Designer.cs">
+      <DependentUpon>InventoryYearlyReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryWeeklyReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryWeeklyReport.Designer.cs">
+      <DependentUpon>InventoryWeeklyReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryMonthlyReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryMonthlyReport.Designer.cs">
+      <DependentUpon>InventoryMonthlyReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\InventoryYearlyReport.cs">
+      <DependentUpon>InventoryYearlyReport.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\InventoryWeeklyReport.cs">
+      <DependentUpon>InventoryWeeklyReport.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\InventoryMonthlyReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InventoryMonthlyReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="EmployeeManagerEmpAdd.cs">
       <SubType>Form</SubType>
@@ -615,6 +651,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryMonthlyReport.resx">
+      <DependentUpon>InventoryMonthlyReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryWeeklyReport.resx">
+      <DependentUpon>InventoryWeeklyReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryYearlyReport.resx">
+      <DependentUpon>InventoryYearlyReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\InventoryYearlyReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InventoryYearlyReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\InventoryWeeklyReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InventoryWeeklyReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\InventoryMonthlyReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InventoryMonthlyReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeeManagerEmpAdd.resx">
       <DependentUpon>EmployeeManagerEmpAdd.cs</DependentUpon>

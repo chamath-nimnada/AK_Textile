@@ -165,11 +165,20 @@ namespace AK_Textile
             totamount.Clear();
         }
 
+        private void clear_Click(object sender, EventArgs e)
+        {
+            clearing();
+        }
+
         private void addbtn_Click(object sender, EventArgs e)
         {
             invoiceUpdate();
         }
 
+        /*public SupplierInvoiceUpdate(SupplierInvoice supplierInvoice)
+        {
+            this.supplierInvoice = supplierInvoice;
+        }*/
 
         private void button1_Click(object sender, EventArgs e)
         {

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -197,6 +197,17 @@ namespace AK_Textile
 
         private void button6_Click(object sender, EventArgs e)
         {
+                /*string salaryId = txtSalaryId.Text;
+
+                if (!string.IsNullOrEmpty(salaryId))
+                {
+                    // Example: Replace this with actual search logic (e.g., database query)
+                    rtbResult.Text = $"Searching for Salary ID: {salaryId}\nResult: [Sample Data]";
+                }
+                else
+                {
+                    rtbResult.Text = "Please enter a Salary ID.";
+                }*/
             SalaryId.Text=string.Empty;
             LoadAllSalary();
         }
@@ -226,5 +237,6 @@ namespace AK_Textile
         {
             LoadAllSearchCategory();
         }
+
     }
 }
