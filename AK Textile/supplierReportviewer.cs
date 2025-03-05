@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AK_Textile
 {
-    public partial class ProductProductionRemove : Form
+    public partial class supplierReportviewer : Form
     {
-        public ProductProductionRemove()
+        public supplierReportviewer()
         {
             InitializeComponent();
         }

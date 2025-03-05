@@ -23,6 +23,7 @@ namespace AK_Textile
         public SupplierSupplier(MainForm mainForm)
         {
             InitializeComponent();
+            LoadSupplier();
             this.mainForm = mainForm;
         }
 
@@ -112,7 +113,7 @@ namespace AK_Textile
             LoadSupplier();
         }
 
-            private void SearchSupplier(string searchValue)
+            /*private void SearchSupplier(string searchValue)
             {
                 //to view the searched data into the data grod view
                 con.Open();
@@ -144,7 +145,7 @@ namespace AK_Textile
                 {
                     MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
+            }*/
 
         private void searchbtn_Click(object sender, EventArgs e)
         {
@@ -152,11 +153,39 @@ namespace AK_Textile
 
             if (string.IsNullOrEmpty(searchValue))
             {
-                MessageBox.Show("Please enter a valid Supplier ID or name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter a Supplier ID or Name.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            //Calling the method to search supplier invoice
-            SearchSupplier(searchValue);
+
+            string query = "";
+
+
+            try
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT SupID, SupName, SupAddress, SupEmail, SupContact FROM Supplier WHERE SupID = @Search OR SupName LIKE @SearchName", con);
+                
+                    cmd.Parameters.AddWithValue("@Search", searchValue);
+                    cmd.Parameters.AddWithValue("@SearchName", "%" + searchValue + "%"); // For partial name search
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    if (dt.Rows.Count > 0)
+                    {
+                        dataGridView1.DataSource = dt; // Display filtered results in DataGridView
+                    }
+                    else
+                    {
+                        MessageBox.Show("No matching supplier found!", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        dataGridView1.DataSource = null; // Clear DataGridView
+                    }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void OpenSubForm(Form subForm)
         {

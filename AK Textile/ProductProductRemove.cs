@@ -7,14 +7,112 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace AK_Textile
 {
     public partial class ProductProductRemove : Form
     {
-        public ProductProductRemove()
+        private ProductionProduct productionProductForm;
+        //database connection
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
+                                                 Initial Catalog=Textlies;
+                                                 Integrated Security=True");
+        public ProductProductRemove(ProductionProduct productionProductForm)
         {
             InitializeComponent();
+            this.productionProductForm = productionProductForm;
+        }
+
+        private void clearbtn_Click(object sender, EventArgs e)
+        {
+            searchtxt.Clear();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void searchbtn_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(searchtxt.Text))
+            {
+                MessageBox.Show("Please enter a Product ID or Name.");
+                return;
+            }
+
+            try
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT PID, InvID, Pname, PPrice, PQty FROM Product WHERE PID =@Search OR PName LIKE @SearchPattern", con);
+                {
+                    cmd.Parameters.AddWithValue("@Search", searchtxt.Text);
+                    cmd.Parameters.AddWithValue("@SearchPattern", "%" + searchtxt.Text + "%");
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    dataGridView1.DataSource = dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        private void removebtn_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a product to remove.");
+                return;
+            }
+
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this product?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dialogResult == DialogResult.No)
+            return;
+
+            string PID = dataGridView1.SelectedRows[0].Cells["PID"].Value.ToString();
+
+            try
+            {
+                con.Open();
+                SqlCommand cmd2 = new SqlCommand("DELETE FROM Product WHERE PID = @pid", con);
+                    {
+                        cmd2.Parameters.AddWithValue("@pid", PID);
+
+                        int rowsAffected = cmd2.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Product removed successfully.");
+                            searchbtn.PerformClick(); // Refresh DataGridView
+                        }
+                        else
+                        {
+                            MessageBox.Show("Deletion failed.");
+                        }
+                    }
+                }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        private void ProductProductRemove_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

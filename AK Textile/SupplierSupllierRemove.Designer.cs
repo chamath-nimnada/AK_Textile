@@ -157,6 +157,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SupplierSupllierRemove";
             this.Text = "Remove Supplier";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.SupplierSupllierRemove_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

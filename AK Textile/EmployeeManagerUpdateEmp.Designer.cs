@@ -110,7 +110,8 @@
             this.groupBox1.Size = new System.Drawing.Size(638, 83);
             this.groupBox1.TabIndex = 41;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Enter Admin Name or ID";
+            this.groupBox1.Text = "Enter Employee Name or ID";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // button6
             // 
@@ -123,6 +124,7 @@
             this.button6.TabIndex = 10;
             this.button6.Text = "Clear";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
             // 
@@ -135,6 +137,7 @@
             this.button5.TabIndex = 5;
             this.button5.Text = "Select";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // textBox1
             // 
@@ -156,6 +159,7 @@
             this.button8.TabIndex = 40;
             this.button8.Text = "Update";
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // label6
             // 
@@ -176,6 +180,7 @@
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(252, 32);
             this.textBox7.TabIndex = 24;
+            this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
             // textBox6
             // 
@@ -231,7 +236,7 @@
             this.groupBox2.Size = new System.Drawing.Size(638, 442);
             this.groupBox2.TabIndex = 44;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Change Admin Details";
+            this.groupBox2.Text = "Change Employee Details";
             // 
             // label9
             // 
@@ -332,6 +337,7 @@
             this.button2.TabIndex = 43;
             this.button2.Text = "Clear";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // EmployeeManagerUpdateEmp
             // 

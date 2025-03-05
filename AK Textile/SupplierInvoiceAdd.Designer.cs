@@ -280,6 +280,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SupplierInvoiceAdd";
             this.Text = "Add Invoice";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.SupplierInvoiceAdd_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

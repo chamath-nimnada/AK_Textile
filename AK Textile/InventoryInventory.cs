@@ -161,7 +161,7 @@ namespace AK_Textile
 
         private void button9_Click(object sender, EventArgs e)
         {
-            OpenSubForm(new InventoryInventoryAdd(this));
+           // OpenSubForm(new InventoryInventoryAdd(this));
         }
 
         private void InventoryInventory_Load(object sender, EventArgs e)
@@ -219,7 +219,7 @@ namespace AK_Textile
 
         private void button6_Click(object sender, EventArgs e)
         {
-            OpenSubForm(new InventoryInventoryRemove(this));
+            //OpenSubForm(new InventoryInventoryRemove(this));
         }
 
         private void button7_Click(object sender, EventArgs e)

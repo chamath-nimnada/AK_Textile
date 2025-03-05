@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.clearbtn = new System.Windows.Forms.Button();
             this.addbtn = new System.Windows.Forms.Button();
             this.cancelbtn = new System.Windows.Forms.Button();
@@ -42,7 +43,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // clearbtn
@@ -51,7 +54,7 @@
             this.clearbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.clearbtn.Location = new System.Drawing.Point(9, 275);
-            this.clearbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clearbtn.Margin = new System.Windows.Forms.Padding(2);
             this.clearbtn.Name = "clearbtn";
             this.clearbtn.Size = new System.Drawing.Size(133, 38);
             this.clearbtn.TabIndex = 37;
@@ -65,7 +68,7 @@
             this.addbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addbtn.ForeColor = System.Drawing.Color.White;
             this.addbtn.Location = new System.Drawing.Point(479, 275);
-            this.addbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addbtn.Margin = new System.Windows.Forms.Padding(2);
             this.addbtn.Name = "addbtn";
             this.addbtn.Size = new System.Drawing.Size(146, 38);
             this.addbtn.TabIndex = 34;
@@ -79,7 +82,7 @@
             this.cancelbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.cancelbtn.Location = new System.Drawing.Point(330, 275);
-            this.cancelbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cancelbtn.Margin = new System.Windows.Forms.Padding(2);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(133, 38);
             this.cancelbtn.TabIndex = 35;
@@ -92,7 +95,7 @@
             this.contacttxt.BackColor = System.Drawing.SystemColors.MenuBar;
             this.contacttxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contacttxt.Location = new System.Drawing.Point(141, 171);
-            this.contacttxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.contacttxt.Margin = new System.Windows.Forms.Padding(2);
             this.contacttxt.Name = "contacttxt";
             this.contacttxt.Size = new System.Drawing.Size(454, 27);
             this.contacttxt.TabIndex = 18;
@@ -123,9 +126,9 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(9, 10);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(616, 256);
             this.groupBox2.TabIndex = 36;
             this.groupBox2.TabStop = false;
@@ -136,7 +139,7 @@
             this.addresstxt.BackColor = System.Drawing.SystemColors.MenuBar;
             this.addresstxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addresstxt.Location = new System.Drawing.Point(141, 211);
-            this.addresstxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addresstxt.Margin = new System.Windows.Forms.Padding(2);
             this.addresstxt.Name = "addresstxt";
             this.addresstxt.Size = new System.Drawing.Size(454, 27);
             this.addresstxt.TabIndex = 9;
@@ -157,7 +160,7 @@
             this.emailtxt.BackColor = System.Drawing.SystemColors.MenuBar;
             this.emailtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.emailtxt.Location = new System.Drawing.Point(141, 128);
-            this.emailtxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.emailtxt.Margin = new System.Windows.Forms.Padding(2);
             this.emailtxt.Name = "emailtxt";
             this.emailtxt.Size = new System.Drawing.Size(454, 27);
             this.emailtxt.TabIndex = 5;
@@ -167,7 +170,7 @@
             this.nametxt.BackColor = System.Drawing.SystemColors.MenuBar;
             this.nametxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nametxt.Location = new System.Drawing.Point(141, 86);
-            this.nametxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nametxt.Margin = new System.Windows.Forms.Padding(2);
             this.nametxt.Name = "nametxt";
             this.nametxt.Size = new System.Drawing.Size(454, 27);
             this.nametxt.TabIndex = 4;
@@ -177,7 +180,7 @@
             this.supidtxt.BackColor = System.Drawing.Color.CornflowerBlue;
             this.supidtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.supidtxt.Location = new System.Drawing.Point(141, 46);
-            this.supidtxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.supidtxt.Margin = new System.Windows.Forms.Padding(2);
             this.supidtxt.Name = "supidtxt";
             this.supidtxt.ReadOnly = true;
             this.supidtxt.Size = new System.Drawing.Size(190, 27);
@@ -216,6 +219,10 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Supplier ID";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // SupplierSupplierAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -226,12 +233,14 @@
             this.Controls.Add(this.cancelbtn);
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SupplierSupplierAdd";
             this.Text = "Add Supplier";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.SupplierSupplierAdd_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -252,5 +261,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

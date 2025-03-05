@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -437,12 +437,6 @@
     <Compile Include="SalesOrder.Designer.cs">
       <DependentUpon>SalesOrder.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductProductionUpdate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProductProductionUpdate.Designer.cs">
-      <DependentUpon>ProductProductionUpdate.cs</DependentUpon>
-    </Compile>
     <Compile Include="ProductProductUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -467,18 +461,6 @@
     <Compile Include="ProductScheduleRemove.Designer.cs">
       <DependentUpon>ProductScheduleRemove.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductProductionRemove.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProductProductionRemove.Designer.cs">
-      <DependentUpon>ProductProductionRemove.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProductProductionAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProductProductionAdd.Designer.cs">
-      <DependentUpon>ProductProductionAdd.cs</DependentUpon>
-    </Compile>
     <Compile Include="ProductProductAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -490,6 +472,18 @@
     </Compile>
     <Compile Include="ProductScheduleAdd.Designer.cs">
       <DependentUpon>ProductScheduleAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="supplierReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>supplierReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="supplierReportviewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="supplierReportviewer.Designer.cs">
+      <DependentUpon>supplierReportviewer.cs</DependentUpon>
     </Compile>
     <Compile Include="SupplierSupllierRemove.cs">
       <SubType>Form</SubType>
@@ -593,12 +587,6 @@
     <Compile Include="ProductRaw.Designer.cs">
       <DependentUpon>ProductRaw.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductProduction.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProductProduction.Designer.cs">
-      <DependentUpon>ProductProduction.cs</DependentUpon>
-    </Compile>
     <Compile Include="ProductSchedule.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -610,24 +598,6 @@
     </Compile>
     <Compile Include="ProductDashboard.Designer.cs">
       <DependentUpon>ProductDashboard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InventoryInventoryAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InventoryInventoryAdd.Designer.cs">
-      <DependentUpon>InventoryInventoryAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InventoryInventoryUpdate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InventoryInventoryUpdate.Designer.cs">
-      <DependentUpon>InventoryInventoryUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InventoryInventoryRemove.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InventoryInventoryRemove.Designer.cs">
-      <DependentUpon>InventoryInventoryRemove.cs</DependentUpon>
     </Compile>
     <Compile Include="InventoryGRN.cs">
       <SubType>Form</SubType>
@@ -856,9 +826,6 @@
     <EmbeddedResource Include="SalesOrder.resx">
       <DependentUpon>SalesOrder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductProductionUpdate.resx">
-      <DependentUpon>ProductProductionUpdate.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ProductProductUpdate.resx">
       <DependentUpon>ProductProductUpdate.cs</DependentUpon>
     </EmbeddedResource>
@@ -868,17 +835,11 @@
     <EmbeddedResource Include="ProductProductRemove.resx">
       <DependentUpon>ProductProductRemove.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductProductionRemove.resx">
-      <DependentUpon>ProductProductionRemove.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ProductScheduleRemove.resx">
       <DependentUpon>ProductScheduleRemove.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductProductAdd.resx">
       <DependentUpon>ProductProductAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProductProductionAdd.resx">
-      <DependentUpon>ProductProductionAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductScheduleAdd.resx">
       <DependentUpon>ProductScheduleAdd.cs</DependentUpon>
@@ -894,6 +855,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SalesSchedule.resx">
       <DependentUpon>SalesSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="supplierReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>supplierReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="supplierReportviewer.resx">
+      <DependentUpon>supplierReportviewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SupplierSupllierRemove.resx">
       <DependentUpon>SupplierSupllierRemove.cs</DependentUpon>
@@ -943,20 +911,8 @@
     <EmbeddedResource Include="ProductRaw.resx">
       <DependentUpon>ProductRaw.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductProduction.resx">
-      <DependentUpon>ProductProduction.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ProductDashboard.resx">
       <DependentUpon>ProductDashboard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InventoryInventoryAdd.resx">
-      <DependentUpon>InventoryInventoryAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InventoryInventoryUpdate.resx">
-      <DependentUpon>InventoryInventoryUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InventoryInventoryRemove.resx">
-      <DependentUpon>InventoryInventoryRemove.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryGRN.resx">
       <DependentUpon>InventoryGRN.cs</DependentUpon>

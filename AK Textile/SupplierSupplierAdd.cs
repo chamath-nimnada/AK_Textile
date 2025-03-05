@@ -21,6 +21,8 @@ namespace AK_Textile
         public SupplierSupplierAdd(SupplierSupplier supplierform)
         {
             InitializeComponent();
+            autoincrement();
+            this.supplierform = supplierform;
         }
 
         //To auto increment the Supplier ID
@@ -69,14 +71,35 @@ namespace AK_Textile
 
         private void addbtn_Click(object sender, EventArgs e)
         {
+            //Validations
+            if (this.nametxt.Text == "")
+            {
+                this.errorProvider1.SetError(this.nametxt, "Supplier name cannot be empty");
+                return;
+            }
+            else if(this.addresstxt.Text == "")
+            {
+                this.errorProvider1.SetError(this.addresstxt, "Supplier address cannot be empty");
+                return;
+            }
+            else if (this.contacttxt.Text == "")
+            {
+                this.errorProvider1.SetError(this.contacttxt, "Supplier contat cannot be empty");
+                return;
+            }
+            else if (this.emailtxt.Text == "")
+            {
+                this.errorProvider1.SetError(this.emailtxt, "Supplier email cannot be empty");
+                return;
+            }
+
             con.Open();
             SqlCommand cmd2 = new SqlCommand("INSERT INTO Supplier(SupID, SupName, SupAddress, SupEmail, SupContact) VALUES (@supid, @sname, @saddress, @smail, @scontact)", con);
             cmd2.Parameters.AddWithValue("@supid", supidtxt.Text);
             cmd2.Parameters.AddWithValue("@sname", nametxt.Text);
             cmd2.Parameters.AddWithValue("@saddress", addresstxt.Text);
+            cmd2.Parameters.AddWithValue("@scontact", contacttxt.Text);
             cmd2.Parameters.AddWithValue("@smail", emailtxt.Text);
-            cmd2.Parameters.AddWithValue("@supcontact", contacttxt.Text);
-
 
             try
             {

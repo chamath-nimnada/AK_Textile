@@ -110,7 +110,7 @@ namespace AK_Textile
             }
             else
             {
-                MessageBox.Show("Please enter a Supplier ID or Name to search.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter a Invoice ID or Name to search.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -118,7 +118,7 @@ namespace AK_Textile
         //method for the update button
         private void invoiceUpdate()
         {
-            if (string.IsNullOrWhiteSpace(supidtxt.Text) || string.IsNullOrWhiteSpace(itemtxt.Text) || string.IsNullOrWhiteSpace(supidtxt.Text))
+            if (string.IsNullOrWhiteSpace(supidtxt.Text) || string.IsNullOrWhiteSpace(itemtxt.Text))
             {
                 MessageBox.Show("Please fill all fields.");
                 return;
@@ -155,7 +155,7 @@ namespace AK_Textile
             }
         }
 
-        /*private void clear()
+        private void clearing()
         {
             supidtxt.Clear();
             dateTimePicker1.Value = DateTime.Today;
@@ -163,11 +163,11 @@ namespace AK_Textile
             qtytxt.Clear();
             amounttxt.Clear();
             totamount.Clear();
-        }*/
+        }
 
         private void clear_Click(object sender, EventArgs e)
         {
-            //clear();
+            clearing();
         }
 
         private void addbtn_Click(object sender, EventArgs e)
@@ -179,5 +179,10 @@ namespace AK_Textile
         {
             this.supplierInvoice = supplierInvoice;
         }*/
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            clearing();
+        }
     }
 }

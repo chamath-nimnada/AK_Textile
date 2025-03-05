@@ -14,7 +14,9 @@ namespace AK_Textile
     public partial class EmpManagerLeave : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=Textiles;Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDB;Integrated Security=True");
+
+        private int selectedLeaveId = 0;
 
 
         public EmpManagerLeave(MainForm mainForm)
@@ -147,16 +149,86 @@ namespace AK_Textile
         {
 
         }
+        private void LoadPendingLeaves()
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDB;Integrated Security=True"))
+                {
+                    connection.Open();
+                    string query = "SELECT LeaveID, EmpName, LeaveTypeID, LStartDate, LEndDate, Status FROM Leave WHERE Status = 'Pending'";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    dataGridView1.DataSource = dataTable;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading pending leaves: " + ex.Message);
+            }
+        }
+
 
         private void button10_Click(object sender, EventArgs e)
         {
-           
+            if (selectedLeaveId > 0) // Ensure a leave is selected
+            {
+                try
+                {
+                    using (SqlConnection connection = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDB;Integrated Security=True"))
+                    {
+                        connection.Open();
+                        string query = "UPDATE Leave SET Status = 'Approved' WHERE LeaveID = @LeaveID";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@LeaveID", selectedLeaveId);
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Leave Approved Successfully!");
+
+                        // Refresh Pending Leaves Grid
+                        LoadPendingLeaves();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a leave to approve.");
+            }
 
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            
+            if (selectedLeaveId > 0) // Ensure a leave is selected
+            {
+                try
+                {
+                    using (SqlConnection connection = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDB;Integrated Security=True"))
+                    {
+                        connection.Open();
+                        string query = "UPDATE Leave SET Status = 'Declined' WHERE LeaveID = @LeaveID";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@LeaveID", selectedLeaveId);
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Leave Declined Successfully!");
+
+                        // Refresh Pending Leaves Grid
+                        LoadPendingLeaves();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a leave to decline.");
+            }
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
