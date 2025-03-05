@@ -1,6 +1,6 @@
 ﻿namespace AK_Textile
 {
-    partial class Form2
+    partial class InventoryMonthlyReport
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.InventoryMonthlyReport1 = new AK_Textile.InventoryMonthlyReport();
             this.InventoryMonthlyReport2 = new AK_Textile.Reports.InventoryMonthlyReport();
             this.SuspendLayout();
             // 
@@ -46,14 +45,14 @@
             this.crystalReportViewer1.TabIndex = 0;
             this.crystalReportViewer1.Load += new System.EventHandler(this.crystalReportViewer1_Load);
             // 
-            // Form2
+            // InventoryMonthlyReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(925, 375);
             this.Controls.Add(this.crystalReportViewer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form2";
+            this.Name = "InventoryMonthlyReport";
             this.Text = "Form2";
             this.ResumeLayout(false);
 

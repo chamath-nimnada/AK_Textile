@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+using CrystalDecisions.Windows.Forms;
+using System;
 using System.Windows.Forms;
 
 namespace AK_Textile
 {
-    public partial class Form2 : Form
+    public partial class InventoryMonthlyReport : Form
     {
-        public Form2()
+        public InventoryMonthlyReport()
         {
             InitializeComponent();
         }
@@ -20,6 +16,36 @@ namespace AK_Textile
         private void crystalReportViewer1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        // Method to add current month filter to your Crystal Report
+        private void FilterCurrentMonthData(ReportDocument reportDocument)
+        {
+            // Get the current system month and year
+            int currentMonth = DateTime.Now.Month;
+            int currentYear = DateTime.Now.Year;
+
+            // Add a selection formula to filter data for the current month
+            reportDocument.RecordSelectionFormula =
+                $"Month({{Inventory.DateAdded}}) = {currentMonth} AND " +
+                $"Year({{Inventory.DateAdded}}) = {currentYear}";
+        }
+
+        // Example usage in your report loading method
+        private void LoadReportWithCurrentMonthFilter()
+        {
+            ReportDocument reportDocument = new ReportDocument();
+            reportDocument.Load("path/to/your/report.rpt");
+
+            // Set up your database connection
+            TableLogOnInfo logOnInfo = new TableLogOnInfo();
+            // ... (your existing database connection logic)
+
+            // Apply current month filter
+            FilterCurrentMonthData(reportDocument);
+
+            // Set the report document to your report viewer
+            crystalReportViewer1.ReportSource = reportDocument;
         }
     }
 }
