@@ -437,6 +437,18 @@
     <Compile Include="ProductScheduleAdd.Designer.cs">
       <DependentUpon>ProductScheduleAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="supplierReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>supplierReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="supplierReportviewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="supplierReportviewer.Designer.cs">
+      <DependentUpon>supplierReportviewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="SupplierSupllierRemove.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -550,20 +562,6 @@
     </Compile>
     <Compile Include="ProductDashboard.Designer.cs">
       <DependentUpon>ProductDashboard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InventoryRawAdd.cs" />
-    <Compile Include="InventoryRawAdd.Designer.cs">
-      <DependentUpon>InventoryRawAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InventoryRawUpdate.cs" />
-    <Compile Include="InventoryRawUpdate.Designer.cs">
-      <DependentUpon>InventoryRawUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InventoryRawRemove.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InventoryRawRemove.Designer.cs">
-      <DependentUpon>InventoryRawRemove.cs</DependentUpon>
     </Compile>
     <Compile Include="InventoryGRN.cs">
       <SubType>Form</SubType>
@@ -801,6 +799,13 @@
     <EmbeddedResource Include="SalesSchedule.resx">
       <DependentUpon>SalesSchedule.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="supplierReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>supplierReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="supplierReportviewer.resx">
+      <DependentUpon>supplierReportviewer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SupplierSupllierRemove.resx">
       <DependentUpon>SupplierSupllierRemove.cs</DependentUpon>
     </EmbeddedResource>
@@ -851,15 +856,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProductDashboard.resx">
       <DependentUpon>ProductDashboard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InventoryRawAdd.resx">
-      <DependentUpon>InventoryRawAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InventoryRawUpdate.resx">
-      <DependentUpon>InventoryRawUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InventoryRawRemove.resx">
-      <DependentUpon>InventoryRawRemove.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryGRN.resx">
       <DependentUpon>InventoryGRN.cs</DependentUpon>
@@ -919,6 +915,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\home_9449216.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

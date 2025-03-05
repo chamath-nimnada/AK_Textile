@@ -84,7 +84,7 @@ namespace AK_Textile
             try
             {
                 con.Open();
-                SqlCommand cmd2 = new SqlCommand("DELETE FROM Products WHERE PID = @pid", con);
+                SqlCommand cmd2 = new SqlCommand("DELETE FROM Product WHERE PID = @pid", con);
                     {
                         cmd2.Parameters.AddWithValue("@pid", PID);
 

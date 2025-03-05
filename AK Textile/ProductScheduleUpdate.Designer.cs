@@ -58,9 +58,9 @@
             this.groupBox1.Controls.Add(this.searchtxt);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(9, 11);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(517, 84);
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
@@ -72,7 +72,7 @@
             this.clearbtn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearbtn1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.clearbtn1.Location = new System.Drawing.Point(410, 32);
-            this.clearbtn1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clearbtn1.Margin = new System.Windows.Forms.Padding(2);
             this.clearbtn1.Name = "clearbtn1";
             this.clearbtn1.Size = new System.Drawing.Size(96, 30);
             this.clearbtn1.TabIndex = 10;
@@ -86,7 +86,7 @@
             this.searchbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchbtn.ForeColor = System.Drawing.Color.White;
             this.searchbtn.Location = new System.Drawing.Point(286, 32);
-            this.searchbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.searchbtn.Margin = new System.Windows.Forms.Padding(2);
             this.searchbtn.Name = "searchbtn";
             this.searchbtn.Size = new System.Drawing.Size(119, 30);
             this.searchbtn.TabIndex = 5;
@@ -99,7 +99,7 @@
             this.searchtxt.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.searchtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchtxt.Location = new System.Drawing.Point(40, 34);
-            this.searchtxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.searchtxt.Margin = new System.Windows.Forms.Padding(2);
             this.searchtxt.Name = "searchtxt";
             this.searchtxt.Size = new System.Drawing.Size(230, 27);
             this.searchtxt.TabIndex = 0;
@@ -110,7 +110,7 @@
             this.updatebtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updatebtn.ForeColor = System.Drawing.Color.White;
             this.updatebtn.Location = new System.Drawing.Point(380, 356);
-            this.updatebtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.updatebtn.Margin = new System.Windows.Forms.Padding(2);
             this.updatebtn.Name = "updatebtn";
             this.updatebtn.Size = new System.Drawing.Size(146, 38);
             this.updatebtn.TabIndex = 27;
@@ -124,7 +124,7 @@
             this.cancelbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.cancelbtn.Location = new System.Drawing.Point(242, 357);
-            this.cancelbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cancelbtn.Margin = new System.Windows.Forms.Padding(2);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(133, 38);
             this.cancelbtn.TabIndex = 30;
@@ -138,7 +138,7 @@
             this.clearbtn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearbtn2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.clearbtn2.Location = new System.Drawing.Point(9, 356);
-            this.clearbtn2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clearbtn2.Margin = new System.Windows.Forms.Padding(2);
             this.clearbtn2.Name = "clearbtn2";
             this.clearbtn2.Size = new System.Drawing.Size(133, 38);
             this.clearbtn2.TabIndex = 31;
@@ -161,9 +161,9 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(9, 100);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(517, 249);
             this.groupBox2.TabIndex = 33;
             this.groupBox2.TabStop = false;
@@ -183,7 +183,7 @@
             // qtytxt
             // 
             this.qtytxt.Location = new System.Drawing.Point(195, 117);
-            this.qtytxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.qtytxt.Margin = new System.Windows.Forms.Padding(2);
             this.qtytxt.Name = "qtytxt";
             this.qtytxt.Size = new System.Drawing.Size(312, 27);
             this.qtytxt.TabIndex = 28;
@@ -202,7 +202,7 @@
             // ptypetxt
             // 
             this.ptypetxt.Location = new System.Drawing.Point(195, 76);
-            this.ptypetxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ptypetxt.Margin = new System.Windows.Forms.Padding(2);
             this.ptypetxt.Name = "ptypetxt";
             this.ptypetxt.Size = new System.Drawing.Size(312, 27);
             this.ptypetxt.TabIndex = 26;
@@ -221,7 +221,7 @@
             // nametxt
             // 
             this.nametxt.Location = new System.Drawing.Point(195, 33);
-            this.nametxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nametxt.Margin = new System.Windows.Forms.Padding(2);
             this.nametxt.Name = "nametxt";
             this.nametxt.Size = new System.Drawing.Size(312, 27);
             this.nametxt.TabIndex = 24;
@@ -229,7 +229,7 @@
             // dateTimePicker2
             // 
             this.dateTimePicker2.Location = new System.Drawing.Point(195, 204);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(312, 27);
             this.dateTimePicker2.TabIndex = 21;
@@ -248,7 +248,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(195, 160);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(312, 27);
             this.dateTimePicker1.TabIndex = 19;
@@ -275,9 +275,10 @@
             this.Controls.Add(this.cancelbtn);
             this.Controls.Add(this.clearbtn2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ProductScheduleUpdate";
             this.Text = " Update Schedule";
+            this.TopMost = true;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
