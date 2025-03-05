@@ -28,8 +28,8 @@ namespace AK_Textile
 
             if (dataGridView1.SelectedRows.Count > 0) // Check if a row is selected
             {
-                // Get the CategoryID of the selected row (as a string)
-                string selectedCategoryID = dataGridView1.SelectedRows[0].Cells["InvCatID"].Value.ToString();
+                // Get the EmpID of the selected row (as a string)
+                string selectedCategoryID = dataGridView1.SelectedRows[0].Cells["EmpID"].Value.ToString();
 
                 try
                 {
@@ -38,11 +38,11 @@ namespace AK_Textile
                         connection.Open();
 
                         // SQL Query to delete data
-                        string deleteQuery = "DELETE FROM InventoryCategory WHERE InvCatID = @InvCatID";
+                        string deleteQuery = "DELETE FROM Employee WHERE EmpID = @EmpID";
 
                         using (SqlCommand cmd = new SqlCommand(deleteQuery, connection))
                         {
-                            cmd.Parameters.AddWithValue("@InvCatID", selectedCategoryID);
+                            cmd.Parameters.AddWithValue("@EmpID", selectedCategoryID);
 
                             // Execute the delete command
                             int result = cmd.ExecuteNonQuery();
@@ -54,7 +54,7 @@ namespace AK_Textile
                                 // Refresh DataGridView after deletion
                                 button9.PerformClick();
 
-                                // Call the public method from InventoryCategory
+                                // Call the public method from EmpManagerEmployee
                                 employeeManRemoveEmpForm.RefreshDataGrid();
 
                                 this.Close();
@@ -79,7 +79,7 @@ namespace AK_Textile
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Call the public method from InventoryCategory
+            // Call the public method from EmpManagerEmployee
             employeeManRemoveEmpForm.RefreshDataGrid();
 
             this.Close();
@@ -105,7 +105,7 @@ namespace AK_Textile
                     connection.Open();
 
                     // SQL Query to search data
-                    string query = "SELECT * FROM InventoryCategory WHERE InvCatID LIKE @search OR InvCategory LIKE @search";
+                    string query = "SELECT * FROM Employee WHERE EmpID LIKE @search OR EmpName LIKE @search";
 
                     using (SqlCommand cmd = new SqlCommand(query, connection))
                     {
