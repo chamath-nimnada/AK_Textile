@@ -21,12 +21,14 @@ namespace AK_Textile
         {
             InitializeComponent();
             this.mainForm = mainForm;
-            LoadAllSearchCategory();
+            LoadAllSalary();
+            LoadLeaveData();
 
         }
         public void RefreshDataGrid()
         {
             LoadAllSalary();
+            LoadLeaveData();
         }
 
         private void LoadAllSalary()
@@ -48,8 +50,37 @@ namespace AK_Textile
                         adapter.Fill(dataTable);
 
                         // Bind the DataTable to the DataGridView
-                        dataGridView1.DataSource = dataTable;
+                        dataGridView2.DataSource = dataTable;
 
+                        // Adjust columns to fit the grid width
+                        dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred while loading data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                con.Close();
+            }
+        }
+
+        private void LoadLeaveData()
+        {
+            string query = "SELECT LeaveID, LeaveTypeID, LReason, LStartDate, LEndDate, LStatus FROM Leave";
+            {
+                try
+                {
+                    // Open the connection
+                    con.Open();
+                    // Create the SQL command
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        // Execute the query and load the results into a DataTable
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        // Bind the DataTable to the DataGridView
+                        dataGridView1.DataSource = dataTable;
                         // Adjust columns to fit the grid width
                         dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     }
@@ -61,6 +92,13 @@ namespace AK_Textile
                 con.Close();
             }
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            LoadLeaveData(); // Load data when the form loads
+        }
+
+
 
         private void LoadAllSearchCategory()
         {
@@ -97,16 +135,16 @@ namespace AK_Textile
                         if (dataTable.Rows.Count > 0)
                         {
                             // Bind the DataTable to the DataGridView
-                            dataGridView1.DataSource = dataTable;
+                            dataGridView2.DataSource = dataTable;
 
                             // Adjust columns to fit the grid width
-                            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                             con.Close();
                         }
                         else
                         {
                             MessageBox.Show("No matching records found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            dataGridView1.DataSource = null; // Clear DataGridView if no data found
+                            dataGridView2.DataSource = null; // Clear DataGridView if no data found
                             con.Close();
                             LoadAllSalary();
                         }
@@ -119,7 +157,6 @@ namespace AK_Textile
                 con.Close();
             }
         }
-
         private void OpenSubForm(Form subForm)
         {
             Form formBackground = new Form(); // Initialize background form

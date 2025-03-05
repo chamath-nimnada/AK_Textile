@@ -118,5 +118,15 @@ namespace AK_Textile
                 MessageBox.Show("Please select a record to delete.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void EmployeeLeaveRemove_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
