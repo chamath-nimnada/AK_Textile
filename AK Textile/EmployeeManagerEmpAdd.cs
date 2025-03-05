@@ -20,6 +20,41 @@ namespace AK_Textile
             InitializeComponent();
             this.empManagerEmployee = empManagerEmployee;
         }
+        private void AutoGenerateID()
+        {
+            try
+            {
+                con.Open();
+                SqlCommand cmd1 = new SqlCommand("SELECT MAX(EmpID) FROM Employee", con);
+                SqlDataReader dr1 = cmd1.ExecuteReader();
+                if (dr1.Read())
+                {
+                    if (dr1[0] == DBNull.Value)
+                    {
+                        this.textBox2.Text = "INC001";
+                    }
+                    else
+                    {
+                        string maxID = dr1[0].ToString();
+                        int numericPart = int.Parse(maxID.Substring(3)); // Extract "001" and convert to integer
+                        string newID = "INC" + (numericPart + 1).ToString("D3"); // Increment and format as "SUPXXX"
+                        this.textBox2.Text = newID;
+                    }
+                    dr1.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
