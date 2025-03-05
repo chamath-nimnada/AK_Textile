@@ -41,7 +41,7 @@ namespace AK_Textile
                 {
                     string maxID = dr1[0].ToString();
                     int numericPart = int.Parse(maxID.Substring(3)); // Extract "001" and convert to integer
-                    string newID = "POID" + (numericPart + 1).ToString("D3"); // Increment and format as "SUPXXX"
+                    string newID = "PO" + (numericPart + 1).ToString("D3"); // Increment and format as "SUPXXX"
                     this.orderidtxt.Text = newID;
                 }
                 dr1.Close();
