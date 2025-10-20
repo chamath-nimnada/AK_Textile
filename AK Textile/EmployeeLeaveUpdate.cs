@@ -16,7 +16,7 @@ namespace AK_Textile
     {
         private Employee employeeForm; // Reference to Employee Leave
 
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-1AMUUF3;Initial Catalog=AKTextilesDB;Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
         public EmployeeLeaveUpdate(Employee employeeForm)
         {
             InitializeComponent();
@@ -37,13 +37,12 @@ namespace AK_Textile
             }
             try
             {
-                string query = "SELECT * FROM Leave WHERE LeaveID = @LeaveID";
-                using (SqlConnection connection = new SqlConnection(con.ConnectionString))
+                string query1 = "SELECT * FROM Leave WHERE LeaveID = @LeaveID";
                 {
-                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    using (SqlCommand cmd = new SqlCommand(query1, con))
                     {
                         cmd.Parameters.AddWithValue("@LeaveID", textBox1.Text.Trim());
-                        connection.Open();
+                        con.Open();
                         object result = cmd.ExecuteScalar();
                         if (result != null)
                         {
@@ -64,15 +63,15 @@ namespace AK_Textile
 
         private void LoadLeaveData()
         {
-            string query = "SELECT LeaveID FROM Leave";
-            using(SqlCommand cmd = new SqlCommand(query, con))
+            string query2 = "SELECT LeaveID FROM Leave";
+            using(SqlCommand cmd = new SqlCommand(query2, con))
             using(SqlDataAdapter da = new SqlDataAdapter(cmd))
             {
                 con.Open();
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
-               // textBox1.DataSource = dt;
+                //textBox1.DataSource = dt;
             }
             
         }
@@ -85,7 +84,7 @@ namespace AK_Textile
 
         private void ClearFields()
         {
-            textBox1.Clear(); // Fixing the error by using Clear() method instead of SelectedIndex
+            textBox1.Clear();
             dateTimePicker1.Value = DateTime.Now;
             dateTimePicker2.Value = DateTime.Now;
             comboBox2.Text = String.Empty;

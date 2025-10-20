@@ -46,7 +46,7 @@ namespace AK_Textile
 
         private void button2_Click(object sender, EventArgs e)
         {
-           // mainForm.LoadForm(new SalesInvoice(mainForm));
+            mainForm.LoadForm(new SalesInvoice(mainForm));
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -61,7 +61,7 @@ namespace AK_Textile
 
         private void button7_Click(object sender, EventArgs e)
         {
-            //mainForm.LoadForm(new SalesBill(mainForm));
+            mainForm.LoadForm(new SalesBill(mainForm));
         }
 
         private void button8_Click(object sender, EventArgs e)

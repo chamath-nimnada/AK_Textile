@@ -43,7 +43,7 @@ namespace AK_Textile
                             {
                                 MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                                // Refresh DataGridView after deletion
+                                //Refresh DataGridView after deletion
                                 //button9.PerformClick();
 
                                 // Call the public method from InventoryCategory
@@ -72,7 +72,7 @@ namespace AK_Textile
         {
             this.Close();
             // Call the public method from InventoryCategory
-            // AdminAdmin.RefreshDataGrid();
+            //AdminAdmin.RefreshDataGrid();
         }
 
         private void searchbtn_Click(object sender, EventArgs e)

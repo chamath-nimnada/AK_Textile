@@ -7,12 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace AK_Textile
 {
     public partial class SalesSales : Form
     {
         private MainForm mainForm;
+
+        //database connection
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
         public SalesSales(MainForm mainForm)
         {
             InitializeComponent();
@@ -22,6 +26,56 @@ namespace AK_Textile
         private void SalesSales_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new SalesDashboard(mainForm));
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new LoginForm(mainForm));
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new SalesOrder(mainForm));
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new SalesPayment(mainForm));
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new SalesInvoice(mainForm));
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new SalesCustomer(mainForm));
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new SalesSchedule(mainForm));
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new SalesBill(mainForm));
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new SalesReport(mainForm));
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            mainForm.LoadForm(new LoginForm(mainForm));
         }
     }
 }

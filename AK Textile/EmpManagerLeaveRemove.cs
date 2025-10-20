@@ -13,7 +13,7 @@ namespace AK_Textile
 {
     public partial class EmpManagerLeaveRemove : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDB;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
         public EmpManagerLeaveRemove()
         {
             InitializeComponent();
@@ -29,42 +29,43 @@ namespace AK_Textile
 
                 try
                 {
-                    using (SqlConnection connection = new SqlConnection(con.ConnectionString))
-                    {
-                        connection.Open();
 
+                        con.Open();
                         // SQL Query to delete data
                         string deleteQuery = "DELETE FROM Leave WHERE LeaveId = @LeaveId";
 
-                        using (SqlCommand cmd = new SqlCommand(deleteQuery, connection))
+                    using (SqlCommand cmd = new SqlCommand(deleteQuery, con))
+                    {
+                        cmd.Parameters.AddWithValue("@LeaveId", selectedCategoryID);
+
+                        // Execute the delete command
+                        int result = cmd.ExecuteNonQuery();
+
+                        if (result > 0)
                         {
-                            cmd.Parameters.AddWithValue("@LeaveId", selectedCategoryID);
+                            MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                            // Execute the delete command
-                            int result = cmd.ExecuteNonQuery();
+                            // Refresh DataGridView after deletion
+                            button9.PerformClick();
 
-                            if (result > 0)
-                            {
-                                MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            // Call the public method from InventoryCategory
+                            //inventoryCategoryForm.RefreshDataGrid();
 
-                                // Refresh DataGridView after deletion
-                                button9.PerformClick();
-
-                                // Call the public method from InventoryCategory
-                                //inventoryCategoryForm.RefreshDataGrid();
-
-                                this.Close();
-                            }
-                            else
-                            {
-                                //MessageBox.Show("Failed to delete the record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
+                            this.Close();
+                        }
+                        else
+                        {
+                            //MessageBox.Show("Failed to delete the record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: " + ex.Message, "Delete Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    con.Close();
                 }
             }
             else

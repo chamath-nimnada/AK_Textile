@@ -14,7 +14,7 @@ namespace AK_Textile
     public partial class EmpManagerEmployee : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDB;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
         public EmpManagerEmployee(MainForm mainForm)
         {
             InitializeComponent();
@@ -50,7 +50,10 @@ namespace AK_Textile
                 {
                     MessageBox.Show("An error occurred while loading data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                con.Close();
+                finally
+                {
+                    con.Close();
+                }
             }
         }
 

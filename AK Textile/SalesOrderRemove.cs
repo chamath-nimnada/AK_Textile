@@ -7,14 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace AK_Textile
 {
     public partial class SalesOrderRemove : Form
     {
-        public SalesOrderRemove()
+        private SalesOrder salesorder; // Reference to salesOrder
+        //database connection
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
+
+        public SalesOrderRemove(SalesOrder salesorder)
         {
             InitializeComponent();
+            this.salesorder = salesorder;
         }
     }
 }

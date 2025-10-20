@@ -15,7 +15,7 @@ namespace AK_Textile
     {
         private Employee employeeForm; // Reference to Employee Leave
 
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-1AMUUF3;Initial Catalog=AKTextilesDB;Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
         public EmployeeLeaveAdd(Employee employeeForm)
         {
             InitializeComponent();
@@ -25,30 +25,22 @@ namespace AK_Textile
 
         private void AutoGenerateID()
         {
-            /*try
+            try
             {
-            // Get values from input fields
-            string leaveID = textBoxLeaveID.Text;
-            DateTime startDate = dateTimePickerStart.Value;
-            DateTime endDate = dateTimePickerEnd.Value;
-            string leaveType = comboBoxLeaveType.SelectedItem?.ToString();
-            string reason = textBoxReason.Text;
+                // Get values from input fields
+                string leaveID = textBox2.Text;
+                string startDate = dateTimePicker1.Text;
+                string endDate = dateTimePicker2.Text;
+                string leaveType = comboBox2.Text;
+                string reason = textBox1.Text;
 
-            // Validate input
-            if (string.IsNullOrWhiteSpace(leaveID) || string.IsNullOrWhiteSpace(leaveType) || string.IsNullOrWhiteSpace(reason))
+                // Validate input
+                if (string.IsNullOrWhiteSpace(leaveID) || string.IsNullOrWhiteSpace(leaveType) || string.IsNullOrWhiteSpace(reason))
             {
                 MessageBox.Show("Please fill in all required fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (startDate > endDate)
-            {
-                MessageBox.Show("Start date cannot be after the end date.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Database connection
-            using (SqlConnection con = new SqlConnection("your_connection_string"))
             {
                 con.Open();
                 string query = "INSERT INTO EmployeeLeaves (LeaveID, StartDate, EndDate, LeaveType, Reason) VALUES (@LeaveID, @StartDate, @EndDate, @LeaveType, @Reason)";
@@ -76,7 +68,7 @@ namespace AK_Textile
         catch (Exception ex)
         {
             MessageBox.Show("Error: " + ex.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }*/
+        }
             try
             {
                 con.Open();

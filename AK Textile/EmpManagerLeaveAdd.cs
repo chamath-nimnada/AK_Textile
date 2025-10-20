@@ -13,7 +13,7 @@ namespace AK_Textile
 {
     public partial class EmpManagerLeaveAdd : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDB;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
         public EmpManagerLeaveAdd()
         {
             InitializeComponent();
@@ -53,12 +53,10 @@ namespace AK_Textile
                 return;
             }
 
-            string connectionString = "Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDB;Integrated Security=True"; // Replace with your database connection string.
-            string query = "INSERT INTO LeaveType (LeaveID, LTName, LTDescription, LTAmount) VALUES (@LeaveID, @LTName, @LTDescription, @LTAmount)";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            //query to add leave type
+            string query1 = "INSERT INTO LeaveType (LeaveID, LTName, LTDescription, LTAmount) VALUES (@LeaveID, @LTName, @LTDescription, @LTAmount)";
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand(query1, con))
                 {
                     command.Parameters.AddWithValue("@LeaveID", leaveID);
                     command.Parameters.AddWithValue("@LTName", LTName);
@@ -67,7 +65,7 @@ namespace AK_Textile
 
                     try
                     {
-                        connection.Open();
+                        con.Open();
                         int result = command.ExecuteNonQuery();
                         if (result > 0)
                         {
@@ -81,6 +79,10 @@ namespace AK_Textile
                     catch (Exception ex)
                     {
                         MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        con.Close();
                     }
                 }
             }

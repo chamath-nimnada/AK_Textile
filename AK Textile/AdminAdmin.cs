@@ -14,9 +14,7 @@ namespace AK_Textile
     public partial class AdminAdmin : Form
     {
         private MainForm mainForm; //Step 01
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
-                                                Initial Catalog=Textlies;
-                                                Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
 
         public AdminAdmin(MainForm mainForm/*Step 02*/)
         {

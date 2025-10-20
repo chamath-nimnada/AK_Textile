@@ -14,9 +14,7 @@ namespace AK_Textile
     public partial class InventoryCategory : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;
-                                        Initial Catalog=AKTextilesDB;
-                                        Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
         Form formBackground = null; // Declare outside to access in 'finally'
 
         public InventoryCategory(MainForm mainForm)

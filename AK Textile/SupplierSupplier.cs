@@ -16,9 +16,8 @@ namespace AK_Textile
     {
         private MainForm mainForm;
         //database connection
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
-                                                 Initial Catalog=Textlies;
-                                                 Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
+
         Form formBackground = null; // Declare outside to access in 'finally'
         public SupplierSupplier(MainForm mainForm)
         {
@@ -113,40 +112,6 @@ namespace AK_Textile
             LoadSupplier();
         }
 
-            /*private void SearchSupplier(string searchValue)
-            {
-                //to view the searched data into the data grod view
-                con.Open();
-                SqlCommand cmd2 = new SqlCommand("SELECT * FROM Supplier WHERE SupID LIKE @searchval OR SupName LIKE @searchval", con);
-                cmd2.Parameters.AddWithValue("@searchval", "%" + searchValue + "%");
-                SqlDataAdapter da1 = new SqlDataAdapter(cmd2);
-                DataTable dt1 = new DataTable();
-
-                try
-                {
-                if (dt1.Rows.Count > 0)
-                {
-                    // Bind the DataTable to the DataGridView
-                    dataGridView1.DataSource = dt1;
-
-                    // Adjust columns to fit the grid width
-                    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    con.Close();
-                }
-                else
-                {
-                    MessageBox.Show("No matching records found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    dataGridView1.DataSource = null; // Clear DataGridView if no data found
-                    con.Close();
-                    LoadSupplier();
-                }
-            }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }*/
-
         private void searchbtn_Click(object sender, EventArgs e)
         {
             string searchValue = textBox1.Text.Trim();
@@ -156,9 +121,6 @@ namespace AK_Textile
                 MessageBox.Show("Please enter a Supplier ID or Name.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            string query = "";
-
 
             try
             {

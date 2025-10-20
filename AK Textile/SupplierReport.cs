@@ -16,9 +16,7 @@ namespace AK_Textile
     public partial class SupplierReport : Form
     {
         //database connection
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
-                                                 Initial Catalog=Textlies;
-                                                 Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
 
         private MainForm mainForm;
         public SupplierReport(MainForm mainForm)

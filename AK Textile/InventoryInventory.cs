@@ -14,9 +14,7 @@ namespace AK_Textile
     public partial class InventoryInventory : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;
-                                        Initial Catalog=AKTextilesDB;
-                                        Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
         public InventoryInventory(MainForm mainForm)
         {
             InitializeComponent();
@@ -159,11 +157,6 @@ namespace AK_Textile
             }
         }
 
-        private void button9_Click(object sender, EventArgs e)
-        {
-           // OpenSubForm(new InventoryInventoryAdd(this));
-        }
-
         private void InventoryInventory_Load(object sender, EventArgs e)
         {
 
@@ -217,14 +210,19 @@ namespace AK_Textile
             mainForm.LoadForm(new InventoryReport(mainForm));
         }
 
+        private void button9_Click(object sender, EventArgs e)
+        {
+            // OpenSubForm(new InventoryInventoryAdd(this));
+        }
+
         private void button6_Click(object sender, EventArgs e)
         {
-            //OpenSubForm(new InventoryInventoryRemove(this));
+            //OpenSubForm(new InventoryInventoryRemove(this)); After adding the forms remove the comments
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            OpenSubForm(new InventoryInventoryUpdate(this));
+            //OpenSubForm(new InventoryInventoryUpdate(this));
         }
     }
 }

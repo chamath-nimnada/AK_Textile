@@ -13,7 +13,7 @@ namespace AK_Textile
 {
     public partial class EmployeeManagerRemoveEmp : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDB;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
 
         private EmpManagerEmployee employeeManRemoveEmpForm; // Reference to employee manager employee
         public EmployeeManagerRemoveEmp(EmpManagerEmployee employeeManRemoveEmpForm)
@@ -33,14 +33,13 @@ namespace AK_Textile
 
                 try
                 {
-                    using (SqlConnection connection = new SqlConnection(con.ConnectionString))
                     {
-                        connection.Open();
+                        con.Open();
 
                         // SQL Query to delete data
                         string deleteQuery = "DELETE FROM Employee WHERE EmpID = @EmpID";
 
-                        using (SqlCommand cmd = new SqlCommand(deleteQuery, connection))
+                        using (SqlCommand cmd = new SqlCommand(deleteQuery, con))
                         {
                             cmd.Parameters.AddWithValue("@EmpID", selectedCategoryID);
 
@@ -61,7 +60,7 @@ namespace AK_Textile
                             }
                             else
                             {
-                                //MessageBox.Show("Failed to delete the record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Failed to delete the record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                     }
@@ -100,14 +99,12 @@ namespace AK_Textile
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(con.ConnectionString))
                 {
-                    connection.Open();
-
+                    con.Open();
                     // SQL Query to search data
                     string query = "SELECT * FROM Employee WHERE EmpID LIKE @search OR EmpName LIKE @search";
 
-                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@search", "%" + textBox1.Text.Trim() + "%");
 
@@ -125,6 +122,10 @@ namespace AK_Textile
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message, "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
             }
         }
     }

@@ -15,7 +15,7 @@ namespace AK_Textile
     {
         private Employee employeeForm; // Reference to Employee Leave
 
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-1AMUUF3;Initial Catalog=AKTextilesDB;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
 
 
         public EmployeeLeaveRemove(Employee employeeForm)
@@ -23,11 +23,13 @@ namespace AK_Textile
             InitializeComponent();
             this.employeeForm = employeeForm;
         }
+    }
+}
 
-        private void button5_Click(object sender, EventArgs e)
+        /*private void button5_Click(object sender, EventArgs e)
         {
 
-                /*string leaveId = txtLeaveId.Text; // Assuming txtLeaveId is the TextBox for entering Leave ID.
+                string leaveId = txtLeaveId.Text; // Assuming txtLeaveId is the TextBox for entering Leave ID.
 
                 if (!string.IsNullOrEmpty(leaveId))
             try
@@ -52,7 +54,7 @@ namespace AK_Textile
                         dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     }
                 }
-            }*/
+            }
 
             }
             catch (Exception ex)
@@ -63,15 +65,15 @@ namespace AK_Textile
 
         private void button6_Click(object sender, EventArgs e)
         {
-                /*txtLeaveId.Clear();        // Clear the Leave ID input box.
-                rtbSelectedLeave.Clear();  // Clear the result display area.*/
+                txtLeaveId.Clear();        // Clear the Leave ID input box.
+                rtbSelectedLeave.Clear();  // Clear the result display area.
         
             textBox1.Text = string.Empty;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-                /*this.Close(); // Close the current form or dialog.*/
+                this.Close(); // Close the current form or dialog.
             
             this.Close();
             employeeForm.RefreshDataGrid();
@@ -79,7 +81,7 @@ namespace AK_Textile
 
         private void button9_Click_1(object sender, EventArgs e)
         {
-                /*string leaveId = txtLeaveId.Text;
+                string leaveId = txtLeaveId.Text;
 
             if (dataGridView1.SelectedRows.Count > 0) // Check if a row is selected
             {
@@ -126,7 +128,7 @@ namespace AK_Textile
                 {
 
                     MessageBox.Show("Please enter a valid Leave ID to remove.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }*/
+                }
                     MessageBox.Show("Error: " + ex.Message, "Delete Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -145,5 +147,4 @@ namespace AK_Textile
         {
 
         }
-    }
-}
+*/

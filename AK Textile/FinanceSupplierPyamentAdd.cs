@@ -15,7 +15,7 @@ namespace AK_Textile
     public partial class FinanceSupplierPyamentAdd : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-1AMUUF3;Initial Catalog=""new database"";Integrated Security=True;"); // Update with your actual connection string
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
 
         public FinanceSupplierPyamentAdd(MainForm mainForm)
         {

@@ -14,7 +14,7 @@ namespace AK_Textile
     public partial class EmpManagerLeave : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDB;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
 
         private int selectedLeaveId = 0;
 
@@ -153,11 +153,10 @@ namespace AK_Textile
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDB;Integrated Security=True"))
                 {
-                    connection.Open();
+                    con.Open();
                     string query = "SELECT LeaveID, EmpName, LeaveTypeID, LStartDate, LEndDate, Status FROM Leave WHERE Status = 'Pending'";
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, con);
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
                     dataGridView1.DataSource = dataTable;
@@ -167,31 +166,36 @@ namespace AK_Textile
             {
                 MessageBox.Show("Error loading pending leaves: " + ex.Message);
             }
+            finally
+            {
+                con.Close();
+            }
         }
 
 
         private void button10_Click(object sender, EventArgs e)
         {
-            if (selectedLeaveId > 0) // Ensure a leave is selected
+            if (selectedLeaveId > 0)
             {
                 try
                 {
-                    using (SqlConnection connection = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDB;Integrated Security=True"))
-                    {
-                        connection.Open();
-                        string query = "UPDATE Leave SET Status = 'Approved' WHERE LeaveID = @LeaveID";
-                        SqlCommand command = new SqlCommand(query, connection);
+                        con.Open();
+                        string query2 = "UPDATE Leave SET Status = 'Approved' WHERE LeaveID = @LeaveID";
+                        SqlCommand command = new SqlCommand(query2, con);
                         command.Parameters.AddWithValue("@LeaveID", selectedLeaveId);
                         command.ExecuteNonQuery();
                         MessageBox.Show("Leave Approved Successfully!");
 
                         // Refresh Pending Leaves Grid
                         LoadPendingLeaves();
-                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: " + ex.Message);
+                }
+                finally
+                {
+                    con.Close();
                 }
             }
             else
@@ -207,22 +211,23 @@ namespace AK_Textile
             {
                 try
                 {
-                    using (SqlConnection connection = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDB;Integrated Security=True"))
-                    {
-                        connection.Open();
-                        string query = "UPDATE Leave SET Status = 'Declined' WHERE LeaveID = @LeaveID";
-                        SqlCommand command = new SqlCommand(query, connection);
+                        con.Open();
+                        string query3 = "UPDATE Leave SET Status = 'Declined' WHERE LeaveID = @LeaveID";
+                        SqlCommand command = new SqlCommand(query3, con);
                         command.Parameters.AddWithValue("@LeaveID", selectedLeaveId);
                         command.ExecuteNonQuery();
                         MessageBox.Show("Leave Declined Successfully!");
 
                         // Refresh Pending Leaves Grid
                         LoadPendingLeaves();
-                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: " + ex.Message);
+                }
+                finally
+                {
+                    con.Close();
                 }
             }
             else

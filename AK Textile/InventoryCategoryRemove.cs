@@ -13,9 +13,7 @@ namespace AK_Textile
 {
     public partial class InventoryCategoryRemove : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;
-                                        Initial Catalog=AKTextilesDB;
-                                        Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
 
         private InventoryCategory inventoryCategoryForm; // Reference to Inventory Category
         public InventoryCategoryRemove(InventoryCategory inventoryCategoryForm)

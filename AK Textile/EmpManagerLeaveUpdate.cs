@@ -13,7 +13,7 @@ namespace AK_Textile
 {
     public partial class EmpManagerLeaveUpdate : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDB;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
 
         public EmpManagerLeaveUpdate()
         {
@@ -31,38 +31,35 @@ namespace AK_Textile
             {
                 MessageBox.Show("Please fill in all required fields and select a leave type.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            }
+            } 
 
-            string connectionString = "Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDB;Integrated Security=True"; 
+            //query to update leaves
             string query = "UPDATE LeaveType SET LeaveName = @LTName, LTDescription = @LTDescription, LTAmount = @LeaveAmountPerMonth WHERE LeaveID = @LeaveID";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand(query, con))
                 {
                     command.Parameters.AddWithValue("@LeaveID", selectedLeaveID);
                     command.Parameters.AddWithValue("@LTName", leaveName);
                     command.Parameters.AddWithValue("@LTDescription", description);
                     command.Parameters.AddWithValue("@LTAmount", leaveAmountPerMonth);
 
-                    try
+                    con.Open();
+                    int result = command.ExecuteNonQuery();
+                    if (result > 0)
                     {
-                        connection.Open();
-                        int result = command.ExecuteNonQuery();
-                        if (result > 0)
-                        {
-                            MessageBox.Show("Leave type updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Failed to update leave type.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        MessageBox.Show("Leave type updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Failed to update leave type.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

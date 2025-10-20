@@ -14,7 +14,7 @@ namespace AK_Textile
     public partial class FinanceSalary : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-1AMUUF3;Initial Catalog=Textiles;Integrated Security=True;Encrypt=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
         public FinanceSalary(MainForm mainForm)
         {
             InitializeComponent();

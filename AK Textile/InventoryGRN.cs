@@ -13,9 +13,7 @@ namespace AK_Textile
 {
     public partial class InventoryGRN : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;
-                                            Initial Catalog=AKTextilesDB;
-                                            Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
 
         private MainForm mainForm;
         public InventoryGRN(MainForm mainForm)

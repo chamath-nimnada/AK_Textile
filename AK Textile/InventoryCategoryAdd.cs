@@ -16,9 +16,8 @@ namespace AK_Textile
     {
         private InventoryCategory inventoryCategoryForm; // Reference to Inventory Category
 
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;
-                                        Initial Catalog=AKTextilesDB;
-                                        Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
+
         public InventoryCategoryAdd(InventoryCategory inventoryCategoryForm)
         {
             InitializeComponent();
@@ -43,7 +42,7 @@ namespace AK_Textile
                     {
                         string maxID = dr1[0].ToString();
                         int numericPart = int.Parse(maxID.Substring(3)); // Extract "001" and convert to integer
-                        string newID = "INC" + (numericPart + 1).ToString("D3"); // Increment and format as "SUPXXX"
+                        string newID = "INC" + (numericPart + 1).ToString("D3");
                         this.catID.Text = newID;
                     }
                     dr1.Close();

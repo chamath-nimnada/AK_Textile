@@ -14,7 +14,7 @@ namespace AK_Textile
     public partial class Employee : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-1AMUUF3;Initial Catalog=AKTextilesDB;Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
 
         Form formBackground = null; // Declare outside to access in 'finally'
         public Employee(MainForm mainForm)
@@ -34,7 +34,7 @@ namespace AK_Textile
         private void LoadAllSalary()
         {
             // SQL query to fetch all data from the Product table
-            string query = "SELECT * FROM Salary";
+            string query1 = "SELECT * FROM Salary";
             {
                 try
                 {
@@ -42,7 +42,7 @@ namespace AK_Textile
                     con.Open();
 
                     // Create the SQL command
-                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    using (SqlCommand cmd = new SqlCommand(query1, con))
                     {
                         // Execute the query and load the results into a DataTable
                         SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -66,14 +66,14 @@ namespace AK_Textile
 
         private void LoadLeaveData()
         {
-            string query = "SELECT LeaveID, LeaveTypeID, LReason, LStartDate, LEndDate, LStatus FROM Leave";
+            string query2 = "SELECT LeaveID, LeaveTypeID, LReason, LStartDate, LEndDate, LStatus FROM Leave";
             {
                 try
                 {
                     // Open the connection
                     con.Open();
                     // Create the SQL command
-                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    using (SqlCommand cmd = new SqlCommand(query2, con))
                     {
                         // Execute the query and load the results into a DataTable
                         SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -113,7 +113,7 @@ namespace AK_Textile
             }
 
             //SQL query to fetch all data from the Salary table
-            string query = "SELECT * FROM Salary WHERE SalaryID = @SearchValue";
+            string query3 = "SELECT * FROM Salary WHERE SalaryID = @SearchValue";
             {
                 try
                 {
@@ -121,7 +121,7 @@ namespace AK_Textile
                     con.Open();
 
                     // Create the SQL command
-                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    using (SqlCommand cmd = new SqlCommand(query3, con))
                     {
                         //Add parameters to prevent SQL injection
                         cmd.Parameters.AddWithValue("@SearchValue", searchValue);

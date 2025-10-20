@@ -15,9 +15,7 @@ namespace AK_Textile
     {
         private SupplierSupplier supplierform;
         //database connection
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
-                                                 Initial Catalog=Textlies;
-                                                 Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
 
         private string selectedSupplierID; // Store Supplier ID for updates
         public SupplierSupplierUpdate(SupplierSupplier supplierform)
@@ -145,6 +143,8 @@ namespace AK_Textile
         }
     }
 }
+
+
 /*string search = textBox1.Text.Trim();
 if (!string.IsNullOrEmpty(search))
 {

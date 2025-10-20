@@ -14,7 +14,7 @@ namespace AK_Textile
     public partial class EmpManagerSalary : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDB;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
         public EmpManagerSalary(MainForm mainForm)
         {
             InitializeComponent();
@@ -112,6 +112,11 @@ namespace AK_Textile
                 catch (Exception ex)
                 {
                     MessageBox.Show("An error occurred while fetching data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                finally
+                {
+                    con.Close();
                 }
             }
         }

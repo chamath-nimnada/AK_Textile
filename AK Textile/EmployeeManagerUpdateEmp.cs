@@ -13,7 +13,7 @@ namespace AK_Textile
 {
     public partial class EmployeeManagerUpdateEmp : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDB;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
 
         private EmpManagerEmployee employeeManRemoveEmpForm;
         public EmployeeManagerUpdateEmp(EmpManagerEmployee employeeManRemoveEmpForm)
@@ -46,13 +46,11 @@ namespace AK_Textile
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
+                    con.Open();
 
-                    string query = "SELECT * FROM Employee WHERE EmpID = @EmplID OR EmpUserName = @EmpUserName";
+                    string query1 = "SELECT * FROM Employee WHERE EmpID = @EmplID OR EmpUserName = @EmpUserName";
 
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand(query1, con))
                     {
                         command.Parameters.AddWithValue("@EmpID", employeeIDOrName);
                         command.Parameters.AddWithValue("@EmpUserName", employeeIDOrName);
@@ -76,7 +74,6 @@ namespace AK_Textile
                             }
                         }
                     }
-                }
             }
             catch (Exception ex)
             {
@@ -123,13 +120,10 @@ namespace AK_Textile
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-
+                con.Open();
                     string query = "UPDATE Employee SET EmpName = @EmpName, EmpUserName = @EmpUserName, EmpPswrd = @EmpPswrd, PositionID = @PositionID, EmpContact = @EmpContact, EmpStreetNo = @EmpStreetNo, EmpStreetName = @EmpStreetName, EmpCity = @EmpCity WHERE EmplID = @EmplID OR EmpUserName = @EmpUserName";
 
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand(query, con))
                     {
                         command.Parameters.AddWithValue("@EmpName", fullName);
                         command.Parameters.AddWithValue("@EmpUserName", userName);
@@ -144,7 +138,6 @@ namespace AK_Textile
 
                         command.ExecuteNonQuery();
                     }
-                }
 
                 MessageBox.Show("Employee updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

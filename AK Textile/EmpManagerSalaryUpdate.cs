@@ -14,7 +14,7 @@ namespace AK_Textile
     public partial class EmpManagerSalaryUpdate : Form
     {
         private EmpManagerSalary empManagerSalary;
-        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDB;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
         public EmpManagerSalaryUpdate(EmpManagerSalary empManagerSalary)
         {
             InitializeComponent();
@@ -49,6 +49,11 @@ namespace AK_Textile
             comboBox1.SelectedIndex = -1; // Reset the dropdown
             textBox3.Clear();   // Clear the previous salary field
             textBox1.Clear();  // Clear the new salary field
+        }
+
+        private void EmpManagerSalaryUpdate_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

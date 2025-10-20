@@ -14,7 +14,7 @@ namespace AK_Textile
     public partial class EmployeeManagerEmpAdd : Form
     {
         private EmpManagerEmployee empManagerEmployee;
-        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDB;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
         public EmployeeManagerEmpAdd(EmpManagerEmployee empManagerEmployee)
         {
             InitializeComponent();
@@ -31,13 +31,13 @@ namespace AK_Textile
                 {
                     if (dr1[0] == DBNull.Value)
                     {
-                        this.textBox2.Text = "INC001";
+                        this.textBox2.Text = "EMP001";
                     }
                     else
                     {
                         string maxID = dr1[0].ToString();
-                        int numericPart = int.Parse(maxID.Substring(3)); // Extract "001" and convert to integer
-                        string newID = "INC" + (numericPart + 1).ToString("D3"); // Increment and format as "SUPXXX"
+                        int numericPart = int.Parse(maxID.Substring(3));
+                        string newID = "EMP" + (numericPart + 1).ToString("D3");
                         this.textBox2.Text = newID;
                     }
                     dr1.Close();
@@ -98,19 +98,14 @@ namespace AK_Textile
                 return;
             }
 
-            // Database connection string
-            string connectionString = "YourConnectionStringHere";
-
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
+                    con.Open();
 
                     // Insert query
                     string query = "INSERT INTO Employees (EmpID, EmpName, EmpUserName, EmpPswrd, PositionID, EmpContact, EmpStreetNo, EmpStreetName, EmpCity) VALUES (@EmpID, @EmpName, @EmpUserName, @EmpPswrd, @PositionID, @EmpContact, @EmpStreetNo, @EmpStreetName, @EmpCity)";
 
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand(query, con))
                     {
                         // Add parameters
                         command.Parameters.AddWithValue("@EmpID", employeeID);
@@ -126,7 +121,6 @@ namespace AK_Textile
                         // Execute query
                         command.ExecuteNonQuery();
                     }
-                }
 
                 MessageBox.Show("Employee added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -136,6 +130,10 @@ namespace AK_Textile
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
             }
         }
 
