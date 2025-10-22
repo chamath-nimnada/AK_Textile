@@ -11,13 +11,15 @@ using System.Data.SqlClient;
 
 namespace AK_Textile
 {
-    public partial class SalesSales : Form
+    public partial class SalesSalesReturn : Form
     {
         private MainForm mainForm;
 
         //database connection
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
-        public SalesSales(MainForm mainForm)
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
+                                                Initial Catalog=Textlies;
+                                                Integrated Security=True");
+        public SalesSalesReturn(MainForm mainForm)
         {
             InitializeComponent();
             this.mainForm = mainForm;

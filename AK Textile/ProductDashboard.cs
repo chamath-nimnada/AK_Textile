@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace AK_Textile
 {
@@ -14,6 +15,10 @@ namespace AK_Textile
     {
 
         public MainForm mainForm; //Step 01
+
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
+                                                Initial Catalog=Textlies;
+                                                Integrated Security=True");
         public ProductDashboard(MainForm mainForm/*Step 02*/)
         {
             InitializeComponent();

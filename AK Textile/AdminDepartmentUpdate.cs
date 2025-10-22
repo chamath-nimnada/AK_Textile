@@ -124,9 +124,9 @@ namespace AK_Textile
                         MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                      finally
-                        {
+                     {
                         con.Close();
-                        }
+                     }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

@@ -90,26 +90,7 @@ namespace AK_Textile
 
         private void EmpManagerDepartment_Load(object sender, EventArgs e)
         {
-            con.Open();
-            SqlCommand cmd1 = new SqlCommand("SELECT * FROM Department", con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd1);
-            DataTable dt = new DataTable();
-
-            try
-            {
-                da.Fill(dt);
-
-                // Bind the data to the DataGridView
-                dataGridView1.DataSource = dt;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                con.Close();
-            }
+            LoadAllData();
         }
 
             /*method to search button to filter data accordingto the entered

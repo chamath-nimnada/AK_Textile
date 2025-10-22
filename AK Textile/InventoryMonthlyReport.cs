@@ -3,11 +3,16 @@ using CrystalDecisions.Shared;
 using CrystalDecisions.Windows.Forms;
 using System;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace AK_Textile
 {
     public partial class InventoryMonthlyReport : Form
     {
+
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
+                                                Initial Catalog=Textlies;
+                                                Integrated Security=True");
         public InventoryMonthlyReport()
         {
             InitializeComponent();

@@ -13,9 +13,12 @@ namespace AK_Textile
 {
     public partial class CEODashboard : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
 
         private MainForm mainForm;
+
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
+                                                Initial Catalog=Textlies;
+                                                Integrated Security=True");
         public CEODashboard(MainForm mainForm)
         {
             InitializeComponent();

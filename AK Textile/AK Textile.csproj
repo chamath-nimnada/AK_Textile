@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -329,11 +329,29 @@
     <Compile Include="ForgotPassword.Designer.cs">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="SaleSalesAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleSalesAdd.Designer.cs">
+      <DependentUpon>SaleSalesAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="SalesBill.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SalesBill.Designer.cs">
       <DependentUpon>SalesBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesCustomerAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesCustomerAdd.Designer.cs">
+      <DependentUpon>SalesCustomerAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesCustomerUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesCustomerUpdate.Designer.cs">
+      <DependentUpon>SalesCustomerUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="SalesOrderUpdate.cs">
       <SubType>Form</SubType>
@@ -341,17 +359,17 @@
     <Compile Include="SalesOrderUpdate.Designer.cs">
       <DependentUpon>SalesOrderUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="SalesOrderRemove.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SalesOrderRemove.Designer.cs">
-      <DependentUpon>SalesOrderRemove.cs</DependentUpon>
-    </Compile>
     <Compile Include="SalesOrderAdd.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SalesOrderAdd.Designer.cs">
       <DependentUpon>SalesOrderAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesSalesUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesSalesUpdate.Designer.cs">
+      <DependentUpon>SalesSalesUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="SReport.cs">
       <SubType>Form</SubType>
@@ -425,11 +443,11 @@
     <Compile Include="SalesPayment.Designer.cs">
       <DependentUpon>SalesPayment.cs</DependentUpon>
     </Compile>
-    <Compile Include="SalesSales.cs">
+    <Compile Include="SalesSalesReturn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SalesSales.Designer.cs">
-      <DependentUpon>SalesSales.cs</DependentUpon>
+    <Compile Include="SalesSalesReturn.Designer.cs">
+      <DependentUpon>SalesSalesReturn.cs</DependentUpon>
     </Compile>
     <Compile Include="SalesOrder.cs">
       <SubType>Form</SubType>
@@ -784,17 +802,26 @@
     <EmbeddedResource Include="ForgotPassword.resx">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SaleSalesAdd.resx">
+      <DependentUpon>SaleSalesAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SalesBill.resx">
       <DependentUpon>SalesBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesCustomerAdd.resx">
+      <DependentUpon>SalesCustomerAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesCustomerUpdate.resx">
+      <DependentUpon>SalesCustomerUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SalesOrderUpdate.resx">
       <DependentUpon>SalesOrderUpdate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SalesOrderRemove.resx">
-      <DependentUpon>SalesOrderRemove.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="SalesOrderAdd.resx">
       <DependentUpon>SalesOrderAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesSalesUpdate.resx">
+      <DependentUpon>SalesSalesUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SReport.resx">
       <DependentUpon>SReport.cs</DependentUpon>
@@ -850,8 +877,8 @@
     <EmbeddedResource Include="SalesReport.resx">
       <DependentUpon>SalesReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SalesSales.resx">
-      <DependentUpon>SalesSales.cs</DependentUpon>
+    <EmbeddedResource Include="SalesSalesReturn.resx">
+      <DependentUpon>SalesSalesReturn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SalesSchedule.resx">
       <DependentUpon>SalesSchedule.cs</DependentUpon>

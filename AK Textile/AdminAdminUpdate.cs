@@ -39,9 +39,6 @@ namespace AK_Textile
 
         private void cancelbtn_Click(object sender, EventArgs e)
         {
-            /*add the method to automatically refresh the data grid view to 
-             Admins all forms*/
-
             this.Close();
         }
 

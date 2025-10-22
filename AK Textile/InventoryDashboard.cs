@@ -7,12 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace AK_Textile
 {
     public partial class InventoryDashboard : Form
     {
         private MainForm mainForm; //Step 01
+
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
+                                                Initial Catalog=Textlies;
+                                                Integrated Security=True");
         public InventoryDashboard(MainForm mainForm)
         {
             InitializeComponent();

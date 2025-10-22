@@ -13,7 +13,6 @@ namespace AK_Textile
 {
     public partial class AdminAdminRemove : Form
     {
-
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
                                                 Initial Catalog=Textlies;
                                                 Integrated Security=True");
@@ -61,6 +60,11 @@ namespace AK_Textile
                 {
                     MessageBox.Show("Error: " + ex.Message, "Delete Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                finally
+                {
+                    con.Close();
+                }
+                
             }
             else
             {

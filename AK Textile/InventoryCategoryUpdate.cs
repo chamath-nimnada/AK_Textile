@@ -13,7 +13,9 @@ namespace AK_Textile
 {
     public partial class InventoryCategoryUpdate : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
+                                                Initial Catalog=Textlies;
+                                                Integrated Security=True");
 
         private InventoryCategory inventoryCategoryForm; // Reference to Inventory Category
         public InventoryCategoryUpdate(InventoryCategory inventoryCategoryForm)

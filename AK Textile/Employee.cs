@@ -14,16 +14,19 @@ namespace AK_Textile
     public partial class Employee : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
 
-        Form formBackground = null; // Declare outside to access in 'finally'
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
+                                                Initial Catalog=Textlies;
+                                                Integrated Security=True");
+
+        Form formBackground = null;
         public Employee(MainForm mainForm)
         {
             InitializeComponent();
             this.mainForm = mainForm;
+
             LoadAllSalary();
             LoadLeaveData();
-
         }
         public void RefreshDataGrid()
         {
@@ -33,133 +36,116 @@ namespace AK_Textile
 
         private void LoadAllSalary()
         {
-            // SQL query to fetch all data from the Product table
-            string query1 = "SELECT * FROM Salary";
+            string query1 = "SELECT * FROM Salary WHERE EmpID = @EmpID";
+
+            try
             {
-                try
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand(query1, con))
                 {
-                    // Open the connection
-                    con.Open();
+                    cmd.Parameters.AddWithValue("@EmpID", LoginForm.LoggedInUser.UserId);
 
-                    // Create the SQL command
-                    using (SqlCommand cmd = new SqlCommand(query1, con))
-                    {
-                        // Execute the query and load the results into a DataTable
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-
-                        // Bind the DataTable to the DataGridView
-                        dataGridView2.DataSource = dataTable;
-
-                        // Adjust columns to fit the grid width
-                        dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    }
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    dataGridView2.DataSource = dataTable;
+                    dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("An error occurred while loading data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while loading salary data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
                 con.Close();
             }
         }
 
         private void LoadLeaveData()
         {
-            string query2 = "SELECT LeaveID, LeaveTypeID, LReason, LStartDate, LEndDate, LStatus FROM Leave";
+            string query2 = "SELECT LeaveID, LeaveTypeID, LReason, LStartDate, LEndDate, LStatus FROM Leave WHERE EmpID = @EmpID";
+
+            try
             {
-                try
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand(query2, con))
                 {
-                    // Open the connection
-                    con.Open();
-                    // Create the SQL command
-                    using (SqlCommand cmd = new SqlCommand(query2, con))
-                    {
-                        // Execute the query and load the results into a DataTable
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-                        // Bind the DataTable to the DataGridView
-                        dataGridView1.DataSource = dataTable;
-                        // Adjust columns to fit the grid width
-                        dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    }
+                    cmd.Parameters.AddWithValue("@EmpID", LoginForm.LoggedInUser.UserId);
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    dataGridView1.DataSource = dataTable;
+                    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("An error occurred while loading data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while loading leave data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
                 con.Close();
             }
         }
 
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            LoadLeaveData(); // Load data when the form loads
+
         }
-
-
 
         private void LoadAllSearchCategory()
         {
-            //Get the value entered in the textbox
             string searchValue = SalaryId.Text.Trim();
 
-            //Check if the textbox is empty
-            if (string.IsNullOrEmpty(searchValue)) 
+            if (string.IsNullOrEmpty(searchValue))
             {
                 MessageBox.Show("Please enter a Salary ID to search.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            //SQL query to fetch all data from the Salary table
-            string query3 = "SELECT * FROM Salary WHERE SalaryID = @SearchValue";
+            string query3 = "SELECT * FROM Salary WHERE SalaryID = @SearchValue AND EmpID = @EmpID";
+
+            try
             {
-                try
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand(query3, con))
                 {
-                    // Open the connection
-                    con.Open();
+                    cmd.Parameters.AddWithValue("@SearchValue", searchValue);
+                    cmd.Parameters.AddWithValue("@EmpID", LoginForm.LoggedInUser.UserId);
 
-                    // Create the SQL command
-                    using (SqlCommand cmd = new SqlCommand(query3, con))
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    if (dataTable.Rows.Count > 0)
                     {
-                        //Add parameters to prevent SQL injection
-                        cmd.Parameters.AddWithValue("@SearchValue", searchValue);
+                        dataGridView2.DataSource = dataTable;
+                        dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No matching records found for your account.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        dataGridView2.DataSource = null;
 
-                        // Execute the query and load the results into a DataTable
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-
-                        // Check if any rows are returned
-                        if (dataTable.Rows.Count > 0)
-                        {
-                            // Bind the DataTable to the DataGridView
-                            dataGridView2.DataSource = dataTable;
-
-                            // Adjust columns to fit the grid width
-                            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                            con.Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("No matching records found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            dataGridView2.DataSource = null; // Clear DataGridView if no data found
-                            con.Close();
-                            LoadAllSalary();
-                        }
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("An error occurred while loading data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while searching: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            finally
+            {
                 con.Close();
             }
         }
         private void OpenSubForm(Form subForm)
         {
-            Form formBackground = new Form(); // Initialize background form
+            Form formBackground = new Form();
 
             try
             {
@@ -172,11 +158,7 @@ namespace AK_Textile
                 formBackground.Location = this.Location;
                 formBackground.ShowInTaskbar = false;
                 formBackground.Show();
-
-                // Set the background form as the owner of the subform
                 subForm.Owner = formBackground;
-
-                // Show the subform as a dialog
                 subForm.ShowDialog();
             }
             catch (Exception ex)
@@ -185,58 +167,49 @@ namespace AK_Textile
             }
             finally
             {
-                // Dispose both forms
                 formBackground.Dispose();
                 subForm.Dispose();
             }
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-        
+
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-                /*string salaryId = txtSalaryId.Text;
+            SalaryId.Text = string.Empty;
 
-                if (!string.IsNullOrEmpty(salaryId))
-                {
-                    // Example: Replace this with actual search logic (e.g., database query)
-                    rtbResult.Text = $"Searching for Salary ID: {salaryId}\nResult: [Sample Data]";
-                }
-                else
-                {
-                    rtbResult.Text = "Please enter a Salary ID.";
-                }*/
-            SalaryId.Text=string.Empty;
             LoadAllSalary();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-           mainForm.LoadForm(new LoginForm(mainForm));
+            mainForm.LoadForm(new LoginForm(mainForm));
         }
 
+        // This is the "Add" button
         private void button7_Click(object sender, EventArgs e)
         {
-            //create an instance of the form and pass it to the method
             OpenSubForm(new EmployeeLeaveAdd(this));
         }
 
+        // This is the "Update" button
         private void button8_Click(object sender, EventArgs e)
         {
-           OpenSubForm(new EmployeeLeaveUpdate(this));
+            OpenSubForm(new EmployeeLeaveUpdate(this));
         }
 
+        // This is the "Remove" button
         private void button9_Click(object sender, EventArgs e)
         {
             OpenSubForm(new EmployeeLeaveRemove(this));
         }
 
+        // This is the "Search" button
         private void button10_Click(object sender, EventArgs e)
         {
             LoadAllSearchCategory();
         }
-
     }
 }

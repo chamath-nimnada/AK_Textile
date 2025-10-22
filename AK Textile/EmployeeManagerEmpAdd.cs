@@ -14,7 +14,11 @@ namespace AK_Textile
     public partial class EmployeeManagerEmpAdd : Form
     {
         private EmpManagerEmployee empManagerEmployee;
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
+
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
+                                                Initial Catalog=Textlies;
+                                                Integrated Security=True");
+
         public EmployeeManagerEmpAdd(EmpManagerEmployee empManagerEmployee)
         {
             InitializeComponent();
@@ -45,7 +49,7 @@ namespace AK_Textile
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Error generating ID: " + ex.Message);
             }
             finally
             {
@@ -55,6 +59,61 @@ namespace AK_Textile
                 }
             }
         }
+
+        // This method loads the Position ComboBox
+        private void LoadPositions()
+        {
+            try
+            {
+                con.Open();
+                string query = "SELECT PositionID, PName FROM Position";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                // Configure the Position ComboBox
+                comboBox1.DataSource = dt;
+                comboBox1.DisplayMember = "PName";
+                comboBox1.ValueMember = "PositionID";
+                comboBox1.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while loading positions: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        // Method to load departments into the new ComboBox
+        private void LoadDepartments()
+        {
+            try
+            {
+                con.Open();
+                string query = "SELECT DepID, DepName FROM Department";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                // Configure the Department ComboBox
+                comboBox2.DataSource = dt;
+                comboBox2.DisplayMember = "DepName";
+                comboBox2.ValueMember = "DepID"; 
+                comboBox2.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while loading departments: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -72,24 +131,29 @@ namespace AK_Textile
             textBox4.Text = string.Empty;
             textBox1.Text = string.Empty;
             comboBox1.SelectedIndex = -1;
+            comboBox2.SelectedIndex = -1;
             textBox8.Text = string.Empty;
             textBox5.Text = string.Empty;
             textBox6.Text = string.Empty;
             textBox7.Text = string.Empty;
+
+            // Regenerate the ID after clearing
+            AutoGenerateID();
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            // Get values from input fields
             string employeeID = textBox2.Text;
             string fullName = textBox3.Text;
             string userName = textBox4.Text;
             string password = textBox1.Text;
-            string position = comboBox1.Text;
             string contactNo = textBox8.Text;
             string homeNo = textBox5.Text;
             string streetName = textBox6.Text;
             string city = textBox7.Text;
+            // Get the selected *Value* (ID) from both ComboBoxes
+            object selectedPosition = comboBox1.SelectedValue;
+            object selectedDepartment = comboBox2.SelectedValue;
 
             // Validate input
             if (string.IsNullOrWhiteSpace(employeeID) || string.IsNullOrWhiteSpace(fullName))
@@ -98,34 +162,50 @@ namespace AK_Textile
                 return;
             }
 
+            //Validation check for both ComboBoxes
+            if (selectedPosition == null)
+            {
+                MessageBox.Show("Please select a position.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (selectedDepartment == null)
+            {
+                MessageBox.Show("Please select a department.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string positionID = selectedPosition.ToString();
+            string departmentID = selectedDepartment.ToString(); 
+
             try
             {
-                    con.Open();
+                con.Open();
+                string query = "INSERT INTO Employee (EmpID, EmpName, EmpUsername, EmpPswrd, PositionID, DepID, EmpContact, EmpStreetNo, EmpStreetName, EmpCity) " +
+                               "VALUES (@EmpID, @EmpName, @EmpUsername, @EmpPswrd, @PositionID, @DepID, @EmpContact, @EmpStreetNo, @EmpStreetName, @EmpCity)";
 
-                    // Insert query
-                    string query = "INSERT INTO Employees (EmpID, EmpName, EmpUserName, EmpPswrd, PositionID, EmpContact, EmpStreetNo, EmpStreetName, EmpCity) VALUES (@EmpID, @EmpName, @EmpUserName, @EmpPswrd, @PositionID, @EmpContact, @EmpStreetNo, @EmpStreetName, @EmpCity)";
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+                    // Add parameters
+                    command.Parameters.AddWithValue("@EmpID", employeeID);
+                    command.Parameters.AddWithValue("@EmpName", fullName);
+                    command.Parameters.AddWithValue("@EmpUsername", userName);
+                    command.Parameters.AddWithValue("@EmpPswrd", password);
+                    command.Parameters.AddWithValue("@PositionID", positionID);
+                    command.Parameters.AddWithValue("@DepID", departmentID);
+                    command.Parameters.AddWithValue("@EmpContact", contactNo);
+                    command.Parameters.AddWithValue("@EmpStreetNo", homeNo);
+                    command.Parameters.AddWithValue("@EmpStreetName", streetName);
+                    command.Parameters.AddWithValue("@EmpCity", city);
 
-                    using (SqlCommand command = new SqlCommand(query, con))
-                    {
-                        // Add parameters
-                        command.Parameters.AddWithValue("@EmpID", employeeID);
-                        command.Parameters.AddWithValue("@EmpName", fullName);
-                        command.Parameters.AddWithValue("@EmpUserName", userName);
-                        command.Parameters.AddWithValue("@EmpPswrd", password);
-                        command.Parameters.AddWithValue("@PositionID", position);
-                        command.Parameters.AddWithValue("@EmpContact", contactNo);
-                        command.Parameters.AddWithValue("@EmpStreetNo", homeNo);
-                        command.Parameters.AddWithValue("@EmpStreetName", streetName);
-                        command.Parameters.AddWithValue("@EmpCity", city);
-
-                        // Execute query
-                        command.ExecuteNonQuery();
-                    }
+                    // Execute query
+                    command.ExecuteNonQuery();
+                }
 
                 MessageBox.Show("Employee added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Clear form
+                // Clear form and refresh parent grid
                 ClearForm();
+                empManagerEmployee.RefreshDataGrid();
             }
             catch (Exception ex)
             {
@@ -140,6 +220,13 @@ namespace AK_Textile
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void EmployeeManagerEmpAdd_Load(object sender, EventArgs e)
+        {
+            AutoGenerateID();
+            LoadPositions();
+            LoadDepartments();
         }
     }
 }

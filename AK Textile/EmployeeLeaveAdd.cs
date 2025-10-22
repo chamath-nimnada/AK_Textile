@@ -15,7 +15,10 @@ namespace AK_Textile
     {
         private Employee employeeForm; // Reference to Employee Leave
 
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
+                                                Initial Catalog=Textlies;
+                                                Integrated Security=True");
+
         public EmployeeLeaveAdd(Employee employeeForm)
         {
             InitializeComponent();

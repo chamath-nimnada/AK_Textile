@@ -15,7 +15,9 @@ namespace AK_Textile
     {
         private SupplierSupplier supplierform; // Reference to Supplier
         //database connection
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
+                                                Initial Catalog=Textlies;
+                                                Integrated Security=True");
 
         public SupplierSupplierAdd(SupplierSupplier supplierform)
         {

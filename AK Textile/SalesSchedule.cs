@@ -16,7 +16,9 @@ namespace AK_Textile
         private MainForm mainForm;
 
         //database connection
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
+                                                Initial Catalog=Textlies;
+                                                Integrated Security=True");
         public SalesSchedule(MainForm mainForm)
         {
             InitializeComponent();
@@ -45,7 +47,7 @@ namespace AK_Textile
 
         private void button2_Click(object sender, EventArgs e)
         {
-            mainForm.LoadForm(new SalesSales(mainForm));
+            mainForm.LoadForm(new SalesSalesReturn(mainForm));
         }
 
         private void button3_Click(object sender, EventArgs e)

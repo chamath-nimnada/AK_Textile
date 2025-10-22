@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.positionIDtxt = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -51,12 +52,18 @@
             this.addbtn = new System.Windows.Forms.Button();
             this.cancelbtn = new System.Windows.Forms.Button();
             this.clearbtn = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.positionIDtxt);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.contacttxt);
@@ -81,7 +88,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(616, 413);
+            this.groupBox2.Size = new System.Drawing.Size(648, 460);
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Add Admin Details";
@@ -90,13 +97,13 @@
             // 
             this.positionIDtxt.BackColor = System.Drawing.SystemColors.MenuBar;
             this.positionIDtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.positionIDtxt.Location = new System.Drawing.Point(151, 253);
+            this.positionIDtxt.Location = new System.Drawing.Point(173, 253);
             this.positionIDtxt.Margin = new System.Windows.Forms.Padding(2);
             this.positionIDtxt.Name = "positionIDtxt";
             this.positionIDtxt.ReadOnly = true;
             this.positionIDtxt.Size = new System.Drawing.Size(190, 27);
             this.positionIDtxt.TabIndex = 22;
-            this.positionIDtxt.Text = "P001";
+            this.positionIDtxt.Text = "P003";
             // 
             // label9
             // 
@@ -113,7 +120,7 @@
             // 
             this.contacttxt.BackColor = System.Drawing.SystemColors.MenuBar;
             this.contacttxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contacttxt.Location = new System.Drawing.Point(151, 211);
+            this.contacttxt.Location = new System.Drawing.Point(173, 211);
             this.contacttxt.Margin = new System.Windows.Forms.Padding(2);
             this.contacttxt.Name = "contacttxt";
             this.contacttxt.Size = new System.Drawing.Size(190, 27);
@@ -135,7 +142,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label8.Location = new System.Drawing.Point(148, 364);
+            this.label8.Location = new System.Drawing.Point(170, 408);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(24, 13);
@@ -147,7 +154,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label7.Location = new System.Drawing.Point(148, 326);
+            this.label7.Location = new System.Drawing.Point(170, 370);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 13);
@@ -159,7 +166,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label6.Location = new System.Drawing.Point(148, 287);
+            this.label6.Location = new System.Drawing.Point(170, 331);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(50, 13);
@@ -170,7 +177,7 @@
             // 
             this.address3txt.BackColor = System.Drawing.SystemColors.MenuBar;
             this.address3txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address3txt.Location = new System.Drawing.Point(150, 374);
+            this.address3txt.Location = new System.Drawing.Point(172, 418);
             this.address3txt.Margin = new System.Windows.Forms.Padding(2);
             this.address3txt.Name = "address3txt";
             this.address3txt.Size = new System.Drawing.Size(190, 27);
@@ -180,7 +187,7 @@
             // 
             this.address2txt.BackColor = System.Drawing.SystemColors.MenuBar;
             this.address2txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address2txt.Location = new System.Drawing.Point(150, 335);
+            this.address2txt.Location = new System.Drawing.Point(172, 379);
             this.address2txt.Margin = new System.Windows.Forms.Padding(2);
             this.address2txt.Name = "address2txt";
             this.address2txt.Size = new System.Drawing.Size(190, 27);
@@ -190,7 +197,7 @@
             // 
             this.address1txt.BackColor = System.Drawing.SystemColors.MenuBar;
             this.address1txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address1txt.Location = new System.Drawing.Point(151, 297);
+            this.address1txt.Location = new System.Drawing.Point(173, 341);
             this.address1txt.Margin = new System.Windows.Forms.Padding(2);
             this.address1txt.Name = "address1txt";
             this.address1txt.Size = new System.Drawing.Size(190, 27);
@@ -200,7 +207,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(68)))), ((int)(((byte)(114)))));
-            this.label5.Location = new System.Drawing.Point(36, 287);
+            this.label5.Location = new System.Drawing.Point(36, 331);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(76, 22);
@@ -211,7 +218,7 @@
             // 
             this.pswrdtxt.BackColor = System.Drawing.SystemColors.MenuBar;
             this.pswrdtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pswrdtxt.Location = new System.Drawing.Point(151, 168);
+            this.pswrdtxt.Location = new System.Drawing.Point(173, 168);
             this.pswrdtxt.Margin = new System.Windows.Forms.Padding(2);
             this.pswrdtxt.Name = "pswrdtxt";
             this.pswrdtxt.Size = new System.Drawing.Size(454, 27);
@@ -232,7 +239,7 @@
             // 
             this.usernametxt.BackColor = System.Drawing.SystemColors.MenuBar;
             this.usernametxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernametxt.Location = new System.Drawing.Point(151, 130);
+            this.usernametxt.Location = new System.Drawing.Point(173, 130);
             this.usernametxt.Margin = new System.Windows.Forms.Padding(2);
             this.usernametxt.Name = "usernametxt";
             this.usernametxt.Size = new System.Drawing.Size(454, 27);
@@ -242,7 +249,7 @@
             // 
             this.nametxt.BackColor = System.Drawing.SystemColors.MenuBar;
             this.nametxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nametxt.Location = new System.Drawing.Point(151, 86);
+            this.nametxt.Location = new System.Drawing.Point(173, 86);
             this.nametxt.Margin = new System.Windows.Forms.Padding(2);
             this.nametxt.Name = "nametxt";
             this.nametxt.Size = new System.Drawing.Size(454, 27);
@@ -252,7 +259,7 @@
             // 
             this.empid.BackColor = System.Drawing.Color.CornflowerBlue;
             this.empid.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.empid.Location = new System.Drawing.Point(151, 45);
+            this.empid.Location = new System.Drawing.Point(173, 45);
             this.empid.Margin = new System.Windows.Forms.Padding(2);
             this.empid.Name = "empid";
             this.empid.ReadOnly = true;
@@ -297,7 +304,7 @@
             this.addbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
             this.addbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addbtn.ForeColor = System.Drawing.Color.White;
-            this.addbtn.Location = new System.Drawing.Point(479, 428);
+            this.addbtn.Location = new System.Drawing.Point(507, 474);
             this.addbtn.Margin = new System.Windows.Forms.Padding(2);
             this.addbtn.Name = "addbtn";
             this.addbtn.Size = new System.Drawing.Size(146, 38);
@@ -311,7 +318,7 @@
             this.cancelbtn.BackColor = System.Drawing.Color.White;
             this.cancelbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
-            this.cancelbtn.Location = new System.Drawing.Point(330, 428);
+            this.cancelbtn.Location = new System.Drawing.Point(360, 474);
             this.cancelbtn.Margin = new System.Windows.Forms.Padding(2);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(133, 38);
@@ -325,7 +332,7 @@
             this.clearbtn.BackColor = System.Drawing.Color.White;
             this.clearbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
-            this.clearbtn.Location = new System.Drawing.Point(9, 427);
+            this.clearbtn.Location = new System.Drawing.Point(8, 474);
             this.clearbtn.Margin = new System.Windows.Forms.Padding(2);
             this.clearbtn.Name = "clearbtn";
             this.clearbtn.Size = new System.Drawing.Size(133, 38);
@@ -334,11 +341,39 @@
             this.clearbtn.UseVisualStyleBackColor = false;
             this.clearbtn.Click += new System.EventHandler(this.clearbtn_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(68)))), ((int)(((byte)(114)))));
+            this.label11.Location = new System.Drawing.Point(36, 296);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(125, 22);
+            this.label11.TabIndex = 23;
+            this.label11.Text = "Department ID";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(173, 296);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(190, 27);
+            this.textBox1.TabIndex = 24;
+            this.textBox1.Text = "D003";
+            // 
             // AdminAdminAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 476);
+            this.ClientSize = new System.Drawing.Size(668, 523);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.addbtn);
             this.Controls.Add(this.cancelbtn);
@@ -347,8 +382,10 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AdminAdminAdd";
             this.Text = "Add New Admin";
+            this.Load += new System.EventHandler(this.AdminAdminAdd_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -378,5 +415,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox positionIDtxt;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

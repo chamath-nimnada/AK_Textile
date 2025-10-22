@@ -14,7 +14,10 @@ namespace AK_Textile
     public partial class EmpManagerSalaryAdd : Form
     {
         private EmpManagerSalary empManagerSalary;
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;Initial Catalog=Textlies");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
+                                                Initial Catalog=Textlies;
+                                                Integrated Security=True");
+
         public EmpManagerSalaryAdd(EmpManagerSalary empManagerSalary)
         {
             InitializeComponent();

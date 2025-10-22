@@ -7,12 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace AK_Textile
 {
     public partial class SalesReport : Form
     {
         private MainForm mainForm;
+
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
+                                                Initial Catalog=Textlies;
+                                                Integrated Security=True");
+
         public SalesReport(MainForm mainForm)
         {
             InitializeComponent();
@@ -41,7 +47,7 @@ namespace AK_Textile
 
         private void button2_Click(object sender, EventArgs e)
         {
-            mainForm.LoadForm(new SalesSales(mainForm));
+            mainForm.LoadForm(new SalesSalesReturn(mainForm));
         }
 
         private void button3_Click(object sender, EventArgs e)
