@@ -23,7 +23,6 @@ namespace AK_Textile
         public ProductScheduleAdd(ProductSchedule productScheduleform)
         {
             InitializeComponent();
-            autoincrement();
             this.productScheduleform = productScheduleform;
         }
 
@@ -43,7 +42,7 @@ namespace AK_Textile
                 {
                     string maxID = dr1[0].ToString();
                     int numericPart = int.Parse(maxID.Substring(3)); // Extract "001" and convert to integer
-                    string newID = "PRS" + (numericPart + 1).ToString("D3"); // Increment and format as "SUPXXX"
+                    string newID = "PRS" + (numericPart + 1).ToString("D3"); 
                     this.schidtxt.Text = newID;
                 }
                 dr1.Close();

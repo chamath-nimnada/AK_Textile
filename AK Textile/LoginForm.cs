@@ -143,6 +143,18 @@ namespace AK_Textile
                     case "employee":
                         mainForm.LoadForm(new Employee(mainForm));
                         break;
+                    case "production employee":
+                        mainForm.LoadForm(new Employee(mainForm));
+                        break;
+                    case "finance employee":
+                        mainForm.LoadForm(new Employee(mainForm));
+                        break;
+                    case "inventory employee":
+                        mainForm.LoadForm(new Employee(mainForm));
+                        break;
+                    case "sales employee":
+                        mainForm.LoadForm(new Employee(mainForm));
+                        break;
                     case "CEO":
                         mainForm.LoadForm(new CEODashboard(mainForm));
                         break;

@@ -491,17 +491,18 @@
     <Compile Include="ProductScheduleAdd.Designer.cs">
       <DependentUpon>ProductScheduleAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\SupplierPaymentReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SupplierPaymentReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="supplierReport1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>supplierReport.rpt</DependentUpon>
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="supplierReportviewer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="supplierReportviewer.Designer.cs">
-      <DependentUpon>supplierReportviewer.cs</DependentUpon>
     </Compile>
     <Compile Include="SupplierSupllierRemove.cs">
       <SubType>Form</SubType>
@@ -883,12 +884,14 @@
     <EmbeddedResource Include="SalesSchedule.resx">
       <DependentUpon>SalesSchedule.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SupplierPaymentReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SupplierPaymentReport.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="supplierReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>supplierReport1.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="supplierReportviewer.resx">
-      <DependentUpon>supplierReportviewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SupplierSupllierRemove.resx">
       <DependentUpon>SupplierSupllierRemove.cs</DependentUpon>

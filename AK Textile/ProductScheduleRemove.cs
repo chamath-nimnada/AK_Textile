@@ -28,6 +28,7 @@ namespace AK_Textile
         private void clearbtn_Click(object sender, EventArgs e)
         {
             searchtxt.Clear();
+            dataGridView1.DataSource = null;
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)
@@ -47,16 +48,23 @@ namespace AK_Textile
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("SELECT PScheduleID, PScheduleName, ProdType, ProdQty, ProdStartDate, ProdEndDate FROM" +
-                    " ProductionSchedule WHERE PScheduleID =@Search OR PscheduleName LIKE @SearchPattern", con);
+                                                " ProductionSchedule WHERE PScheduleID =@Search OR PscheduleName LIKE @SearchPattern", con);
+
+                cmd.Parameters.AddWithValue("@Search", searchtxt.Text);
+                cmd.Parameters.AddWithValue("@SearchPattern", "%" + searchtxt.Text + "%");
+
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                if (dt.Rows.Count > 0)
                 {
-                    cmd.Parameters.AddWithValue("@Search", searchtxt.Text);
-                    cmd.Parameters.AddWithValue("@SearchPattern", "%" + searchtxt.Text + "%");
-
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-
                     dataGridView1.DataSource = dt;
+                }
+                else
+                {
+                    MessageBox.Show("No schedule found matching that ID or Name.", "No Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dataGridView1.DataSource = null;
                 }
             }
             catch (Exception ex)
@@ -88,19 +96,20 @@ namespace AK_Textile
             {
                 con.Open();
                 SqlCommand cmd2 = new SqlCommand("DELETE FROM ProductionSchedule WHERE PScheduleID = @schid", con);
-                {
-                    cmd2.Parameters.AddWithValue("@schid", SchID);
 
-                    int rowsAffected = cmd2.ExecuteNonQuery();
-                    if (rowsAffected > 0)
-                    {
-                        MessageBox.Show("Production Schedule removed successfully.");
-                        searchbtn.PerformClick(); // Refresh DataGridView
-                    }
-                    else
-                    {
-                        MessageBox.Show("Deletion failed.");
-                    }
+                cmd2.Parameters.AddWithValue("@schid", SchID);
+
+                int rowsAffected = cmd2.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Production Schedule removed successfully.");
+                    productScheduleform.RefreshDataGrid();
+                    this.Close();
+                }
+
+                else
+                {
+                    MessageBox.Show("Deletion failed. Schedule not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)

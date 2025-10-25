@@ -39,13 +39,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.qtytxt = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.ptypetxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.nametxt = new System.Windows.Forms.TextBox();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -149,10 +149,10 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.Controls.Add(this.comboBox1);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.qtytxt);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.ptypetxt);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.nametxt);
             this.groupBox2.Controls.Add(this.dateTimePicker2);
@@ -198,14 +198,6 @@
             this.label4.Size = new System.Drawing.Size(142, 22);
             this.label4.TabIndex = 27;
             this.label4.Text = "Production Type";
-            // 
-            // ptypetxt
-            // 
-            this.ptypetxt.Location = new System.Drawing.Point(195, 76);
-            this.ptypetxt.Margin = new System.Windows.Forms.Padding(2);
-            this.ptypetxt.Name = "ptypetxt";
-            this.ptypetxt.Size = new System.Drawing.Size(312, 27);
-            this.ptypetxt.TabIndex = 26;
             // 
             // label2
             // 
@@ -264,6 +256,19 @@
             this.label3.TabIndex = 15;
             this.label3.Text = "Start Date";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Uniform",
+            "Sportswear",
+            "T- Shirt",
+            "Bottom"});
+            this.comboBox1.Location = new System.Drawing.Point(195, 73);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(311, 28);
+            this.comboBox1.TabIndex = 30;
+            // 
             // ProductScheduleUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -300,12 +305,12 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox qtytxt;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox ptypetxt;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox nametxt;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

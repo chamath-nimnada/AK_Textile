@@ -14,10 +14,13 @@ namespace AK_Textile
     public partial class ProductScheduleUpdate : Form
     {
         private ProductSchedule productScheduleform;
+
         //database connection
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
                                                 Initial Catalog=Textlies;
                                                 Integrated Security=True");
+
+        private string selectedScheduleID = null;
 
         public ProductScheduleUpdate(ProductSchedule productScheduleform)
         {
@@ -28,20 +31,22 @@ namespace AK_Textile
         private void clearbtn1_Click(object sender, EventArgs e)
         {
             searchtxt.Clear();
+            cleartexts();
         }
 
         private void cancelbtn_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
         private void cleartexts()
         {
             nametxt.Clear();
-            nametxt.Clear();
-            nametxt.Clear();
+            comboBox1.SelectedIndex = -1;
+            qtytxt.Clear();
             dateTimePicker1.Value = DateTime.Today;
             dateTimePicker2.Value = DateTime.Today;
-            //to focus the cursor back to the main field
+            selectedScheduleID = null;
             nametxt.Focus();
         }
 
@@ -50,25 +55,31 @@ namespace AK_Textile
             cleartexts();
         }
 
-        //method to load data to the textboxes
         private void LoadProductData(string data)
         {
-            con.Open();
-            SqlCommand cmd1 = new SqlCommand("SELECT PScheduleName, ProdType, ProdQty, ProdStartDate, ProdEndDate FROM ProductionSchedule WHERE PScheduleID = @searchval OR PScheduleName LIKE @searchval", con);
-            cmd1.Parameters.AddWithValue("@searchval", "%" + data + "%");
-
             try
             {
+                con.Open();
+
+                string query = "SELECT PScheduleName, ProdType, ProdQty, ProdStartDate, ProdEndDate FROM ProductionSchedule WHERE PScheduleID = @pid";
+                SqlCommand cmd1 = new SqlCommand(query, con);
+
+                cmd1.Parameters.AddWithValue("@pid", data);
+
                 SqlDataReader dr1 = cmd1.ExecuteReader();
 
                 if (dr1.Read())
                 {
+
+                    selectedScheduleID = data;
+
                     // Populate the text boxes with data
                     nametxt.Text = dr1["PScheduleName"].ToString();
-                    ptypetxt.Text = dr1["ProdType"].ToString();
                     qtytxt.Text = dr1["ProdQty"].ToString();
                     dateTimePicker1.Value = Convert.ToDateTime(dr1["ProdStartDate"]);
                     dateTimePicker2.Value = Convert.ToDateTime(dr1["ProdEndDate"]);
+
+                    comboBox1.Text = dr1["ProdType"].ToString();
                 }
                 else
                 {
@@ -91,9 +102,7 @@ namespace AK_Textile
             string search = searchtxt.Text.Trim();
             if (!string.IsNullOrEmpty(search))
             {
-                //calling the methods
                 LoadProductData(search);
-
             }
             else
             {
@@ -103,31 +112,49 @@ namespace AK_Textile
 
         private void updatebtn_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(selectedScheduleID))
+            {
+                MessageBox.Show("Please search for and load a schedule before updating.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            if (string.IsNullOrWhiteSpace(nametxt.Text) || string.IsNullOrWhiteSpace(ptypetxt.Text) || string.IsNullOrWhiteSpace(qtytxt.Text))
+            if (string.IsNullOrWhiteSpace(nametxt.Text) || comboBox1.SelectedIndex == -1)
             {
                 MessageBox.Show("Please fill all the fields.");
                 return;
             }
+            if (!int.TryParse(qtytxt.Text, out int quantity))
+            {
+                MessageBox.Show("Quantity must be a valid whole number.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string prodType = comboBox1.Text;
 
             try
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("UPDATE ProductionSchedule SET PScheduleName= @name ,ProdType = @type, ProdQty = @qty, ProdStartDate = @sdate, ProdEndDate = @edate WHERE PScheduleID = @PID", con);
+                string query = "UPDATE ProductionSchedule SET PScheduleName= @name ,ProdType = @type, ProdQty = @qty, ProdStartDate = @sdate, ProdEndDate = @edate WHERE PScheduleID = @PID";
+                SqlCommand cmd = new SqlCommand(query, con);
+
                 cmd.Parameters.AddWithValue("@name", nametxt.Text);
-                cmd.Parameters.AddWithValue("@type", ptypetxt.Text);
-                cmd.Parameters.AddWithValue("@qty", qtytxt.Text);
+                cmd.Parameters.AddWithValue("@type", prodType);   // Pass the string
+                cmd.Parameters.AddWithValue("@qty", quantity);   // Pass the number
                 cmd.Parameters.AddWithValue("@sdate", dateTimePicker1.Value);
                 cmd.Parameters.AddWithValue("@edate", dateTimePicker2.Value);
+
+                cmd.Parameters.AddWithValue("@PID", selectedScheduleID);
 
                 int rows = cmd.ExecuteNonQuery();
                 if (rows > 0)
                 {
                     MessageBox.Show("Production Schedule updated successfully.");
+                    productScheduleform.RefreshDataGrid(); 
+                    this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Update failed.");
+                    MessageBox.Show("Update failed. Schedule not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)

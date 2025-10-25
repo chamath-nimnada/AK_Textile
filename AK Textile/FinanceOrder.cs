@@ -14,7 +14,6 @@ namespace AK_Textile
 {
     public partial class FinanceOrder : Form
     {
-       
         private MainForm mainForm;
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
                                                 Initial Catalog=Textlies;
@@ -23,39 +22,34 @@ namespace AK_Textile
         {
             InitializeComponent();
             this.mainForm = mainForm;
-            LoadAllSupplier();
         }
 
-        private void LoadAllSupplier()
+        private void LoadCustomerOrders()
         {
-            // SQL query to fetch all data from the Product table
-            string query = "SELECT * FROM Supplier";
+            //innerjoin query to load the customer name too
+            string query = @"SELECT 
+                                CO.COrderID, 
+                                C.CusName, 
+                                CO.CusID, 
+                                CO.COrderDate, 
+                                CO.CItemQty, 
+                                CO.CItemPrice 
+                             FROM CustomerOrder CO
+                             INNER JOIN Customer C ON CO.CusID = C.CusID";
+
+            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+            DataTable dataTable = new DataTable();
+
+            try
             {
-                try
-                {
-                    // Open the connection
-                    con.Open();
-
-                    // Create the SQL command
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    {
-                        // Execute the query and load the results into a DataTable
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-
-                        // Bind the DataTable to the DataGridView
-                        dataGridView1.DataSource = dataTable;
-
-                        // Adjust columns to fit the grid width
-                        dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("An error occurred while loading data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                con.Close();
+                // Adapter handles connection open/close
+                adapter.Fill(dataTable);
+                dataGridView1.DataSource = dataTable;
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while loading data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -79,10 +73,11 @@ namespace AK_Textile
             mainForm.LoadForm(new FinanceReport(mainForm));
         }
 
+        // "Clear" Search Button
         private void button6_Click(object sender, EventArgs e)
         {
-            SupplierId.Text = string.Empty;
-            LoadAllSupplier();
+            searchtxt.Text = string.Empty;
+            LoadCustomerOrders();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -95,75 +90,61 @@ namespace AK_Textile
             mainForm.LoadForm(new FinanceDashboard(mainForm));
         }
 
+        // "Search" Button
         private void button10_Click(object sender, EventArgs e)
         {
-            // Get the value entered in the textbox
-            string searchValue = SupplierId.Text.Trim();
+            string searchValue = searchtxt.Text.Trim();
 
-            // Check if the textbox is empty
             if (string.IsNullOrEmpty(searchValue))
             {
-                MessageBox.Show("Please enter a Supplier ID or Name to search.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                LoadCustomerOrders();
                 return;
             }
+            string query = @"SELECT 
+                                CO.COrderID, 
+                                C.CusName, 
+                                CO.CusID, 
+                                CO.COrderDate, 
+                                CO.CItemQty, 
+                                CO.CItemPrice 
+                             FROM CustomerOrder CO
+                             INNER JOIN Customer C ON CO.CusID = C.CusID
+                             WHERE CO.COrderID = @SearchValue 
+                                OR CO.CusID = @SearchValue 
+                                OR C.CusName LIKE @SearchPattern";
 
-            // SQL query to fetch data based on PID or Pname
-            string query = @"SELECT * FROM PurchaseOrder
-                 WHERE SupID = @SearchValue OR SupName LIKE '%' + @SearchValue + '%'";
-
+            DataTable dataTable = new DataTable();
+            try
             {
-                try
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                 {
+                    cmd.Parameters.AddWithValue("@SearchValue", searchValue);
+                    cmd.Parameters.AddWithValue("@SearchPattern", "%" + searchValue + "%");
 
-                    // Open the connection
-                    con.Open();
-
-                    // Create the SQL command
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-
-                    {
-                        // Add parameter to prevent SQL injection
-                        cmd.Parameters.AddWithValue("@SearchValue", searchValue);
-
-                        // Execute the query and load the results into a DataTable
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-
-                        // Check if any rows are returned
-
-
-                        if (dataTable.Rows.Count > 0)
-                        {
-
-                            // Bind the DataTable to the DataGridView
-                            dataGridView1.DataSource = dataTable;
-
-                            // Adjust columns to fit the grid width
-                            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                        }
-                        else
-                        {
-
-                            MessageBox.Show("No matching records found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            dataGridView1.DataSource = null; // Clear DataGridView if no data found
-                            con.Close();
-                            LoadAllSupplier();
-                        }
-                    }
+                    adapter.Fill(dataTable);
                 }
 
-                catch (Exception ex)
+                if (dataTable.Rows.Count > 0)
                 {
-                    MessageBox.Show("An error occurred while fetching data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dataGridView1.DataSource = dataTable;
+                    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                }
+                else
+                {
+                    MessageBox.Show("No matching records found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dataGridView1.DataSource = null;
                 }
             }
-
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while fetching data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void FinanceOrder_Load(object sender, EventArgs e)
         {
-
+            LoadCustomerOrders();
         }
     }
 }

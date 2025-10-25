@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button5 = new System.Windows.Forms.Button();
@@ -46,7 +47,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.printbtn = new System.Windows.Forms.Button();
+            this.SupplierPaymentReport1 = new AK_Textile.Reports.SupplierPaymentReport();
             this.panel3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -89,20 +93,32 @@
             this.panel3.Location = new System.Drawing.Point(186, 107);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(775, 483);
+            this.panel3.Size = new System.Drawing.Size(775, 456);
             this.panel3.TabIndex = 96;
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.crystalReportViewer1);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(12, 133);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox4.Size = new System.Drawing.Size(752, 333);
+            this.groupBox4.Size = new System.Drawing.Size(752, 323);
             this.groupBox4.TabIndex = 23;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Supplier Reports";
+            // 
+            // crystalReportViewer1
+            // 
+            this.crystalReportViewer1.ActiveViewIndex = -1;
+            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.crystalReportViewer1.Location = new System.Drawing.Point(2, 22);
+            this.crystalReportViewer1.Name = "crystalReportViewer1";
+            this.crystalReportViewer1.Size = new System.Drawing.Size(748, 299);
+            this.crystalReportViewer1.TabIndex = 0;
             // 
             // groupBox1
             // 
@@ -151,10 +167,6 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Weekly",
-            "Monthly",
-            "Yearly"});
             this.comboBox1.Location = new System.Drawing.Point(22, 33);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
@@ -295,12 +307,26 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // printbtn
+            // 
+            this.printbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(159)))));
+            this.printbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.printbtn.ForeColor = System.Drawing.Color.White;
+            this.printbtn.Location = new System.Drawing.Point(833, 567);
+            this.printbtn.Margin = new System.Windows.Forms.Padding(2);
+            this.printbtn.Name = "printbtn";
+            this.printbtn.Size = new System.Drawing.Size(128, 38);
+            this.printbtn.TabIndex = 100;
+            this.printbtn.Text = "Print";
+            this.printbtn.UseVisualStyleBackColor = false;
+            // 
             // SupplierReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(224)))), ((int)(((byte)(229)))));
-            this.ClientSize = new System.Drawing.Size(981, 601);
+            this.ClientSize = new System.Drawing.Size(981, 627);
+            this.Controls.Add(this.printbtn);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.button4);
@@ -314,6 +340,7 @@
             this.Name = "SupplierReport";
             this.Text = "Form1";
             this.panel3.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -346,5 +373,8 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.GroupBox groupBox4;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
+        private System.Windows.Forms.Button printbtn;
+        private Reports.SupplierPaymentReport SupplierPaymentReport1;
     }
 }

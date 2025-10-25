@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
+using System.IO;
 
 namespace AK_Textile
 {
@@ -34,6 +35,8 @@ namespace AK_Textile
         private void button5_Click(object sender, EventArgs e)
         {
             comboBox1.SelectedIndex = -1;
+            // This empties the report viewer
+            crystalReportViewer1.ReportSource = null;
 
         }
 
@@ -69,66 +72,93 @@ namespace AK_Textile
 
         private void button10_Click(object sender, EventArgs e)
         {
+            // --- 1. Define Start and End Dates ---
+            DateTime startDate;
+            DateTime endDate = DateTime.Today; // We always end on today's date
+            DateTime today = DateTime.Today;
+
+            // Check if an item is selected
             if (comboBox1.SelectedItem == null)
             {
-                MessageBox.Show("Please select a report type!", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a report type.");
                 return;
+            }
+            string reportType = comboBox1.SelectedItem.ToString();
+
+            // --- 2. Calculate Dates Based on ComboBox ---
+            switch (reportType)
+            {
+                case "Weekly":
+                    startDate = today.AddDays(-7);
+                    break;
+
+                case "Monthly":
+                    startDate = new DateTime(today.Year, today.Month, 1);
+                    break;
+
+                case "Yearly":
+                    startDate = new DateTime(today.Year, 1, 1);
+                    break;
+
+                default:
+                    MessageBox.Show("Please select a valid report type.");
+                    return;
             }
 
             try
             {
+                // --- 3. This is the NEW Data-Fetching Code ---
 
-                // Get Date Range Based on Selection
-                string reportType = comboBox1.SelectedItem.ToString();
-                DateTime endDate = DateTime.Today;
-                DateTime startDate;
+                // This query JOINS the tables and FILTERS by date.
+                // We select all the fields your report needs.
+                string query = @"
+            SELECT 
+                pay.SupPID, 
+                sup.SupName, 
+                pay.SupPDate, 
+                pay.SupPAmount 
+            FROM 
+                SupplierPayment AS pay
+            INNER JOIN 
+                Supplier AS sup ON pay.SupID = sup.SupID
+            WHERE 
+                pay.SupPDate >= @startDate AND pay.SupPDate <= @endDate";
 
-                if (reportType == "Weekly")
-                    startDate = endDate.AddDays(-7);
-                else if (reportType == "Monthly")
-                    startDate = endDate.AddMonths(-1);
-                else // Yearly
-                    startDate = endDate.AddYears(-1);
-
-
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT spo.SPOrderID, spo.PitemName, spo.PItemQty, s.SupName, spo.OrderDate" +
-                    "FROM SupplierPurchaseOrder spo" +
-                    "INNER JOIN Supplier s ON spo.SupID = s.SupID" +
-                    "WHERE spo.OrderDate >= @StartDate AND spo.OrderDate <= @EndDate;", con);
-
-                adapter.SelectCommand.Parameters.AddWithValue("@StartDate", startDate);
-                adapter.SelectCommand.Parameters.AddWithValue("@EndDate", endDate);
-
+                // Use a DataTable to hold the results
                 DataTable dt = new DataTable();
-                adapter.Fill(dt);
 
-                if (dt.Rows.Count == 0)
+                // Use your existing connection 'con'
+                using (SqlCommand cmd = new SqlCommand(query, con))
                 {
-                    MessageBox.Show("No data found for the selected report type.", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
+                    // Add parameters safely to prevent SQL injection
+                    cmd.Parameters.AddWithValue("@startDate", startDate);
+                    cmd.Parameters.AddWithValue("@endDate", endDate);
+
+                    // Use a SqlDataAdapter to fill the DataTable
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
                 }
 
-                // Load Crystal Report
-                ReportDocument report = new ReportDocument();
-                string reportPath = Application.StartupPath + @"\SupplierPurchaseReport.rpt";
+                // --- 4. Load the Crystal Report file ---
+                ReportDocument cryRpt = new ReportDocument();
+                string reportPath = Path.Combine(Application.StartupPath, "Reports\\SupplierPaymentReport.rpt");
+                cryRpt.Load(reportPath);
 
-                if (!System.IO.File.Exists(reportPath))
-                {
-                    MessageBox.Show("Report file not found: " + reportPath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                // --- 5. Push the DataTable into the Report ---
+                // This is the most important line.
+                // It REPLACES the report's database connection.
+                cryRpt.SetDataSource(dt);
 
-                report.Load(reportPath);
-                report.SetDataSource(dt);
+                // We DELETED the old database login and parameter code.
+                // It is no longer needed.
 
-                // Assign report to CrystalReportViewer
-                //crystalReportViewer1.ReportSource = report;
-                //crystalReportViewer1.Refresh();
+                // --- 6. Show the Report in the Viewer ---
+                crystalReportViewer1.ReportSource = cryRpt;
+                crystalReportViewer1.Refresh();
             }
-            
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Report Generation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error loading report: " + ex.Message);
             }
         }
 
@@ -136,5 +166,6 @@ namespace AK_Textile
         {
 
         }
+
     }
 }

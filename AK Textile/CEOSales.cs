@@ -22,10 +22,11 @@ namespace AK_Textile
             InitializeComponent();
             this.mainForm = mainForm;
             LoadAllSales();
+            LoadAllBills();
         }
         private void LoadAllSales()
         {  // SQL query to fetch all data from the Product table
-            string query = "SELECT * FROM SalesReturn";
+            string query = "SELECT * FROM CustomerPayment";
             {
                 try
                 {
@@ -51,10 +52,48 @@ namespace AK_Textile
                 {
                     MessageBox.Show("An error occurred while loading data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                con.Close();
+                finally
+                {
+                    con.Close();
+                }
             }
         }
 
+
+        private void LoadAllBills()
+        {
+            string query = "SELECT * FROM FinalBill";
+            {
+                try
+                {
+                    // Open the connection
+                    con.Open();
+
+                    // Create the SQL command
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        // Execute the query and load the results into a DataTable
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        // Bind the DataTable to the DataGridView
+                        dataGridView2.DataSource = dataTable;
+
+                        // Adjust columns to fit the grid width
+                        dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred while loading data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    con.Close();
+                }
+            }
+        }
         private void CEOSales_Load(object sender, EventArgs e)
         {
 
@@ -80,7 +119,7 @@ namespace AK_Textile
             }
 
             // SQL query to fetch data based on PID or Pname
-            string query = @"SELECT * FROM Customer
+            string query = @"SELECT * FROM CustomerPayment
                              WHERE CusID = @SearchValue OR CusName LIKE '%' + @SearchValue + '%'";
 
             {

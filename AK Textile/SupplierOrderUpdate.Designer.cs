@@ -213,6 +213,7 @@
             this.updatebtn.TabIndex = 51;
             this.updatebtn.Text = "Update";
             this.updatebtn.UseVisualStyleBackColor = false;
+            this.updatebtn.Click += new System.EventHandler(this.updatebtn_Click);
             // 
             // cancelbtn
             // 
@@ -271,7 +272,6 @@
             this.Name = "SupplierOrderUpdate";
             this.Text = "Update Order";
             this.TopMost = true;
-         //   this.Load += new System.EventHandler(this.SupplierOrderUpdate_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

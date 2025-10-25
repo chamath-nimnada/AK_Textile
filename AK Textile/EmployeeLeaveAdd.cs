@@ -22,56 +22,17 @@ namespace AK_Textile
         public EmployeeLeaveAdd(Employee employeeForm)
         {
             InitializeComponent();
-            AutoGenerateID();
             this.employeeForm = employeeForm;
+        }
+        private void EmployeeLeaveAdd_Load(object sender, EventArgs e)
+        {
+            AutoGenerateID();
+            LoadLeaveTypes();
+            AllClear();
         }
 
         private void AutoGenerateID()
         {
-            try
-            {
-                // Get values from input fields
-                string leaveID = textBox2.Text;
-                string startDate = dateTimePicker1.Text;
-                string endDate = dateTimePicker2.Text;
-                string leaveType = comboBox2.Text;
-                string reason = textBox1.Text;
-
-                // Validate input
-                if (string.IsNullOrWhiteSpace(leaveID) || string.IsNullOrWhiteSpace(leaveType) || string.IsNullOrWhiteSpace(reason))
-            {
-                MessageBox.Show("Please fill in all required fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            {
-                con.Open();
-                string query = "INSERT INTO EmployeeLeaves (LeaveID, StartDate, EndDate, LeaveType, Reason) VALUES (@LeaveID, @StartDate, @EndDate, @LeaveType, @Reason)";
-                using (SqlCommand cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@LeaveID", leaveID);
-                    cmd.Parameters.AddWithValue("@StartDate", startDate);
-                    cmd.Parameters.AddWithValue("@EndDate", endDate);
-                    cmd.Parameters.AddWithValue("@LeaveType", leaveType);
-                    cmd.Parameters.AddWithValue("@Reason", reason);
-
-                    int result = cmd.ExecuteNonQuery();
-                    if (result > 0)
-                    {
-                        MessageBox.Show("Leave added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close(); // Close the form after successful addition
-                    }
-                    else
-                    {
-                        MessageBox.Show("Failed to add leave. Try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show("Error: " + ex.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
             try
             {
                 con.Open();
@@ -81,13 +42,13 @@ namespace AK_Textile
                 {
                     if (dr1[0] == DBNull.Value)
                     {
-                        this.textBox2.Text = "LE001";
+                        this.textBox2.Text = "L001"; 
                     }
                     else
                     {
                         string maxID = dr1[0].ToString();
-                        int numericPart = int.Parse(maxID.Substring(3)); // Extract "001" and convert to integer
-                        string newID = "LE" + (numericPart + 1).ToString("D3"); // Increment and format as "SUPXXX"
+                        int numericPart = int.Parse(maxID.Substring(1)); // Extract "001"
+                        string newID = "L" + (numericPart + 1).ToString("D3"); // Format as "LXXX"
                         this.textBox2.Text = newID;
                     }
                     dr1.Close();
@@ -95,7 +56,7 @@ namespace AK_Textile
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Error generating Leave ID: " + ex.Message);
             }
             finally
             {
@@ -106,30 +67,85 @@ namespace AK_Textile
             }
         }
 
+        private void LoadLeaveTypes()
+        {
+            try
+            {
+                con.Open();
+                string query = "SELECT LeaveTypeID, LTName FROM LeaveType";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                comboBox2.DataSource = dt;
+                comboBox2.DisplayMember = "LTName"; 
+                comboBox2.ValueMember = "LeaveTypeID";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to load leave types: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        //method to add leaves
         private void AddLeave()
         {
             string leaveID = textBox2.Text;
-            string startDate = dateTimePicker1.Text;
-            string endDate = dateTimePicker2.Text;
-            string leaveType = comboBox2.Text;
+            DateTime startDate = dateTimePicker1.Value;
+            DateTime endDate = dateTimePicker2.Value;
             string reason = textBox1.Text;
+            object selectedLeaveType = comboBox2.SelectedValue;
+            string loggedInEmpID = LoginForm.LoggedInUser.UserId;
+
+            //Validation
+            if (selectedLeaveType == null)
+            {
+                MessageBox.Show("Please select a leave type.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(reason))
+            {
+                MessageBox.Show("Please enter a reason for your leave.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (endDate < startDate)
+            {
+                MessageBox.Show("End date cannot be before the start date.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string leaveTypeID = selectedLeaveType.ToString();
+            string status = "Pending";
 
             try
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO Leave (LeaveID, LeaveTypeID,  LReason, LStartDate, LEndDate) VALUES (@LeaveID, @LeaveTypeID, @LReason, @LStartDate, @LEndDate, ,)", con);
+                string query = "INSERT INTO Leave (LeaveID, EmpID, LeaveTypeID, LReason, LStartDate, LEndDate, LStatus) " +
+                               "VALUES (@LeaveID, @EmpID, @LeaveTypeID, @LReason, @LStartDate, @LEndDate, @LStatus)";
+
+                SqlCommand cmd = new SqlCommand(query, con);
+
                 cmd.Parameters.AddWithValue("@LeaveID", leaveID);
+                cmd.Parameters.AddWithValue("@EmpID", loggedInEmpID);
+                cmd.Parameters.AddWithValue("@LeaveTypeID", leaveTypeID);
+                cmd.Parameters.AddWithValue("@LReason", reason);
                 cmd.Parameters.AddWithValue("@LStartDate", startDate);
                 cmd.Parameters.AddWithValue("@LEndDate", endDate);
-                cmd.Parameters.AddWithValue("@LeaveTypeId", leaveType);
-                cmd.Parameters.AddWithValue("@LReason", reason);
+                cmd.Parameters.AddWithValue("@LStatus", status);
+
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Leave added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                AutoGenerateID();
+
+                employeeForm.RefreshDataGrid(); // Refresh the main employee grid
+                this.Close(); // Close the form after success
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Error adding leave: " + ex.Message);
             }
             finally
             {
@@ -141,36 +157,30 @@ namespace AK_Textile
         }
         private void AllClear()
         {
-            dateTimePicker1.Text = string.Empty;
-            dateTimePicker2.Text = string.Empty;
-            comboBox2.Text = string.Empty;
+            dateTimePicker1.Value = DateTime.Now;
+            dateTimePicker2.Value = DateTime.Now;
+            comboBox2.SelectedIndex = -1;
             textBox1.Text = string.Empty;
         }
 
 
-
+        // "Add" button
         private void button8_Click(object sender, EventArgs e)
         {
             AddLeave();
         }
 
+        // "Cancel" button
         private void button1_Click(object sender, EventArgs e)
         {
-            //Call the public method from EmployeeForm
-            employeeForm.RefreshDataGrid();
-
             this.Close();
-
         }
 
+        // "Clear" button
         private void button2_Click(object sender, EventArgs e)
         {
             AllClear();
-        }
-
-        private void EmployeeLeaveAdd_Load(object sender, EventArgs e)
-        {
-
+            AutoGenerateID();
         }
     }
 }

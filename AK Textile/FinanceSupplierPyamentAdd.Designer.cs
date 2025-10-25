@@ -29,32 +29,32 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.payidtxt = new System.Windows.Forms.TextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.pamounttxt = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.SupplierId = new System.Windows.Forms.TextBox();
-            this.supid = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.SupplierPAmount = new System.Windows.Forms.TextBox();
-            this.SupplierPMethod = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.payidtxt);
             this.groupBox2.Controls.Add(this.dateTimePicker1);
-            this.groupBox2.Controls.Add(this.SupplierPMethod);
-            this.groupBox2.Controls.Add(this.SupplierPAmount);
+            this.groupBox2.Controls.Add(this.comboBox2);
+            this.groupBox2.Controls.Add(this.pamounttxt);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.SupplierId);
-            this.groupBox2.Controls.Add(this.supid);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
@@ -66,7 +66,72 @@
             this.groupBox2.Size = new System.Drawing.Size(616, 269);
             this.groupBox2.TabIndex = 32;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Add Supplier Details";
+            this.groupBox2.Text = "Add Supplier Payment Details";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Cash",
+            "Debit Card",
+            "Cheque"});
+            this.comboBox1.Location = new System.Drawing.Point(262, 86);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(333, 28);
+            this.comboBox1.TabIndex = 15;
+            // 
+            // payidtxt
+            // 
+            this.payidtxt.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.payidtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.payidtxt.Location = new System.Drawing.Point(262, 48);
+            this.payidtxt.Margin = new System.Windows.Forms.Padding(2);
+            this.payidtxt.Name = "payidtxt";
+            this.payidtxt.ReadOnly = true;
+            this.payidtxt.Size = new System.Drawing.Size(190, 27);
+            this.payidtxt.TabIndex = 14;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(262, 130);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(333, 27);
+            this.dateTimePicker1.TabIndex = 13;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "Cash",
+            "Card",
+            "Cheque",
+            "Bank Transfer"});
+            this.comboBox2.Location = new System.Drawing.Point(262, 168);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(333, 28);
+            this.comboBox2.TabIndex = 12;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.SupplierPMethod_SelectedIndexChanged);
+            // 
+            // pamounttxt
+            // 
+            this.pamounttxt.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.pamounttxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pamounttxt.Location = new System.Drawing.Point(262, 210);
+            this.pamounttxt.Margin = new System.Windows.Forms.Padding(2);
+            this.pamounttxt.Name = "pamounttxt";
+            this.pamounttxt.Size = new System.Drawing.Size(333, 27);
+            this.pamounttxt.TabIndex = 10;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(68)))), ((int)(((byte)(114)))));
+            this.label5.Location = new System.Drawing.Point(36, 210);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(146, 22);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Payment Amount";
             // 
             // label4
             // 
@@ -75,30 +140,9 @@
             this.label4.Location = new System.Drawing.Point(36, 171);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(213, 22);
+            this.label4.Size = new System.Drawing.Size(144, 22);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Supplier payment method";
-            // 
-            // SupplierId
-            // 
-            this.SupplierId.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.SupplierId.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SupplierId.Location = new System.Drawing.Point(224, 86);
-            this.SupplierId.Margin = new System.Windows.Forms.Padding(2);
-            this.SupplierId.Name = "SupplierId";
-            this.SupplierId.Size = new System.Drawing.Size(371, 27);
-            this.SupplierId.TabIndex = 4;
-            // 
-            // supid
-            // 
-            this.supid.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.supid.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.supid.Location = new System.Drawing.Point(224, 46);
-            this.supid.Margin = new System.Windows.Forms.Padding(2);
-            this.supid.Name = "supid";
-            this.supid.ReadOnly = true;
-            this.supid.Size = new System.Drawing.Size(371, 27);
-            this.supid.TabIndex = 3;
+            this.label4.Text = "Payment Method";
             // 
             // label3
             // 
@@ -118,9 +162,9 @@
             this.label2.Location = new System.Drawing.Point(36, 89);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 22);
+            this.label2.Size = new System.Drawing.Size(128, 22);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Supplier ID";
+            this.label2.Text = "Supplier Name";
             // 
             // label1
             // 
@@ -178,43 +222,6 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(68)))), ((int)(((byte)(114)))));
-            this.label5.Location = new System.Drawing.Point(36, 210);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(213, 22);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Supplier payment amount";
-            // 
-            // SupplierPAmount
-            // 
-            this.SupplierPAmount.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.SupplierPAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SupplierPAmount.Location = new System.Drawing.Point(262, 210);
-            this.SupplierPAmount.Margin = new System.Windows.Forms.Padding(2);
-            this.SupplierPAmount.Name = "SupplierPAmount";
-            this.SupplierPAmount.Size = new System.Drawing.Size(333, 27);
-            this.SupplierPAmount.TabIndex = 10;
-            // 
-            // SupplierPMethod
-            // 
-            this.SupplierPMethod.FormattingEnabled = true;
-            this.SupplierPMethod.Location = new System.Drawing.Point(262, 168);
-            this.SupplierPMethod.Name = "SupplierPMethod";
-            this.SupplierPMethod.Size = new System.Drawing.Size(333, 28);
-            this.SupplierPMethod.TabIndex = 12;
-            this.SupplierPMethod.SelectedIndexChanged += new System.EventHandler(this.SupplierPMethod_SelectedIndexChanged);
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(262, 130);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(333, 27);
-            this.dateTimePicker1.TabIndex = 13;
-            // 
             // FinanceSupplierPyamentAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -240,8 +247,6 @@
 
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox SupplierId;
-        private System.Windows.Forms.TextBox supid;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -249,8 +254,10 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox SupplierPAmount;
+        private System.Windows.Forms.TextBox pamounttxt;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox SupplierPMethod;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.TextBox payidtxt;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

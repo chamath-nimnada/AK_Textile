@@ -27,32 +27,18 @@ namespace AK_Textile
         private void LoadAllSupplier()
         {
             string query = "SELECT * FROM SupplierPayment";
+            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+            DataTable dataTable = new DataTable();
+
+            try
             {
-                try
-                {
-                    // Open the connection
-                    con.Open();
-
-                    // Create the SQL command
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    {
-                        // Execute the query and load the results into a DataTable
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-
-                        // Bind the DataTable to the DataGridView
-                        dataGridView1.DataSource = dataTable;
-
-                        // Adjust columns to fit the grid width
-                        dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("An error occurred while loading data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                con.Close();
+                adapter.Fill(dataTable);
+                dataGridView1.DataSource = dataTable;
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while loading data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -97,74 +83,53 @@ namespace AK_Textile
             LoadAllSupplier();
         }
 
+        //Search button
         private void button10_Click(object sender, EventArgs e)
         {
-            // Get the value entered in the textbox
             string searchValue = SupplierId.Text.Trim();
 
-            // Check if the textbox is empty
             if (string.IsNullOrEmpty(searchValue))
             {
-                MessageBox.Show("Please enter a Supplier ID or Name to search.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                LoadAllSupplier();
                 return;
             }
 
-            // SQL query to fetch data based on SupplierID or Suplliername
-            string query = @"SELECT * FROM SupplierPayment
-                 WHERE SupID = @SearchValue OR SupName LIKE '%' + @SearchValue + '%'";
+            string query = @"SELECT P.* FROM SupplierPayment P
+                             LEFT JOIN Supplier S ON P.SupID = S.SupID
+                             WHERE P.SupPID = @SearchValue 
+                                OR P.SupID = @SearchValue 
+                                OR S.SupName LIKE @SearchPattern";
 
+            DataTable dataTable = new DataTable();
+            try
             {
-                try
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                 {
-
-                    // Open the connection
-                    con.Open();
-
-                    // Create the SQL command
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-
-                    {
-                        // Add parameter to prevent SQL injection
-                        cmd.Parameters.AddWithValue("@SearchValue", searchValue);
-
-                        // Execute the query and load the results into a DataTable
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-
-                        // Check if any rows are returned
-
-
-                        if (dataTable.Rows.Count > 0)
-                        {
-
-                            // Bind the DataTable to the DataGridView
-                            dataGridView1.DataSource = dataTable;
-
-                            // Adjust columns to fit the grid width
-                            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                        }
-                        else
-                        {
-
-                            MessageBox.Show("No matching records found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            dataGridView1.DataSource = null; // Clear DataGridView if no data found
-                            con.Close();
-                            LoadAllSupplier();
-                        }
-                    }
+                    cmd.Parameters.AddWithValue("@SearchValue", searchValue);
+                    cmd.Parameters.AddWithValue("@SearchPattern", "%" + searchValue + "%");
+                    adapter.Fill(dataTable);
                 }
 
-                catch (Exception ex)
+                if (dataTable.Rows.Count > 0)
                 {
-                    MessageBox.Show("An error occurred while fetching data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dataGridView1.DataSource = dataTable;
+                    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 }
+                else
+                {
+                    MessageBox.Show("No matching records found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dataGridView1.DataSource = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while fetching data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            //Dark the back main window and open sub window
             Form formBackground = new Form();
             try
             {

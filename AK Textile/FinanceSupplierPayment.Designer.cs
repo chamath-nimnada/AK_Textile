@@ -149,7 +149,7 @@
             this.groupBox1.Size = new System.Drawing.Size(754, 84);
             this.groupBox1.TabIndex = 69;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Enter the Supplier ID or Name";
+            this.groupBox1.Text = "Enter the Supplier Payment ID";
             // 
             // button6
             // 

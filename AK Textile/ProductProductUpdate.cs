@@ -20,12 +20,15 @@ namespace AK_Textile
                                                 Initial Catalog=Textlies;
                                                 Integrated Security=True");
 
+        private string selectedProductID = null;
+
         public ProductProductUpdate(ProductionProduct productionProductForm)
         {
             InitializeComponent();
             this.productionProductForm = productionProductForm;
         }
 
+        // Clear button for search
         private void clear1btn_Click(object sender, EventArgs e)
         {
             searchtxt.Clear();
@@ -37,8 +40,11 @@ namespace AK_Textile
             this.nametxt.Clear();
             this.pricetxt.Clear();
             this.qtytxt.Clear();
+
+            this.selectedProductID = null;
         }
 
+        // "Clear" button for details
         private void clear2btn_Click(object sender, EventArgs e)
         {
             Cleartexts();
@@ -52,16 +58,20 @@ namespace AK_Textile
         //method to load data to the textboxes
         private void LoadProductData(string data)
         {
-            con.Open();
-            SqlCommand cmd1 = new SqlCommand("SELECT InvID, PName, PPrice, PQty FROM Product WHERE PID = @searchval OR PName LIKE @searchval", con);
-            cmd1.Parameters.AddWithValue("@searchval", "%" + data + "%");
-
             try
             {
+                con.Open();
+                SqlCommand cmd1 = new SqlCommand("SELECT PID, InvID, PName, PPrice, PQty FROM Product WHERE PID = @pid OR PName LIKE @pname", con);
+
+                cmd1.Parameters.AddWithValue("@pid", data);
+                cmd1.Parameters.AddWithValue("@pname", "%" + data + "%");
+
                 SqlDataReader dr1 = cmd1.ExecuteReader();
 
                 if (dr1.Read())
                 {
+                    selectedProductID = dr1["PID"].ToString();
+
                     // Populate the text boxes with data
                     invidtxt.Text = dr1["InvID"].ToString();
                     nametxt.Text = dr1["PName"].ToString();
@@ -101,35 +111,51 @@ namespace AK_Textile
 
         private void updatebtn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(invidtxt.Text))
+            if (string.IsNullOrWhiteSpace(selectedProductID))
             {
-                MessageBox.Show("Please fill all the fields.");
+                MessageBox.Show("Please search for and load a product first.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-                try
-                {
+            if (!decimal.TryParse(pricetxt.Text, out decimal price))
+            {
+                MessageBox.Show("Price must be a valid number.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!int.TryParse(qtytxt.Text, out int quantity))
+            {
+                MessageBox.Show("Quantity must be a valid whole number.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("UPDATE Product SET InvID= @invid ,PName = @Name, PPrice = @Price, PQty = @Quantity WHERE PID = @PID", con);
+
                 cmd.Parameters.AddWithValue("@invid", invidtxt.Text);
                 cmd.Parameters.AddWithValue("@Name", nametxt.Text);
-                cmd.Parameters.AddWithValue("@Price", pricetxt.Text);
-                cmd.Parameters.AddWithValue("@Quantity", qtytxt.Text);
+                cmd.Parameters.AddWithValue("@Price", price);
+                cmd.Parameters.AddWithValue("@Quantity", quantity);
 
-                        int rows = cmd.ExecuteNonQuery();
-                        if (rows > 0)
-                        {
-                            MessageBox.Show("Product updated successfully.");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Update failed.");
-                        }
-                }
-                catch (Exception ex)
+                cmd.Parameters.AddWithValue("@PID", selectedProductID);
+
+                int rows = cmd.ExecuteNonQuery();
+                if (rows > 0)
                 {
-                    MessageBox.Show("Error: " + ex.Message);
+                    MessageBox.Show("Product updated successfully.");
+                    productionProductForm.RefreshDataGrid(); // Refresh parent grid
+                    this.Close(); // Close form
                 }
+                else
+                {
+                    MessageBox.Show("Update failed. Product not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
             finally
             {
                 con.Close();

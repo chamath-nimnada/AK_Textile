@@ -13,12 +13,15 @@ namespace AK_Textile
 {
     public partial class EmpManagerLeaveAdd : Form
     {
+        private EmpManagerLeave leaveform; // Reference to Supplier
+
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
                                                 Initial Catalog=Textlies;
                                                 Integrated Security=True");
-        public EmpManagerLeaveAdd()
+        public EmpManagerLeaveAdd(EmpManagerLeave leaveform)
         {
             InitializeComponent();
+            this.leaveform = leaveform;
         }
 
         private void AddCategory()
