@@ -23,7 +23,7 @@ namespace AK_Textile
         {
             InitializeComponent();
             this.supinvoiceform = supinvoiceform;
-            // Add event handlers
+
             qtytxt.TextChanged += CalculateTotalAmount;
             amounttxt.TextChanged += CalculateTotalAmount;
 
@@ -42,6 +42,20 @@ namespace AK_Textile
         private void clearbtn_Click(object sender, EventArgs e)
         {
             this.searchtxt.Clear();
+        }
+
+
+        //auto-calculation
+        private void CalculateTotalAmount(object sender, EventArgs e)
+        {
+            if (decimal.TryParse(qtytxt.Text, out decimal quantity) && decimal.TryParse(amounttxt.Text, out decimal amount))
+            {
+                totamount.Text = (quantity * amount).ToString("0.00");
+            }
+            else
+            {
+                totamount.Text = "0.00";
+            }
         }
 
         private void LoadSupplierInvoiceData(string supdata)
@@ -86,69 +100,42 @@ namespace AK_Textile
             }
         }
 
-        private void CalculateTotalAmount(object sender, EventArgs e)
-        {
-            if (decimal.TryParse(qtytxt.Text, out decimal quantity) && decimal.TryParse(amounttxt.Text, out decimal amount))
-            {
-                totamount.Text = (quantity * amount).ToString();
-            }
-            else
-            {
-                totamount.Text = "0";
-            }
-        }
-
         private void searchbtn_Click(object sender, EventArgs e)
         {
+            string searchValue = searchtxt.Text.Trim();
 
-            string search = searchtxt.Text.Trim();
-            if (!string.IsNullOrEmpty(search))
+            if (string.IsNullOrEmpty(searchValue))
             {
-                //calling the methods
-                LoadSupplierInvoiceData(search);
-
-            }
-            else
-            {
-                MessageBox.Show("Please enter a Invoice ID or Name to search.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-
-        //method for the update button
-        private void invoiceUpdate()
-        {
-            if (string.IsNullOrWhiteSpace(supidtxt.Text) || string.IsNullOrWhiteSpace(itemtxt.Text))
-            {
-                MessageBox.Show("Please fill all fields.");
+                MessageBox.Show("Please enter a Supplier Invoice ID.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-                try
-                {
+            try
+            {
                 con.Open();
-                SqlCommand cmd4 = new SqlCommand("UPDATE SupplierInvoice SET SupID = @supid SIDate = @Date, SIItem = @Item, SIQty = @Quantity, SIUnitPrice = @Amount, SITotalAmount = @TotalAmount WHERE SInvoiceID = @invoiceid");
-                        cmd4.Parameters.AddWithValue("@supid", supidtxt.Text);
-                        cmd4.Parameters.AddWithValue("@Date", dateTimePicker1.Value);
-                        cmd4.Parameters.AddWithValue("@Item", itemtxt.Text);
-                        cmd4.Parameters.AddWithValue("@Quantity", qtytxt.Text);
-                        cmd4.Parameters.AddWithValue("@Amount", amounttxt.Text);
-                        cmd4.Parameters.AddWithValue("@TotalAmount", totamount.Text);
+                SqlCommand cmd = new SqlCommand("SELECT SupID, SIDate, SIItem, SIQty, SIUnitPrice, SITotalAmount FROM SupplierInvoice WHERE SInvoiceID = @Search", con);
+                cmd.Parameters.AddWithValue("@Search", searchValue);
 
-                        int r1 = cmd4.ExecuteNonQuery();
-                        if (r1 > 0)
-                        {
-                            MessageBox.Show("Invoice updated successfully.");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Update failed.");
-                        }
-                }
-                catch (Exception ex)
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
                 {
-                    MessageBox.Show("Error: " + ex.Message);
+                    supidtxt.Text = reader["SupID"].ToString();
+                    dateTimePicker1.Value = Convert.ToDateTime(reader["SIDate"]);
+                    itemtxt.Text = reader["SIItem"].ToString();
+                    qtytxt.Text = reader["SIQty"].ToString();
+                    amounttxt.Text = reader["SIUnitPrice"].ToString();
+                    totamount.Text = reader["SITotalAmount"].ToString();
                 }
+                else
+                {
+                    MessageBox.Show("Supplier Invoice not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clearing();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             finally
             {
                 con.Close();
@@ -172,7 +159,66 @@ namespace AK_Textile
 
         private void addbtn_Click(object sender, EventArgs e)
         {
-            invoiceUpdate();
+
+            string invoiceID = searchtxt.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(supidtxt.Text) || string.IsNullOrWhiteSpace(itemtxt.Text) || string.IsNullOrWhiteSpace(invoiceID))
+            {
+                MessageBox.Show("Please search for an invoice and fill all fields before updating.");
+                return;
+            }
+
+            if (!decimal.TryParse(qtytxt.Text, out decimal quantity) ||
+                !decimal.TryParse(amounttxt.Text, out decimal unitPrice) ||
+                !decimal.TryParse(totamount.Text, out decimal totalAmount))
+            {
+                MessageBox.Show("Quantity, Amount, and Total Amount must be valid numbers.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                con.Open();
+                string query = @"UPDATE SupplierInvoice 
+                                 SET SupID = @supid, 
+                                     SIDate = @Date, 
+                                     SIItem = @Item, 
+                                     SIQty = @Quantity, 
+                                     SIUnitPrice = @Amount, 
+                                     SITotalAmount = @TotalAmount 
+                                 WHERE SInvoiceID = @invoiceid";
+
+                SqlCommand cmd4 = new SqlCommand(query, con);
+
+                cmd4.Parameters.AddWithValue("@supid", supidtxt.Text);
+                cmd4.Parameters.AddWithValue("@Date", dateTimePicker1.Value);
+                cmd4.Parameters.AddWithValue("@Item", itemtxt.Text);
+                cmd4.Parameters.AddWithValue("@Quantity", quantity);
+                cmd4.Parameters.AddWithValue("@Amount", unitPrice);
+                cmd4.Parameters.AddWithValue("@TotalAmount", totalAmount);
+
+                cmd4.Parameters.AddWithValue("@invoiceid", invoiceID);
+
+                int r1 = cmd4.ExecuteNonQuery();
+                if (r1 > 0)
+                {
+                    MessageBox.Show("Supplier Invoice updated successfully.");
+                    supinvoiceform.RefreshDataGrid();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Update failed. Invoice ID not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
         }
 
         /*public SupplierInvoiceUpdate(SupplierInvoice supplierInvoice)
@@ -186,3 +232,5 @@ namespace AK_Textile
         }
     }
 }
+
+

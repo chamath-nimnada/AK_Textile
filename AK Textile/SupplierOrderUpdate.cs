@@ -145,6 +145,15 @@ namespace AK_Textile
                 {
                     MessageBox.Show("Error: " + ex.Message);
                 }
+            finally
+            {
+                con.Close();
             }
+        }
+
+        private void updatebtn_Click(object sender, EventArgs e)
+        {
+            OrderUpdate();
+        }
     }
 }

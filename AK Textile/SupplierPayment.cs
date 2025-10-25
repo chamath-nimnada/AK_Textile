@@ -73,6 +73,9 @@ namespace AK_Textile
 
                 // Bind the data to the DataGridView
                 dataGridView1.DataSource = dt;
+                // Adjust columns to fit the grid width
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
             }
             catch (Exception ex)
             {

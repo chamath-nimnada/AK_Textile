@@ -18,6 +18,9 @@ namespace AK_Textile
                                                 Integrated Security=True");
 
         private MainForm mainForm;
+
+        Form formBackground = null; // Declare outside to access in 'finally'
+
         public EmpManagerReport(MainForm mainForm)
         {
             InitializeComponent();

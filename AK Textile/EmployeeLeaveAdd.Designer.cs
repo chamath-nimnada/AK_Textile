@@ -224,6 +224,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "EmployeeLeaveAdd";
             this.Text = "Apply a Leave";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.EmployeeLeaveAdd_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

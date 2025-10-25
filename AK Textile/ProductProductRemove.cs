@@ -28,11 +28,13 @@ namespace AK_Textile
         private void clearbtn_Click(object sender, EventArgs e)
         {
             searchtxt.Clear();
+            dataGridView1.DataSource = null; 
         }
 
+        // This is the "Cancel" button
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Close(); 
         }
 
         private void searchbtn_Click(object sender, EventArgs e)
@@ -47,15 +49,22 @@ namespace AK_Textile
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("SELECT PID, InvID, Pname, PPrice, PQty FROM Product WHERE PID =@Search OR PName LIKE @SearchPattern", con);
+
+                cmd.Parameters.AddWithValue("@Search", searchtxt.Text);
+                cmd.Parameters.AddWithValue("@SearchPattern", "%" + searchtxt.Text + "%");
+
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                if (dt.Rows.Count > 0)
                 {
-                    cmd.Parameters.AddWithValue("@Search", searchtxt.Text);
-                    cmd.Parameters.AddWithValue("@SearchPattern", "%" + searchtxt.Text + "%");
-
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-
                     dataGridView1.DataSource = dt;
+                }
+                else
+                {
+                    MessageBox.Show("No product found matching that ID or Name.", "No Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dataGridView1.DataSource = null;
                 }
             }
             catch (Exception ex)
@@ -78,7 +87,7 @@ namespace AK_Textile
 
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this product?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dialogResult == DialogResult.No)
-            return;
+                return;
 
             string PID = dataGridView1.SelectedRows[0].Cells["PID"].Value.ToString();
 
@@ -86,21 +95,20 @@ namespace AK_Textile
             {
                 con.Open();
                 SqlCommand cmd2 = new SqlCommand("DELETE FROM Product WHERE PID = @pid", con);
-                    {
-                        cmd2.Parameters.AddWithValue("@pid", PID);
+                cmd2.Parameters.AddWithValue("@pid", PID);
 
-                        int rowsAffected = cmd2.ExecuteNonQuery();
-                        if (rowsAffected > 0)
-                        {
-                            MessageBox.Show("Product removed successfully.");
-                            searchbtn.PerformClick(); // Refresh DataGridView
-                        }
-                        else
-                        {
-                            MessageBox.Show("Deletion failed.");
-                        }
-                    }
+                int rowsAffected = cmd2.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Product removed successfully.");
+
+                    productionProductForm.RefreshDataGrid();
                 }
+                else
+                {
+                    MessageBox.Show("Deletion failed. Product not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
@@ -113,7 +121,8 @@ namespace AK_Textile
 
         private void ProductProductRemove_Load(object sender, EventArgs e)
         {
-
+            // You can optionally load all products here,
+            // but requiring a search first is also fine.
         }
     }
 }

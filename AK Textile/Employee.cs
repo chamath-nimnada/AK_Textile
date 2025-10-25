@@ -15,6 +15,7 @@ namespace AK_Textile
     {
         private MainForm mainForm;
 
+        // NOTE: Keeping "Textlies" as requested
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
                                                 Initial Catalog=Textlies;
                                                 Integrated Security=True");
@@ -25,6 +26,7 @@ namespace AK_Textile
             InitializeComponent();
             this.mainForm = mainForm;
 
+            // These correctly load data for the specific user
             LoadAllSalary();
             LoadLeaveData();
         }
@@ -36,6 +38,7 @@ namespace AK_Textile
 
         private void LoadAllSalary()
         {
+            // This query is perfect, it only gets salary for the logged-in user
             string query1 = "SELECT * FROM Salary WHERE EmpID = @EmpID";
 
             try
@@ -43,12 +46,13 @@ namespace AK_Textile
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand(query1, con))
                 {
+                    // This line is the key: it uses the ID from the login form
                     cmd.Parameters.AddWithValue("@EmpID", LoginForm.LoggedInUser.UserId);
 
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
-                    dataGridView2.DataSource = dataTable;
+                    dataGridView2.DataSource = dataTable; // Assumes dataGridView2 is Salary
                     dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 }
             }
@@ -64,6 +68,7 @@ namespace AK_Textile
 
         private void LoadLeaveData()
         {
+            // This query is also perfect
             string query2 = "SELECT LeaveID, LeaveTypeID, LReason, LStartDate, LEndDate, LStatus FROM Leave WHERE EmpID = @EmpID";
 
             try
@@ -71,12 +76,13 @@ namespace AK_Textile
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand(query2, con))
                 {
+                    // Uses the ID from the login form
                     cmd.Parameters.AddWithValue("@EmpID", LoginForm.LoggedInUser.UserId);
 
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
-                    dataGridView1.DataSource = dataTable;
+                    dataGridView1.DataSource = dataTable; // Assumes dataGridView1 is Leaves
                     dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 }
             }
@@ -90,59 +96,6 @@ namespace AK_Textile
             }
         }
 
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LoadAllSearchCategory()
-        {
-            string searchValue = SalaryId.Text.Trim();
-
-            if (string.IsNullOrEmpty(searchValue))
-            {
-                MessageBox.Show("Please enter a Salary ID to search.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            string query3 = "SELECT * FROM Salary WHERE SalaryID = @SearchValue AND EmpID = @EmpID";
-
-            try
-            {
-                con.Open();
-                using (SqlCommand cmd = new SqlCommand(query3, con))
-                {
-                    cmd.Parameters.AddWithValue("@SearchValue", searchValue);
-                    cmd.Parameters.AddWithValue("@EmpID", LoginForm.LoggedInUser.UserId);
-
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable);
-
-                    if (dataTable.Rows.Count > 0)
-                    {
-                        dataGridView2.DataSource = dataTable;
-                        dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    }
-                    else
-                    {
-                        MessageBox.Show("No matching records found for your account.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        dataGridView2.DataSource = null;
-
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred while searching: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            finally
-            {
-                con.Close();
-            }
-        }
         private void OpenSubForm(Form subForm)
         {
             Form formBackground = new Form();
@@ -176,40 +129,28 @@ namespace AK_Textile
 
         }
 
-        private void button6_Click(object sender, EventArgs e)
-        {
-            SalaryId.Text = string.Empty;
-
-            LoadAllSalary();
-        }
-
+        // "Logout" button
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             mainForm.LoadForm(new LoginForm(mainForm));
         }
 
-        // This is the "Add" button
+        // "Add" button
         private void button7_Click(object sender, EventArgs e)
         {
             OpenSubForm(new EmployeeLeaveAdd(this));
         }
 
-        // This is the "Update" button
+        // "Update" button
         private void button8_Click(object sender, EventArgs e)
         {
             OpenSubForm(new EmployeeLeaveUpdate(this));
         }
 
-        // This is the "Remove" button
+        // "Remove" button
         private void button9_Click(object sender, EventArgs e)
         {
             OpenSubForm(new EmployeeLeaveRemove(this));
-        }
-
-        // This is the "Search" button
-        private void button10_Click(object sender, EventArgs e)
-        {
-            LoadAllSearchCategory();
         }
     }
 }

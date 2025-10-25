@@ -36,7 +36,7 @@ namespace AK_Textile
             {
                 if (dr1[0] == DBNull.Value)
                 {
-                    this.orderidtxt.Text = "POID";
+                    this.orderidtxt.Text = "PO001";
                 }
                 else
                 {
@@ -78,6 +78,7 @@ namespace AK_Textile
             {
                 con.Close();
             }
+
             cleartext();
             //calling the auto increment method
             AutoGenerateID();

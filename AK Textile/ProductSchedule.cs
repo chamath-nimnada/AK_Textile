@@ -28,6 +28,11 @@ namespace AK_Textile
             this.mainForm = mainForm;
         }
 
+        public void RefreshDataGrid()
+        {
+            LoadSchedule();
+        }
+
         private void button7_Click(object sender, EventArgs e)
         {
             //Create an instance of the form and pass it to the method
@@ -37,6 +42,7 @@ namespace AK_Textile
         private void button10_Click(object sender, EventArgs e)
         {
             this.textBox1.Clear();
+            LoadSchedule();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -89,30 +95,28 @@ namespace AK_Textile
 
         private void schedulesearch(string searchValue)
         {
-            //to view the searched data into the data grid view
-            con.Open();
-            SqlCommand cmd1 = new SqlCommand("SELECT * FROM ProductionSchedule WHERE PScheduleID LIKE @searchval OR PScheduleName LIKE @searchval", con);
-            cmd1.Parameters.AddWithValue("@searchval", "%" + searchValue + "%");
+            SqlCommand cmd1 = new SqlCommand("SELECT * FROM ProductionSchedule WHERE PScheduleID = @pid OR PScheduleName LIKE @pname", con);
+            cmd1.Parameters.AddWithValue("@pid", searchValue);
+            cmd1.Parameters.AddWithValue("@pname", "%" + searchValue + "%");
+
             SqlDataAdapter da1 = new SqlDataAdapter(cmd1);
             DataTable dt1 = new DataTable();
 
             try
             {
+                da1.Fill(dt1);
+
                 if (dt1.Rows.Count > 0)
                 {
                     // Bind the DataTable to the DataGridView
                     dataGridView1.DataSource = dt1;
-
                     // Adjust columns to fit the grid width
                     dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    con.Close();
                 }
                 else
                 {
                     MessageBox.Show("No matching records found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    dataGridView1.DataSource = null; // Clear DataGridView if no data found
-                    con.Close();
-                    LoadSchedule();
+                    dataGridView1.DataSource = null;
                 }
             }
             catch (Exception ex)
@@ -124,29 +128,21 @@ namespace AK_Textile
         private void LoadSchedule()
         {
             // to load schedule data in to the datagrid view
-            con.Open();
-            SqlCommand cmd1 = new SqlCommand("SELECT * FROM ProductionSchedule", con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd1);
+
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM ProductionSchedule", con);
             DataTable dt = new DataTable();
 
             try
             {
                 da.Fill(dt);
-
                 // Bind the data to the DataGridView
                 dataGridView1.DataSource = dt;
-
                 // Adjust columns to fit the grid width
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                con.Close();
             }
         }
 
@@ -156,12 +152,11 @@ namespace AK_Textile
 
             if (string.IsNullOrEmpty(searchValue))
             {
-                MessageBox.Show("Please enter a valid Production Schedule ID or name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                LoadSchedule();
                 return;
             }
             //Calling the method to search Production schedule
             schedulesearch(searchValue);
-            textBox1.Clear();
         }
 
         private void OpenSubForm(Form subForm)
@@ -195,6 +190,7 @@ namespace AK_Textile
                 // Dispose both forms
                 formBackground.Dispose();
                 subForm.Dispose();
+
             }
         }
 

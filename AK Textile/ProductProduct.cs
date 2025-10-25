@@ -27,10 +27,17 @@ namespace AK_Textile
             this.mainForm = mainForm; //Step 03
         }
 
+        // --- FIX 1: This is the public method the update form needs ---
+        // This allows the 'ProductProductUpdate' form to refresh this grid.
+        public void RefreshDataGrid()
+        {
+            loadproduct();
+        }
+
         private void button7_Click(object sender, EventArgs e)
         {
-             //Create an instance of the form and pass it to the method
-           OpenSubForm(new ProductProductAdd(this));
+            //Create an instance of the form and pass it to the method
+            OpenSubForm(new ProductProductAdd(this));
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -83,63 +90,55 @@ namespace AK_Textile
         private void clearbtn_Click(object sender, EventArgs e)
         {
             searchtxt.Clear();
+            loadproduct();
         }
 
         private void loadproduct()
         {
             // to load product data in to the datagrid view
-            con.Open();
-            SqlCommand cmd1 = new SqlCommand("SELECT * FROM Product", con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd1);
+
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Product", con);
             DataTable dt = new DataTable();
 
             try
             {
                 da.Fill(dt);
 
-                // Bind the data to the DataGridView
                 dataGridView1.DataSource = dt;
 
                 // Adjust columns to fit the grid width
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally
-            {
-                con.Close();
-            }
         }
 
         private void searchProduct(string searchValue)
         {
-            //to view the searched data into the data grod view
-            con.Open();
-            SqlCommand cmd2 = new SqlCommand("SELECT * FROM Product WHERE PID LIKE @searchval", con);
-            cmd2.Parameters.AddWithValue("@searchval", "%" + searchValue + "%");
+            //to view the searched data into the data grd view
+            SqlCommand cmd2 = new SqlCommand("SELECT * FROM Product WHERE PID = @pid OR PName LIKE @pname", con);
+            cmd2.Parameters.AddWithValue("@pid", searchValue);
+            cmd2.Parameters.AddWithValue("@pname", "%" + searchValue + "%");
+
             SqlDataAdapter da1 = new SqlDataAdapter(cmd2);
             DataTable dt1 = new DataTable();
 
             try
             {
-                if (dt1.Rows.Count > 0)
+                da1.Fill(dt1); 
+
+                if (dt1.Rows.Count > 0) 
                 {
-                    // Bind the DataTable to the DataGridView
                     dataGridView1.DataSource = dt1;
 
-                    // Adjust columns to fit the grid width
                     dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    con.Close();
                 }
                 else
                 {
                     MessageBox.Show("No matching records found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     dataGridView1.DataSource = null; // Clear DataGridView if no data found
-                    con.Close();
-                    loadproduct();
                 }
             }
             catch (Exception ex)
@@ -159,12 +158,12 @@ namespace AK_Textile
 
             if (string.IsNullOrEmpty(searchValue))
             {
-                MessageBox.Show("Please enter a valid Product ID.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                // If search is empty, just reload all products
+                loadproduct();
                 return;
             }
             //Calling the method to search supplier invoice
             searchProduct(searchValue);
-            searchtxt.Clear();
         }
 
         private void OpenSubForm(Form subForm)
@@ -198,6 +197,8 @@ namespace AK_Textile
                 // Dispose both forms
                 formBackground.Dispose();
                 subForm.Dispose();
+
+                loadproduct();
             }
         }
 

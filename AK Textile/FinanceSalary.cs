@@ -21,131 +21,126 @@ namespace AK_Textile
         {
             InitializeComponent();
             this.mainForm = mainForm;
+        }
+
+        private void FinanceSalary_Load(object sender, EventArgs e)
+        {
             LoadAllSalary();
         }
+
         private void LoadAllSalary()
         {
-            // SQL query to fetch all data from the Product table
-            string query = "SELECT * FROM Salary";
+            string query = @"SELECT 
+                                S.SalaryID, 
+                                E.EmpName, 
+                                S.EmpID, 
+                                S.SMonth, 
+                                S.SAmount, 
+                                S.SStatus 
+                             FROM Salary S
+                             INNER JOIN Employee E ON S.EmpID = E.EmpID";
+
+            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+            DataTable dataTable = new DataTable();
+
+            try
             {
-                try
-                {
-                    // Open the connection
-                    con.Open();
-
-                    // Create the SQL command
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    {
-                        // Execute the query and load the results into a DataTable
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-
-                        // Bind the DataTable to the DataGridView
-                        dataGridView1.DataSource = dataTable;
-
-                        // Adjust columns to fit the grid width
-                        dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("An error occurred while loading data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                con.Close();
+                // Adapter handles open/close
+                adapter.Fill(dataTable);
+                dataGridView1.DataSource = dataTable;
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while loading data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            mainForm .LoadForm(new FinanceReport(mainForm));
+            mainForm.LoadForm(new FinanceReport(mainForm));
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            mainForm.LoadForm (new FinanceDashboard(mainForm));
+            mainForm.LoadForm(new FinanceDashboard(mainForm));
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            mainForm .LoadForm (new FinanceOrder(mainForm));
+            mainForm.LoadForm(new FinanceOrder(mainForm));
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            mainForm .LoadForm (new FinanceSupplierPayment(mainForm));
+            mainForm.LoadForm(new FinanceSupplierPayment(mainForm));
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            mainForm .LoadForm (new FinanceSale(mainForm));
+            mainForm.LoadForm(new FinanceSale(mainForm));
         }
 
+        // "Clear" Search Button
         private void button6_Click(object sender, EventArgs e)
         {
-            EmployeeId.Text=string .Empty;
+            EmployeeId.Text = string.Empty;
+            LoadAllSalary();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            mainForm .LoadForm (new LoginForm(mainForm));
+            mainForm.LoadForm(new LoginForm(mainForm));
         }
 
+        // "Search" Button
         private void button10_Click(object sender, EventArgs e)
         {
-            // Get the value entered in the textbox
             string searchValue = EmployeeId.Text.Trim();
 
-            // Check if the textbox is empty
             if (string.IsNullOrEmpty(searchValue))
             {
-                MessageBox.Show("Please enter a Inventory ID or Name to search.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                LoadAllSalary();
                 return;
             }
 
-            // SQL query to fetch data based on PID or Pname
-            string query = @"SELECT * FROM Salary
-                             WHERE EmpID = @SearchValue OR InvCategory LIKE '%' + @SearchValue + '%'";
+            string query = @"SELECT 
+                                S.SalaryID, 
+                                E.EmpName, 
+                                S.EmpID, 
+                                S.SMonth, 
+                                S.SAmount, 
+                                S.SStatus 
+                             FROM Salary S
+                             INNER JOIN Employee E ON S.EmpID = E.EmpID
+                             WHERE S.EmpID = @SearchValue OR E.EmpName LIKE @SearchPattern";
 
+            DataTable dataTable = new DataTable();
+            try
             {
-                try
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                 {
-                    // Open the connection
-                    con.Open();
+                    cmd.Parameters.AddWithValue("@SearchValue", searchValue);
+                    cmd.Parameters.AddWithValue("@SearchPattern", "%" + searchValue + "%");
 
-                    // Create the SQL command
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    {
-                        // Add parameter to prevent SQL injection
-                        cmd.Parameters.AddWithValue("@SearchValue", searchValue);
-
-                        // Execute the query and load the results into a DataTable
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-
-                        // Check if any rows are returned
-                        if (dataTable.Rows.Count > 0)
-                        {
-                            // Bind the DataTable to the DataGridView
-                            dataGridView1.DataSource = dataTable;
-
-                            // Adjust columns to fit the grid width
-                            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                        }
-                        else
-                        {
-                            MessageBox.Show("No matching records found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            dataGridView1.DataSource = null; // Clear DataGridView if no data found
-                            con.Close();
-                            LoadAllSalary();
-                        }
-                    }
+                    adapter.Fill(dataTable); 
                 }
-                catch (Exception ex)
+
+                if (dataTable.Rows.Count > 0)
                 {
-                    MessageBox.Show("An error occurred while fetching data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dataGridView1.DataSource = dataTable;
+                    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 }
+                else
+                {
+                    MessageBox.Show("No matching records found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dataGridView1.DataSource = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while fetching data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
