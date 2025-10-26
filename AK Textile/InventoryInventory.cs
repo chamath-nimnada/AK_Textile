@@ -17,113 +17,86 @@ namespace AK_Textile
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
                                                 Initial Catalog=Textlies;
                                                 Integrated Security=True");
+
+        Form formBackground = null;
         public InventoryInventory(MainForm mainForm)
         {
             InitializeComponent();
             this.mainForm = mainForm;
+        }
+
+        private void InventoryInventory_Load(object sender, EventArgs e)
+        {
             LoadAllInventory();
         }
 
-        private void LoadAllInventory() 
+        private void LoadAllInventory()
         {
-            // SQL query to fetch all data from the Product table
             string query = "SELECT * FROM Inventory";
+
+            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+            DataTable dataTable = new DataTable();
+
+            try
             {
-                try
-                {
-                    // Open the connection
-                    con.Open();
-
-                    // Create the SQL command
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    {
-                        // Execute the query and load the results into a DataTable
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-
-                        // Bind the DataTable to the DataGridView
-                        dataGridView1.DataSource = dataTable;
-
-                        // Adjust columns to fit the grid width
-                        dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                        con.Close();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("An error occurred while loading data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                con.Close();
+                // Adapter handles open/close
+                adapter.Fill(dataTable);
+                dataGridView1.DataSource = dataTable;
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while loading data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public void RefreshDataGrid()
         {
             LoadAllInventory();
         }
-
-        private void SearchInventoryItem() 
+        private void SearchInventoryItem()
         {
-            // Get the value entered in the textbox
-            string searchValue = textBox1.Text.Trim();
+            string searchValue = textBox1.Text.Trim(); // Assumes search box is textBox1
 
-            // Check if the textbox is empty
-            if (string.IsNullOrEmpty(searchValue))
-            {
-                MessageBox.Show("Please enter a Inventory ID or Name to search.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
 
-            // SQL query to fetch data based on PID or Pname
             string query = @"SELECT Inventory.*
-                                FROM Inventory
-                                JOIN InventoryCategory ON Inventory.InvCatID = InventoryCategory.InvCatID
-                                WHERE Inventory.InvID = @SearchValue 
-                                   OR InventoryCategory.InvCategory LIKE '%' + @SearchValue + '%'";
+                             FROM Inventory
+                             JOIN InventoryCategory ON Inventory.InvCatID = InventoryCategory.InvCatID
+                             WHERE Inventory.InvID = @SearchValue 
+                                OR InventoryCategory.InvCategory LIKE @SearchPattern";
 
+            DataTable dataTable = new DataTable();
+            try
             {
-                try
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                 {
-                    // Open the connection
-                    con.Open();
+                    // Add parameters
+                    cmd.Parameters.AddWithValue("@SearchValue", searchValue);
+                    cmd.Parameters.AddWithValue("@SearchPattern", "%" + searchValue + "%");
 
-                    // Create the SQL command
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    {
-                        // Add parameter to prevent SQL injection
-                        cmd.Parameters.AddWithValue("@SearchValue", searchValue);
-
-                        // Execute the query and load the results into a DataTable
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-
-                        // Check if any rows are returned
-                        if (dataTable.Rows.Count > 0)
-                        {
-                            // Bind the DataTable to the DataGridView
-                            dataGridView1.DataSource = dataTable;
-
-                            // Adjust columns to fit the grid width
-                            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                            con.Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("No matching records found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            dataGridView1.DataSource = null; // Clear DataGridView if no data found
-                            con.Close();
-                            LoadAllInventory();
-                        }
-                    }
+                    // Adapter handles open/close
+                    adapter.Fill(dataTable);
                 }
-                catch (Exception ex)
+
+                // Check if any rows are returned
+                if (dataTable.Rows.Count > 0)
                 {
-                    MessageBox.Show("An error occurred while fetching data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dataGridView1.DataSource = dataTable;
+                    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 }
-                con.Close();
+                else
+                {
+                    MessageBox.Show("No matching records found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dataGridView1.DataSource = null; // Clear DataGridView if no data found
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while fetching data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void OpenSubForm(Form subForm)
         {
@@ -141,10 +114,7 @@ namespace AK_Textile
                 formBackground.ShowInTaskbar = false;
                 formBackground.Show();
 
-                // Set the background form as the owner of the subform
                 subForm.Owner = formBackground;
-
-                // Show the subform as a dialog
                 subForm.ShowDialog();
             }
             catch (Exception ex)
@@ -156,75 +126,54 @@ namespace AK_Textile
                 // Dispose both forms
                 formBackground.Dispose();
                 subForm.Dispose();
+
+                RefreshDataGrid();
             }
         }
 
-        private void InventoryInventory_Load(object sender, EventArgs e)
-        {
 
-        }
 
+        // "Search" button
         private void button11_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(textBox1.Text.Trim())) // Assumes search box is textBox1
+            {
+                MessageBox.Show("Please enter an Inventory ID or Category to search.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             SearchInventoryItem();
         }
 
+        // "Clear Search" button
         private void button10_Click(object sender, EventArgs e)
         {
-            // Clear the TextBox
-            textBox1.Text = string.Empty;
-
-            LoadAllInventory();
+            textBox1.Text = string.Empty; // Assumes search box is textBox1
+            LoadAllInventory(); // Reload original data
         }
 
+        // Navigation buttons
         private void pictureBox3_Click(object sender, EventArgs e)
-        {
-            mainForm.LoadForm(new InventoryDashboard(mainForm));
-        }
-
+        { mainForm.LoadForm(new InventoryDashboard(mainForm)); }
         private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            mainForm.LoadForm(new LoginForm(mainForm));
-        }
-
+        { mainForm.LoadForm(new LoginForm(mainForm)); }
         private void button2_Click(object sender, EventArgs e)
-        {
-            mainForm.LoadForm(new InventoryProduct(mainForm));
-        }
-
+        { mainForm.LoadForm(new InventoryProduct(mainForm)); }
         private void button3_Click(object sender, EventArgs e)
-        {
-            mainForm.LoadForm(new InventoryCategory(mainForm));
-        }
-
+        { mainForm.LoadForm(new InventoryCategory(mainForm)); }
         private void button1_Click(object sender, EventArgs e)
-        {
-            mainForm.LoadForm(new InventorySupplier(mainForm));
-        }
-
+        { mainForm.LoadForm(new InventorySupplier(mainForm)); }
         private void button4_Click(object sender, EventArgs e)
-        {
-            mainForm.LoadForm(new InventoryGRN(mainForm));
-        }
-
+        { mainForm.LoadForm(new InventoryGRN(mainForm)); } // Changed target form
         private void button8_Click(object sender, EventArgs e)
-        {
-            mainForm.LoadForm(new InventoryReport(mainForm));
-        }
+        { mainForm.LoadForm(new InventoryReport(mainForm)); }
 
-        private void button9_Click(object sender, EventArgs e)
-        {
-            // OpenSubForm(new InventoryInventoryAdd(this));
-        }
+        // Add/Update/Remove buttons
+        private void button9_Click(object sender, EventArgs e) // Add
+        { OpenSubForm(new InventoryInventoryAdd(this)); }
+        private void button7_Click(object sender, EventArgs e) // Update (Assuming this is Update btn)
+        { OpenSubForm(new InventoryInventoryUpdate(this)); }
+        private void button6_Click(object sender, EventArgs e) // Remove
+        { OpenSubForm(new InventoryInventoryRemove(this)); } // Assuming Remove form exists
 
-        private void button6_Click(object sender, EventArgs e)
-        {
-            //OpenSubForm(new InventoryInventoryRemove(this)); After adding the forms remove the comments
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            //OpenSubForm(new InventoryInventoryUpdate(this));
-        }
     }
 }

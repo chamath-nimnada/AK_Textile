@@ -2,173 +2,213 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace AK_Textile
 {
     public partial class InventoryInventoryUpdate : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;
-                                        Initial Catalog=AKTextilesDB;
-                                        Integrated Security=True;");
+        private InventoryInventory inventoryform;
+        //database connection
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
+                                                Initial Catalog=Textlies;
+                                                Integrated Security=True");
 
-        private InventoryInventory inventoryInventoryForm;
+        private string currentInvID = null;
+        private string originalInvCatID = null;
 
-        public InventoryInventoryUpdate(InventoryInventory inventoryInventoryForm)
+        public InventoryInventoryUpdate(InventoryInventory inventoryform)
         {
             InitializeComponent();
-            this.inventoryInventoryForm = inventoryInventoryForm;
+            this.inventoryform = inventoryform;
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
+        private void ClearDetails()
         {
-            ClearFields();
+            comboBox1.SelectedIndex = -1;
+            itemtxt.Clear();
+            qtytxt.Clear();
+            dateTimePicker1.Value = DateTime.Today;
+            comboBox2.SelectedIndex = -1;
+            currentInvID = null;
+            originalInvCatID = null;
+            itemtxt.Focus();
         }
-
-        private void ClearFields()
-        {
-            textSearch.Clear();
-            invCategory.SelectedIndex = -1;
-            itemName.Clear();
-            itemQty.Clear();
-            dateTimePicker.Value = DateTime.Now;
-            stkLevel.SelectedIndex = -1;
-        }
-
         private void LoadCategories()
         {
             try
             {
-                {
-                    string query = "SELECT InvCatID, InvCategory FROM InventoryCategory";
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-                    {
-                        con.Open();
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
+                string query = "SELECT InvCatID, InvCategory FROM InventoryCategory";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+                DataTable categoryTable = new DataTable();
+                adapter.Fill(categoryTable);
 
-                        invCategory.DataSource = dt;
-                        invCategory.DisplayMember = "InvCategory";  // Show category names
-                        invCategory.ValueMember = "InvCatID";  // Store category IDs internally
-                        invCategory.SelectedIndex = -1;  // Default to "no selection"
-                        con.Close();
-                    }
-                }
+                comboBox1.DataSource = categoryTable;
+                comboBox1.DisplayMember = "InvCategory";
+                comboBox1.ValueMember = "InvCatID";
+                comboBox1.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loading categories: " + ex.Message);
-            }
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(textSearch.Text))
-            {
-                MessageBox.Show("Please enter an Inventory ID.");
-                return;
-            }
-
-            try
-            {
-                {
-                    string query = "SELECT InvCatID, InvItemName, InvQty, DateAdded, InvStockLevel FROM Inventory WHERE InvID = @InvID";
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    {
-                        cmd.Parameters.AddWithValue("@InvID", textSearch.Text);
-                        con.Open();
-                        SqlDataReader reader = cmd.ExecuteReader();
-
-                        if (reader.Read()) // If a record is found
-                        {
-                            //invCategory.SelectedValue = reader["InvCatID"]; // Set Category ID
-                            itemName.Text = reader["InvItemName"].ToString();
-                            itemQty.Text = reader["InvQty"].ToString();
-                            dateTimePicker.Value = Convert.ToDateTime(reader["DateAdded"]);
-                            stkLevel.SelectedItem = reader["InvStockLevel"].ToString();
-                            con.Close();
-
-                            LoadCategories();
-                        }
-                        else
-                        {
-                            MessageBox.Show("No record found for this Inventory ID.");
-                            con.Close();
-                            ClearFields();
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Failed to load inventory categories: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void InventoryInventoryUpdate_Load(object sender, EventArgs e)
         {
-
+            LoadCategories();
+            ClearDetails();
         }
 
-        private void button8_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(textSearch.Text) ||
-                        invCategory.SelectedIndex == -1 ||
-                        string.IsNullOrWhiteSpace(itemName.Text) ||
-                        string.IsNullOrWhiteSpace(itemQty.Text) ||
-                        stkLevel.SelectedIndex == -1)
-            {
-                MessageBox.Show("Please fill in all fields before updating.");
-                return;
-            }
 
-            if (!int.TryParse(itemQty.Text, out int quantity))
+        //search button
+        private void searchbtn_Click(object sender, EventArgs e)
+        {
+            string searchID = textBox1.Text.Trim();
+            if (string.IsNullOrEmpty(searchID))
             {
-                MessageBox.Show("Please enter a valid numeric quantity.");
+                MessageBox.Show("Please enter an Inventory ID to search.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             try
             {
+                con.Open();
+                string query = "SELECT InvCatID, InvItemName, InvQty, DateAdded, InvStockLevel FROM Inventory WHERE InvID = @InvID";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@InvID", searchID);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
                 {
-                    string query = "UPDATE Inventory SET InvCatID = @InvCatID, InvItemName = @InvItemName, " +
-                                   "InvQty = @InvQty, DateAdded = @DateAdded, InvStockLevel = @InvStockLevel " +
-                                   "WHERE InvID = @InvID";
+                    currentInvID = searchID;
+                    originalInvCatID = reader["InvCatID"].ToString();
 
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    {
-                        cmd.Parameters.AddWithValue("@InvCatID", invCategory.SelectedValue);
-                        cmd.Parameters.AddWithValue("@InvItemName", itemName.Text);
-                        cmd.Parameters.AddWithValue("@InvQty", quantity);
-                        cmd.Parameters.AddWithValue("@DateAdded", dateTimePicker.Value);
-                        cmd.Parameters.AddWithValue("@InvStockLevel", stkLevel.SelectedItem.ToString());
-                        cmd.Parameters.AddWithValue("@InvID", textSearch.Text);
+                    // Populate fields
+                    itemtxt.Text = reader["InvItemName"].ToString();
+                    qtytxt.Text = reader["InvQty"].ToString();
+                    dateTimePicker1.Value = Convert.ToDateTime(reader["DateAdded"]);
+                    comboBox2.Text = reader["InvStockLevel"].ToString(); 
 
-                        con.Open();
-                        int rowsAffected = cmd.ExecuteNonQuery();
-
-                        if (rowsAffected > 0)
-                        {
-                            MessageBox.Show("Record updated successfully.");
-                            con.Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Update failed. Check the Inventory ID.");
-                            con.Close();
-                        }
-                    }
+                    // Set the category dropdown
+                    comboBox1.SelectedValue = originalInvCatID;
+                }
+                else
+                {
+                    MessageBox.Show("Inventory item with that ID not found.", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ClearDetails(); // Clear fields if not found
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Error searching inventory: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ClearDetails();
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+            }
+        }
+
+        //search clear
+        private void button6_Click(object sender, EventArgs e)
+        {
+            textBox1.Clear();
+        }
+
+        //form clear
+        private void clearbtn_Click(object sender, EventArgs e)
+        {
+            ClearDetails();
+        }
+
+        private void cancelbtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void updatebtn_Click(object sender, EventArgs e)
+        {
+            if (currentInvID == null)
+            {
+                MessageBox.Show("Please search for and load an inventory item first.", "No Item Loaded", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validation
+            if (comboBox1.SelectedValue == null)
+            {
+                MessageBox.Show("Please select an inventory category.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(itemtxt.Text))
+            {
+                MessageBox.Show("Please enter an item name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (!int.TryParse(qtytxt.Text, out int quantity) || quantity < 0)
+            {
+                MessageBox.Show("Quantity must be a valid non-negative whole number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (comboBox2.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a stock level.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string newInvCatID = comboBox1.SelectedValue.ToString();
+            string itemName = itemtxt.Text;
+            DateTime dateAdded = dateTimePicker1.Value;
+            string stockLevel = comboBox2.Text;
+
+            try
+            {
+                con.Open();
+                string query = @"UPDATE Inventory
+                                 SET InvCatID = @NewInvCatID,
+                                     InvItemName = @InvItemName,
+                                     InvQty = @InvQty,
+                                     DateAdded = @DateAdded,
+                                     InvStockLevel = @InvStockLevel
+                                 WHERE InvID = @CurrentInvID AND InvCatID = @OriginalInvCatID";
+
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@NewInvCatID", newInvCatID);
+                cmd.Parameters.AddWithValue("@InvItemName", itemName);
+                cmd.Parameters.AddWithValue("@InvQty", quantity);
+                cmd.Parameters.AddWithValue("@DateAdded", dateAdded);
+                cmd.Parameters.AddWithValue("@InvStockLevel", stockLevel);
+                cmd.Parameters.AddWithValue("@CurrentInvID", currentInvID);
+                cmd.Parameters.AddWithValue("@OriginalInvCatID", originalInvCatID);
+
+
+                int rowsAffected = cmd.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Inventory item updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    inventoryform.RefreshDataGrid();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Update failed. Item not found or no changes made.", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error updating inventory item: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
             }
         }
     }

@@ -16,14 +16,14 @@ namespace AK_Textile.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class InventoryMonthlyReport : ReportClass {
+    public class SupplierPaymentReport : ReportClass {
         
-        public InventoryMonthlyReport() {
+        public SupplierPaymentReport() {
         }
         
         public override string ResourceName {
             get {
-                return "InventoryMonthlyReport.rpt";
+                return "SupplierPaymentReport.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace AK_Textile.Reports {
         
         public override string FullResourceName {
             get {
-                return "AK_Textile.Reports.InventoryMonthlyReport.rpt";
+                return "AK_Textile.Reports.SupplierPaymentReport.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace AK_Textile.Reports {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedInventoryMonthlyReport : Component, ICachedReport {
+    public class CachedSupplierPaymentReport : Component, ICachedReport {
         
-        public CachedInventoryMonthlyReport() {
+        public CachedSupplierPaymentReport() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace AK_Textile.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            InventoryMonthlyReport rpt = new InventoryMonthlyReport();
+            SupplierPaymentReport rpt = new SupplierPaymentReport();
             rpt.Site = this.Site;
             return rpt;
         }

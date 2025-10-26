@@ -24,18 +24,10 @@ namespace AK_Textile
             this.mainForm = mainForm;
         }
 
-        private void LoadCustomerOrders()
+        private void LoadPurchaseOrders()
         {
             //innerjoin query to load the customer name too
-            string query = @"SELECT 
-                                CO.COrderID, 
-                                C.CusName, 
-                                CO.CusID, 
-                                CO.COrderDate, 
-                                CO.CItemQty, 
-                                CO.CItemPrice 
-                             FROM CustomerOrder CO
-                             INNER JOIN Customer C ON CO.CusID = C.CusID";
+            string query = @"SELECT * FROM SupplierPurchaseOrder";
 
             SqlDataAdapter adapter = new SqlDataAdapter(query, con);
             DataTable dataTable = new DataTable();
@@ -77,7 +69,7 @@ namespace AK_Textile
         private void button6_Click(object sender, EventArgs e)
         {
             searchtxt.Text = string.Empty;
-            LoadCustomerOrders();
+            LoadPurchaseOrders();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -97,21 +89,10 @@ namespace AK_Textile
 
             if (string.IsNullOrEmpty(searchValue))
             {
-                LoadCustomerOrders();
+                LoadPurchaseOrders();
                 return;
             }
-            string query = @"SELECT 
-                                CO.COrderID, 
-                                C.CusName, 
-                                CO.CusID, 
-                                CO.COrderDate, 
-                                CO.CItemQty, 
-                                CO.CItemPrice 
-                             FROM CustomerOrder CO
-                             INNER JOIN Customer C ON CO.CusID = C.CusID
-                             WHERE CO.COrderID = @SearchValue 
-                                OR CO.CusID = @SearchValue 
-                                OR C.CusName LIKE @SearchPattern";
+            string query = @"SELECT * FROM SupplierPurchaseOrder WHERE SPOrderID = @SearchValue";
 
             DataTable dataTable = new DataTable();
             try
@@ -120,7 +101,6 @@ namespace AK_Textile
                 using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                 {
                     cmd.Parameters.AddWithValue("@SearchValue", searchValue);
-                    cmd.Parameters.AddWithValue("@SearchPattern", "%" + searchValue + "%");
 
                     adapter.Fill(dataTable);
                 }
@@ -144,7 +124,7 @@ namespace AK_Textile
 
         private void FinanceOrder_Load(object sender, EventArgs e)
         {
-            LoadCustomerOrders();
+            LoadPurchaseOrders();
         }
     }
 }

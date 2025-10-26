@@ -2,173 +2,178 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace AK_Textile
 {
     public partial class InventoryInventoryAdd : Form
     {
-        private InventoryInventory inventoryInventoryForm;
+        private InventoryInventory inventoryform;
+        //database connection
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
+                                                Initial Catalog=Textlies;
+                                                Integrated Security=True");
 
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-93ORV8S;
-                                        Initial Catalog=AKTextilesDB;
-                                        Integrated Security=True;");
-
-        public InventoryInventoryAdd(InventoryInventory inventoryInventoryForm)
+        public InventoryInventoryAdd(InventoryInventory inventoryform)
         {
             InitializeComponent();
+            this.inventoryform = inventoryform;
+        }
+
+        private void addbtn_Click(object sender, EventArgs e)
+        {
+            // Validation
+            if (comboBox1.SelectedValue == null)
+            {
+                MessageBox.Show("Please select an inventory category.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(itemtxt.Text))
+            {
+                MessageBox.Show("Please enter an item name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (!int.TryParse(qtytxt.Text, out int quantity) || quantity < 0)
+            {
+                MessageBox.Show("Quantity must be a valid non-negative whole number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (comboBox2.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a stock level.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string invID = invid.Text;
+            string invCatID = comboBox1.SelectedValue.ToString();
+            string itemName = itemtxt.Text;
+            DateTime dateAdded = dateTimePicker1.Value;
+            string stockLevel = comboBox2.Text;
+
+            try
+            {
+                con.Open();
+                // Ensure column names match your DB schema exactly
+                string query = @"INSERT INTO Inventory (InvCatID, InvID, InvItemName, InvQty, DateAdded, InvStockLevel)
+                                 VALUES (@InvCatID, @InvID, @InvItemName, @InvQty, @DateAdded, @InvStockLevel)";
+
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@InvCatID", invCatID);
+                cmd.Parameters.AddWithValue("@InvID", invID);
+                cmd.Parameters.AddWithValue("@InvItemName", itemName);
+                cmd.Parameters.AddWithValue("@InvQty", quantity);
+                cmd.Parameters.AddWithValue("@DateAdded", dateAdded);
+                cmd.Parameters.AddWithValue("@InvStockLevel", stockLevel);
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show("Inventory item added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                inventoryform.RefreshDataGrid();
+                cleartexts();
+                AutoGenerateID();
+            }
+            catch (Exception ex)
+            {
+                // Check for potential primary key violation if composite key logic is complex
+                MessageBox.Show("Error adding inventory item: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        private void cleartexts()
+        {
+            comboBox1.SelectedIndex = -1;
+            itemtxt.Clear();
+            qtytxt.Clear();
+            dateTimePicker1.Value = DateTime.Today;
+            comboBox2.SelectedIndex = -1;
+            comboBox1.Focus();
+        }
+
+        private void cancelbtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void clearbtn_Click(object sender, EventArgs e)
+        {
+            cleartexts();
+        }
+
+        private void InventoryInventoryAdd_Load(object sender, EventArgs e)
+        {
             AutoGenerateID();
             LoadCategories();
-            this.inventoryInventoryForm = inventoryInventoryForm;
+            cleartexts(); 
         }
+
+        //auto generates inventory ID
         private void AutoGenerateID()
         {
             try
             {
                 con.Open();
-                SqlCommand cmd1 = new SqlCommand("SELECT MAX(InvID) FROM Inventory", con);
-                SqlDataReader dr1 = cmd1.ExecuteReader();
+                // Find the highest numeric part of InvID across all categories
+                SqlCommand cmd1 = new SqlCommand("SELECT MAX(CAST(SUBSTRING(InvID, 4, LEN(InvID)) AS INT)) FROM Inventory WHERE InvID LIKE 'INV%'", con);
+                object result = cmd1.ExecuteScalar(); // Use ExecuteScalar for single value
 
-                if (dr1.Read())
+                if (result == DBNull.Value || result == null)
                 {
-                    if (dr1[0] == DBNull.Value)
-                    {
-                        this.invID.Text = "INV001";
-                    }
-                    else
-                    {
-                        string maxID = dr1[0].ToString();
-                        if (maxID.StartsWith("INV") && int.TryParse(maxID.Substring(3), out int numericPart))
-                        {
-                            string newID = "INV" + (numericPart + 1).ToString("D3"); // Increment and format as "INVXXX"
-                            this.invID.Text = newID;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Invalid ID format in database.");
-                        }
-                    }
+                    invid.Text = "INV001";
                 }
-                dr1.Close();
+                else
+                {
+                    int numericPart = Convert.ToInt32(result);
+                    string newID = "INV" + (numericPart + 1).ToString("D3"); // Increment and format
+                    invid.Text = newID;
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error generating ID: " + ex.Message);
+                MessageBox.Show("Error generating Inventory ID: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                invid.Text = "INV-ERR";
             }
             finally
             {
-                con.Close();
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
             }
         }
+
+        //  Loads Inventory Categories into the ComboBox 
         private void LoadCategories()
         {
             try
             {
-                {
-                    string query = "SELECT InvCatID, InvCategory FROM InventoryCategory";
-                    SqlDataAdapter da = new SqlDataAdapter(query, con);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
+                string query = "SELECT InvCatID, InvCategory FROM InventoryCategory";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+                DataTable categoryTable = new DataTable();
+                adapter.Fill(categoryTable);
 
-                    invCategory.DisplayMember = "InvCategory";  // Show category name
-                    invCategory.ValueMember = "InvCatID";        // Store category ID
-                    invCategory.DataSource = dt;
-                    invCategory.SelectedIndex = -1;
-                }
+                // Configure the Category ComboBox
+                comboBox1.DataSource = categoryTable;
+                comboBox1.DisplayMember = "InvCategory";
+                comboBox1.ValueMember = "InvCatID"; 
+                comboBox1.SelectedIndex = -1; 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loading categories: " + ex.Message);
-            }
-        }
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void InventoryInventoryAdd_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(invID.Text) ||
-                string.IsNullOrWhiteSpace(itemName.Text) ||
-                string.IsNullOrWhiteSpace(itemQty.Text) ||
-                invCategory.SelectedIndex == -1 ||
-                stkLevel.SelectedIndex == -1)
-            {
-                MessageBox.Show("Please fill all fields.");
-                return;
-            }
-
-            string categoryID = invCategory.SelectedValue.ToString();
-            string stockLevel = stkLevel.SelectedItem.ToString();
-
-            // Validate itemQty before conversion
-            if (!int.TryParse(itemQty.Text, out int quantity))
-            {
-                MessageBox.Show("Please enter a valid numeric quantity.");
-                return;
-            }
-
-            try
-            {
-                string query = "INSERT INTO Inventory (InvCatID, InvID, InvItemName, InvQty, DateAdded, InvStockLevel) " +
-                               "VALUES (@InvCatID, @InvID, @InvItemName, @InvQty, @DateAdded, @InvStockLevel)";
-
-                using (SqlCommand cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@InvCatID", categoryID);
-                    cmd.Parameters.AddWithValue("@InvID", invID.Text);
-                    cmd.Parameters.AddWithValue("@InvItemName", itemName.Text);
-                    cmd.Parameters.AddWithValue("@InvQty", quantity); // Now it's a valid integer
-                    cmd.Parameters.AddWithValue("@DateAdded", dateTimePicker.Value);
-                    cmd.Parameters.AddWithValue("@InvStockLevel", stockLevel);
-
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Data added successfully.");
-                    con.Close();
-
-                    AutoGenerateID();
-                    itemName.Clear();
-                    itemQty.Clear();
-                    dateTimePicker.Value = DateTime.Now;
-                    invCategory.SelectedIndex = -1;
-                    stkLevel.SelectedIndex = -1;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-            finally
-            {
-                con.Close();
+                MessageBox.Show("Failed to load inventory categories: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            inventoryInventoryForm.RefreshDataGrid();
-            this.Close();
-        }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            AutoGenerateID();
-            itemName.Clear();
-            itemQty.Clear();
-            dateTimePicker.Value = DateTime.Now;
-            invCategory.SelectedIndex = -1;  // Reset category selection
-            stkLevel.SelectedIndex = -1;     // Reset stock level selection
-        }
+
     }
 }
