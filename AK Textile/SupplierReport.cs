@@ -35,7 +35,6 @@ namespace AK_Textile
         private void button5_Click(object sender, EventArgs e)
         {
             comboBox1.SelectedIndex = -1;
-            // This empties the report viewer
             crystalReportViewer1.ReportSource = null;
 
         }
@@ -70,6 +69,7 @@ namespace AK_Textile
             mainForm.LoadForm(new SupplierInvoice(mainForm));
         }
 
+        //Generate button
         private void button10_Click(object sender, EventArgs e)
         {
             // --- 1. Define Start and End Dates ---
@@ -77,10 +77,9 @@ namespace AK_Textile
             DateTime endDate = DateTime.Today; // We always end on today's date
             DateTime today = DateTime.Today;
 
-            // Check if an item is selected
             if (comboBox1.SelectedItem == null)
             {
-                MessageBox.Show("Please select a report type.");
+                MessageBox.Show("Please select a time duration.");
                 return;
             }
             string reportType = comboBox1.SelectedItem.ToString();
@@ -101,56 +100,48 @@ namespace AK_Textile
                     break;
 
                 default:
-                    MessageBox.Show("Please select a valid report type.");
+                    MessageBox.Show("Please select a valid duration.");
                     return;
             }
 
             try
             {
-                // --- 3. This is the NEW Data-Fetching Code ---
-
-                // This query JOINS the tables and FILTERS by date.
-                // We select all the fields your report needs.
+                // --- 3. This is the Data-Fetching Code ---
                 string query = @"
             SELECT 
-                pay.SupPID, 
-                sup.SupName, 
-                pay.SupPDate, 
-                pay.SupPAmount 
+                spo.SPOrderID,
+                s.SupName,
+                po.PItemName,
+                po.PItemQty,
+                spo.IssuedDate
             FROM 
-                SupplierPayment AS pay
+                SupplierPurchaseOrder AS spo
             INNER JOIN 
-                Supplier AS sup ON pay.SupID = sup.SupID
+                Supplier AS s ON spo.SupID = s.SupID
+            INNER JOIN
+                PurchaseOrder AS po ON spo.POrderID = po.POrderID
             WHERE 
-                pay.SupPDate >= @startDate AND pay.SupPDate <= @endDate";
+                spo.IssuedDate >= @startDate AND spo.IssuedDate <= @endDate"; // Filter by IssuedDate
 
-                // Use a DataTable to hold the results
-                DataTable dt = new DataTable();
+                // Give the DataTable the SAME name as in the .xsd
+                DataTable dt = new DataTable("SupplierPurchaseOrderData");
 
-                // Use your existing connection 'con'
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
-                    // Add parameters safely to prevent SQL injection
                     cmd.Parameters.AddWithValue("@startDate", startDate);
                     cmd.Parameters.AddWithValue("@endDate", endDate);
 
-                    // Use a SqlDataAdapter to fill the DataTable
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     adapter.Fill(dt);
                 }
 
                 // --- 4. Load the Crystal Report file ---
                 ReportDocument cryRpt = new ReportDocument();
-                string reportPath = Path.Combine(Application.StartupPath, "Reports\\SupplierPaymentReport.rpt");
+                string reportPath = Path.Combine(Application.StartupPath, "Reports\\SupplierPurchaseOrderReport.rpt");
                 cryRpt.Load(reportPath);
 
                 // --- 5. Push the DataTable into the Report ---
-                // This is the most important line.
-                // It REPLACES the report's database connection.
                 cryRpt.SetDataSource(dt);
-
-                // We DELETED the old database login and parameter code.
-                // It is no longer needed.
 
                 // --- 6. Show the Report in the Viewer ---
                 crystalReportViewer1.ReportSource = cryRpt;
@@ -167,5 +158,9 @@ namespace AK_Textile
 
         }
 
+        private void SupplierReport_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

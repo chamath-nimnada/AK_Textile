@@ -48,7 +48,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.printbtn = new System.Windows.Forms.Button();
-            this.SupplierPaymentReport1 = new AK_Textile.Reports.SupplierPaymentReport();
             this.panel3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -339,6 +338,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SupplierReport";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.SupplierReport_Load);
             this.panel3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -375,6 +375,5 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
         private System.Windows.Forms.Button printbtn;
-        private Reports.SupplierPaymentReport SupplierPaymentReport1;
     }
 }
