@@ -265,6 +265,7 @@
             this.Name = "SupplierSupplierUpdate";
             this.Text = "Update Supplier Details";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.SupplierSupplierUpdate_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

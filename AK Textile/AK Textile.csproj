@@ -107,41 +107,30 @@
     <Compile Include="AdminAdminAdd.Designer.cs">
       <DependentUpon>AdminAdminAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryYearlyReport.cs">
+    <Compile Include="InventoryInventoryAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryYearlyReport.Designer.cs">
-      <DependentUpon>InventoryYearlyReport.cs</DependentUpon>
+    <Compile Include="InventoryInventoryAdd.Designer.cs">
+      <DependentUpon>InventoryInventoryAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryWeeklyReport.cs">
+    <Compile Include="InventoryInventoryRemove.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryWeeklyReport.Designer.cs">
-      <DependentUpon>InventoryWeeklyReport.cs</DependentUpon>
+    <Compile Include="InventoryInventoryRemove.Designer.cs">
+      <DependentUpon>InventoryInventoryRemove.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryMonthlyReport.cs">
+    <Compile Include="InventoryInventoryUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryMonthlyReport.Designer.cs">
-      <DependentUpon>InventoryMonthlyReport.cs</DependentUpon>
+    <Compile Include="InventoryInventoryUpdate.Designer.cs">
+      <DependentUpon>InventoryInventoryUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\InventoryYearlyReport.cs">
-      <DependentUpon>InventoryYearlyReport.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Reports\InventoryWeeklyReport.cs">
-      <DependentUpon>InventoryWeeklyReport.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Reports\InventoryMonthlyReport.cs">
+    <Compile Include="Reports\InventoryReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>InventoryMonthlyReport.rpt</DependentUpon>
+      <DependentUpon>InventoryReport.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="EmployeeManagerEmpAdd.cs">
       <SubType>Form</SubType>
@@ -329,6 +318,13 @@
     <Compile Include="ForgotPassword.Designer.cs">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\SupplierPaymentReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SupplierPaymentReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="SaleSalesAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -370,12 +366,6 @@
     </Compile>
     <Compile Include="SalesSalesUpdate.Designer.cs">
       <DependentUpon>SalesSalesUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SReport.Designer.cs">
-      <DependentUpon>SReport.cs</DependentUpon>
     </Compile>
     <Compile Include="SupplierInvoiceUpdate.cs">
       <SubType>Form</SubType>
@@ -491,19 +481,6 @@
     <Compile Include="ProductScheduleAdd.Designer.cs">
       <DependentUpon>ProductScheduleAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\SupplierPaymentReport.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SupplierPaymentReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="supplierReport1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>supplierReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="SupplierSupllierRemove.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -539,12 +516,6 @@
     </Compile>
     <Compile Include="SupplierSupplierAdd.Designer.cs">
       <DependentUpon>SupplierSupplierAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SupplierReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SupplierReport.Designer.cs">
-      <DependentUpon>SupplierReport.cs</DependentUpon>
     </Compile>
     <Compile Include="SupplierInvoice.cs">
       <SubType>Form</SubType>
@@ -671,26 +642,19 @@
     <EmbeddedResource Include="AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryMonthlyReport.resx">
-      <DependentUpon>InventoryMonthlyReport.cs</DependentUpon>
+    <EmbeddedResource Include="InventoryInventoryAdd.resx">
+      <DependentUpon>InventoryInventoryAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryWeeklyReport.resx">
-      <DependentUpon>InventoryWeeklyReport.cs</DependentUpon>
+    <EmbeddedResource Include="InventoryInventoryRemove.resx">
+      <DependentUpon>InventoryInventoryRemove.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryYearlyReport.resx">
-      <DependentUpon>InventoryYearlyReport.cs</DependentUpon>
+    <EmbeddedResource Include="InventoryInventoryUpdate.resx">
+      <DependentUpon>InventoryInventoryUpdate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\InventoryYearlyReport.rpt">
+    <EmbeddedResource Include="Reports\InventoryReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>InventoryYearlyReport.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\InventoryWeeklyReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>InventoryWeeklyReport.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\InventoryMonthlyReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>InventoryMonthlyReport.cs</LastGenOutput>
+      <LastGenOutput>InventoryReport.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeeManagerEmpAdd.resx">
       <DependentUpon>EmployeeManagerEmpAdd.cs</DependentUpon>
@@ -803,6 +767,11 @@
     <EmbeddedResource Include="ForgotPassword.resx">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SupplierPaymentReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SupplierPaymentReport.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="SaleSalesAdd.resx">
       <DependentUpon>SaleSalesAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -823,9 +792,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SalesSalesUpdate.resx">
       <DependentUpon>SalesSalesUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SReport.resx">
-      <DependentUpon>SReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SupplierInvoiceUpdate.resx">
       <DependentUpon>SupplierInvoiceUpdate.cs</DependentUpon>
@@ -884,15 +850,6 @@
     <EmbeddedResource Include="SalesSchedule.resx">
       <DependentUpon>SalesSchedule.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\SupplierPaymentReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>SupplierPaymentReport.cs</LastGenOutput>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="supplierReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>supplierReport1.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="SupplierSupllierRemove.resx">
       <DependentUpon>SupplierSupllierRemove.cs</DependentUpon>
     </EmbeddedResource>
@@ -910,9 +867,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SupplierSupplierAdd.resx">
       <DependentUpon>SupplierSupplierAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SupplierReport.resx">
-      <DependentUpon>SupplierReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SupplierInvoice.resx">
       <DependentUpon>SupplierInvoice.cs</DependentUpon>
