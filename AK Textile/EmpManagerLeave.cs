@@ -129,7 +129,16 @@ namespace AK_Textile
             }
         }
 
-        //Approvve button code
+        public void RefreshDataGrid()
+        {
+            LoadPendingLeaves();
+            LoadLeaveTypes();
+            // Clear selection after refresh
+            textBox1.Text = ""; 
+            selectedLeaveId = null;
+        }
+
+        //Approve button code
         private void button10_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(selectedLeaveId))
@@ -267,11 +276,6 @@ namespace AK_Textile
         }
     }
 }
-
-
-
-
-
 
 
 
