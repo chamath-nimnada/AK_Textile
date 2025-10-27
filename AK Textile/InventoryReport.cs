@@ -41,7 +41,7 @@ namespace AK_Textile
 
         private void InventoryReport_Load(object sender, EventArgs e)
         {
-
+           
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -79,30 +79,84 @@ namespace AK_Textile
             mainForm.LoadForm(new InventoryGRN(mainForm));
         }
 
+        //Generate button codes
         private void button10_Click(object sender, EventArgs e)
         {
-            // Check if a report type is selected
+            // Define Start and End Dates
+            DateTime startDate;
+            DateTime endDate = DateTime.Today;
+            DateTime today = DateTime.Today;
+
             if (comboBoxReport.SelectedItem == null)
             {
-                MessageBox.Show("Please select a report type.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a time duration.");
                 return;
             }
+            string reportType = comboBoxReport.SelectedItem.ToString();
 
-            // Load the appropriate report form based on the selected item
-            switch (comboBoxReport.SelectedItem.ToString())
+            // Calculate Dates Based on ComboBox
+            switch (reportType)
             {
                 case "Weekly":
-                    LoadForm(new InventoryWeeklyReport());
+                    startDate = today.AddDays(-7);
                     break;
+
                 case "Monthly":
-                    LoadForm(new InventoryMonthlyReport());
+                    startDate = new DateTime(today.Year, today.Month, 1);
                     break;
+
                 case "Yearly":
-                    LoadForm(new InventoryYearlyReport());
+                    startDate = new DateTime(today.Year, 1, 1);
                     break;
+
                 default:
-                    MessageBox.Show("Invalid report type selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
+                    MessageBox.Show("Please select a valid duration.");
+                    return;
+            }
+
+            try
+            {
+                string query = @"
+            SELECT 
+                inv.InvID, 
+                cat.InvCategory, 
+                inv.InvItemName, 
+                inv.InvQty, 
+                inv.DateAdded, 
+                inv.InvStockLevel 
+            FROM 
+                Inventory AS inv
+            INNER JOIN 
+                InventoryCategory AS cat ON inv.InvCatID = cat.InvCatID
+            WHERE 
+                inv.DateAdded >= @startDate AND inv.DateAdded <= @endDate";
+
+                DataTable dt = new DataTable("InventoryReportData");
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@startDate", startDate);
+                    cmd.Parameters.AddWithValue("@endDate", endDate);
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+                }
+
+                // Load the Crystal Report file
+                ReportDocument cryRpt = new ReportDocument();
+                string reportPath = Path.Combine(Application.StartupPath, "Reports\\InventoryReport.rpt");
+                cryRpt.Load(reportPath);
+
+                //  Push the DataTable into the Report
+                cryRpt.SetDataSource(dt);
+
+                //  Show the Report in the Viewer 
+                crystalReportViewer1.ReportSource = cryRpt;
+                crystalReportViewer1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading report: " + ex.Message);
             }
         }
 

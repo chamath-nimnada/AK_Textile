@@ -16,14 +16,14 @@ namespace AK_Textile.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class InventoryWeeklyReport : ReportClass {
+    public class InventoryReport : ReportClass {
         
-        public InventoryWeeklyReport() {
+        public InventoryReport() {
         }
         
         public override string ResourceName {
             get {
-                return "InventoryWeeklyReport.rpt";
+                return "InventoryReport.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace AK_Textile.Reports {
         
         public override string FullResourceName {
             get {
-                return "AK_Textile.Reports.InventoryWeeklyReport.rpt";
+                return "AK_Textile.Reports.InventoryReport.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace AK_Textile.Reports {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedInventoryWeeklyReport : Component, ICachedReport {
+    public class CachedInventoryReport : Component, ICachedReport {
         
-        public CachedInventoryWeeklyReport() {
+        public CachedInventoryReport() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace AK_Textile.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            InventoryWeeklyReport rpt = new InventoryWeeklyReport();
+            InventoryReport rpt = new InventoryReport();
             rpt.Site = this.Site;
             return rpt;
         }

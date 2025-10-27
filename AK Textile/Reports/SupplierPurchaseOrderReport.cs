@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AK_Textile {
+namespace AK_Textile.Reports {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace AK_Textile {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class supplierReport : ReportClass {
+    public class SupplierPurchaseOrderReport : ReportClass {
         
-        public supplierReport() {
+        public SupplierPurchaseOrderReport() {
         }
         
         public override string ResourceName {
             get {
-                return "supplierReport.rpt";
+                return "SupplierPurchaseOrderReport.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace AK_Textile {
         
         public override string FullResourceName {
             get {
-                return "AK_Textile.supplierReport.rpt";
+                return "AK_Textile.Reports.SupplierPurchaseOrderReport.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace AK_Textile {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedsupplierReport : Component, ICachedReport {
+    public class CachedSupplierPurchaseOrderReport : Component, ICachedReport {
         
-        public CachedsupplierReport() {
+        public CachedSupplierPurchaseOrderReport() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace AK_Textile {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            supplierReport rpt = new supplierReport();
+            SupplierPurchaseOrderReport rpt = new SupplierPurchaseOrderReport();
             rpt.Site = this.Site;
             return rpt;
         }

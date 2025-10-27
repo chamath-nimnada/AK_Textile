@@ -143,6 +143,11 @@ namespace AK_Textile
         {
 
         }
+
+        private void SupplierSupplierUpdate_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
