@@ -24,6 +24,10 @@ namespace AK_Textile
         {
             InitializeComponent();
             this.mainForm = mainForm;
+            // Populate ComboBox with options
+            comboBox2.Items.Add("Weekly");
+            comboBox2.Items.Add("Monthly");
+            comboBox2.Items.Add("Yearly");
         }
 
         private void button5_Click(object sender, EventArgs e)
