@@ -25,6 +25,71 @@ namespace AK_Textile
             InitializeComponent();
             this.employeeForm = employeeForm;
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBox1.Text.Trim()))
+            {
+                MessageBox.Show("Please enter the Leave ID to remove.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // --- 2. Confirmation ---
+            DialogResult confirm = MessageBox.Show(
+                "Are you sure you want to permanently remove the leave record with ID: " + textBox1.Text.Trim() + "?",
+                "Confirm Deletion",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (confirm == DialogResult.Yes)
+            {
+                // --- 3. Database Deletion Logic ---
+                try
+                {
+                    // Replace 'LeaveTable' and 'LeaveID' with your actual table and column names.
+                    string deleteQuery = "DELETE FROM LeaveTable WHERE LeaveID = @LeaveID";
+
+                    // Assuming 'con' is a globally accessible or defined SqlConnection object/variable 
+                    // from your connection setup (as implied by your sample code).
+                    using (SqlConnection connection = new SqlConnection(/* Your Connection String Here or use 'con' */))
+                    {
+                        connection.Open();
+
+                        using (SqlCommand cmd = new SqlCommand(deleteQuery, connection))
+                        {
+                            // Add parameter using the ID entered in textBox1
+                            cmd.Parameters.AddWithValue("@LeaveID", textBox1.Text.Trim());
+
+                            // Execute the delete command
+                            int rowsAffected = cmd.ExecuteNonQuery();
+
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("Leave record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                // Clear the input and display area after successful deletion
+                                textBox1.Clear();
+                                // Assuming the big text box displaying "Selected Leave" is textBox2
+                                // textBox2.Clear(); 
+
+                                // Refresh the main DataGridView to show the updated list
+                                // Replace 'employeeLeaveForm' with the actual object name of your parent form/class
+                                // employeeLeaveForm.RefreshLeaveDataGrid();
+                            }
+                            else
+                            {
+                                MessageBox.Show("No leave record found with the specified ID.", "Deletion Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error deleting record: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }
 
