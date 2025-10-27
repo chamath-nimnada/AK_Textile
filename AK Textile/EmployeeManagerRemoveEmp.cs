@@ -17,6 +17,9 @@ namespace AK_Textile
                                                 Initial Catalog=Textlies;
                                                 Integrated Security=True");
 
+        // Store the EmpID of the currently selected row in the grid
+        private string selectedEmpID = null;
+
         private EmpManagerEmployee employeeManRemoveEmpForm; // Reference to employee manager employee
         public EmployeeManagerRemoveEmp(EmpManagerEmployee employeeManRemoveEmpForm)
         {
@@ -24,110 +27,135 @@ namespace AK_Textile
             this.employeeManRemoveEmpForm = employeeManRemoveEmpForm;
         }
 
-
+        //remove button
         private void button9_Click(object sender, EventArgs e)
         {
-
-            if (dataGridView1.SelectedRows.Count > 0) // Check if a row is selected
+            if (string.IsNullOrEmpty(selectedEmpID))
             {
-                // Get the EmpID of the selected row (as a string)
-                string selectedCategoryID = dataGridView1.SelectedRows[0].Cells["EmpID"].Value.ToString();
-
-                try
-                {
-                    {
-                        con.Open();
-
-                        // SQL Query to delete data
-                        string deleteQuery = "DELETE FROM Employee WHERE EmpID = @EmpID";
-
-                        using (SqlCommand cmd = new SqlCommand(deleteQuery, con))
-                        {
-                            cmd.Parameters.AddWithValue("@EmpID", selectedCategoryID);
-
-                            // Execute the delete command
-                            int result = cmd.ExecuteNonQuery();
-
-                            if (result > 0)
-                            {
-                                MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                                // Refresh DataGridView after deletion
-                                button9.PerformClick();
-
-                                // Call the public method from EmpManagerEmployee
-                                employeeManRemoveEmpForm.RefreshDataGrid();
-
-                                this.Close();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Failed to delete the record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message, "Delete Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show("Please search for and select an employee from the grid to remove.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            else
+
+            DialogResult confirm = MessageBox.Show($"Are you sure you want to permanently delete employee {selectedEmpID}?",
+                                                   "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (confirm == DialogResult.No)
             {
-                MessageBox.Show("Please select a record to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; 
             }
-        }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            // Call the public method from EmpManagerEmployee
-            employeeManRemoveEmpForm.RefreshDataGrid();
-
-            this.Close();
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            // Clear the text box
-            textBox1.Text = string.Empty;
-
-            // Clear the data grid view
-            dataGridView1.DataSource = null;
-            dataGridView1.Rows.Clear();
-            dataGridView1.Columns.Clear();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
             try
             {
+                con.Open();
+                string query = "DELETE FROM Employee WHERE EmpID = @EmpID";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@EmpID", selectedEmpID);
+
+                int rowsAffected = cmd.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
                 {
-                    con.Open();
-                    // SQL Query to search data
-                    string query = "SELECT * FROM Employee WHERE EmpID LIKE @search OR EmpName LIKE @search";
+                    MessageBox.Show("Employee removed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    employeeManRemoveEmpForm.RefreshDataGrid(); // Refresh the main grid
+                    this.Close(); 
+                }
+                else
+                {
 
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    {
-                        cmd.Parameters.AddWithValue("@search", "%" + textBox1.Text.Trim() + "%");
-
-                        // Use SqlDataAdapter to fetch and display data
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                        DataTable dt = new DataTable();
-                        adapter.Fill(dt);
-
-                        // Display the result in DataGridView
-                        dataGridView1.DataSource = dt;
-                        dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    }
+                    MessageBox.Show("Deletion failed. Employee might have been removed already.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                if (sqlEx.Number == 547)
+                {
+                    MessageBox.Show("Cannot delete this employee because they have related records (e.g., leave requests, salary entries). Please remove those first.", "Deletion Blocked", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Database error removing employee: " + sqlEx.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error removing employee: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
                 con.Close();
+            }
+        }
+
+        //Cancel button
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ClearSelection()
+        {
+            selectedEmpID = null;
+        }
+
+        //Clear button
+        private void button6_Click(object sender, EventArgs e)
+        {
+            textBox1.Clear();
+            ClearSelection();
+            dataGridView1.DataSource = null;
+        }
+
+        //search button
+        private void button5_Click(object sender, EventArgs e)
+        {
+            string searchVal = textBox1.Text.Trim();
+            if (string.IsNullOrWhiteSpace(searchVal))
+            {
+                MessageBox.Show("Please enter an Employee ID, Username, or Name to search.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            ClearSelection(); // Clear previous selection
+
+            try
+            {
+                string query = @"SELECT EmpID, EmpName, EmpUsername, PositionID, DepID
+                                 FROM Employee
+                                 WHERE EmpID = @SearchVal
+                                    OR EmpUsername = @SearchVal
+                                    OR EmpName LIKE @SearchPattern";
+
+                SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+                adapter.SelectCommand.Parameters.AddWithValue("@SearchVal", searchVal);
+                adapter.SelectCommand.Parameters.AddWithValue("@SearchPattern", "%" + searchVal + "%");
+
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                if (dt.Rows.Count > 0)
+                {
+                    dataGridView1.DataSource = dt;
+                    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; 
+                }
+                else
+                {
+                    MessageBox.Show("No employee found matching the criteria.", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dataGridView1.DataSource = null; 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error searching employees: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dataGridView1.DataSource = null;
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                selectedEmpID = row.Cells["EmpID"].Value.ToString();
             }
         }
     }
