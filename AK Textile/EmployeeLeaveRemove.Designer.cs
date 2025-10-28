@@ -50,7 +50,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 14);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Name = "groupBox1";
+            //this.grou5pBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Size = new System.Drawing.Size(821, 103);
             this.groupBox1.TabIndex = 17;
@@ -69,7 +69,7 @@
             this.button6.TabIndex = 10;
             this.button6.Text = "Clear";
             this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click_1);
+            //this.button6.Click += new System.EventHandler(this.button6_Click_1);
             // 
             // button5
             // 
@@ -83,7 +83,7 @@
             this.button5.TabIndex = 5;
             this.button5.Text = "Search";
             this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click_1);
+           // this.button5.Click += new System.EventHandler(this.button5_Click_1);
             // 
             // textBox1
             // 
@@ -107,7 +107,7 @@
             this.button1.TabIndex = 19;
             this.button1.Text = "Cancel";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_2);
+           // this.button1.Click += new System.EventHandler(this.button1_Click_2);
             // 
             // button9
             // 
@@ -147,7 +147,7 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(739, 101);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+           // this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // EmployeeLeaveRemove
             // 

@@ -14,7 +14,7 @@ namespace AK_Textile
     public partial class EmpManagerLeaveUpdate : Form
     {
 
-        private EmpManagerLeave leaveform; // Reference to Supplier
+        private EmpManagerLeave leaveform; 
                                            //database connection
         SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDatabase;Integrated Security=True");
 

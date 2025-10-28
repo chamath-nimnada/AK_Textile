@@ -129,7 +129,7 @@
             this.Name = "EmpManagerLeaveRemove";
             this.Text = "Remove Leave Option";
             this.TopMost = true;
-            this.Load += new System.EventHandler(this.EmpManagerLeaveRemove_Load);
+            //this.Load += new System.EventHandler(this.EmpManagerLeaveRemove_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

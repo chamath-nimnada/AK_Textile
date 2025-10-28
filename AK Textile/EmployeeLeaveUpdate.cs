@@ -242,7 +242,12 @@ namespace AK_Textile
             this.Close();
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button8_Click_1(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(textBox1.Text.Trim()))
             {
@@ -315,11 +320,6 @@ namespace AK_Textile
             {
                 MessageBox.Show("Database Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }
