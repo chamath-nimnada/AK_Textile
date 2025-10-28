@@ -14,11 +14,8 @@ namespace AK_Textile
     public partial class SupplierInvoiceUpdate : Form
     {
         private SupplierInvoice supinvoiceform; // Reference to Supplier Invoice
-        //database connection
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
-                                                Initial Catalog=Textlies;
-                                                Integrated Security=True");
-
+                                                //database connection
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDatabase;Integrated Security=True");
         public SupplierInvoiceUpdate(SupplierInvoice supinvoiceform)
         {
             InitializeComponent();
@@ -229,6 +226,11 @@ namespace AK_Textile
         private void button1_Click(object sender, EventArgs e)
         {
             clearing();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -15,9 +15,7 @@ namespace AK_Textile
     {
         private InventoryInventory inventoryform;
         //database connection
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
-                                                Initial Catalog=Textlies;
-                                                Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDatabase;Integrated Security=True");
 
         private string currentInvID = null;
         private string originalInvCatID = null;
@@ -210,6 +208,11 @@ namespace AK_Textile
             {
                 con.Close();
             }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

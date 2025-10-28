@@ -14,9 +14,8 @@ namespace AK_Textile
     public partial class InventorySupplier : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
-                                                Initial Catalog=Textlies;
-                                                Integrated Security=True");
+        //database connection
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDatabase;Integrated Security=True");
 
         public InventorySupplier(MainForm mainForm)
         {
@@ -266,6 +265,11 @@ namespace AK_Textile
         private void button8_Click(object sender, EventArgs e)
         {
             mainForm.LoadForm(new InventoryReport(mainForm));
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -13,9 +13,8 @@ namespace AK_Textile
 {
     public partial class EmpManagerDepartmentRemove : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
-                                                Initial Catalog=Textlies;
-                                                Integrated Security=True");
+        //database connection
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDatabase;Integrated Security=True");
         public EmpManagerDepartmentRemove()
         {
             InitializeComponent();
@@ -152,6 +151,11 @@ namespace AK_Textile
                     con.Close();
                 }
             }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

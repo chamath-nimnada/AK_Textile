@@ -14,10 +14,8 @@ namespace AK_Textile
     public partial class EmpManagerDepartment : Form
     {
         private MainForm mainForm; //Step 01
-
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
-                                                Initial Catalog=Textlies;
-                                                Integrated Security=True");
+                                   //database connection
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDatabase;Integrated Security=True");
         public EmpManagerDepartment(MainForm mainForm)
         {
             InitializeComponent();

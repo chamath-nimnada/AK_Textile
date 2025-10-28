@@ -15,10 +15,8 @@ namespace AK_Textile
 
     {
         private SupplierInvoice supinvoiceform; // Reference to Supplier Invoice
-        //database connection
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
-                                                Initial Catalog=Textlies;
-                                                Integrated Security=True");
+                                                //database connection
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDatabase;Integrated Security=True");
 
         public SupplierInvoiceAdd(SupplierInvoice supinvoiceform)
         {

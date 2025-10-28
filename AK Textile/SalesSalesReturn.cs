@@ -16,9 +16,7 @@ namespace AK_Textile
         private MainForm mainForm;
 
         //database connection
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
-                                                Initial Catalog=Textlies;
-                                                Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDatabase;Integrated Security=True");
         public SalesSalesReturn(MainForm mainForm)
         {
             InitializeComponent();

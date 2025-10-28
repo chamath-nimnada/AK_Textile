@@ -15,9 +15,8 @@ namespace AK_Textile
     public partial class FinanceOrder : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
-                                                Initial Catalog=Textlies;
-                                                Integrated Security=True");
+        //database connection
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDatabase;Integrated Security=True");
         public FinanceOrder(MainForm mainForm)
         {
             InitializeComponent();
@@ -125,6 +124,11 @@ namespace AK_Textile
         private void FinanceOrder_Load(object sender, EventArgs e)
         {
             LoadPurchaseOrders();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

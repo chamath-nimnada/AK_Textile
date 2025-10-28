@@ -15,9 +15,8 @@ namespace AK_Textile
     {
 
         private EmpManagerLeave leaveform; // Reference to Supplier
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
-                                                Initial Catalog=Textlies;
-                                                Integrated Security=True");
+                                           //database connection
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDatabase;Integrated Security=True");
 
         public EmpManagerLeaveUpdate(EmpManagerLeave leaveform)
         {
@@ -81,6 +80,11 @@ namespace AK_Textile
             textBox8.Text = string.Empty;
 
             MessageBox.Show("All fields have been cleared.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
 
         }
     }

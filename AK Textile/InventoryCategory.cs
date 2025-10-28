@@ -14,9 +14,8 @@ namespace AK_Textile
     public partial class InventoryCategory : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
-                                                Initial Catalog=Textlies;
-                                                Integrated Security=True");
+        //database connection
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDatabase;Integrated Security=True");
         Form formBackground = null; // Declare outside to access in 'finally'
 
         public InventoryCategory(MainForm mainForm)
@@ -243,6 +242,11 @@ namespace AK_Textile
             textBox1.Text = string.Empty;
 
             LoadAllCategory();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

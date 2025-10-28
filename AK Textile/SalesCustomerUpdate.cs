@@ -19,7 +19,8 @@ namespace AK_Textile
         }
 
         private void updatebtn_Click(object sender, EventArgs e)
-        {// --- 1. Pre-Update Checks ---
+
+        {/* --- 1. Pre-Update Checks ---
             if (string.IsNullOrEmpty(_currentCustomerID))
             {
                 MessageBox.Show("Please search for a customer first before updating.", "Search Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -45,7 +46,7 @@ namespace AK_Textile
             // --- 2. Database Update Logic ---
             string query = "UPDATE Customer SET CustomerName = @Name, CustomerEmail = @Email, CustomerContact = @Contact, CustomerAddress = @Address WHERE CustomerID = @ID";
 
-            using (SqlConnection connection = new SqlConnection(/* Your Connection String */))
+            using (SqlConnection connection = new SqlConnection(/* Your Connection String ))
             using (SqlCommand command = new SqlCommand(query, connection))
             {
                 // Add parameters for the modified data
@@ -86,7 +87,7 @@ namespace AK_Textile
                         connection.Close();
                     }
                 }
-            }
+            }*/
         }
 
         private void searchbtn_Click(object sender, EventArgs e)
@@ -115,7 +116,7 @@ namespace AK_Textile
                         if (reader.Read())
                         {
                             // 1. Store the ID (Crucial for the Update button)
-                            _currentCustomerID = reader["CustomerID"].ToString();
+                            //_currentCustomerID = reader["CustomerID"].ToString();
 
                             // 2. Load the details into the text boxes
                             nametxt.Text = reader["CustomerName"].ToString();
@@ -133,7 +134,7 @@ namespace AK_Textile
                         else
                         {
                             MessageBox.Show("No customer found matching the input.", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            ClearDetailsFields(); // Clear if nothing is found
+                            //ClearDetailsFields(); // Clear if nothing is found
                         }
                     }
                 }
@@ -153,7 +154,7 @@ namespace AK_Textile
             textBox5.Clear();
             textBox6.Clear();
             textBox7.Clear();
-            _currentCustomerID = string.Empty;
+            //_currentCustomerID = string.Empty;
         }
     }
 }

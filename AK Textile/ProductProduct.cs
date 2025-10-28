@@ -16,9 +16,8 @@ namespace AK_Textile
         public MainForm mainForm; //Step 01
 
         //database connection
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
-                                                Initial Catalog=Textlies;
-                                                Integrated Security=True");
+        //database connection
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDatabase;Integrated Security=True");
 
         Form formBackground = null; // Declare outside to access in 'finally'
         public ProductionProduct(MainForm mainForm/*Step 02*/)

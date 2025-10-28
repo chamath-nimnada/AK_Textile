@@ -16,10 +16,8 @@ namespace AK_Textile
     public partial class FinanceReport : Form
     {
         private MainForm mainForm;
-
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
-                                                Initial Catalog=Textlies;
-                                                Integrated Security=True");
+        //database connection
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDatabase;Integrated Security=True");
         public FinanceReport(MainForm mainForm)
         {
             InitializeComponent();
@@ -144,6 +142,11 @@ namespace AK_Textile
         {
             crystalReportViewer1.ReportSource = null;
             comboBox2.SelectedIndex = -1;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

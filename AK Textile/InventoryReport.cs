@@ -18,9 +18,8 @@ namespace AK_Textile
     {
         private MainForm mainForm;
 
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
-                                                Initial Catalog=Textlies;
-                                                Integrated Security=True");
+        //database connection
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDatabase;Integrated Security=True");
         public InventoryReport(MainForm mainForm)
         {
             InitializeComponent();
@@ -167,6 +166,11 @@ namespace AK_Textile
 
             // Clear the comboBoxReport items
             comboBoxReport.Items.Clear();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

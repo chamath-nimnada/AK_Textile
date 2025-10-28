@@ -14,9 +14,8 @@ namespace AK_Textile
     public partial class CEOSales : Form
     {
         private MainForm mainForm;
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-SDPNF2L\MSSQLSERVER01;
-                                                Initial Catalog=Textlies;
-                                                Integrated Security=True");
+        //database connection
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDatabase;Integrated Security=True");
         public CEOSales(MainForm mainForm)
         {
             InitializeComponent();
@@ -192,6 +191,11 @@ namespace AK_Textile
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             mainForm.LoadForm(new LoginForm(mainForm));
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
