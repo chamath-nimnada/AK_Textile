@@ -23,102 +23,88 @@ namespace AK_Textile
             InitializeComponent();
             this.empManagerEmployee = empManagerEmployee;
         }
+        // --- Auto-Generates the Employee ID (e.g., "EMP001") ---
         private void AutoGenerateID()
         {
             try
             {
                 con.Open();
-                SqlCommand cmd1 = new SqlCommand("SELECT MAX(EmpID) FROM Employee", con);
-                SqlDataReader dr1 = cmd1.ExecuteReader();
-                if (dr1.Read())
+                SqlCommand cmd1 = new SqlCommand("SELECT MAX(CAST(SUBSTRING(EmpID, 4, LEN(EmpID)) AS INT)) FROM Employee WHERE EmpID LIKE 'EMP%'", con);
+                object result = cmd1.ExecuteScalar(); 
+
+                if (result == DBNull.Value || result == null)
                 {
-                    if (dr1[0] == DBNull.Value)
-                    {
-                        this.textBox2.Text = "EMP001";
-                    }
-                    else
-                    {
-                        string maxID = dr1[0].ToString();
-                        int numericPart = int.Parse(maxID.Substring(3));
-                        string newID = "EMP" + (numericPart + 1).ToString("D3");
-                        this.textBox2.Text = newID;
-                    }
-                    dr1.Close();
+                    textBox2.Text = "EMP001"; // Start from 001
+                }
+                else
+                {
+                    int numericPart = Convert.ToInt32(result);
+                    string newID = "EMP" + (numericPart + 1).ToString("D3"); 
+                    textBox2.Text = newID;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error generating ID: " + ex.Message);
+                MessageBox.Show("Error generating Employee ID: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBox2.Text = "EMP-ERR"; 
             }
             finally
             {
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
+                if (con.State == ConnectionState.Open) con.Close();
             }
         }
 
-        // This method loads the Position ComboBox
+        // --- Loads Positions into the ComboBox ---
         private void LoadPositions()
         {
             try
             {
-                con.Open();
                 string query = "SELECT PositionID, PName FROM Position";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, con);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
+                DataTable positionTable = new DataTable();
+                adapter.Fill(positionTable);
 
                 // Configure the Position ComboBox
-                comboBox1.DataSource = dt;
+                comboBox1.DataSource = positionTable;
                 comboBox1.DisplayMember = "PName";
-                comboBox1.ValueMember = "PositionID";
+                comboBox1.ValueMember = "PositionID";    // Store ID
                 comboBox1.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occurred while loading positions: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                con.Close();
+                MessageBox.Show("Failed to load positions: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // Method to load departments into the new ComboBox
+        // --- Loads Departments into the ComboBox ---
         private void LoadDepartments()
         {
             try
             {
-                con.Open();
                 string query = "SELECT DepID, DepName FROM Department";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, con);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
+                DataTable departmentTable = new DataTable();
+                adapter.Fill(departmentTable);
 
                 // Configure the Department ComboBox
-                comboBox2.DataSource = dt;
+                comboBox2.DataSource = departmentTable;
                 comboBox2.DisplayMember = "DepName";
-                comboBox2.ValueMember = "DepID"; 
+                comboBox2.ValueMember = "DepID";
                 comboBox2.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occurred while loading departments: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                con.Close();
+                MessageBox.Show("Failed to load departments: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-
+        //clear button
         private void button2_Click(object sender, EventArgs e)
         {
             ClearForm();
         }
 
+        //cancel button
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -140,75 +126,92 @@ namespace AK_Textile
             AutoGenerateID();
         }
 
+        //add button
         private void button8_Click(object sender, EventArgs e)
         {
-            string employeeID = textBox2.Text;
+            // Validation ---
+            if (string.IsNullOrWhiteSpace(textBox3.Text) ||
+                string.IsNullOrWhiteSpace(textBox4.Text) ||
+                string.IsNullOrWhiteSpace(textBox1.Text) ||
+                comboBox1.SelectedValue == null ||
+                comboBox2.SelectedValue == null)
+            {
+                MessageBox.Show("Please fill in all required fields (Name, Username, Password, Position, Department).", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (!string.IsNullOrEmpty(textBox5.Text) && !int.TryParse(textBox5.Text, out _))
+            {
+                MessageBox.Show("Home Number must be a valid number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
+            // Get Data ---
+            string empID = textBox2.Text;
             string fullName = textBox3.Text;
-            string userName = textBox4.Text;
+            string username = textBox4.Text;
             string password = textBox1.Text;
-            string contactNo = textBox8.Text;
-            string homeNo = textBox5.Text;
+            string contact = textBox8.Text;
+            string positionID = comboBox1.SelectedValue.ToString();
+            string depID = comboBox2.SelectedValue.ToString();
+            string homeNoText = textBox5.Text;
             string streetName = textBox6.Text;
             string city = textBox7.Text;
-            // Get the selected *Value* (ID) from both ComboBoxes
-            object selectedPosition = comboBox1.SelectedValue;
-            object selectedDepartment = comboBox2.SelectedValue;
 
-            // Validate input
-            if (string.IsNullOrWhiteSpace(employeeID) || string.IsNullOrWhiteSpace(fullName))
+            int? homeNo = null;
+            if (int.TryParse(homeNoText, out int parsedHomeNo))
             {
-                MessageBox.Show("Employee ID and Full Name are required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                homeNo = parsedHomeNo;
             }
-
-            //Validation check for both ComboBoxes
-            if (selectedPosition == null)
-            {
-                MessageBox.Show("Please select a position.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (selectedDepartment == null)
-            {
-                MessageBox.Show("Please select a department.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            string positionID = selectedPosition.ToString();
-            string departmentID = selectedDepartment.ToString(); 
-
             try
             {
                 con.Open();
-                string query = "INSERT INTO Employee (EmpID, EmpName, EmpUsername, EmpPswrd, PositionID, DepID, EmpContact, EmpStreetNo, EmpStreetName, EmpCity) " +
-                               "VALUES (@EmpID, @EmpName, @EmpUsername, @EmpPswrd, @PositionID, @DepID, @EmpContact, @EmpStreetNo, @EmpStreetName, @EmpCity)";
+                string query = @"INSERT INTO Employee (EmpID, EmpName, EmpStreetNo, EmpStreetName, EmpCity, EmpUsername, EmpPswrd, EmpContact, DepID, PositionID)
+                                 VALUES (@EmpID, @EmpName, @EmpStreetNo, @EmpStreetName, @EmpCity, @EmpUsername, @EmpPswrd, @EmpContact, @DepID, @PositionID)";
 
-                using (SqlCommand command = new SqlCommand(query, con))
-                {
-                    // Add parameters
-                    command.Parameters.AddWithValue("@EmpID", employeeID);
-                    command.Parameters.AddWithValue("@EmpName", fullName);
-                    command.Parameters.AddWithValue("@EmpUsername", userName);
-                    command.Parameters.AddWithValue("@EmpPswrd", password);
-                    command.Parameters.AddWithValue("@PositionID", positionID);
-                    command.Parameters.AddWithValue("@DepID", departmentID);
-                    command.Parameters.AddWithValue("@EmpContact", contactNo);
-                    command.Parameters.AddWithValue("@EmpStreetNo", homeNo);
-                    command.Parameters.AddWithValue("@EmpStreetName", streetName);
-                    command.Parameters.AddWithValue("@EmpCity", city);
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@EmpID", empID);
+                cmd.Parameters.AddWithValue("@EmpName", fullName);
 
-                    // Execute query
-                    command.ExecuteNonQuery();
-                }
+                if (homeNo.HasValue)
+                    cmd.Parameters.AddWithValue("@EmpStreetNo", homeNo.Value);
+                else
+                    cmd.Parameters.AddWithValue("@EmpStreetNo", DBNull.Value); 
 
-                MessageBox.Show("Employee added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cmd.Parameters.AddWithValue("@EmpStreetName", streetName);
+                cmd.Parameters.AddWithValue("@EmpCity", city);
+                cmd.Parameters.AddWithValue("@EmpUsername", username);
+                cmd.Parameters.AddWithValue("@EmpPswrd", password); 
+                cmd.Parameters.AddWithValue("@EmpContact", contact);
+                cmd.Parameters.AddWithValue("@DepID", depID);
+                cmd.Parameters.AddWithValue("@PositionID", positionID);
 
-                // Clear form and refresh parent grid
-                ClearForm();
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show("Employee added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 empManagerEmployee.RefreshDataGrid();
+                ClearForm(); 
+                AutoGenerateID();
+            }
+            catch (SqlException sqlEx)
+            {
+                if (sqlEx.Number == 2627) // Primary Key violation
+                {
+                    MessageBox.Show($"Error: Employee ID '{empID}' already exists.", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (sqlEx.Number == 547) // Foreign Key violation
+                {
+                    MessageBox.Show("Error: Invalid Department or Position selected.", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Database error adding employee: " + sqlEx.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error adding employee: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

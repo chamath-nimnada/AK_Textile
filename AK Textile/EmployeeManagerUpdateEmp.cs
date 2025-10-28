@@ -17,6 +17,10 @@ namespace AK_Textile
         SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDatabase;Integrated Security=True");
 
         private EmpManagerEmployee employeeManRemoveEmpForm;
+
+        // Variable to store the ID of the employee being updated
+        private string currentEmpID = null;
+
         public EmployeeManagerUpdateEmp(EmpManagerEmployee employeeManRemoveEmpForm)
         {
             InitializeComponent();
@@ -30,52 +34,45 @@ namespace AK_Textile
             ClearForm();
         }
 
+        // --- Loads Positions into the ComboBox ---
         private void LoadPositions()
         {
             try
             {
-                con.Open();
                 string query = "SELECT PositionID, PName FROM Position";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, con);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
+                DataTable positionTable = new DataTable();
+                adapter.Fill(positionTable);
 
-                comboBox1.DataSource = dt;
-                comboBox1.DisplayMember = "PName";
+                comboBox1.DataSource = positionTable;
+                comboBox1.DisplayMember = "PName"; 
                 comboBox1.ValueMember = "PositionID";
+                comboBox1.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Failed to load positions: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally
-            {
-                con.Close();
-            }
         }
 
-        //NEW: Method to load departments
+        // --- Loads Departments into the ComboBox ---
         private void LoadDepartments()
         {
             try
             {
-                con.Open();
                 string query = "SELECT DepID, DepName FROM Department";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, con);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
+                DataTable departmentTable = new DataTable();
+                adapter.Fill(departmentTable);
 
-                comboBox2.DataSource = dt;
-                comboBox2.DisplayMember = "DepName"; 
+                comboBox2.DataSource = departmentTable;
+                comboBox2.DisplayMember = "DepName";
                 comboBox2.ValueMember = "DepID";
+                comboBox2.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Failed to load departments: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                con.Close();
             }
         }
 
@@ -93,54 +90,56 @@ namespace AK_Textile
         //Search Button
         private void button5_Click(object sender, EventArgs e)
         {
-            string employeeIDOrName = textBox1.Text;
-
-            if (string.IsNullOrWhiteSpace(employeeIDOrName))
+            string searchVal = textBox1.Text.Trim();
+            if (string.IsNullOrEmpty(searchVal))
             {
-                MessageBox.Show("Please enter Employee ID or Name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please enter an Employee ID or Username to search.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            ClearForm();
 
             try
             {
                 con.Open();
-                string query1 = "SELECT * FROM Employee WHERE EmpID = @EmpID OR EmpUserName = @EmpUserName";
+                string query = @"SELECT EmpID, EmpName, EmpStreetNo, EmpStreetName, EmpCity, EmpUsername, EmpPswrd, EmpContact, DepID, PositionID
+                                 FROM Employee
+                                 WHERE EmpID = @SearchVal OR EmpUsername = @SearchVal";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@SearchVal", searchVal);
 
-                using (SqlCommand command = new SqlCommand(query1, con))
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
                 {
-                    command.Parameters.AddWithValue("@EmpID", employeeIDOrName);
-                    command.Parameters.AddWithValue("@EmpUserName", employeeIDOrName);
+                    // Store the ID of the found employee for the update query
+                    currentEmpID = reader["EmpID"].ToString();
 
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            textBox3.Text = reader["EmpName"].ToString();
-                            textBox4.Text = reader["EmpUserName"].ToString();
-                            textBox2.Text = reader["EmpPswrd"].ToString();
-                            textBox8.Text = reader["EmpContact"].ToString();
-                            textBox5.Text = reader["EmpStreetNo"].ToString();
-                            textBox6.Text = reader["EmpStreetName"].ToString();
-                            textBox7.Text = reader["EmpCity"].ToString();
-                            // This sets the value, and the ComboBox shows the matching name.
-                            comboBox1.SelectedValue = reader["PositionID"];
-                            comboBox2.SelectedValue = reader["DepID"];
-                        }
-                        else
-                        {
-                            MessageBox.Show("Employee not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            ClearForm();
-                        }
-                    }
+                    // Populate fields
+                    textBox3.Text = reader["EmpName"].ToString();
+                    textBox4.Text = reader["EmpUsername"].ToString();
+                    textBox2.Text = reader["EmpPswrd"].ToString(); // Consider security implications of showing password
+                    textBox8.Text = reader["EmpContact"].ToString();
+                    textBox5.Text = reader["EmpStreetNo"] != DBNull.Value ? reader["EmpStreetNo"].ToString() : "";
+                    textBox6.Text = reader["EmpStreetName"].ToString();
+                    textBox7.Text = reader["EmpCity"].ToString();
+
+                    // Set the dropdowns using SelectedValue
+                    comboBox1.SelectedValue = reader["PositionID"];
+                    comboBox2.SelectedValue = reader["DepID"];
+                }
+                else
+                {
+                    MessageBox.Show("Employee with that ID or Username not found.", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error searching employee: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
-                con.Close();
+                if (con.State == ConnectionState.Open) con.Close();
             }
         }
 
@@ -165,66 +164,110 @@ namespace AK_Textile
         // Update Button
         private void button8_Click(object sender, EventArgs e)
         {
-            string employeeIDOrName = textBox1.Text;
+            // 1. Check if an employee is loaded
+            if (currentEmpID == null)
+            {
+                MessageBox.Show("Please search for and load an employee first.", "No Employee Loaded", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 2. Validation
+            if (string.IsNullOrWhiteSpace(textBox3.Text) ||
+                string.IsNullOrWhiteSpace(textBox4.Text) ||
+                string.IsNullOrWhiteSpace(textBox2.Text) ||
+                comboBox1.SelectedValue == null ||
+                comboBox2.SelectedValue == null)
+            {
+                MessageBox.Show("Please fill in all required fields (Name, Username, Password, Position, Department).", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (!string.IsNullOrEmpty(textBox5.Text) && !int.TryParse(textBox5.Text, out _))
+            {
+                MessageBox.Show("Home Number must be a valid number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 3. Get Updated Data
             string fullName = textBox3.Text;
-            string userName = textBox4.Text;
+            string username = textBox4.Text;
             string password = textBox2.Text;
-            string contactNo = textBox8.Text;
-            string homeNo = textBox5.Text;
+            string contact = textBox8.Text;
+            string positionID = comboBox1.SelectedValue.ToString();
+            string depID = comboBox2.SelectedValue.ToString();
+            string homeNoText = textBox5.Text;
             string streetName = textBox6.Text;
             string city = textBox7.Text;
 
-            object selectedPosition = comboBox1.SelectedValue;
-            object selectedDepartment = comboBox2.SelectedValue; 
-
-            if (string.IsNullOrWhiteSpace(employeeIDOrName))
+            int? homeNo = null;
+            if (int.TryParse(homeNoText, out int parsedHomeNo))
             {
-                MessageBox.Show("Please search for and select an Employee first.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                homeNo = parsedHomeNo;
             }
-
-            if (selectedPosition == null || selectedDepartment == null)
-            {
-                MessageBox.Show("Please ensure Position and Department are selected.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            string positionID = selectedPosition.ToString();
-            string departmentID = selectedDepartment.ToString();
-
             try
             {
                 con.Open();
+                string query = @"UPDATE Employee
+                                 SET EmpName = @EmpName,
+                                     EmpStreetNo = @EmpStreetNo,
+                                     EmpStreetName = @EmpStreetName,
+                                     EmpCity = @EmpCity,
+                                     EmpUsername = @EmpUsername,
+                                     EmpPswrd = @EmpPswrd,
+                                     EmpContact = @EmpContact,
+                                     DepID = @DepID,
+                                     PositionID = @PositionID
+                                 WHERE EmpID = @CurrentEmpID";
 
-                string query = "UPDATE Employee SET EmpName = @EmpName, EmpUsername = @EmpUsername, " +
-                               "EmpPswrd = @EmpPswrd, PositionID = @PositionID, DepID = @DepID, EmpContact = @EmpContact, " +
-                               "EmpStreetNo = @EmpStreetNo, EmpStreetName = @EmpStreetName, EmpCity = @EmpCity " +
-                               "WHERE EmpID = @EmpID OR EmpUserName = @EmpUserName";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@EmpName", fullName);
 
-                using (SqlCommand command = new SqlCommand(query, con))
+                if (homeNo.HasValue)
+                    cmd.Parameters.AddWithValue("@EmpStreetNo", homeNo.Value);
+                else
+                    cmd.Parameters.AddWithValue("@EmpStreetNo", DBNull.Value);
+
+                cmd.Parameters.AddWithValue("@EmpStreetName", streetName);
+                cmd.Parameters.AddWithValue("@EmpCity", city);
+                cmd.Parameters.AddWithValue("@EmpUsername", username);
+                cmd.Parameters.AddWithValue("@EmpPswrd", password); 
+                cmd.Parameters.AddWithValue("@EmpContact", contact);
+                cmd.Parameters.AddWithValue("@DepID", depID);
+                cmd.Parameters.AddWithValue("@PositionID", positionID);
+                cmd.Parameters.AddWithValue("@CurrentEmpID", currentEmpID);
+
+                int rowsAffected = cmd.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
                 {
-                    command.Parameters.AddWithValue("@EmpName", fullName);
-                    command.Parameters.AddWithValue("@EmpUsername", userName);
-                    command.Parameters.AddWithValue("@EmpPswrd", password);
-                    command.Parameters.AddWithValue("@PositionID", positionID);
-                    command.Parameters.AddWithValue("@DepID", departmentID);
-                    command.Parameters.AddWithValue("@EmpContact", contactNo);
-                    command.Parameters.AddWithValue("@EmpStreetNo", homeNo);
-                    command.Parameters.AddWithValue("@EmpStreetName", streetName);
-                    command.Parameters.AddWithValue("@EmpCity", city);
-                    command.Parameters.AddWithValue("@EmpID", employeeIDOrName);
-
-                    command.ExecuteNonQuery();
+                    MessageBox.Show("Employee updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    employeeManRemoveEmpForm.RefreshDataGrid(); // Refresh parent
+                    this.Close(); // Close this form
                 }
-
-                MessageBox.Show("Employee updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // refresh data grid
-                employeeManRemoveEmpForm.RefreshDataGrid();
+                else
+                {
+                    MessageBox.Show("Update failed. Employee not found or no changes made.", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                // Handle specific SQL errors like FK violation if DepID/PositionID becomes invalid
+                if (sqlEx.Number == 547)
+                {
+                    MessageBox.Show("Error: Invalid Department or Position selected.", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                // Handle potential unique constraint violation if username is changed to an existing one
+                else if (sqlEx.Number == 2627 || sqlEx.Number == 2601)
+                {
+                    MessageBox.Show("Error: The Username chosen already exists.", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Database error updating employee: " + sqlEx.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error updating employee: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -238,6 +281,11 @@ namespace AK_Textile
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EmployeeManagerUpdateEmp_Load_1(object sender, EventArgs e)
         {
 
         }
