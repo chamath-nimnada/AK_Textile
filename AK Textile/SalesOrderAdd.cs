@@ -7,14 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace AK_Textile
 {
     public partial class SalesOrderAdd : Form
     {
-        public SalesOrderAdd()
+        private SalesOrder salesorder; // Reference to salesOrder
+                                       //database connection
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDatabase;Integrated Security=True");
+        public SalesOrderAdd(SalesOrder salesorder)
         {
             InitializeComponent();
+            this.salesorder = salesorder;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -101,23 +101,42 @@
     <Compile Include="AdminAdmin.Designer.cs">
       <DependentUpon>AdminAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminEmployee.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AdminEmployee.Designer.cs">
-      <DependentUpon>AdminEmployee.cs</DependentUpon>
-    </Compile>
     <Compile Include="AdminAdminAdd.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AdminAdminAdd.Designer.cs">
       <DependentUpon>AdminAdminAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminEmployeeAdd.cs">
+    <Compile Include="InventoryInventoryAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminEmployeeAdd.Designer.cs">
-      <DependentUpon>AdminEmployeeAdd.cs</DependentUpon>
+    <Compile Include="InventoryInventoryAdd.Designer.cs">
+      <DependentUpon>InventoryInventoryAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryInventoryRemove.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryInventoryRemove.Designer.cs">
+      <DependentUpon>InventoryInventoryRemove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryInventoryUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryInventoryUpdate.Designer.cs">
+      <DependentUpon>InventoryInventoryUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\InventoryReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InventoryReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="EmployeeManagerEmpAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeManagerEmpAdd.Designer.cs">
+      <DependentUpon>EmployeeManagerEmpAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminAdminRemove.cs">
       <SubType>Form</SubType>
@@ -125,11 +144,11 @@
     <Compile Include="AdminAdminRemove.Designer.cs">
       <DependentUpon>AdminAdminRemove.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminEmployeeRemove.cs">
+    <Compile Include="EmployeeManagerRemoveEmp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminEmployeeRemove.Designer.cs">
-      <DependentUpon>AdminEmployeeRemove.cs</DependentUpon>
+    <Compile Include="EmployeeManagerRemoveEmp.Designer.cs">
+      <DependentUpon>EmployeeManagerRemoveEmp.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminAdminUpdate.cs">
       <SubType>Form</SubType>
@@ -137,11 +156,11 @@
     <Compile Include="AdminAdminUpdate.Designer.cs">
       <DependentUpon>AdminAdminUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminEmployeeUpdate.cs">
+    <Compile Include="EmployeeManagerUpdateEmp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminEmployeeUpdate.Designer.cs">
-      <DependentUpon>AdminEmployeeUpdate.cs</DependentUpon>
+    <Compile Include="EmployeeManagerUpdateEmp.Designer.cs">
+      <DependentUpon>EmployeeManagerUpdateEmp.cs</DependentUpon>
     </Compile>
     <Compile Include="Employee.cs">
       <SubType>Form</SubType>
@@ -209,18 +228,6 @@
     <Compile Include="FinanceSupplierPyamentAdd.Designer.cs">
       <DependentUpon>FinanceSupplierPyamentAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="FinanceSupplierPaymentUpdate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FinanceSupplierPaymentUpdate.Designer.cs">
-      <DependentUpon>FinanceSupplierPaymentUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FinanceSupplierPaymentRemove.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FinanceSupplierPaymentRemove.Designer.cs">
-      <DependentUpon>FinanceSupplierPaymentRemove.cs</DependentUpon>
-    </Compile>
     <Compile Include="EmpManagerDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -245,11 +252,11 @@
     <Compile Include="EmpManagerLeave.Designer.cs">
       <DependentUpon>EmpManagerLeave.cs</DependentUpon>
     </Compile>
-    <Compile Include="EmpManagerDepartment.cs">
+    <Compile Include="AdminDepartment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmpManagerDepartment.Designer.cs">
-      <DependentUpon>EmpManagerDepartment.cs</DependentUpon>
+    <Compile Include="AdminDepartment.Designer.cs">
+      <DependentUpon>AdminDepartment.cs</DependentUpon>
     </Compile>
     <Compile Include="EmpManagerReport.cs">
       <SubType>Form</SubType>
@@ -287,23 +294,74 @@
     <Compile Include="EmpManagerLeaveUpdate.Designer.cs">
       <DependentUpon>EmpManagerLeaveUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="EmpManagerDepartmentAdd.cs">
+    <Compile Include="AdminDepartmentAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmpManagerDepartmentAdd.Designer.cs">
-      <DependentUpon>EmpManagerDepartmentAdd.cs</DependentUpon>
+    <Compile Include="AdminDepartmentAdd.Designer.cs">
+      <DependentUpon>AdminDepartmentAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="EmpManagerDepartmentRemove.cs">
+    <Compile Include="AdminDepartmentRemove.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmpManagerDepartmentRemove.Designer.cs">
-      <DependentUpon>EmpManagerDepartmentRemove.cs</DependentUpon>
+    <Compile Include="AdminDepartmentRemove.Designer.cs">
+      <DependentUpon>AdminDepartmentRemove.cs</DependentUpon>
     </Compile>
-    <Compile Include="EmpManagerDepartmentUpdate.cs">
+    <Compile Include="AdminDepartmentUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmpManagerDepartmentUpdate.Designer.cs">
-      <DependentUpon>EmpManagerDepartmentUpdate.cs</DependentUpon>
+    <Compile Include="AdminDepartmentUpdate.Designer.cs">
+      <DependentUpon>AdminDepartmentUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ForgotPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForgotPassword.Designer.cs">
+      <DependentUpon>ForgotPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ProductionReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductionReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Reports\SupplierPaymentReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SupplierPaymentReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Reports\SupplierPurchaseOrderReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SupplierPurchaseOrderReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="SaleSalesAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleSalesAdd.Designer.cs">
+      <DependentUpon>SaleSalesAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesBill.Designer.cs">
+      <DependentUpon>SalesBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesCustomerAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesCustomerAdd.Designer.cs">
+      <DependentUpon>SalesCustomerAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesCustomerUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesCustomerUpdate.Designer.cs">
+      <DependentUpon>SalesCustomerUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="SalesOrderUpdate.cs">
       <SubType>Form</SubType>
@@ -311,23 +369,17 @@
     <Compile Include="SalesOrderUpdate.Designer.cs">
       <DependentUpon>SalesOrderUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="SalesOrderRemove.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SalesOrderRemove.Designer.cs">
-      <DependentUpon>SalesOrderRemove.cs</DependentUpon>
-    </Compile>
     <Compile Include="SalesOrderAdd.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SalesOrderAdd.Designer.cs">
       <DependentUpon>SalesOrderAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="SReport.cs">
+    <Compile Include="SalesSalesUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SReport.Designer.cs">
-      <DependentUpon>SReport.cs</DependentUpon>
+    <Compile Include="SalesSalesUpdate.Designer.cs">
+      <DependentUpon>SalesSalesUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="SupplierInvoiceUpdate.cs">
       <SubType>Form</SubType>
@@ -335,23 +387,23 @@
     <Compile Include="SupplierInvoiceUpdate.Designer.cs">
       <DependentUpon>SupplierInvoiceUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryInventoryUpdate.cs">
+    <Compile Include="InventoryCategoryUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryInventoryUpdate.Designer.cs">
-      <DependentUpon>InventoryInventoryUpdate.cs</DependentUpon>
+    <Compile Include="InventoryCategoryUpdate.Designer.cs">
+      <DependentUpon>InventoryCategoryUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryInventoryRemove.cs">
+    <Compile Include="InventoryCategoryRemove.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryInventoryRemove.Designer.cs">
-      <DependentUpon>InventoryInventoryRemove.cs</DependentUpon>
+    <Compile Include="InventoryCategoryRemove.Designer.cs">
+      <DependentUpon>InventoryCategoryRemove.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryInventoryAdd.cs">
+    <Compile Include="InventoryCategoryAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryInventoryAdd.Designer.cs">
-      <DependentUpon>InventoryInventoryAdd.cs</DependentUpon>
+    <Compile Include="InventoryCategoryAdd.Designer.cs">
+      <DependentUpon>InventoryCategoryAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="InventoryReport.cs">
       <SubType>Form</SubType>
@@ -395,23 +447,17 @@
     <Compile Include="SalesPayment.Designer.cs">
       <DependentUpon>SalesPayment.cs</DependentUpon>
     </Compile>
-    <Compile Include="SalesSales.cs">
+    <Compile Include="SalesSalesReturn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SalesSales.Designer.cs">
-      <DependentUpon>SalesSales.cs</DependentUpon>
+    <Compile Include="SalesSalesReturn.Designer.cs">
+      <DependentUpon>SalesSalesReturn.cs</DependentUpon>
     </Compile>
     <Compile Include="SalesOrder.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SalesOrder.Designer.cs">
       <DependentUpon>SalesOrder.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProductProductionUpdate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProductProductionUpdate.Designer.cs">
-      <DependentUpon>ProductProductionUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="ProductProductUpdate.cs">
       <SubType>Form</SubType>
@@ -437,18 +483,6 @@
     <Compile Include="ProductScheduleRemove.Designer.cs">
       <DependentUpon>ProductScheduleRemove.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductProductionRemove.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProductProductionRemove.Designer.cs">
-      <DependentUpon>ProductProductionRemove.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProductProductionAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProductProductionAdd.Designer.cs">
-      <DependentUpon>ProductProductionAdd.cs</DependentUpon>
-    </Compile>
     <Compile Include="ProductProductAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -460,6 +494,12 @@
     </Compile>
     <Compile Include="ProductScheduleAdd.Designer.cs">
       <DependentUpon>ProductScheduleAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplierReport.Designer.cs">
+      <DependentUpon>SupplierReport.cs</DependentUpon>
     </Compile>
     <Compile Include="SupplierSupllierRemove.cs">
       <SubType>Form</SubType>
@@ -496,12 +536,6 @@
     </Compile>
     <Compile Include="SupplierSupplierAdd.Designer.cs">
       <DependentUpon>SupplierSupplierAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SupplierReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SupplierReport.Designer.cs">
-      <DependentUpon>SupplierReport.cs</DependentUpon>
     </Compile>
     <Compile Include="SupplierInvoice.cs">
       <SubType>Form</SubType>
@@ -563,12 +597,6 @@
     <Compile Include="ProductRaw.Designer.cs">
       <DependentUpon>ProductRaw.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductProduction.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProductProduction.Designer.cs">
-      <DependentUpon>ProductProduction.cs</DependentUpon>
-    </Compile>
     <Compile Include="ProductSchedule.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -580,24 +608,6 @@
     </Compile>
     <Compile Include="ProductDashboard.Designer.cs">
       <DependentUpon>ProductDashboard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InventoryRawAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InventoryRawAdd.Designer.cs">
-      <DependentUpon>InventoryRawAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InventoryRawUpdate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InventoryRawUpdate.Designer.cs">
-      <DependentUpon>InventoryRawUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InventoryRawRemove.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InventoryRawRemove.Designer.cs">
-      <DependentUpon>InventoryRawRemove.cs</DependentUpon>
     </Compile>
     <Compile Include="InventoryGRN.cs">
       <SubType>Form</SubType>
@@ -611,11 +621,11 @@
     <Compile Include="InventorySupplier.Designer.cs">
       <DependentUpon>InventorySupplier.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryRaw.cs">
+    <Compile Include="InventoryCategory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryRaw.Designer.cs">
-      <DependentUpon>InventoryRaw.cs</DependentUpon>
+    <Compile Include="InventoryCategory.Designer.cs">
+      <DependentUpon>InventoryCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="InventoryProduct.cs">
       <SubType>Form</SubType>
@@ -652,14 +662,28 @@
     <EmbeddedResource Include="AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminEmployeeAdd.resx">
-      <DependentUpon>AdminEmployeeAdd.cs</DependentUpon>
+    <EmbeddedResource Include="InventoryInventoryAdd.resx">
+      <DependentUpon>InventoryInventoryAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminEmployeeRemove.resx">
-      <DependentUpon>AdminEmployeeRemove.cs</DependentUpon>
+    <EmbeddedResource Include="InventoryInventoryRemove.resx">
+      <DependentUpon>InventoryInventoryRemove.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminEmployeeUpdate.resx">
-      <DependentUpon>AdminEmployeeUpdate.cs</DependentUpon>
+    <EmbeddedResource Include="InventoryInventoryUpdate.resx">
+      <DependentUpon>InventoryInventoryUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\InventoryReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InventoryReport.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeManagerEmpAdd.resx">
+      <DependentUpon>EmployeeManagerEmpAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeManagerRemoveEmp.resx">
+      <DependentUpon>EmployeeManagerRemoveEmp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeManagerUpdateEmp.resx">
+      <DependentUpon>EmployeeManagerUpdateEmp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CEODashboard.resx">
       <DependentUpon>CEODashboard.cs</DependentUpon>
@@ -681,9 +705,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminAdmin.resx">
       <DependentUpon>AdminAdmin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AdminEmployee.resx">
-      <DependentUpon>AdminEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminAdminAdd.resx">
       <DependentUpon>AdminAdminAdd.cs</DependentUpon>
@@ -724,12 +745,6 @@
     <EmbeddedResource Include="FinanceSupplierPyamentAdd.resx">
       <DependentUpon>FinanceSupplierPyamentAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FinanceSupplierPaymentUpdate.resx">
-      <DependentUpon>FinanceSupplierPaymentUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FinanceSupplierPaymentRemove.resx">
-      <DependentUpon>FinanceSupplierPaymentRemove.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="EmpManagerDashboard.resx">
       <DependentUpon>EmpManagerDashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -742,8 +757,8 @@
     <EmbeddedResource Include="EmpManagerLeave.resx">
       <DependentUpon>EmpManagerLeave.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmpManagerDepartment.resx">
-      <DependentUpon>EmpManagerDepartment.cs</DependentUpon>
+    <EmbeddedResource Include="AdminDepartment.resx">
+      <DependentUpon>AdminDepartment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmpManagerReport.resx">
       <DependentUpon>EmpManagerReport.cs</DependentUpon>
@@ -760,38 +775,65 @@
     <EmbeddedResource Include="EmpManagerLeaveUpdate.resx">
       <DependentUpon>EmpManagerLeaveUpdate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmpManagerDepartmentAdd.resx">
-      <DependentUpon>EmpManagerDepartmentAdd.cs</DependentUpon>
+    <EmbeddedResource Include="AdminDepartmentAdd.resx">
+      <DependentUpon>AdminDepartmentAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmpManagerDepartmentRemove.resx">
-      <DependentUpon>EmpManagerDepartmentRemove.cs</DependentUpon>
+    <EmbeddedResource Include="AdminDepartmentRemove.resx">
+      <DependentUpon>AdminDepartmentRemove.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmpManagerDepartmentUpdate.resx">
-      <DependentUpon>EmpManagerDepartmentUpdate.cs</DependentUpon>
+    <EmbeddedResource Include="AdminDepartmentUpdate.resx">
+      <DependentUpon>AdminDepartmentUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ForgotPassword.resx">
+      <DependentUpon>ForgotPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ProductionReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProductionReport.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SupplierPaymentReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SupplierPaymentReport.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SupplierPurchaseOrderReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SupplierPurchaseOrderReport.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleSalesAdd.resx">
+      <DependentUpon>SaleSalesAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesBill.resx">
+      <DependentUpon>SalesBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesCustomerAdd.resx">
+      <DependentUpon>SalesCustomerAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesCustomerUpdate.resx">
+      <DependentUpon>SalesCustomerUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SalesOrderUpdate.resx">
       <DependentUpon>SalesOrderUpdate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SalesOrderRemove.resx">
-      <DependentUpon>SalesOrderRemove.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="SalesOrderAdd.resx">
       <DependentUpon>SalesOrderAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SReport.resx">
-      <DependentUpon>SReport.cs</DependentUpon>
+    <EmbeddedResource Include="SalesSalesUpdate.resx">
+      <DependentUpon>SalesSalesUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SupplierInvoiceUpdate.resx">
       <DependentUpon>SupplierInvoiceUpdate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryInventoryUpdate.resx">
-      <DependentUpon>InventoryInventoryUpdate.cs</DependentUpon>
+    <EmbeddedResource Include="InventoryCategoryUpdate.resx">
+      <DependentUpon>InventoryCategoryUpdate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryInventoryRemove.resx">
-      <DependentUpon>InventoryInventoryRemove.cs</DependentUpon>
+    <EmbeddedResource Include="InventoryCategoryRemove.resx">
+      <DependentUpon>InventoryCategoryRemove.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryInventoryAdd.resx">
-      <DependentUpon>InventoryInventoryAdd.cs</DependentUpon>
+    <EmbeddedResource Include="InventoryCategoryAdd.resx">
+      <DependentUpon>InventoryCategoryAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryInventory.resx">
       <DependentUpon>InventoryInventory.cs</DependentUpon>
@@ -808,9 +850,6 @@
     <EmbeddedResource Include="SalesOrder.resx">
       <DependentUpon>SalesOrder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductProductionUpdate.resx">
-      <DependentUpon>ProductProductionUpdate.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ProductProductUpdate.resx">
       <DependentUpon>ProductProductUpdate.cs</DependentUpon>
     </EmbeddedResource>
@@ -820,17 +859,11 @@
     <EmbeddedResource Include="ProductProductRemove.resx">
       <DependentUpon>ProductProductRemove.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductProductionRemove.resx">
-      <DependentUpon>ProductProductionRemove.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ProductScheduleRemove.resx">
       <DependentUpon>ProductScheduleRemove.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductProductAdd.resx">
       <DependentUpon>ProductProductAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProductProductionAdd.resx">
-      <DependentUpon>ProductProductionAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductScheduleAdd.resx">
       <DependentUpon>ProductScheduleAdd.cs</DependentUpon>
@@ -841,11 +874,14 @@
     <EmbeddedResource Include="SalesReport.resx">
       <DependentUpon>SalesReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SalesSales.resx">
-      <DependentUpon>SalesSales.cs</DependentUpon>
+    <EmbeddedResource Include="SalesSalesReturn.resx">
+      <DependentUpon>SalesSalesReturn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SalesSchedule.resx">
       <DependentUpon>SalesSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierReport.resx">
+      <DependentUpon>SupplierReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SupplierSupllierRemove.resx">
       <DependentUpon>SupplierSupllierRemove.cs</DependentUpon>
@@ -864,9 +900,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SupplierSupplierAdd.resx">
       <DependentUpon>SupplierSupplierAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SupplierReport.resx">
-      <DependentUpon>SupplierReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SupplierInvoice.resx">
       <DependentUpon>SupplierInvoice.cs</DependentUpon>
@@ -895,26 +928,14 @@
     <EmbeddedResource Include="ProductRaw.resx">
       <DependentUpon>ProductRaw.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductProduction.resx">
-      <DependentUpon>ProductProduction.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ProductDashboard.resx">
       <DependentUpon>ProductDashboard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InventoryRawAdd.resx">
-      <DependentUpon>InventoryRawAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InventoryRawUpdate.resx">
-      <DependentUpon>InventoryRawUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InventoryRawRemove.resx">
-      <DependentUpon>InventoryRawRemove.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryGRN.resx">
       <DependentUpon>InventoryGRN.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryRaw.resx">
-      <DependentUpon>InventoryRaw.cs</DependentUpon>
+    <EmbeddedResource Include="InventoryCategory.resx">
+      <DependentUpon>InventoryCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryDashboard.resx">
       <DependentUpon>InventoryDashboard.cs</DependentUpon>
@@ -969,5 +990,13 @@
   <ItemGroup>
     <None Include="Resources\home_9449216.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\AK-Ico.ico" />
+    <Content Include="Resources\Letter Template Top.jpg" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

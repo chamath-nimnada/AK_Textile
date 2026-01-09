@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,56 @@ namespace AK_Textile
 {
     public partial class EmpManagerReport : Form
     {
-        public EmpManagerReport()
+        //database connection
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-KLQEI3V0;Initial Catalog=AKTextilesDatabase;Integrated Security=True");
+        private MainForm mainForm;
+
+        Form formBackground = null; // Declare outside to access in 'finally'
+
+        public EmpManagerReport(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
+        }
+
+        private void EmpManagerReport_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new EmpManagerLeave(mainForm));
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new EmpManagerSalary(mainForm));
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new EmpManagerEmployee(mainForm));
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new LoginForm(mainForm));
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            mainForm.LoadForm(new EmpManagerDashboard(mainForm));
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
